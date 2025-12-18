@@ -51,15 +51,7 @@ for item in "${SUSPICIOUS_ITEMS[@]}"; do
             FOUND_PACKAGES+=("$item")
         fi
     fi
-    
-    # Check if package is installed (rpm for RedHat/CentOS)
-    if command -v rpm &> /dev/null; then
-        if rpm -qa | grep -qw "${item}"; then
-            echo -e "  ${RED}[ALERT]${NC} Package '${item}' is INSTALLED"
-            FOUND_PACKAGES+=("$item")
-        fi
-    fi
-    
+     
     # Check if service is active
     if systemctl list-unit-files 2>/dev/null | grep -qw "${item}"; then
         if systemctl is-active --quiet "${item}" 2>/dev/null; then
