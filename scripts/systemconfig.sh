@@ -1,113 +1,87 @@
 #!/bin/bash
-
-# Debian Hardening Script
 # Must be run as root
 
 set -e
 
-# Color codes for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-# Function to print colored output
-print_info() {
-    echo -e "${BLUE}[INFO]${NC} $1"
-}
-
-print_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-print_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-print_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
+# Prompt the user to confirm they have taken a screenshot of the points
+if [ -t 0 ]; then
+    while true; do
+        read -r -p "Have you taken a screenshot of the points? (y/n): " yn
+        case "$yn" in
+            [Yy]* ) break ;;
+            [Nn]* ) echo "Please take a screenshot of the points before running this script. Exiting."; exit 1 ;;
+            * ) echo "Please answer y or n." ;;
+        esac
+    done
+else
+    echo "No interactive terminal detected; proceeding without screenshot confirmation."
+fi
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then 
-    print_error "This script must be run as root"
+    echo "This script must be run as root, exiting"
     exit 1
 fi
 
-print_info "Starting Debian Hardening Script..."
+echo "Starting hardening script..."
 echo ""
 
-# ===========================
 # 1. Configure UMASK
-# ===========================
 
-print_info "Configuring UMASK settings..."
+echo "Configuring UMASK settings..."
 
-# Backup login.defs
+# Backup and modify login.defs
 if [ -f /etc/login.defs ]; then
-    print_info "Creating backup of /etc/login.defs..."
     cp /etc/login.defs /etc/login.defs.backup.$(date +%Y%m%d-%H%M%S)
-    print_success "Backup created"
+    echo "Backup created: /etc/login.defs.backup"
     
-    # Modify UMASK in login.defs
-    print_info "Setting UMASK to 027 in /etc/login.defs..."
     if grep -q "^UMASK" /etc/login.defs; then
         sed -i 's/^UMASK.*/UMASK\t\t027/' /etc/login.defs
-        print_success "UMASK updated in /etc/login.defs"
+        echo "UMASK updated to 027 in /etc/login.defs"
     else
         echo "UMASK		027" >> /etc/login.defs
-        print_success "UMASK added to /etc/login.defs"
+        echo "UMASK added to /etc/login.defs"
     fi
 else
-    print_error "/etc/login.defs not found"
+    echo "/etc/login.defs not found"
     exit 1
 fi
 
 # Backup and modify /etc/profile
 if [ -f /etc/profile ]; then
-    print_info "Creating backup of /etc/profile..."
     cp /etc/profile /etc/profile.backup.$(date +%Y%m%d-%H%M%S)
-    print_success "Backup created"
+    echo "Backup created: /etc/profile.backup"
     
-    print_info "Adding umask 027 to /etc/profile..."
     if grep -q "^umask 027" /etc/profile; then
-        print_warning "umask 027 already exists in /etc/profile"
+        echo "umask 027 already exists in /etc/profile"
     else
         sed -i '1i umask 027' /etc/profile
-        print_success "umask 027 added to top of /etc/profile"
+        echo "umask 027 added to /etc/profile"
     fi
 else
-    print_error "/etc/profile not found"
+    echo "/etc/profile not found"
     exit 1
 fi
 
 echo ""
 
-# ===========================
 # 2. Configure sysctl
-# ===========================
 
-print_info "Configuring kernel parameters in /etc/sysctl.conf..."
+echo "Configuring kernel parameters..."
 
 # Backup sysctl.conf
 if [ -f /etc/sysctl.conf ]; then
-    print_info "Creating backup of /etc/sysctl.conf..."
     cp /etc/sysctl.conf /etc/sysctl.conf.backup.$(date +%Y%m%d-%H%M%S)
-    print_success "Backup created"
+    echo "Backup created: /etc/sysctl.conf.backup"
 else
-    print_warning "/etc/sysctl.conf not found, creating new file..."
+    echo "Creating /etc/sysctl.conf"
     touch /etc/sysctl.conf
 fi
 
-# Add header to sysctl.conf
-print_info "Adding hardening parameters to /etc/sysctl.conf..."
+# Add hardening parameters
 cat >> /etc/sysctl.conf << 'EOF'
 
-# ===========================
 # Security Hardening Parameters
-# Added by hardening script
-# ===========================
 
 # Filesystem Parameters
 fs.file-max = 65535
@@ -166,20 +140,16 @@ net.ipv4.tcp_timestamps = 9
 
 EOF
 
-print_success "Base hardening parameters added to /etc/sysctl.conf"
-
+echo "Base hardening parameters added"
 echo ""
 
-# ===========================
 # 3. IPv6 Configuration
-# ===========================
 
-print_info "IPv6 Configuration"
-echo ""
+echo "IPv6 Configuration"
 read -p "Do you need IPv6 enabled? (y/n): " ipv6_choice
 
 if [[ "$ipv6_choice" =~ ^[Nn]$ ]]; then
-    print_info "Disabling IPv6..."
+    echo "Disabling IPv6..."
     cat >> /etc/sysctl.conf << 'EOF'
 
 # IPv6 Disabled
@@ -188,9 +158,9 @@ net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 
 EOF
-    print_success "IPv6 disabled parameters added"
+    echo "IPv6 disabled"
 elif [[ "$ipv6_choice" =~ ^[Yy]$ ]]; then
-    print_info "Hardening IPv6 settings..."
+    echo "Hardening IPv6 settings..."
     cat >> /etc/sysctl.conf << 'EOF'
 
 # IPv6 Security Parameters
@@ -203,24 +173,22 @@ net.ipv6.conf.default.dad_transmits = 0
 net.ipv6.conf.default.max_addresses = 1
 
 EOF
-    print_success "IPv6 hardening parameters added"
+    echo "IPv6 hardening parameters added"
 else
-    print_warning "Invalid choice. Skipping IPv6 configuration."
+    echo "Invalid choice. Skipping IPv6 configuration."
 fi
 
 echo ""
 
-# ===========================
 # 4. Apply sysctl changes
-# ===========================
 
-print_info "Applying sysctl changes..."
+echo "Applying sysctl changes..."
 if sysctl -p > /dev/null 2>&1; then
-    print_success "All sysctl parameters applied successfully"
+    echo "All sysctl parameters applied successfully"
 else
-    print_warning "Some sysctl parameters may have failed to apply"
-    print_info "Running sysctl -p with output:"
+    echo "Some parameters may have failed. Full output:"
     sysctl -p
 fi
 
-echo "Script completed!"
+echo ""
+echo "Script completed successfully"
