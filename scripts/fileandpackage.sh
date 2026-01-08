@@ -1,30 +1,15 @@
 #!/bin/bash
 
-# Security Scanner Script
-# Scans for unauthorized packages, services, files, and permission issues
-
-# Color codes for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}  System Security Scanner${NC}"
-echo -e "${BLUE}========================================${NC}"
-echo ""
+echo "File, package, and SUID/GUID scanner script"
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then 
-    echo -e "${YELLOW}Warning: Not running as root. Some checks may be incomplete.${NC}"
+    echo "Warning: Not running as root. Some checks may be incomplete."
     echo ""
 fi
 
-# ============================================
 # 1. Package and Service Scan
-# ============================================
-echo -e "${BLUE}[1] Scanning for unauthorized packages and services...${NC}"
+echo "[1] Scanning for unauthorized packages and services..."
 echo ""
 
 # List of packages/services to check
@@ -42,12 +27,12 @@ FOUND_PACKAGES=()
 FOUND_SERVICES=()
 
 for item in "${SUSPICIOUS_ITEMS[@]}"; do
-    echo -e "Checking: ${item}"
+    echo "Checking: ${item}"
     
     # Check if package is installed (dpkg for Debian/Ubuntu)
     if command -v dpkg &> /dev/null; then
         if dpkg -l | grep -qw "^ii.*${item}"; then
-            echo -e "  ${RED}[ALERT]${NC} Package '${item}' is INSTALLED"
+            echo "  [ALERT] Package '${item}' is INSTALLED"
             FOUND_PACKAGES+=("$item")
         fi
     fi
@@ -55,36 +40,34 @@ for item in "${SUSPICIOUS_ITEMS[@]}"; do
     # Check if service is active
     if systemctl list-unit-files 2>/dev/null | grep -qw "${item}"; then
         if systemctl is-active --quiet "${item}" 2>/dev/null; then
-            echo -e "  ${RED}[ALERT]${NC} Service '${item}' is ACTIVE"
+            echo "  [ALERT] Service '${item}' is ACTIVE"
             FOUND_SERVICES+=("$item")
         elif systemctl is-enabled --quiet "${item}" 2>/dev/null; then
-            echo -e "  ${YELLOW}[WARNING]${NC} Service '${item}' is ENABLED but not running"
+            echo "  [WARNING] Service '${item}' is ENABLED but not running"
             FOUND_SERVICES+=("$item")
         fi
     fi
 done
 
 echo ""
-echo -e "${BLUE}Package/Service Scan Summary:${NC}"
+echo "Package/Service Scan Summary:"
 if [ ${#FOUND_PACKAGES[@]} -eq 0 ] && [ ${#FOUND_SERVICES[@]} -eq 0 ]; then
-    echo -e "${GREEN}✓ No suspicious packages or services found${NC}"
+    echo "No suspicious packages or services found"
 else
     if [ ${#FOUND_PACKAGES[@]} -gt 0 ]; then
-        echo -e "${RED}Found ${#FOUND_PACKAGES[@]} suspicious package(s):${NC}"
+        echo "Found ${#FOUND_PACKAGES[@]} suspicious package(s):"
         printf '%s\n' "${FOUND_PACKAGES[@]}" | sed 's/^/  - /'
     fi
     if [ ${#FOUND_SERVICES[@]} -gt 0 ]; then
-        echo -e "${RED}Found ${#FOUND_SERVICES[@]} suspicious service(s):${NC}"
+        echo "Found ${#FOUND_SERVICES[@]} suspicious service(s):"
         printf '%s\n' "${FOUND_SERVICES[@]}" | sed 's/^/  - /'
     fi
 fi
 echo ""
 
-# ============================================
 # 2. Unauthorized File Scan
-# ============================================
-echo -e "${BLUE}[2] Scanning for unauthorized files...${NC}"
-echo -e "${YELLOW}This may take several minutes...${NC}"
+echo "[2] Scanning for unauthorized files..."
+echo "This may take several minutes..."
 echo ""
 
 UNAUTH_FILES=$(find / -path /usr/share -prune -o -type f \( \
@@ -96,35 +79,33 @@ UNAUTH_FILES=$(find / -path /usr/share -prune -o -type f \( \
 
 FILE_COUNT=$(echo "$UNAUTH_FILES" | grep -c '^' 2>/dev/null)
 
-echo -e "${BLUE}Unauthorized File Scan Summary:${NC}"
+echo "Unauthorized File Scan Summary:"
 if [ -z "$UNAUTH_FILES" ] || [ "$FILE_COUNT" -eq 0 ]; then
-    echo -e "${GREEN}✓ No unauthorized files found${NC}"
+    echo "No unauthorized files found"
 else
-    echo -e "${RED}Found ${FILE_COUNT} unauthorized file(s):${NC}"
+    echo "Found ${FILE_COUNT} unauthorized file(s):"
     echo "$UNAUTH_FILES" | head -20
     if [ "$FILE_COUNT" -gt 20 ]; then
-        echo -e "${YELLOW}... and $((FILE_COUNT - 20)) more files${NC}"
+        echo "... and $((FILE_COUNT - 20)) more files"
     fi
 fi
 echo ""
 
-# ============================================
 # 3. SUID/SGID/Sticky Bit Scan
-# ============================================
-echo -e "${BLUE}[3] Scanning for SUID/SGID/Sticky bit files...${NC}"
-echo -e "${YELLOW}This may take several minutes...${NC}"
+echo "[3] Scanning for SUID/SGID/Sticky bit files..."
+echo "This may take several minutes..."
 echo ""
 
 # Find SUID files (chmod 4000)
-echo -e "Scanning for SUID files..."
+echo "Scanning for SUID files..."
 SUID_FILES=$(find / -type f -perm -4000 2>/dev/null)
 
 # Find SGID files (chmod 2000)
-echo -e "Scanning for SGID files..."
+echo "Scanning for SGID files..."
 SGID_FILES=$(find / -type f -perm -2000 2>/dev/null)
 
 # Find Sticky bit files (chmod 1000)
-echo -e "Scanning for Sticky bit files..."
+echo "Scanning for Sticky bit files..."
 STICKY_FILES=$(find / -type f -perm -1000 2>/dev/null)
 
 SUID_COUNT=$(echo "$SUID_FILES" | grep -c '^' 2>/dev/null)
@@ -132,13 +113,13 @@ SGID_COUNT=$(echo "$SGID_FILES" | grep -c '^' 2>/dev/null)
 STICKY_COUNT=$(echo "$STICKY_FILES" | grep -c '^' 2>/dev/null)
 
 echo ""
-echo -e "${BLUE}SUID/SGID/Sticky Bit Scan Summary:${NC}"
+echo "SUID/SGID/Sticky Bit Scan Summary:"
 
 # SUID Results
 if [ -z "$SUID_FILES" ] || [ "$SUID_COUNT" -eq 0 ]; then
-    echo -e "${GREEN}✓ No SUID files found${NC}"
+    echo "No SUID files found"
 else
-    echo -e "${RED}Found ${SUID_COUNT} SUID file(s):${NC}"
+    echo "Found ${SUID_COUNT} SUID file(s):"
     echo "$SUID_FILES" | while read -r file; do
         ls -lh "$file" 2>/dev/null | awk '{print "  " $1 " " $3 ":" $4 " " $9}'
     done
@@ -148,9 +129,9 @@ echo ""
 
 # SGID Results
 if [ -z "$SGID_FILES" ] || [ "$SGID_COUNT" -eq 0 ]; then
-    echo -e "${GREEN}✓ No SGID files found${NC}"
+    echo "No SGID files found"
 else
-    echo -e "${RED}Found ${SGID_COUNT} SGID file(s):${NC}"
+    echo "Found ${SGID_COUNT} SGID file(s):"
     echo "$SGID_FILES" | while read -r file; do
         ls -lh "$file" 2>/dev/null | awk '{print "  " $1 " " $3 ":" $4 " " $9}'
     done
@@ -160,15 +141,13 @@ echo ""
 
 # Sticky Bit Results
 if [ -z "$STICKY_FILES" ] || [ "$STICKY_COUNT" -eq 0 ]; then
-    echo -e "${GREEN}✓ No Sticky bit files found${NC}"
+    echo "No Sticky bit files found"
 else
-    echo -e "${YELLOW}Found ${STICKY_COUNT} Sticky bit file(s):${NC}"
+    echo "Found ${STICKY_COUNT} Sticky bit file(s):"
     echo "$STICKY_FILES" | while read -r file; do
         ls -lh "$file" 2>/dev/null | awk '{print "  " $1 " " $3 ":" $4 " " $9}'
     done
 fi
 
 echo ""
-echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}  Scan Complete${NC}"
-echo -e "${BLUE}========================================${NC}"
+echo "Scan Complete, review all output."
