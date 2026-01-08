@@ -7,5 +7,7 @@ CyberPatriot misc
 
 scripts:
 fileandpackages.sh - Unauthorized packages, services and files, SUID/SGID/Sticky bit
+
 systemconfig.sh - UMASK, sysctl
+
 users.sh - users, uid 0 users, sudoers, groups
