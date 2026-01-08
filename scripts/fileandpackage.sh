@@ -1,11 +1,25 @@
 #!/bin/bash
 
+# Prompt the user to confirm they have taken a screenshot of the points
+if [ -t 0 ]; then
+    while true; do
+        read -r -p "Have you taken a screenshot of the points? (y/n): " yn
+        case "$yn" in
+            [Yy]* ) break ;;
+            [Nn]* ) echo "Please take a screenshot of the points before running this script. Exiting."; exit 1 ;;
+            * ) echo "Please answer y or n." ;;
+        esac
+    done
+else
+    echo "No interactive terminal detected; proceeding without screenshot confirmation."
+fi
+
 echo "File, package, and SUID/GUID scanner script"
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then 
-    echo "Warning: Not running as root. Some checks may be incomplete."
-    echo ""
+    echo "Not running as root, exiting."
+    exit 1
 fi
 
 # 1. Package and Service Scan
