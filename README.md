@@ -6,6 +6,7 @@ CyberPatriot misc
 /checklists contains txt versions of checklists
 
 scripts:
+
 fileandpackages.sh - Unauthorized packages, services and files, SUID/SGID/Sticky bit
 
 systemconfig.sh - UMASK, sysctl
