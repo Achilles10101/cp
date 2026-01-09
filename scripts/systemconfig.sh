@@ -13,8 +13,6 @@ if [ -t 0 ]; then
             * ) echo "Please answer y or n." ;;
         esac
     done
-else
-    echo "No interactive terminal detected; proceeding without screenshot confirmation."
 fi
 
 # Check if running as root
@@ -23,58 +21,47 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-echo "Starting hardening script..."
+echo "Starting system hardening..."
 echo ""
 
 # 1. Configure UMASK
-
-echo "Configuring UMASK settings..."
+echo "[1/4] Configuring UMASK..."
 
 # Backup and modify login.defs
 if [ -f /etc/login.defs ]; then
     cp /etc/login.defs /etc/login.defs.backup.$(date +%Y%m%d-%H%M%S)
-    echo "Backup created: /etc/login.defs.backup"
     
     if grep -q "^UMASK" /etc/login.defs; then
         sed -i 's/^UMASK.*/UMASK\t\t027/' /etc/login.defs
-        echo "UMASK updated to 027 in /etc/login.defs"
     else
-        echo "UMASK		027" >> /etc/login.defs
-        echo "UMASK added to /etc/login.defs"
+        echo "UMASK     027" >> /etc/login.defs
     fi
 else
-    echo "/etc/login.defs not found"
+    echo "  ERROR: /etc/login.defs not found"
     exit 1
 fi
 
 # Backup and modify /etc/profile
 if [ -f /etc/profile ]; then
     cp /etc/profile /etc/profile.backup.$(date +%Y%m%d-%H%M%S)
-    echo "Backup created: /etc/profile.backup"
     
-    if grep -q "^umask 027" /etc/profile; then
-        echo "umask 027 already exists in /etc/profile"
-    else
+    if ! grep -q "^umask 027" /etc/profile; then
         sed -i '1i umask 027' /etc/profile
-        echo "umask 027 added to /etc/profile"
     fi
 else
-    echo "/etc/profile not found"
+    echo "  ERROR: /etc/profile not found"
     exit 1
 fi
 
-echo ""
+echo "  ✓ UMASK configured"
 
 # 2. Configure sysctl
-
-echo "Configuring kernel parameters..."
+echo "[2/4] Configuring kernel parameters..."
 
 # Backup sysctl.conf
 if [ -f /etc/sysctl.conf ]; then
     cp /etc/sysctl.conf /etc/sysctl.conf.backup.$(date +%Y%m%d-%H%M%S)
-    echo "Backup created: /etc/sysctl.conf.backup"
 else
-    echo "Creating /etc/sysctl.conf"
     touch /etc/sysctl.conf
 fi
 
@@ -126,16 +113,13 @@ net.ipv4.tcp_timestamps = 1
 
 EOF
 
-echo "Sysctl parameters added"
-echo ""
+echo "  ✓ Base parameters configured"
 
 # 3. IPv6 Configuration
-
-echo "IPv6 Configuration"
-read -p "Do you need IPv6 enabled? (y/n): " ipv6_choice
+echo "[3/4] IPv6 Configuration"
+read -p "  Enable IPv6? (y/n): " ipv6_choice
 
 if [[ "$ipv6_choice" =~ ^[Nn]$ ]]; then
-    echo "Disabling IPv6..."
     cat >> /etc/sysctl.conf << 'EOF'
 
 # IPv6 Disabled
@@ -144,9 +128,8 @@ net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 
 EOF
-    echo "IPv6 disabled"
+    echo "  ✓ IPv6 disabled"
 elif [[ "$ipv6_choice" =~ ^[Yy]$ ]]; then
-    echo "Hardening IPv6 settings..."
     cat >> /etc/sysctl.conf << 'EOF'
 
 # IPv6 Security Parameters
@@ -159,22 +142,19 @@ net.ipv6.conf.default.dad_transmits = 0
 net.ipv6.conf.default.max_addresses = 1
 
 EOF
-    echo "IPv6 hardening parameters added"
+    echo "  ✓ IPv6 hardened"
 else
-    echo "Invalid choice. Skipping IPv6 configuration."
+    echo "  ⚠ Invalid choice, skipping IPv6 configuration"
 fi
 
-echo ""
-
 # 4. Apply sysctl changes
-
-echo "Applying sysctl changes..."
+echo "[4/4] Applying changes..."
 if sysctl -p > /dev/null 2>&1; then
-    echo "All sysctl parameters applied successfully"
+    echo "  ✓ All parameters applied"
 else
-    echo "Some parameters may have failed. Full output:"
+    echo "  ⚠ Some parameters failed (see details below):"
     sysctl -p
 fi
 
 echo ""
-echo "Script completed successfully"
+echo "✓ Hardening complete"
