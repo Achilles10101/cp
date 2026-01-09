@@ -71,6 +71,7 @@ echo "[2] Scanning for unauthorized files..."
 UNAUTH_FILES=$(find / \
     -path /usr/share -prune -o \
     -path /usr/src -prune -o \
+    -path /usr/lib -prune -o \
     -type f \( \
         -iname "*.mp3" -o -iname "*.mp4" -o -iname "*.avi" -o -iname "*.mkv" \
         -o -iname "*.wav" -o -iname "*.ogg" -o -iname "*.flac" \
