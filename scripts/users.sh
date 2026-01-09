@@ -6,20 +6,18 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-echo "Starting script"
+echo "=== User Audit Script ==="
 
-# Prompt the user to confirm they have taken a screenshot of the points
+# Prompt for screenshot confirmation
 if [ -t 0 ]; then
     while true; do
         read -r -p "Have you taken a screenshot of the points? (y/n): " yn
         case "$yn" in
             [Yy]* ) break ;;
-            [Nn]* ) echo "Please take a screenshot of the points before running this script. Exiting."; exit 1 ;;
+            [Nn]* ) echo "Please take a screenshot first. Exiting."; exit 1 ;;
             * ) echo "Please answer y or n." ;;
         esac
     done
-else
-    echo "No interactive terminal detected; proceeding without screenshot confirmation."
 fi
 
 # Create temporary user list file
@@ -41,8 +39,7 @@ cat > "$USER_LIST_FILE" << 'EOF'
 EOF
 
 echo ""
-echo "STEP 1: USER CATEGORIZATION"
-echo "Opening nano editor for user categorization..."
+echo "=== STEP 1: User Categorization ==="
 nano "$USER_LIST_FILE"
 
 # Parse the user list
@@ -70,76 +67,113 @@ while IFS= read -r line; do
     fi
 done < "$USER_LIST_FILE"
 
-echo "Administrators: ${ADMINS[*]}"
-echo "Normal users: ${NORMAL_USERS[*]}"
+echo "Administrators: ${ADMINS[*]:-none}"
+echo "Normal users: ${NORMAL_USERS[*]:-none}"
+echo ""
 
-# Step 2: Verify user permissions
-echo "Verifying user permissions"
+# Step 2: Check for unauthorized human users
+echo "Scanning for unauthorized users"
+
+# Get all human users (UID >= 1000, excluding nobody)
+HUMAN_USERS=$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd)
+UNAUTHORIZED=()
+
+for user in $HUMAN_USERS; do
+    if [[ ! " ${ADMINS[@]} " =~ " ${user} " ]] && [[ ! " ${NORMAL_USERS[@]} " =~ " ${user} " ]]; then
+        UNAUTHORIZED+=("$user")
+    fi
+done
+
+if [ ${#UNAUTHORIZED[@]} -gt 0 ]; then
+    echo "Found unauthorized users: ${UNAUTHORIZED[*]}"
+    read -p "Remove these users? (y/n): " response
+    if [[ "$response" == "y" ]]; then
+        for user in "${UNAUTHORIZED[@]}"; do
+            userdel -r "$user" 2>/dev/null
+            if [ $? -eq 0 ]; then
+                echo "✓ Removed $user"
+            else
+                echo "✗ Failed to remove $user"
+            fi
+        done
+    fi
+else
+    echo "✓ No unauthorized users"
+fi
+echo ""
+
+# Step 3: Verify administrator permissions
+echo "Checking admin permissions"
 
 for user in "${ADMINS[@]}"; do
     if id "$user" &>/dev/null; then
         groups_list=$(groups "$user" 2>/dev/null)
         
         if [[ "$groups_list" =~ sudo ]] || [[ "$groups_list" =~ admin ]] || [[ "$groups_list" =~ wheel ]]; then
-            echo "✓ Admin $user is in administrative group"
+            echo "✓ $user has admin access"
         else
-            echo "✗ Admin $user is NOT in sudo/admin groups"
+            echo "✗ $user missing admin access"
             read -p "Add $user to sudo group? (y/n): " response
             if [[ "$response" == "y" ]]; then
                 usermod -aG sudo "$user"
-                echo "✓ Added $user to sudo group"
+                echo "✓ Added to sudo group"
             fi
         fi
     else
-        echo "✗ Administrator $user does not exist"
+        echo "✗ $user does not exist"
     fi
 done
+echo ""
+
+# Step 4: Verify normal user permissions
+echo "Checking user permissions"
 
 for user in "${NORMAL_USERS[@]}"; do
     if id "$user" &>/dev/null; then
         groups_list=$(groups "$user" 2>/dev/null)
         
         if [[ "$groups_list" =~ sudo ]] || [[ "$groups_list" =~ admin ]] || [[ "$groups_list" =~ wheel ]] || [[ "$groups_list" =~ adm ]]; then
-            echo "✗ Normal user $user is in administrative groups"
-            read -p "Remove $user from administrative groups? (y/n): " response
+            echo "✗ $user has admin privileges"
+            read -p "Remove from admin groups? (y/n): " response
             if [[ "$response" == "y" ]]; then
                 gpasswd -d "$user" sudo 2>/dev/null
                 gpasswd -d "$user" admin 2>/dev/null
                 gpasswd -d "$user" wheel 2>/dev/null
                 gpasswd -d "$user" adm 2>/dev/null
-                echo "✓ Removed $user from administrative groups"
+                echo "✓ Removed admin privileges"
             fi
         else
-            echo "✓ Normal user $user has no admin privileges"
+            echo "✓ $user is standard user"
         fi
     else
-        echo "✗ Normal user $user does not exist"
+        echo "✗ $user does not exist"
     fi
 done
+echo ""
 
-# Step 3: Check for UID 0 users
-echo "Checking for unauthorized UID 0 users"
+# Step 5: Check for UID 0 users
+echo "UID 0 Check"
 
 uid_zero_users=$(awk -F: '$3 == 0 {print $1}' /etc/passwd)
 
 for user in $uid_zero_users; do
     if [ "$user" == "root" ]; then
-        echo "✓ $user (UID 0) - Expected"
+        echo "✓ root (expected)"
     else
-        echo "✗ CRITICAL: $user has UID 0!"
-        read -p "Change $user's UID to a non-zero value? (y/n): " response
+        echo "✗ CRITICAL: $user has UID 0"
+        read -p "Change UID? (y/n): " response
         if [[ "$response" == "y" ]]; then
             new_uid=$(awk -F: '{print $3}' /etc/passwd | sort -n | tail -1)
             new_uid=$((new_uid + 1))
             usermod -u "$new_uid" "$user"
-            echo "✓ Changed $user's UID to $new_uid"
+            echo "✓ Changed to UID $new_uid"
         fi
     fi
 done
+echo ""
 
-# Step 4: Audit sudoers file
-
-echo "Auditing sudoers file"
+# Step 6: Audit sudoers file
+echo "Auditing sudoers"
 
 SUDOERS_CONTENT=$(mktemp)
 cat /etc/sudoers > "$SUDOERS_CONTENT" 2>/dev/null
@@ -151,62 +185,53 @@ if [ -d /etc/sudoers.d ]; then
 fi
 
 # Check for NOPASSWD
-nopasswd_lines=$(grep -n "NOPASSWD" "$SUDOERS_CONTENT" 2>/dev/null)
-if [ -n "$nopasswd_lines" ]; then
-    echo "✗ Found NOPASSWD entries:"
-    echo "$nopasswd_lines"
-    read -p "Open sudoers with visudo to review? (y/n): " response
+nopasswd_count=$(grep -c "NOPASSWD" "$SUDOERS_CONTENT" 2>/dev/null)
+if [ "$nopasswd_count" -gt 0 ]; then
+    echo "✗ Found $nopasswd_count NOPASSWD entries"
+    read -p "Review with visudo? (y/n): " response
     [[ "$response" == "y" ]] && visudo
 else
     echo "✓ No NOPASSWD entries"
 fi
 
 # Check for !authenticate
-auth_lines=$(grep -n "!authenticate" "$SUDOERS_CONTENT" 2>/dev/null)
-if [ -n "$auth_lines" ]; then
-    echo "✗ Found !authenticate entries:"
-    echo "$auth_lines"
-    read -p "Open sudoers with visudo to review? (y/n): " response
+auth_count=$(grep -c "!authenticate" "$SUDOERS_CONTENT" 2>/dev/null)
+if [ "$auth_count" -gt 0 ]; then
+    echo "✗ Found $auth_count !authenticate entries"
+    read -p "Review with visudo? (y/n): " response
     [[ "$response" == "y" ]] && visudo
 else
     echo "✓ No !authenticate entries"
 fi
 
-# Check for group entries
-group_lines=$(grep -n "^%" "$SUDOERS_CONTENT" 2>/dev/null)
-if [ -n "$group_lines" ]; then
-    echo "! Found group entries:"
-    echo "$group_lines"
-fi
-
-# Check for specific commands
-cmd_lines=$(grep -E "^\s*[^#%].*=.*/" "$SUDOERS_CONTENT" | grep -v "ALL" 2>/dev/null)
-if [ -n "$cmd_lines" ]; then
-    echo "! Found specific command grants:"
-    echo "$cmd_lines"
+# Check for specific commands (excluding Defaults lines)
+cmd_lines=$(grep -E "^\s*[^#%].*=.*/" "$SUDOERS_CONTENT" | grep -v "ALL" | grep -v "^Defaults" 2>/dev/null)
+cmd_count=$(echo "$cmd_lines" | grep -c . 2>/dev/null)
+if [ "$cmd_count" -gt 0 ]; then
+    echo "! Found $cmd_count specific command grants"
 fi
 
 rm -f "$SUDOERS_CONTENT"
+echo ""
 
-# Step 5: Audit administrative groups
-echo "Auditing administrative groups"
+# Step 7: Audit administrative groups
+echo "Administrative groups"
 
 # Check sudo group
 if getent group sudo >/dev/null; then
-    echo "Auditing 'sudo' group:"
     sudo_members=$(getent group sudo | cut -d: -f4)
     
     if [ -n "$sudo_members" ]; then
         IFS=',' read -ra members <<< "$sudo_members"
         for member in "${members[@]}"; do
             if [[ " ${ADMINS[@]} " =~ " ${member} " ]]; then
-                echo "✓ $member (Authorized)"
+                echo "✓ sudo: $member"
             else
-                echo "✗ $member is in sudo group but not authorized!"
-                read -p "Remove $member from sudo group? (y/n): " response
+                echo "✗ sudo: $member (unauthorized)"
+                read -p "Remove? (y/n): " response
                 if [[ "$response" == "y" ]]; then
                     gpasswd -d "$member" sudo
-                    echo "✓ Removed $member from sudo group"
+                    echo "✓ Removed"
                 fi
             fi
         done
@@ -215,20 +240,19 @@ fi
 
 # Check admin group
 if getent group admin >/dev/null; then
-    echo "Auditing 'admin' group:"
     admin_members=$(getent group admin | cut -d: -f4)
     
     if [ -n "$admin_members" ]; then
         IFS=',' read -ra members <<< "$admin_members"
         for member in "${members[@]}"; do
             if [[ " ${ADMINS[@]} " =~ " ${member} " ]]; then
-                echo "✓ $member (Authorized)"
+                echo "✓ admin: $member"
             else
-                echo "✗ $member is in admin group but not authorized!"
-                read -p "Remove $member from admin group? (y/n): " response
+                echo "✗ admin: $member (unauthorized)"
+                read -p "Remove? (y/n): " response
                 if [[ "$response" == "y" ]]; then
                     gpasswd -d "$member" admin
-                    echo "✓ Removed $member from admin group"
+                    echo "✓ Removed"
                 fi
             fi
         done
@@ -237,20 +261,19 @@ fi
 
 # Check adm group
 if getent group adm >/dev/null; then
-    echo "Auditing 'adm' group:"
     adm_members=$(getent group adm | cut -d: -f4)
     
     if [ -n "$adm_members" ]; then
         IFS=',' read -ra members <<< "$adm_members"
         for member in "${members[@]}"; do
             if [[ " ${ADMINS[@]} " =~ " ${member} " ]]; then
-                echo "✓ $member (Authorized)"
+                echo "✓ adm: $member"
             else
-                echo "✗ $member is in adm group but not authorized!"
-                read -p "Remove $member from adm group? (y/n): " response
+                echo "✗ adm: $member (unauthorized)"
+                read -p "Remove? (y/n): " response
                 if [[ "$response" == "y" ]]; then
                     gpasswd -d "$member" adm
-                    echo "✓ Removed $member from adm group"
+                    echo "✓ Removed"
                 fi
             fi
         done
@@ -260,4 +283,5 @@ fi
 # Cleanup
 rm -f "$USER_LIST_FILE"
 
-echo "Script completed"
+echo ""
+echo "=== Script Complete ==="
