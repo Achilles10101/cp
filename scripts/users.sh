@@ -25,14 +25,12 @@ USER_LIST_FILE="/tmp/user_categories_$$.txt"
 
 cat > "$USER_LIST_FILE" << 'EOF'
 # ADMINISTRATOR USERS
-# List administrator usernames below (one per line)
-
+# List administrator usernames below administrators (one per line)
 #administrators
 
 
 # NORMAL USERS
-# List normal user usernames below (one per line)
-
+# List normal user usernames below normalusers(one per line)
 #normalusers
 
 
