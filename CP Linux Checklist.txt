@@ -1,0 +1,180 @@
+﻿Competition-ready checklist:
+
+* DO README!!!!
+* Forensics, delete files after
+* Run users script
+* Harden ssh if needed
+   * Edit /etc/ssh/sshd_config
+      * PermitRootLogin no
+      * X11Forwarding no
+      * LoginGraceTime 30
+      * MaxAuthTries 3
+      * LogLevel VERBOSE
+      * IgnoreRhosts yes
+      * HostbasedAuthentication no
+      * PermitEmptyPasswords no
+      * AllowTcpForwarding no
+      * ClientAliveCountMax 2
+      * Compression no
+      * AllowAgentForwarding no
+   * sudo systemctl restart ssh
+* Check ~/.ssh/authorized_keys for unknown users
+* Disable guest user
+   * LightDM
+      * Edit /etc/lightdm/lightdm.conf
+         * Add following to [Seat:*] section:
+            * allow-guest=false
+            * greeter-hide-users=true
+            * greeter-allow-guest=false
+            * greeter-show-manual-login=true
+            * autologin-guest=false
+            * autologin-user=NONE
+* Run fileandinstall.sh
+* Add password expiry requirements
+   * Modify /etc/login.defs
+      * pass_max_days 90, pass_min_days 7, pass_warn_age 14
+   * Enforce onto existing users (script)
+      * sudo chage -M 90 -m 7 -W 14 username
+      * Force all users to change password
+* Add minimum password length and disable password remembering
+   * Modify /etc/pam.d/common-password 
+      * add minlen=10 remember=3 to line with pam_unix.so
+* Disable null password auth
+   * Edit /etc/pam.d/common-auth
+      * Remove the option nullok from the like with pam_unix.so try_first_pass
+* Implement an account lockout policy
+   * Make /usr/share/pam-configs/faillock
+      * Name: Lockout on failed logins
+      * Default: no
+      * Priority: 0 Auth-Type:
+      * Primary Auth:
+      *         [default=die]        pam_faillock.so authfail
+   * Make /usr/share/pam-configs/faillock_reset
+      * Name: Reset lockout on success
+      * Default: no
+      * Priority: 0
+      * Auth-Type: Additional Auth:
+      *         required        pam_faillock.so authsucc
+   * Run sudo pam-auth-update and select what we just added
+   * Make /usr/share/pam-configs/faillock_notify
+      * Name: Notify on account lockout
+      * Default: no
+      * Priority: 1024 Auth-
+      * Type: Primary Auth:
+      *         requisite        pam_faillock.so preauth
+   * Run sudo pam-auth-update and select what we just added
+* Enable automatic updates
+   * Ubuntu - Update Manager -> settings -> updates -> check for updates -> daily
+   * Mint - Update Manager -> Edit -> Preferences -> 
+      * Automation -> Select All
+      * Options -> Refresh the list of updates automatically
+      * Fix mirror -> restore default settings -> refresh
+* Check ports (high ones are suspicious, 5353 is cp)
+   * sudo ss -ln | grep -E “tcp|udp”
+   * sudo lsof -i :port
+   * whereis programname
+   * dpkg -S programlocation
+   * killall -9 unneededpid
+   * rm -rf /path/to/bad.deb
+* Firewall Config
+   * sudo ufw enable
+   * sudo ufw default deny incoming
+   * sudo ufw default allow outgoing
+   * sudo ufw allow $required-port/tcp
+   * sudo ufw status verbose
+   * sudo ufw logging on
+   * sudo ufw logging high
+* Install updates for bash, kernel, LibreOffice, and service specified in the readme
+   * Upgrades
+      * sudo apt update
+      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
+      * sudo apt upgrade $service
+      * sudo apt dist-upgrade -y
+      * sudo apt install unattended-upgrades
+      * sudo dpkg-reconfigure unattended-upgrades
+   * Automation
+      * Edit /etc/apt/apt.conf.d/20auto-upgrades
+         * APT::Periodic::Update-Package-Lists "1";
+         * APT::Periodic::Download-Upgradeable-Packages "1";
+         * APT::Periodic::AutocleanInterval "7";
+         * APT::Periodic::Unattended-Upgrade "1";
+      * Edit /etc/apt/apt.conf.d/50auto-upgrades
+         * Unattended-Upgrade::Allowed-Origins {
+         *         "${distro_id} stable";
+         *         "${distro_id} ${distro_codename}-security";
+         *         "${distro_id} ${distro_codename}-updates";
+         * };
+* Secure config for allowed services
+* Ensure services are legit 
+   * systemctl list-units --type=service --all
+* Disable root login 
+   * Set a secure root password
+   * sudo passwd -l root
+* ClamAV:
+   * Installed ClamAV from Web not APT
+   * Go to /usr/local/etc
+   * Rename all files to remove .sample from them (freshclam.conf.sample -> freshclam.conf)
+   * Go into all config files & remove example from them
+   * sudo freshclam
+   * sudo clamscan -r /
+* If u have MySQL, disable remote access
+* Disable CUPS printer sharing service
+* Enforce permissions
+   * chmod 640 /etc/shadow 
+   * chown root:shadow /etc/shadow
+   * chmod 644 /etc/passwd
+   * chmod 644 /etc/group
+* Check cron
+   * sudo crontab -l
+   * sudo ls /etc/cron.*
+   * cat /etc/crontab
+   * check /etc/init/ and /etc/init.d/
+   * remove /etc/rc.local
+      * echo "exit 0" | sudo tee -a /etc/rc.local
+   * Deny user crontab use
+      * echo "ALL" | sudo tee -a /etc/cron.deny
+* Secure grub
+   * Add to /etc/default/grub:
+      * GRUB_TIMEOUT_STYLE=hidden
+      * GRUB_TIMEOUT=5
+* Set nodev,nosuid,noexec for /tmp /var/tmp
+* Install fail2ban
+   * sudo apt install fail2ban
+   * sudo systemctl enable fail2ban
+* Secure session timeout
+   * Set /etc/profile.d/timeout.sh
+      * TMOUT=600
+      * readonly TMOUT
+      * export TMOUT
+   * sudo chmod +x /etc/profile.d/timeout.sh
+   * sudo /etc/profile.d/timeout.sh
+* Change account expiry defaults
+   * Add to /etc/default/useradd
+      * EXPIRE=30
+      * INACTIVE=30
+* Verify package integrity
+   * Apt
+      * Check /etc/apt/sources.list for suspicious repositories and make sure that is secure
+      * Check apt repository policy
+         * apt-cache policy
+      * Check apt trusted keys
+         * apt-key list
+* If apache is needed
+   * Configure /etc/apache2/apache2.conf
+      * ServerSignature Off
+      * ServerTokens Prod
+* If FTP is needed
+   * FTP users may log in with SSL
+   * Check insecure permissions on FTP root directory
+* Check for rootkits
+   * sudo apt install chkrootkit rkhunter
+   * sudo chkrootkit
+   * sudo rkhunter --update
+   * sudo rkhunter --propupd
+   * sudo rkhunter -c --enable all --disable none
+* Install Lynis and go through everything
+   * sudo apt install lynis
+   * lynis audit system
+   * grep -E 'warning|suggestion' | sed -e 's/warning\[\]\=//g' | sed -e 's/suggestion\[\]\=//g'
+* Run self nmap scan
+* Monitor processes (top)
