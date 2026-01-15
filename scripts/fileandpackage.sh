@@ -65,8 +65,24 @@ if [ ${#FOUND_PACKAGES[@]} -eq 0 ] && [ ${#FOUND_SERVICES[@]} -eq 0 ]; then
 fi
 echo ""
 
-# 2. Unauthorized File Scan
-echo "[2] Scanning for unauthorized files..."
+# 2. Mounted Network Share Scan
+echo "[2] Scanning for mounted network shares..."
+
+MOUNTED_SHARES=$(mount | grep -E "type (nfs|cifs|smbfs)" 2>/dev/null)
+SHARE_COUNT=$(echo "$MOUNTED_SHARES" | grep -c '^' 2>/dev/null)
+
+if [ -z "$MOUNTED_SHARES" ] || [ "$SHARE_COUNT" -eq 0 ]; then
+    echo "  No mounted network shares found"
+else
+    echo "  Found ${SHARE_COUNT} mounted network share(s):"
+    echo "$MOUNTED_SHARES" | while read -r share; do
+        echo "    $share"
+    done
+fi
+echo ""
+
+# 3. Unauthorized File Scan
+echo "[3] Scanning for unauthorized files..."
 
 UNAUTH_FILES=$(find / \
     -path /usr/share -prune -o \
@@ -89,8 +105,8 @@ else
 fi
 echo ""
 
-# 3. SUID/SGID/Sticky Bit Scan
-echo "[3] Scanning for SUID/SGID/Sticky bit files..."
+# 4. SUID/SGID/Sticky Bit Scan
+echo "[4] Scanning for SUID/SGID/Sticky bit files..."
 
 # Find SUID files (chmod 4000)
 SUID_FILES=$(find / -type f -perm -4000 2>/dev/null)
