@@ -3,21 +3,6 @@
 * DO README!!!!
 * Forensics, delete files after
 * Run users script
-* Harden ssh if needed
-   * Edit /etc/ssh/sshd_config
-      * PermitRootLogin no
-      * X11Forwarding no
-      * LoginGraceTime 30
-      * MaxAuthTries 3
-      * LogLevel VERBOSE
-      * IgnoreRhosts yes
-      * HostbasedAuthentication no
-      * PermitEmptyPasswords no
-      * AllowTcpForwarding no
-      * ClientAliveCountMax 2
-      * Compression no
-      * AllowAgentForwarding no
-   * sudo systemctl restart ssh
 * Check ~/.ssh/authorized_keys for unknown users
 * Disable guest user
    * LightDM
@@ -159,10 +144,6 @@
          * apt-cache policy
       * Check apt trusted keys
          * apt-key list
-* If apache is needed
-   * Configure /etc/apache2/apache2.conf
-      * ServerSignature Off
-      * ServerTokens Prod
 * If FTP is needed
    * FTP users may log in with SSL
    * Check insecure permissions on FTP root directory
@@ -172,9 +153,4 @@
    * sudo rkhunter --update
    * sudo rkhunter --propupd
    * sudo rkhunter -c --enable all --disable none
-* Install Lynis and go through everything
-   * sudo apt install lynis
-   * lynis audit system
-   * grep -E 'warning|suggestion' | sed -e 's/warning\[\]\=//g' | sed -e 's/suggestion\[\]\=//g'
-* Run self nmap scan
 * Monitor processes (top)
