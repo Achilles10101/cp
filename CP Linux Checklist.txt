@@ -58,10 +58,6 @@ CP Linux Checklist
    * sudo ls /etc/cron.*
    * cat /etc/crontab
    * check /etc/init/ and /etc/init.d/
-   * remove /etc/rc.local
-      * echo "exit 0" | sudo tee -a /etc/rc.local
-   * Deny user crontab use
-      * echo "ALL" | sudo tee -a /etc/cron.deny
 * Secure grub
    * Add to /etc/default/grub:
       * GRUB_TIMEOUT_STYLE=hidden
@@ -120,3 +116,4 @@ unlock_time = 600
       3. pam_faillock.so authsucc is after authfail
 if you still have sudo:
 * Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+
