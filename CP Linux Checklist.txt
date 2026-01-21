@@ -1,5 +1,4 @@
-CP Linux Checklist:
-
+CP Linux Checklist
 * DO README!!!!
 * Forensics, delete files after
 * Do README user/group modification
@@ -88,25 +87,36 @@ CP Linux Checklist:
 * Monitor processes (top)
 * Run all scripts
 * Implement an account lockout policy
-   * Make /usr/share/pam-configs/faillock
-      * Name: Lockout on failed logins
-      * Default: no
-      * Priority: 0 Auth-Type:
-      * Primary Auth:
-      *         [default=die]        pam_faillock.so authfail
+   * Make /usr/share/pam-configs/faillock:
+Name: Lockout on failed logins
+Default: no
+Priority: 0
+Auth-Type: Primary
+Auth:
+    [default=die] pam_faillock.so authfail
    * Make /usr/share/pam-configs/faillock_reset
-      * Name: Reset lockout on success
-      * Default: no
-      * Priority: 0
-      * Auth-Type: Additional Auth:
-      *         required        pam_faillock.so authsucc
+Name: Reset lockout on success
+Default: no
+Priority: 0
+Auth-Type: Additional
+Auth:
+    required pam_faillock.so authsucc
    * Run sudo pam-auth-update and select what we just added
    * Make /usr/share/pam-configs/faillock_notify
-      * Name: Notify on account lockout
-      * Default: no
-      * Priority: 1024 Auth-
-      * Type: Primary Auth:
-      *         requisite        pam_faillock.so preauth
+Name: Notify on account lockout
+Default: no
+Priority: 1024
+Auth-Type: Primary
+Auth:
+    requisite pam_faillock.so preauth
    * Run sudo pam-auth-update and select what we just added
+   set following in /etc/security/faillock.conf:
+deny = 5
+fail_interval = 900
+unlock_time = 600
+   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
+      1. pam_faillock.so preauth is before pam_unix.so
+      2. pam_faillock.so authfail is after pam_unix.so
+      3. pam_faillock.so authsucc is after authfail
 if you still have sudo:
 * Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
