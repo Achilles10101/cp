@@ -54,7 +54,33 @@ else
 fi
 
 echo "  ✓ UMASK configured"
+echo "Locking down cron"
 
+echo "exit 0" | sudo tee -a /etc/rc.local
+echo "ALL" | sudo tee -a /etc/cron.deny
+
+chown root:root /etc/crontab
+chmod 600 /etc/crontab
+
+if [ -d /etc/cron.d ]; then
+    chown root:root /etc/cron.d
+    chmod 700 /etc/cron.d
+    find /etc/cron.d -type f -exec chown root:root {} \; -exec chmod 600 {} \;
+fi
+
+for dir in /etc/cron.hourly /etc/cron.daily /etc/cron.weekly /etc/cron.monthly; do
+    if [ -d "$dir" ]; then
+        chown root:root "$dir"
+        chmod 700 "$dir"
+        find "$dir" -type f -exec chown root:root {} \; -exec chmod 600 {} \;
+    fi
+done
+
+touch /etc/cron.allow
+chown root:root /etc/cron.allow
+chmod 600 /etc/cron.allow
+
+[ -f /etc/cron.deny ] && chown root:root /etc/cron.deny && chmod 600 /etc/cron.deny
 # 2. Configure sysctl
 echo "[2/4] Configuring kernel parameters..."
 
