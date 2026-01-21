@@ -98,16 +98,23 @@ cat >> /etc/sysctl.conf << 'EOF'
 
 fs.file-max = 65535
 fs.suid_dumpable = 0
+dev.tty.ldisc_autoload = 0
+fs.protected_fifos = 0
 
 kernel.core_uses_pid = 1
 kernel.dmesg_restrict = 1
 kernel.sysrq = 0
 kernel.randomize_va_space = 2
 kernel.pid_max = 65536
+kernel.kptr_restrict = 2
+kernel.perf_event_paranoid = 3
+kernel.unprivileged_bpf_disabled = 1
+
 
 net.core.rmem_max = 8388608
 net.core.wmem_max = 8388608
 net.core.netdev_max_backlog = 5000
+net.core.bpf_jit_harden = 2
 
 net.ipv4.tcp_rmem = 10240 87380 12582912
 net.ipv4.tcp_wmem = 10240 87380 12582912
@@ -118,6 +125,7 @@ net.ipv4.conf.all.accept_source_route = 0
 net.ipv4.conf.all.log_martians = 1
 net.ipv4.conf.all.secure_redirects = 0
 net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.all.rp_filter = 1
 
 net.ipv4.conf.default.accept_redirects = 0
 net.ipv4.conf.default.accept_source_route = 0
@@ -152,6 +160,8 @@ if [[ "$ipv6_choice" =~ ^[Nn]$ ]]; then
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
+net.ipv6.conf.all.accept_redirects = 0
+net.ipv6.conf.default.accept_redirects = 0
 
 EOF
     echo "  ✓ IPv6 disabled"
