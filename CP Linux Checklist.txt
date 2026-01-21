@@ -41,6 +41,7 @@ CP Linux Checklist
       * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
       * sudo apt upgrade $service
       * sudo apt dist-upgrade -y
+      * sudo apt install libpam-tmpdir (test out)
 * Ensure services are legit 
    * systemctl list-units --type=service --all
 * Disable root login
@@ -116,4 +117,5 @@ unlock_time = 600
       3. pam_faillock.so authsucc is after authfail
 if you still have sudo:
 * Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+
 
