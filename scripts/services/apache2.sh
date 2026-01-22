@@ -65,15 +65,6 @@ fi
 cp "$APACHE_CONF" "${APACHE_CONF}.backup"
 echo "  Backed up to: ${APACHE_CONF}.backup"
 
-# Remove existing security headers and settings (to avoid duplicates)
-sed -i '/Header set X-Content-Type-Options/d' "$APACHE_CONF"
-sed -i '/Header set X-Frame-Options/d' "$APACHE_CONF"
-sed -i '/Header set X-XSS-Protection/d' "$APACHE_CONF"
-sed -i '/Header set Referrer-Policy/d' "$APACHE_CONF"
-sed -i '/Header always set Permissions-Policy/d' "$APACHE_CONF"
-sed -i '/Header set Content-Security-Policy/d' "$APACHE_CONF"
-sed -i '/^LogLevel info/d' "$APACHE_CONF"
-
 # Add security headers and log level
 cat >> "$APACHE_CONF" << 'EOF'
 
