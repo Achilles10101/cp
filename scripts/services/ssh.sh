@@ -10,11 +10,6 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-echo "========================================="
-echo "SSH Security Hardening Script"
-echo "========================================="
-echo ""
-
 # Prompt for screenshot confirmation
 if [ -t 0 ]; then
     while true; do
@@ -26,6 +21,11 @@ if [ -t 0 ]; then
         esac
     done
 fi
+
+echo "========================================="
+echo "SSH Security Hardening Script"
+echo "========================================="
+echo ""
 
 echo ""
 echo "Step 1: Backing up SSH configuration"
