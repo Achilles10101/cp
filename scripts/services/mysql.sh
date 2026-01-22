@@ -47,10 +47,22 @@ configure_database_security() {
     echo "Configuring database security..."
     
     echo "  - Removing anonymous users"
-    mysql -e "DELETE FROM mysql.user WHERE User='';"
+    mysql -e "SELECT User, Host FROM mysql.user WHERE User='';" 2>/dev/null | grep -v User | while read user host; do
+        mysql -e "DROP USER IF EXISTS ''@'$host';" 2>/dev/null || true
+    done
+    # Fallback for older versions or if no anonymous users found
+    mysql -e "DROP USER IF EXISTS ''@'localhost';" 2>/dev/null || true
+    mysql -e "DROP USER IF EXISTS ''@'$(hostname)';" 2>/dev/null || true
     
     echo "  - Restricting root to localhost only"
-    mysql -e "UPDATE mysql.user SET Host='localhost' WHERE User='root' AND Host='%';"
+    # Remove root users with non-localhost hosts
+    mysql -e "DROP USER IF EXISTS 'root'@'%';" 2>/dev/null || true
+    mysql -e "DROP USER IF EXISTS 'root'@'$(hostname)';" 2>/dev/null || true
+    mysql -e "DROP USER IF EXISTS 'root'@'127.0.0.1';" 2>/dev/null || true
+    mysql -e "DROP USER IF EXISTS 'root'@'::1';" 2>/dev/null || true
+    # Ensure localhost root exists
+    mysql -e "CREATE USER IF NOT EXISTS 'root'@'localhost' IDENTIFIED BY '';" 2>/dev/null || true
+    mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;" 2>/dev/null || true
     
     echo "  - Creating admin user"
     mysql -e "CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'Cyb3rPatr3ot@2026!';"
@@ -58,9 +70,9 @@ configure_database_security() {
     
     echo "  - Removing test database"
     mysql -e "DROP DATABASE IF EXISTS test;"
-    mysql -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
+    mysql -e "DROP DATABASE IF EXISTS \`test\\_%\`;" 2>/dev/null || true
     
-    echo "  - Flushing privileges"
+    echo "  - Applying changes"
     mysql -e "FLUSH PRIVILEGES;"
 }
 
