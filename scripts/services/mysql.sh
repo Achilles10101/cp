@@ -13,6 +13,18 @@ check_root() {
     fi
 }
 
+# Prompt for screenshot confirmation
+if [ -t 0 ]; then
+    while true; do
+        read -r -p "Have you taken a screenshot of the points? (y/n): " yn
+        case "$yn" in
+            [Yy]* ) break ;;
+            [Nn]* ) echo "Please take a screenshot first. Exiting."; exit 1 ;;
+            * ) echo "Please answer y or n." ;;
+        esac
+    done
+fi
+
 detect_database_type() {
     echo "Detecting database server type..."
     
