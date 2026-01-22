@@ -88,17 +88,6 @@ frame-ancestors 'none'; \
 base-uri 'self'; \
 form-action 'self'"
 
-Header set Content-Security-Policy "
-  default-src 'self';
-  style-src 'self' 'unsafe-inline';
-  script-src 'self';
-  img-src 'self' data:;
-  font-src 'self' data:;
-  object-src 'none';
-  frame-ancestors 'none';
-  base-uri 'self';
-"
-
 # Logging level
 LogLevel info
 EOF
