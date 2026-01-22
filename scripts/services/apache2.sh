@@ -77,13 +77,16 @@ sed -i '/^LogLevel info/d' "$APACHE_CONF"
 # Add security headers and log level
 cat >> "$APACHE_CONF" << 'EOF'
 
-# Security headers
-Header set X-Content-Type-Options "nosniff"
-Header set X-Frame-Options "DENY"
-Header set X-XSS-Protection "1; mode=block"
-Header set Referrer-Policy "no-referrer"
-Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-Header set Content-Security-Policy "default-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'"
+Header set Content-Security-Policy "
+  default-src 'self';
+  style-src 'self' 'unsafe-inline';
+  script-src 'self';
+  img-src 'self' data:;
+  font-src 'self' data:;
+  object-src 'none';
+  frame-ancestors 'none';
+  base-uri 'self';
+"
 
 # Logging level
 LogLevel info
@@ -108,7 +111,7 @@ cat >> "$APACHE_CONF" << 'EOF'
     Require all denied
 </Directory>
 
-<Directory /var/www/html>
+<Directory /var/www/>
     Options -Indexes -ExecCGI -Includes -FollowSymLinks
     AllowOverride None
     Require all granted
