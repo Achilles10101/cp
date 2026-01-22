@@ -33,7 +33,7 @@ SUSPICIOUS_ITEMS=(
     "nc" "netcat" "tightvncserver" "x11vnc" "nfs" 
     "samba" "postgresql" "vsftpd" "apache" "apache2" 
     "mysql" "php" "snmp" "dovecot" "bind9" "nginx" 
-    "wireshark" "telnet"
+    "wireshark" "telnet" "avahi-daemon"
 )
 
 FOUND_PACKAGES=()
