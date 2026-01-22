@@ -67,17 +67,8 @@ echo "  Backed up to: ${APACHE_CONF}.backup"
 
 # Add security headers and log level
 cat >> "$APACHE_CONF" << 'EOF'
-
-Header always set Content-Security-Policy "default-src 'self'; \
-script-src 'self'; \
-style-src 'self' 'unsafe-inline'; \
-img-src 'self' data:; \
-font-src 'self' data:; \
-connect-src 'self'; \
-object-src 'none'; \
-frame-ancestors 'none'; \
-base-uri 'self'; \
-form-action 'self'"
+#Security headers
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
 
 # Logging level
 LogLevel info
