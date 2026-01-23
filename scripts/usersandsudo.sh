@@ -173,44 +173,6 @@ echo ""
 # Step 6: Audit sudoers file
 echo "Auditing sudoers"
 
-# Check main sudoers file for NOPASSWD
-nopasswd_main=$(grep -c "NOPASSWD" /etc/sudoers 2>/dev/null)
-if [ "$nopasswd_main" -gt 0 ]; then
-    echo "✗ Found $nopasswd_main NOPASSWD entries in /etc/sudoers"
-    read -p "Review with visudo? (y/n): " response
-    [[ "$response" == "y" ]] && visudo
-fi
-
-# Check main sudoers file for !authenticate
-auth_main=$(grep -c "!authenticate" /etc/sudoers 2>/dev/null)
-if [ "$auth_main" -gt 0 ]; then
-    echo "✗ Found $auth_main !authenticate entries in /etc/sudoers"
-    read -p "Review with visudo? (y/n): " response
-    [[ "$response" == "y" ]] && visudo
-fi
-
-# Check sudoers.d files
-if [ -d /etc/sudoers.d ]; then
-    for file in /etc/sudoers.d/*; do
-        [ -f "$file" ] || continue
-        
-        nopasswd_count=$(grep -c "NOPASSWD" "$file" 2>/dev/null)
-        if [ "$nopasswd_count" -gt 0 ]; then
-            echo "✗ Found $nopasswd_count NOPASSWD entries in $file"
-            read -p "Edit $file with vim? (y/n): " response
-            [[ "$response" == "y" ]] && vim "$file"
-        fi
-        
-        auth_count=$(grep -c "!authenticate" "$file" 2>/dev/null)
-        if [ "$auth_count" -gt 0 ]; then
-            echo "✗ Found $auth_count !authenticate entries in $file"
-            read -p "Edit $file with vim? (y/n): " response
-            [[ "$response" == "y" ]] && vim "$file"
-        fi
-    done
-fi
-
-# Check for specific commands (excluding Defaults lines)
 SUDOERS_CONTENT=$(mktemp)
 cat /etc/sudoers > "$SUDOERS_CONTENT" 2>/dev/null
 
@@ -220,23 +182,37 @@ if [ -d /etc/sudoers.d ]; then
     done
 fi
 
+# Check for NOPASSWD
+nopasswd_count=$(grep -c "NOPASSWD" "$SUDOERS_CONTENT" 2>/dev/null)
+if [ "$nopasswd_count" -gt 0 ]; then
+    echo "✗ Found $nopasswd_count NOPASSWD entries"
+    read -p "Review with visudo? (y/n): " response
+    [[ "$response" == "y" ]] && visudo
+else
+    echo "✓ No NOPASSWD entries"
+fi
+
+# Check for !authenticate
+auth_count=$(grep -c "!authenticate" "$SUDOERS_CONTENT" 2>/dev/null)
+if [ "$auth_count" -gt 0 ]; then
+    echo "✗ Found $auth_count !authenticate entries"
+    read -p "Review with visudo? (y/n): " response
+    [[ "$response" == "y" ]] && visudo
+else
+    echo "✓ No !authenticate entries"
+fi
+
+# Check for specific commands (excluding Defaults lines)
 cmd_lines=$(grep -E "^\s*[^#%].*=.*/" "$SUDOERS_CONTENT" | grep -v "ALL" | grep -v "^Defaults" 2>/dev/null)
 cmd_count=$(echo "$cmd_lines" | grep -c . 2>/dev/null)
 if [ "$cmd_count" -gt 0 ]; then
     echo "! Found $cmd_count specific command grants"
 fi
-
+# Output sudoers file for further examination
+echo "Full sudoers output, review:"
+echo ""
+echo "$SUDOERS_CONTENT"
 rm -f "$SUDOERS_CONTENT"
-
-# Summary for NOPASSWD/!authenticate
-if [ "$nopasswd_main" -eq 0 ] && [ -z "$(find /etc/sudoers.d -type f -exec grep -l "NOPASSWD" {} \; 2>/dev/null)" ]; then
-    echo "✓ No NOPASSWD entries"
-fi
-
-if [ "$auth_main" -eq 0 ] && [ -z "$(find /etc/sudoers.d -type f -exec grep -l "!authenticate" {} \; 2>/dev/null)" ]; then
-    echo "✓ No !authenticate entries"
-fi
-
 echo ""
 
 # Step 7: Audit administrative groups
@@ -307,6 +283,43 @@ fi
 
 # Cleanup
 rm -f "$USER_LIST_FILE"
+
+# Password aging policy
+echo "Applying password aging policy and forcing all users to change password on next logon..."
+
+current_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+
+# Get all regular users except the current user
+users=()
+while IFS=: read -r username _ uid _ _ _ shell; do
+    if (( uid >= 1000 && uid < 60000 )) && [[ $username != "$current_user" ]] && [[ $shell != *nologin* && $shell != *false ]]; then
+        users+=("$username")
+    fi
+done < /etc/passwd
+
+aging_success=true
+
+if (( ${#users[@]} )) && command -v chage &>/dev/null; then
+    for u in "${users[@]}"; do
+        chage -M 90 -m 7 -W 14 "$u" &>/dev/null || aging_success=false
+        sudo passwd -e "$u" &>/dev/null || aging_success=false
+    done
+else
+    aging_success=false
+fi
+
+$aging_success && ok "Password aging policy applied and all users forced to change password on next logon" || err "Password aging update or password change force failed."
+
+# Set home directory permissions
+getent passwd | awk -F: '$3 >= 1000 && $3 != 65534 {print $1 ":" $6}' | while IFS=: read -r user home; do
+    if [[ -d "$home" ]]; then
+        chmod 0750 "$home"
+        chown "$user" "$home"/
+        echo "Set secure home on $home (user: $user)"
+    else
+        echo "Skipping $user — home directory missing: $home"
+    fi
+done
 
 echo ""
 echo "=== Script Complete ==="
