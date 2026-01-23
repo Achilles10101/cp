@@ -24,7 +24,99 @@ fi
 echo "Starting system hardening..."
 echo ""
 
-# 1. Configure UMASK
+# Enable UFW
+
+sudo ufw enable
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw status verbose
+sudo ufw logging on
+sudo ufw logging high
+
+# Prompt for UFW ports
+
+while true; do
+    echo "Current allowed firewall rules:"
+    sudo ufw status | grep ALLOW || echo "No ALLOW rules found."
+
+    read -r -p "Open or Close a port? [o/c/n]: " action
+    case "$action" in
+        o)
+            read -r -p "Port to allow (number only): " port
+            sudo ufw allow "${port}/tcp"
+            ;;
+        c)
+            echo "Numbered rules:"
+            sudo ufw status numbered
+            read -r -p "Rule number to delete: " num
+            sudo ufw delete "$num"
+            ;;
+        n)
+            break
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+done
+sudo ufw reload
+
+#Applying APT configuration
+echo "Applying APT configuration"
+
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades
+
+cat >/etc/apt/apt.conf.d/20auto-upgrades <<'EOF'
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
+EOF
+cat >/etc/apt/apt.conf.d/50auto-upgrades <<'EOF'
+Unattended-Upgrade::Allowed-Origins {
+    "${distro_id} stable";
+    "${distro_id} ${distro_codename}-security";
+    "${distro_id} ${distro_codename}-updates";
+};
+EOF
+
+
+# Disable guest user
+if systemctl list-unit-files | grep -q "lightdm.service"; then
+    echo "LightDM detected. Configuring..."
+    
+    LIGHTDM_CONF="/etc/lightdm/lightdm.conf"
+    
+    if [ ! -f "$LIGHTDM_CONF" ]; then
+        echo "LightDM config file not found at $LIGHTDM_CONF"
+        exit 1
+    fi
+    
+    cp "$LIGHTDM_CONF" "${LIGHTDM_CONF}.backup"
+    
+    sed -i '/^allow-guest=/d' "$LIGHTDM_CONF"
+    sed -i '/^greeter-hide-users=/d' "$LIGHTDM_CONF"
+    sed -i '/^greeter-allow-guest=/d' "$LIGHTDM_CONF"
+    sed -i '/^greeter-show-manual-login=/d' "$LIGHTDM_CONF"
+    sed -i '/^autologin-guest=/d' "$LIGHTDM_CONF"
+    sed -i '/^autologin-user=/d' "$LIGHTDM_CONF"
+    
+    sed -i '/^\[Seat:\*\]/a \
+allow-guest=false\
+greeter-hide-users=true\
+greeter-allow-guest=false\
+greeter-show-manual-login=true\
+autologin-guest=false\
+autologin-user=NONE' "$LIGHTDM_CONF"
+    
+    echo "LightDM configuration updated successfully"
+else
+    echo "LightDM not detected"
+fi
+
+
+# Configure UMASK
 echo "[1/4] Configuring UMASK..."
 
 # Backup and modify login.defs
@@ -54,34 +146,8 @@ else
 fi
 
 echo "  ✓ UMASK configured"
-echo "Locking down cron"
 
-echo "exit 0" | sudo tee -a /etc/rc.local
-echo "ALL" | sudo tee -a /etc/cron.deny
-
-chown root:root /etc/crontab
-chmod 600 /etc/crontab
-
-if [ -d /etc/cron.d ]; then
-    chown root:root /etc/cron.d
-    chmod 700 /etc/cron.d
-    find /etc/cron.d -type f -exec chown root:root {} \; -exec chmod 600 {} \;
-fi
-
-for dir in /etc/cron.hourly /etc/cron.daily /etc/cron.weekly /etc/cron.monthly; do
-    if [ -d "$dir" ]; then
-        chown root:root "$dir"
-        chmod 700 "$dir"
-        find "$dir" -type f -exec chown root:root {} \; -exec chmod 600 {} \;
-    fi
-done
-
-touch /etc/cron.allow
-chown root:root /etc/cron.allow
-chmod 600 /etc/cron.allow
-
-[ -f /etc/cron.deny ] && chown root:root /etc/cron.deny && chmod 600 /etc/cron.deny
-# 2. Configure sysctl
+# Configure sysctl
 echo "[2/4] Configuring kernel parameters..."
 
 # Backup sysctl.conf
@@ -98,23 +164,16 @@ cat >> /etc/sysctl.conf << 'EOF'
 
 fs.file-max = 65535
 fs.suid_dumpable = 0
-dev.tty.ldisc_autoload = 0
-fs.protected_fifos = 0
 
 kernel.core_uses_pid = 1
 kernel.dmesg_restrict = 1
 kernel.sysrq = 0
 kernel.randomize_va_space = 2
 kernel.pid_max = 65536
-kernel.kptr_restrict = 2
-kernel.perf_event_paranoid = 3
-kernel.unprivileged_bpf_disabled = 1
-
 
 net.core.rmem_max = 8388608
 net.core.wmem_max = 8388608
 net.core.netdev_max_backlog = 5000
-net.core.bpf_jit_harden = 2
 
 net.ipv4.tcp_rmem = 10240 87380 12582912
 net.ipv4.tcp_wmem = 10240 87380 12582912
@@ -125,7 +184,6 @@ net.ipv4.conf.all.accept_source_route = 0
 net.ipv4.conf.all.log_martians = 1
 net.ipv4.conf.all.secure_redirects = 0
 net.ipv4.conf.all.send_redirects = 0
-net.ipv4.conf.all.rp_filter = 1
 
 net.ipv4.conf.default.accept_redirects = 0
 net.ipv4.conf.default.accept_source_route = 0
@@ -149,7 +207,7 @@ EOF
 
 echo "  ✓ Base parameters configured"
 
-# 3. IPv6 Configuration
+# IPv6 Configuration
 echo "[3/4] IPv6 Configuration"
 read -p "  Enable IPv6? (y/n): " ipv6_choice
 
@@ -160,8 +218,6 @@ if [[ "$ipv6_choice" =~ ^[Nn]$ ]]; then
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
-net.ipv6.conf.all.accept_redirects = 0
-net.ipv6.conf.default.accept_redirects = 0
 
 EOF
     echo "  ✓ IPv6 disabled"
@@ -183,7 +239,7 @@ else
     echo "  ⚠ Invalid choice, skipping IPv6 configuration"
 fi
 
-# 4. Apply sysctl changes
+# Apply sysctl changes
 echo "[4/4] Applying changes..."
 if sysctl -p > /dev/null 2>&1; then
     echo "  ✓ All parameters applied"
