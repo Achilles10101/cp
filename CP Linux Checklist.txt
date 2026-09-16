@@ -1,6 +1,6 @@
 CP Linux Checklist
 * DO README!!!!
-* Forensics, delete files after
+* Forensics, DELETE FILES AFTER
 * Do README user/group modification
 * Check ~/.ssh/authorized_keys for unknown users
 * Check /etc/sudoers, /etc/sudoers.d and sudo group
