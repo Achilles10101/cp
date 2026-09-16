@@ -100,6 +100,43 @@ else
 fi
 echo ""
 
+# Step 2b: Check for suspicious system users (UID < 1000)
+echo "Checking for suspicious system users with unexpected home directories"
+
+SUSPICIOUS_SYSTEM_USERS=()
+
+while IFS=: read -r username _ uid gid _ home shell; do
+    # Skip standard system accounts (UID < 1000)
+    if (( uid < 1000 )); then
+        # Check if home directory exists and is not a standard system path
+        if [[ -d "$home" ]]; then
+            # Flag if home is in /home, /root, /tmp, or other user-like paths
+            if [[ "$home" =~ ^/home/ ]] || [[ "$home" =~ ^/root$ ]] || [[ "$home" =~ ^/tmp/ ]] || [[ "$home" =~ ^/var/tmp/ ]]; then
+                SUSPICIOUS_SYSTEM_USERS+=("$username:$uid:$home")
+            fi
+        fi
+        
+        # Flag if shell is not a nologin or false shell (indicates login capability)
+        if [[ "$shell" != *"nologin"* ]] && [[ "$shell" != *"false"* ]] && [[ "$shell" != "/bin/sync" ]]; then
+            # Only flag if we haven't already flagged this user
+            if [[ ! " ${SUSPICIOUS_SYSTEM_USERS[*]} " =~ " $username: " ]]; then
+                SUSPICIOUS_SYSTEM_USERS+=("$username:$uid:interactive_shell:$shell")
+            fi
+        fi
+    fi
+done < /etc/passwd
+
+if [ ${#SUSPICIOUS_SYSTEM_USERS[@]} -gt 0 ]; then
+    echo "✗ Found suspicious system users:"
+    for entry in "${SUSPICIOUS_SYSTEM_USERS[@]}"; do
+        echo "  - $entry"
+    done
+    read -p "Review these users manually (press Enter to continue): " 
+else
+    echo "✓ No suspicious system users detected"
+fi
+echo ""
+
 # Step 3: Verify administrator permissions
 echo "Checking admin permissions"
 
