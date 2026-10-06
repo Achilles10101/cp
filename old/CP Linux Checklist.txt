@@ -1,0 +1,122 @@
+CP Linux Checklist
+* DO README!!!!
+* Forensics, DELETE FILES AFTER
+* Do README user/group modification
+* Check ~/.ssh/authorized_keys for unknown users
+* Check /etc/sudoers, /etc/sudoers.d and sudo group
+   * Remove any instances of nopasswd and !authenticate, these allow sudo use without authentication 
+   * Any commands listed can be run without a password (ex: /bin/chmod)
+   * Group lines are preceded by %
+* Add password expiry requirements
+   * Modify /etc/login.defs
+      * pass_max_days 90, pass_min_days 7, pass_warn_age 14
+* Add minimum password length and disable password remembering
+   * Modify /etc/pam.d/common-password 
+      * add minlen=10 remember=3 to line with pam_unix.so
+* Check for rootkits
+   * sudo apt install chkrootkit rkhunter
+   * sudo chkrootkit
+   * sudo rkhunter --update
+   * sudo rkhunter --propupd
+   * sudo rkhunter -c --enable all --disable none
+* ClamAV:
+   * Install ClamAV from Web not APT
+   * Go to /usr/local/etc
+   * Rename all files to remove .sample from them (freshclam.conf.sample -> freshclam.conf)
+   * Go into all config files & remove example from them
+   * sudo freshclam
+   * sudo clamscan -r /
+* Disable null password auth
+   * Edit /etc/pam.d/common-auth
+      * Remove the option nullok from the like with pam_unix.so try_first_pass
+* Enable automatic updates
+   * Ubuntu - Update Manager -> settings -> updates -> check for updates -> daily
+   * Mint - Update Manager -> Edit -> Preferences -> 
+      * Automation -> Select All
+      * Options -> Refresh the list of updates automatically
+      * Fix mirror -> restore default settings -> refresh
+* Install updates for bash, kernel, LibreOffice, and service specified in the readme
+   * Upgrades
+      * sudo apt update
+      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
+      * sudo apt upgrade $service
+      * sudo apt dist-upgrade -y
+      * sudo apt install libpam-tmpdir (test out)
+* Ensure services are legit 
+   * systemctl list-units --type=service --all
+* Disable root login
+   * sudo passwd -l root
+* Disable CUPS
+* Check for suspicious SUID binaries
+   * sudo find / -perm /6000 -type f 2>/dev/null
+* Enforce permissions
+   * chmod 640 /etc/shadow 
+   * chown root:shadow /etc/shadow
+   * chmod 644 /etc/passwd
+   * chmod 644 /etc/group
+* Check cron
+   * sudo crontab -l
+   * crontab -l
+   * sudo ls /etc/cron.*
+   * cat /etc/crontab
+   * check /etc/init/ and /etc/init.d/
+* Secure grub
+   * Add to /etc/default/grub:
+      * GRUB_TIMEOUT_STYLE=hidden
+      * GRUB_TIMEOUT=5
+* Secure session timeout
+   * Set /etc/profile.d/timeout.sh
+      * TMOUT=600
+      * readonly TMOUT
+      * export TMOUT
+   * sudo chmod +x /etc/profile.d/timeout.sh
+   * sudo /etc/profile.d/timeout.sh
+* Change account expiry defaults
+   * Add to /etc/default/useradd
+      * EXPIRE=30
+      * INACTIVE=30
+* Verify package integrity
+   * Apt
+      * Check /etc/apt/sources.list for suspicious repositories and make sure that is secure
+      * Check apt repository policy
+         * apt-cache policy
+      * Check apt trusted keys
+         * apt-key list
+* Monitor processes (top)
+* Run all scripts
+* Implement an account lockout policy
+   * Make /usr/share/pam-configs/faillock:
+Name: Lockout on failed logins
+Default: no
+Priority: 0
+Auth-Type: Primary
+Auth:
+    [default=die] pam_faillock.so authfail
+   * Make /usr/share/pam-configs/faillock_reset
+Name: Reset lockout on success
+Default: no
+Priority: 0
+Auth-Type: Additional
+Auth:
+    required pam_faillock.so authsucc
+   * Run sudo pam-auth-update and select what we just added
+   * Make /usr/share/pam-configs/faillock_notify
+Name: Notify on account lockout
+Default: no
+Priority: 1024
+Auth-Type: Primary
+Auth:
+    requisite pam_faillock.so preauth
+   * Run sudo pam-auth-update and select what we just added
+   set following in /etc/security/faillock.conf:
+deny = 5
+fail_interval = 900
+unlock_time = 600
+   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
+      1. pam_faillock.so preauth is before pam_unix.so
+      2. pam_faillock.so authfail is after pam_unix.so
+      3. pam_faillock.so authsucc is after authfail
+if you still have sudo:
+* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+
+

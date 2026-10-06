@@ -7,12 +7,16 @@ CP Linux Checklist
    * Remove any instances of nopasswd and !authenticate, these allow sudo use without authentication 
    * Any commands listed can be run without a password (ex: /bin/chmod)
    * Group lines are preceded by %
+   * Remove Defaults !env_reset and Defaults env_keep += "PATH" (systemconfig.sh does this)
 * Add password expiry requirements
    * Modify /etc/login.defs
-      * pass_max_days 90, pass_min_days 7, pass_warn_age 14
+      * pass_max_days 30, pass_min_days 7, pass_warn_age 14 (systemconfig.sh does this; 30 passes every max-age check seen, 90 fails the Aperture one)
 * Add minimum password length and disable password remembering
    * Modify /etc/pam.d/common-password 
-      * add minlen=10 remember=3 to line with pam_unix.so
+      * add minlen=10 remember=5 to line with pam_unix.so (systemconfig.sh does this)
+   * Modify /etc/security/pwquality.conf (systemconfig.sh does this)
+      * minlen=10, ucredit=-1, lcredit=-1, dcredit=-1, ocredit=-1, dictcheck=1, usercheck=1
+   * Modify /etc/login.defs: ENCRYPT_METHOD SHA512, LOGIN_RETRIES 3 (systemconfig.sh does this)
 * Check for rootkits
    * sudo apt install chkrootkit rkhunter
    * sudo chkrootkit
@@ -29,6 +33,7 @@ CP Linux Checklist
 * Disable null password auth
    * Edit /etc/pam.d/common-auth
       * Remove the option nullok from the like with pam_unix.so try_first_pass
+   * common-auth must contain "auth requisite pam_deny.so" (not pam_permit.so) and no pam_exec.so lines (systemconfig.sh checks)
 * Enable automatic updates
    * Ubuntu - Update Manager -> settings -> updates -> check for updates -> daily
    * Mint - Update Manager -> Edit -> Preferences -> 
@@ -84,6 +89,12 @@ CP Linux Checklist
          * apt-key list
 * Monitor processes (top)
 * Run all scripts
+   * Service order: BASELINE FIRST (docs/CP19 Service Research Findings.md, section B)
+      * sudo bash scripts/services/baseline.sh   (detection only; reports in /root/baseline/<svc>/report.txt, diffs in diff.patch)
+      * Review every "!!" line and diff.patch (optional: baseline.sh --meld <svc>)
+      * Then run only the scripts for the README's critical services in scripts/services/: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
+      * Every service script refuses to run until that service has a baseline
+      * Backups of everything the scripts change: /root/cp-backups/<timestamp>/
 * Implement an account lockout policy
    * Make /usr/share/pam-configs/faillock:
 Name: Lockout on failed logins
@@ -98,7 +109,7 @@ Default: no
 Priority: 0
 Auth-Type: Additional
 Auth:
-    required pam_faillock.so authsucc
+    sufficient pam_faillock.so authsucc
    * Run sudo pam-auth-update and select what we just added
    * Make /usr/share/pam-configs/faillock_notify
 Name: Notify on account lockout

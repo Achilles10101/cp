@@ -8,6 +8,10 @@ fi
 
 echo "=== User Audit Script ==="
 
+# Output helpers used by the password-aging step (they were called but never defined)
+ok()  { echo "✓ $*"; }
+err() { echo "✗ $*"; }
+
 # Prompt for screenshot confirmation
 if [ -t 0 ]; then
     while true; do
@@ -248,7 +252,7 @@ fi
 # Output sudoers file for further examination
 echo "Full sudoers output, review:"
 echo ""
-echo "$SUDOERS_CONTENT"
+cat "$SUDOERS_CONTENT"
 rm -f "$SUDOERS_CONTENT"
 echo ""
 
@@ -338,7 +342,7 @@ aging_success=true
 
 if (( ${#users[@]} )) && command -v chage &>/dev/null; then
     for u in "${users[@]}"; do
-        chage -M 90 -m 7 -W 14 "$u" &>/dev/null || aging_success=false
+        chage -M 30 -m 7 -W 14 "$u" &>/dev/null || aging_success=false
         sudo passwd -e "$u" &>/dev/null || aging_success=false
     done
 else
