@@ -18,7 +18,7 @@ CyberPatriot misc (CP19 Linux)
 | `competition/baseline/` | Optional clean-VM baseline pack (see its README) |
 | `tools/verify/` | Scoring harness used to verify the scripts (`plant.sh` is TEST-VM ONLY) |
 | `docs/` | Research findings, change list, scoring verification |
-| `old/` | Previous versions, unchanged |
+| `old/` | Previous versions, unchanged (`old/local-cp-stuff/` = older copies from the local folder: the Jan 2026 backup, `-1` duplicates, earlier Claude outputs) |
 
 ## Order
 
