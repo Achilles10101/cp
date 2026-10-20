@@ -82,7 +82,7 @@ for CFG in "${CONFIGS[@]}"; do
     if [ -d /etc/apache2 ] && [ -d "$UP" ]; then
         CONF=/etc/apache2/conf-available/wp-uploads-nophp.conf
         grep -qs "$UP" "$CONF" || cat >> "$CONF" <<EOF
-# Added by scripts/services/wordpress.sh - never execute PHP from uploads
+# Added by services/wordpress.sh - never execute PHP from uploads
 <Directory "$UP">
     <FilesMatch "\.(php|phtml|phar|php[0-9])$">
         Require all denied

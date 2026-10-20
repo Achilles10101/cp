@@ -6,12 +6,12 @@
 #   the service scripts refuse to run until the service has a baseline (B-4).
 #
 # Usage:
-#   sudo bash scripts/services/baseline.sh                 # every detected service (+ "system")
-#   sudo bash scripts/services/baseline.sh ssh apache2     # only these
-#   sudo bash scripts/services/baseline.sh --meld ssh      # also open pristine-vs-live diffs in Meld
-#   sudo bash scripts/services/baseline.sh --no-download   # never apt-get download pristine packages
-#   sudo bash scripts/services/baseline.sh --capture DIR   # B10: run on a CLEAN VM to build a baseline pack
-#   sudo bash scripts/services/baseline.sh --list          # show service names and whether detected
+#   sudo bash services/baseline.sh                 # every detected service (+ "system")
+#   sudo bash services/baseline.sh ssh apache2     # only these
+#   sudo bash services/baseline.sh --meld ssh      # also open pristine-vs-live diffs in Meld
+#   sudo bash services/baseline.sh --no-download   # never apt-get download pristine packages
+#   sudo bash services/baseline.sh --capture DIR   # B10: run on a CLEAN VM to build a baseline pack
+#   sudo bash services/baseline.sh --list          # show service names and whether detected
 #
 # Output (per service): /root/baseline/<svc>/
 #   report.txt   findings; lines starting with "!!" need a human decision
@@ -27,7 +27,7 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=../cp-common.sh
-source "$SCRIPT_DIR/../cp-common.sh" 2>/dev/null || { echo "ERROR: cp-common.sh not found in scripts/"; exit 1; }
+source "$SCRIPT_DIR/../cp-common.sh" 2>/dev/null || { echo "ERROR: cp-common.sh not found in competition/"; exit 1; }
 cp_require_root
 
 OSID="$(cp_os_id)"
@@ -533,7 +533,7 @@ B11: put YOUR hardened versions of the files from ../pristine/ here, same paths
   meld <pack>/$s/pristine/<file> /<file> <pack>/$s/hardened/<file>
 EOF
     done
-    echo "Done. Copy $1 into the repo's scripts/baseline/ folder."
+    echo "Done. Copy $1 into the repo's competition/baseline/ folder."
 }
 
 if [ -n "$CAPTURE_DIR" ]; then capture_pack "$CAPTURE_DIR"; exit 0; fi

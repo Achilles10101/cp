@@ -1,12 +1,12 @@
 #!/bin/bash
 # cp-common.sh - shared helpers for the CP19 Linux scripts.
-# Sourced by systemconfig.sh and every script in scripts/services/. Not meant to be run directly.
+# Sourced by systemconfig.sh and every script in services/. Not meant to be run directly.
 #
 # Main ideas (from the research doc):
 #   G1  edit settings IN PLACE and remove conflicting duplicates (never blind-append)
 #   G2  functionally test a service after changing it
 #   G3  use UFW application profiles when they exist
-#   B-4 refuse to harden a service until it has been baselined (scripts/services/baseline.sh)
+#   B-4 refuse to harden a service until it has been baselined (services/baseline.sh)
 
 # Directory that contains this file (repo root) - works no matter where the caller lives.
 CP_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -273,10 +273,10 @@ cp_baseline_gate() {
     else
         cp_warn "No baseline found for '$svc' ($dir/before missing)."
         cp_warn "The service must be baselined before it is hardened (research doc, section B)."
-        if cp_ask "Run scripts/services/baseline.sh $svc now?" y; then
+        if cp_ask "Run services/baseline.sh $svc now?" y; then
             bash "$CP_ROOT/services/baseline.sh" "$svc" || { cp_err "baseline.sh failed"; exit 1; }
         else
-            echo "Refusing to continue without a baseline. Run: sudo bash scripts/services/baseline.sh $svc"
+            echo "Refusing to continue without a baseline. Run: sudo bash services/baseline.sh $svc"
             exit 1
         fi
     fi

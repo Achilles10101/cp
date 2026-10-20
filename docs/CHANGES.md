@@ -8,10 +8,10 @@ When the scripts run, everything they change on the image is backed up to `/root
 
 | File | What it is |
 |---|---|
-| `scripts/cp-common.sh` | Shared helpers: in-place config editing (G1), README prompts, backups, UFW profiles (G3), the baseline gate (B-4) and the web-content scan |
-| `scripts/services/baseline.sh` | **Section B.** Detection-only baselining (B1–B9), `--meld`, `--capture` to build a baseline pack (B10/B11) |
-| `scripts/baseline/README.md` | How to build and use the clean-VM baseline pack |
-| `scripts/services/php.sh`, `nginx.sh`, `postgresql.sh`, `samba.sh`, `bind9.sh`, `mail.sh`, `wordpress.sh`, `openvpn.sh`, `squid.sh` | New service scripts (PHP1–4, NGX1–3, PG1–5, SMB1–6, DNS1–3, MAIL1–4, WP1–3, VPN1, Squid) |
+| `competition/cp-common.sh` | Shared helpers: in-place config editing (G1), README prompts, backups, UFW profiles (G3), the baseline gate (B-4) and the web-content scan |
+| `competition/services/baseline.sh` | **Section B.** Detection-only baselining (B1–B9), `--meld`, `--capture` to build a baseline pack (B10/B11) |
+| `competition/baseline/README.md` | How to build and use the clean-VM baseline pack |
+| `competition/services/php.sh`, `nginx.sh`, `postgresql.sh`, `samba.sh`, `bind9.sh`, `mail.sh`, `wordpress.sh`, `openvpn.sh`, `squid.sh` | New service scripts (PHP1–4, NGX1–3, PG1–5, SMB1–6, DNS1–3, MAIL1–4, WP1–3, VPN1, Squid) |
 | `CHANGES.md` | This file |
 
 Every service script now starts by requiring a baseline for its service. If none exists, it offers to run `baseline.sh`.
@@ -20,7 +20,7 @@ Every service script now starts by requiring a baseline for its service. If none
 
 ## Replaced or deleted items (original → new)
 
-### scripts/services/ssh.sh
+### competition/services/ssh.sh
 
 | # | Original | Now | Why |
 |---|---|---|---|
@@ -34,7 +34,7 @@ Every service script now starts by requiring a baseline for its service. If none
 
 All 12 original sshd values are kept unchanged. New keys: `ClientAliveInterval 300`, `Protocol 2`, `PermitUserEnvironment no`, `UsePAM yes`, `StrictModes yes`, `MaxSessions 4`, `MaxStartups 10:30:60`, `GSSAPIAuthentication no`, `KbdInteractiveAuthentication no`, `PubkeyAuthentication yes`, `Banner /etc/issue.net`, `DisableForwarding yes`, `DebianBanner no`, and README prompts for `PasswordAuthentication`, `Port`, `AllowUsers`, `DenyUsers`, `DenyGroups`, and SFTP-only.
 
-### scripts/services/vsftpd.sh
+### competition/services/vsftpd.sh
 
 | # | Original | Now | Why |
 |---|---|---|---|
@@ -51,7 +51,7 @@ All 12 original sshd values are kept unchanged. New keys: `ClientAliveInterval 3
 
 All other original values are kept, including `ssl_tlsv1=YES`. **Correction to FTP3:** testing on Ubuntu 24.04 showed vsftpd rejects the manpage spellings `ssl_tlsv1_2` etc. (it won't start) and accepts `ssl_tlsv12` etc. The script therefore reads the real option names from the binary. New keys: `ssl_ciphers=HIGH`, `allow_anon_ssl=NO`, `anon_upload_enable=NO`, `anon_mkdir_write_enable=NO`, `anon_other_write_enable=NO`, `hide_ids=YES`, `ls_recurse_enable=NO`, `ftpd_banner`, `max_login_fails=3`, `delay_failed_login=3`, `idle_session_timeout=300`, `data_connection_timeout=120`, `max_per_ip=5`, `pam_service_name`, `secure_chroot_dir`, plus `ssl_tlsv11=NO` / `ssl_tlsv12=YES` / `ssl_tlsv13=YES` when supported. It also audits `chroot_list`, `userlist` and `ftpusers` (FTP5).
 
-### scripts/services/apache2.sh
+### competition/services/apache2.sh
 
 | # | Original | Now | Why |
 |---|---|---|---|
@@ -70,7 +70,7 @@ All other original values are kept, including `ssl_tlsv1=YES`. **Correction to F
 
 New: `FileETag None`, `LimitRequestBody 10485760`, `Timeout 60`, optional HTTPS (mod_ssl, TLS 1.2/1.3, HSTS), run-user check, `DocumentRoot`/`Alias` check, `/etc/apache2`, `/var/log/apache2` and `/etc/ssl/private` perms, phpinfo/webshell scan, `ufw allow 'Apache Full'`, optional mod_security, and HTTP/TRACE tests.
 
-### scripts/services/mysql.sh
+### competition/services/mysql.sh
 
 | # | Original | Now | Why |
 |---|---|---|---|
@@ -151,7 +151,7 @@ Every script passes `bash -n`, and the service scripts pass `shellcheck -S warni
 | systemconfig.sh | (no gdm AllowRoot) | `AllowRoot=false` added |
 | systemconfig.sh | login.defs aging not set by any script | `PASS_MAX_DAYS 30`, `PASS_MIN_DAYS 7`, `PASS_WARN_AGE 14` |
 | systemconfig.sh | common-password untouched | pam_unix `remember=5 minlen=10`; pam_pwquality `dictcheck=1 usercheck=1 minlen=10` + credits |
-| scripts/services/apache2.sh | UFW always `Apache Full` with HTTPS | Asks: `Apache Secure` (HTTPS only) or `Apache Full` |
+| competition/services/apache2.sh | UFW always `Apache Full` with HTTPS | Asks: `Apache Secure` (HTTPS only) or `Apache Full` |
 | usersandsudo.sh | `chage -M 90 -m 7 -W 14` | `chage -M 30 -m 7 -W 14` |
 | CP Linux Checklist.txt | `pass_max_days 90` | `pass_max_days 30` (90 fails the Aperture check; 30 passes all seen) |
 | CP Linux Checklist.txt | faillock_reset `required pam_faillock.so authsucc` | `sufficient pam_faillock.so authsucc` (what the Aperture check matches) |
@@ -161,11 +161,16 @@ Every script passes `bash -n`, and the service scripts pass `shellcheck -S warni
 ## Repo layout and merge (2026-10-06)
 
 - The previous repo tree (as of commit `2dfd440`) was moved unchanged to **`old/`**.
-- The new tree keeps the same structure at the root: `scripts/`, `scripts/services/` and the checklist. Shared helpers are in `scripts/cp-common.sh`, the baseline pack folder is `scripts/baseline/`, the test harness is in `tools/verify/`, and documentation is in `docs/`.
+- The new tree kept the same structure at the root: `scripts/`, `scripts/services/` and the checklist (renamed to `competition/` on 2026-10-20, see below; paths in this file use the new names). The test harness is in `tools/verify/`, and documentation is in `docs/`.
 - The new scripts were built from the local "cp stuff" copies, which were **older** than the repo. These repo-only changes were merged back in:
-  - `scripts/usersandsudo.sh`: the repo version (with the new "suspicious system users" check) plus the three fixes (`ok`/`err` defined, sudoers printed with `cat`, `chage -M 30`).
-  - `scripts/fileandpackage.sh`: kept `doona` and `xprobe` in the scan list.
+  - `competition/usersandsudo.sh`: the repo version (with the new "suspicious system users" check) plus the three fixes (`ok`/`err` defined, sudoers printed with `cat`, `chage -M 30`).
+  - `competition/fileandpackage.sh`: kept `doona` and `xprobe` in the scan list.
   - `CP Linux Checklist.txt`: the repo version (`libpam-tmpdir`, `crontab -l`, rc.local/cron.deny lines removed) plus the checklist edits listed above.
-  - `scripts/services/apache2.sh`: uses the repo's longer Content-Security-Policy (`Header always set`, with inline styles and data: images allowed). Module removal, which the repo had deleted, is now **opt-in** (default no).
-  - `scripts/services/mysql.sh`: superseded. The repo's `DROP USER` approach is kept; the repo's re-creation of `root@localhost` with an **empty password** is not.
-  - `scripts/portandmisc.sh`: unchanged from the repo. `old.sh` stays only in `old/`.
+  - `competition/services/apache2.sh`: uses the repo's longer Content-Security-Policy (`Header always set`, with inline styles and data: images allowed). Module removal, which the repo had deleted, is now **opt-in** (default no).
+  - `competition/services/mysql.sh`: superseded. The repo's `DROP USER` approach is kept; the repo's re-creation of `root@localhost` with an **empty password** is not.
+  - `competition/portandmisc.sh`: unchanged from the repo. `old.sh` stays only in `old/`.
+
+## Competition folder (2026-10-20)
+
+- `scripts/` was renamed to **`competition/`** and `CP Linux Checklist.txt` moved into it, so everything needed during a round is one folder. Run the scripts from inside `competition/` (e.g. `sudo bash services/baseline.sh`).
+- The checklist was reworked so nothing is listed twice: steps the scripts already do were removed from the manual part, and the scripts (in run order, with what each one covers) are now at the bottom. The repo-only checklist edits (`DELETE FILES AFTER`, `libpam-tmpdir`, `crontab -l`, rc.local/cron.deny removed) were kept.

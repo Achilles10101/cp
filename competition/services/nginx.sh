@@ -60,7 +60,7 @@ fi
 # Hardening snippet included in every server block: dotfiles, methods, headers
 mkdir -p "$NGX/snippets"
 cat > "$NGX/snippets/cp-hardening.conf" <<'EOF'
-# Added by scripts/services/nginx.sh
+# Added by services/nginx.sh
 location ~ /\.(?!well-known) { deny all; }
 if ($request_method !~ ^(GET|HEAD|POST)$) { return 405; }
 add_header X-Content-Type-Options "nosniff" always;

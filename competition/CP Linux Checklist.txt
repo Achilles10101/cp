@@ -2,21 +2,7 @@ CP Linux Checklist
 * DO README!!!!
 * Forensics, DELETE FILES AFTER
 * Do README user/group modification
-* Check ~/.ssh/authorized_keys for unknown users
-* Check /etc/sudoers, /etc/sudoers.d and sudo group
-   * Remove any instances of nopasswd and !authenticate, these allow sudo use without authentication 
-   * Any commands listed can be run without a password (ex: /bin/chmod)
-   * Group lines are preceded by %
-   * Remove Defaults !env_reset and Defaults env_keep += "PATH" (systemconfig.sh does this)
-* Add password expiry requirements
-   * Modify /etc/login.defs
-      * pass_max_days 30, pass_min_days 7, pass_warn_age 14 (systemconfig.sh does this; 30 passes every max-age check seen, 90 fails the Aperture one)
-* Add minimum password length and disable password remembering
-   * Modify /etc/pam.d/common-password 
-      * add minlen=10 remember=5 to line with pam_unix.so (systemconfig.sh does this)
-   * Modify /etc/security/pwquality.conf (systemconfig.sh does this)
-      * minlen=10, ucredit=-1, lcredit=-1, dcredit=-1, ocredit=-1, dictcheck=1, usercheck=1
-   * Modify /etc/login.defs: ENCRYPT_METHOD SHA512, LOGIN_RETRIES 3 (systemconfig.sh does this)
+   * Add users, create groups, set passwords the README asks for (usersandsudo.sh only removes unauthorized users and fixes admin rights)
 * Check for rootkits
    * sudo apt install chkrootkit rkhunter
    * sudo chkrootkit
@@ -32,10 +18,8 @@ CP Linux Checklist
    * sudo clamscan -r /
 * Disable null password auth
    * Edit /etc/pam.d/common-auth
-      * Remove the option nullok from the like with pam_unix.so try_first_pass
-   * common-auth must contain "auth requisite pam_deny.so" (not pam_permit.so) and no pam_exec.so lines (systemconfig.sh checks)
-* Enable automatic updates
-   * Ubuntu - Update Manager -> settings -> updates -> check for updates -> daily
+      * Remove the option nullok from the line with pam_unix.so try_first_pass
+* Enable automatic updates (Mint only - Ubuntu is done by systemconfig.sh)
    * Mint - Update Manager -> Edit -> Preferences -> 
       * Automation -> Select All
       * Options -> Refresh the list of updates automatically
@@ -52,8 +36,6 @@ CP Linux Checklist
 * Disable root login
    * sudo passwd -l root
 * Disable CUPS
-* Check for suspicious SUID binaries
-   * sudo find / -perm /6000 -type f 2>/dev/null
 * Enforce permissions
    * chmod 640 /etc/shadow 
    * chown root:shadow /etc/shadow
@@ -88,13 +70,6 @@ CP Linux Checklist
       * Check apt trusted keys
          * apt-key list
 * Monitor processes (top)
-* Run all scripts
-   * Service order: BASELINE FIRST (docs/CP19 Service Research Findings.md, section B)
-      * sudo bash scripts/services/baseline.sh   (detection only; reports in /root/baseline/<svc>/report.txt, diffs in diff.patch)
-      * Review every "!!" line and diff.patch (optional: baseline.sh --meld <svc>)
-      * Then run only the scripts for the README's critical services in scripts/services/: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
-      * Every service script refuses to run until that service has a baseline
-      * Backups of everything the scripts change: /root/cp-backups/<timestamp>/
 * Implement an account lockout policy
    * Make /usr/share/pam-configs/faillock:
 Name: Lockout on failed logins
@@ -130,4 +105,24 @@ unlock_time = 600
 if you still have sudo:
 * Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
 
-
+==================== SCRIPTS (everything below is automated - don't redo it by hand) ====================
+* Run all scripts from inside the competition folder, in this order. Backups of everything the scripts change: /root/cp-backups/<timestamp>/
+   1. sudo bash services/baseline.sh - BASELINE FIRST (docs/CP19 Service Research Findings.md, section B)
+      * Detection only; reports in /root/baseline/<svc>/report.txt, diffs in diff.patch
+      * Review every "!!" line and diff.patch (optional: baseline.sh --meld <svc>)
+   2. sudo bash usersandsudo.sh - enter the README's admins and normal users when nano opens
+      * Covers: removes unauthorized users, suspicious system users, sudo/admin/adm group membership, UID 0 users, chage 30/7/14 + forced password change on all users, home dirs 750
+      * It flags NOPASSWD / !authenticate in /etc/sudoers + /etc/sudoers.d and opens visudo - remove them there
+         * Any commands listed can be run without a password (ex: /bin/chmod)
+         * Group lines are preceded by %
+   3. sudo bash systemconfig.sh
+      * Covers: UFW, unattended-upgrades / daily update check, LightDM + GDM guest/autologin, UMASK 027, sysctl
+      * Covers: /etc/login.defs PASS_MAX_DAYS 30, PASS_MIN_DAYS 7, PASS_WARN_AGE 14, ENCRYPT_METHOD SHA512, LOGIN_RETRIES 3
+      * Covers: common-password (pam_unix minlen=10 remember=5), pwquality.conf (minlen=10, u/l/d/ocredit=-1, dictcheck, usercheck)
+      * Covers: common-auth "requisite pam_deny.so" + pam_exec check, sudoers Defaults !env_reset / env_keep PATH removal, sudo.conf
+      * Covers: limits.conf, apparmor/auditd, grub.cfg perms + 40_custom passwords, SUID/SGID on common binaries, ACLs, gshadow, system account shells, aliases, /etc/hosts, ld.so.preload
+   4. sudo bash fileandpackage.sh - hacking tools / unwanted packages + services, network shares, media files, full SUID/SGID scan
+   5. sudo bash portandmisc.sh - listening ports, lynis, nmap
+   6. Service scripts in services/ - only for the README's critical services: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
+      * Every service script refuses to run until that service has a baseline
+      * ssh.sh lists every ~/.ssh/authorized_keys file - check for unknown users' keys
