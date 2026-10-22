@@ -11,7 +11,7 @@ cp_screenshot_prompt
 ls -d /etc/postgresql/*/main >/dev/null 2>&1 || { echo "ERROR: no /etc/postgresql/<ver>/main cluster found"; exit 1; }
 cp_baseline_gate postgresql
 
-psql_q() { sudo -u postgres psql -AtXq -c "$1" 2>/dev/null; }
+psql_q() { sudo -u postgres psql -P pager=off -AtXq -c "$1" 2>/dev/null; }
 
 echo "========================================="
 echo "PostgreSQL Security Hardening"
@@ -117,7 +117,7 @@ if [ -n "$(psql_q 'SELECT 1')" ]; then
     # ------------------------------------------------------------------ PG5 roles --
     echo ""
     echo "Roles (compare with the README):"
-    sudo -u postgres psql -X -c "SELECT rolname, rolsuper, rolcreaterole, rolcreatedb, rolcanlogin,
+    sudo -u postgres psql -P pager=off -X -c "SELECT rolname, rolsuper, rolcreaterole, rolcreatedb, rolcanlogin,
         CASE WHEN rolpassword IS NULL THEN 'none' WHEN rolpassword LIKE 'SCRAM%' THEN 'scram' ELSE 'md5/old' END AS pw
         FROM pg_authid WHERE rolname !~ '^pg_' ORDER BY 1;" 2>/dev/null
     STRIP="$(cp_read "Roles to strip SUPERUSER/CREATEROLE/CREATEDB from (comma separated, Enter = none)" "")"
@@ -135,7 +135,7 @@ if [ -n "$(psql_q 'SELECT 1')" ]; then
         cp_warn "Role $r still has an md5 password hash"
         if [ -t 0 ]; then
             read -r -s -p "  New password for $r (Enter to skip): " NP; echo
-            [ -n "$NP" ] && echo "ALTER ROLE \"$r\" PASSWORD :'pw';" | sudo -u postgres psql -AtXq -v pw="$NP" && cp_ok "Password for $r re-hashed with scram-sha-256"
+            [ -n "$NP" ] && echo "ALTER ROLE \"$r\" PASSWORD :'pw';" | sudo -u postgres psql -P pager=off -AtXq -v pw="$NP" && cp_ok "Password for $r re-hashed with scram-sha-256"
         fi
     done
 else

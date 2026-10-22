@@ -32,6 +32,11 @@ cp_require_root
 
 OSID="$(cp_os_id)"
 PACK_DIR="$CP_ROOT/baseline/$OSID"
+if [ ! -d "$PACK_DIR" ]; then
+    # same distro + major version: linuxmint-21.1 / 21.2 use the linuxmint-21.3 pack (all are Ubuntu jammy)
+    _c="$(ls -d "$CP_ROOT/baseline/${OSID%%.*}".* 2>/dev/null | tail -1)"
+    [ -n "$_c" ] && PACK_DIR="$_c"
+fi
 PRISTINE_DEBS="$CP_BASELINE_DIR/_pristine"
 DO_MELD=0; DO_DOWNLOAD=1; CAPTURE_DIR=""; LIST_ONLY=0
 TARGETS=()
@@ -74,7 +79,7 @@ UNITS[nginx]="nginx.service"; PORTS[nginx]="80 443"; PROCS[nginx]="nginx"
 CONTENT[nginx]="/var/www /usr/share/nginx/html"
 
 DIRS[php]="/etc/php"; PROCS[php]="php-fpm php-fpm8.1 php-fpm8.2 php-fpm8.3 php-fpm8.4"
-DIRS[mysql]="/etc/mysql"; UNITS[mysql]="mysql.service mariadb.service"; PORTS[mysql]="3306"; PROCS[mysql]="mysqld mariadbd"
+DIRS[mysql]="/etc/mysql"; UNITS[mysql]="mysql.service mariadb.service"; PORTS[mysql]="3306 33060"; PROCS[mysql]="mysqld mariadbd"
 DIRS[postgresql]="/etc/postgresql /etc/postgresql-common"; PORTS[postgresql]="5432"; PROCS[postgresql]="postgres"
 
 PKGS[samba]="samba samba-common samba-common-bin"
@@ -151,6 +156,27 @@ installed_pkgs() {  # installed subset of a service's package list
 }
 
 existing_paths() { local p; for p in "$@"; do [ -e "$p" ] && echo "$p"; done; }
+
+# dpkg-owned? Ubuntu 22.04 / Mint 21 record unit files etc. under /lib, /bin, /sbin while the same file is
+# reached as /usr/lib/... (usr-merge) - try every spelling before calling a file "unowned".
+owned() {
+    local f="$1" a
+    dpkg-query -S "$f" >/dev/null 2>&1 && return 0
+    case "$f" in
+        /usr/lib/*|/usr/bin/*|/usr/sbin/*) a="${f#/usr}" ;;
+        /lib/*|/bin/*|/sbin/*) a="/usr$f" ;;
+        *) return 1 ;;
+    esac
+    dpkg-query -S "$a" >/dev/null 2>&1
+}
+# identical to the clean-VM pack copy? (then B2 already covers it and it is not a planted file)
+in_pack_same() { local c="$PACK_DIR/$1/pristine$2"; [ -f "$c" ] && cmp -s "$c" "$2"; }
+# live mode/owner equal to the clean-VM capture (pack stat.txt: "mode user:group path")?
+pack_stat_same() {
+    local svc="$1" f="${2%/}" st="$PACK_DIR/$1/stat.txt"
+    [ -f "$st" ] || return 1
+    awk -v p="$f" -v live="$(stat -c '%a %U:%G' "$f" 2>/dev/null)" '$3 == p { found=1; if ($1" "$2 == live) ok=1 } END { exit !(found && ok) }' "$st"
+}
 
 # --------------------------------------------------------- pristine lookup --
 ucf_hash() { awk -v f="$1" '$2 == f {print $1; exit}' /var/lib/ucf/hashfile 2>/dev/null; }
@@ -276,7 +302,8 @@ b3_unowned() {
     find $paths -xdev \( -type f -o -type l \) 2>/dev/null \
         | grep -vE '\.bak\.[0-9_]+$|/ssh_host_[a-z0-9]+_key(\.pub)?$|\.dpkg-(dist|old|bak)$' > "$list"
     while IFS= read -r f; do
-        dpkg-query -S "$f" >/dev/null 2>&1 && continue
+        owned "$f" && continue
+        if in_pack_same "$svc" "$f"; then r "   generated at install, identical to clean VM: $f"; continue; fi
         if [ -L "$f" ]; then
             tgt="$(readlink "$f")"
             # a2enmod/a2ensite/nginx style symlinks: fine if they point at the matching *-available file
@@ -284,6 +311,9 @@ b3_unowned() {
             # phpenmod style: conf.d/20-zip.ini -> mods-available/zip.ini
             if [[ "$f" =~ /conf\.d/[0-9]+-(.+\.ini)$ ]] && [[ "$tgt" =~ mods-available/${BASH_REMATCH[1]}$ ]]; then continue; fi
             [[ "$f" == /etc/mysql/my.cnf ]] && continue
+            # nginx module symlinks: modules-enabled/50-mod-x.conf -> /usr/share/nginx/modules-available/mod-x.conf
+            [[ "$f" == /etc/nginx/modules-enabled/* && "$tgt" == /usr/share/nginx/modules-available/* && -e "$tgt" ]] && continue
+            [[ "$f" == /etc/postfix/makedefs.out && "$tgt" == /usr/share/postfix/makedefs.out ]] && continue
             [[ "$tgt" == */ssl-cert-snakeoil.* ]] && continue   # created by postinst scripts
             flag "B3 unowned symlink: $f -> $tgt"
         else
@@ -300,8 +330,16 @@ b3_unowned() {
                     if [ -f "$tpl" ] && cmp -s "$tpl" "$f"; then continue
                     elif [ -f "$tpl" ]; then flag "B2 differs from dovecot template: $f"; record_diff "$tpl" "$f"
                     else flag "B3 not owned by any package: $(stat -c '%A %U:%G %y' "$f" | cut -c1-45) $f"; fi ;;
-                /etc/bind/rndc.key|/etc/mysql/debian.cnf|/etc/ssh/sshd_config|/etc/samba/smb.conf|/etc/postfix/main.cf|/etc/php/*/*/php.ini|/etc/postgresql/*|/etc/sudoers.d/README|/etc/ld.so.conf.d/*|/etc/apt/sources.list.d/*.sources|/etc/security/opasswd)
-                    r "   generated at install (expected, B2 covers content): $f" ;;
+                /etc/bind/rndc.key|/etc/mysql/debian.cnf|/etc/ssh/sshd_config|/etc/samba/smb.conf|/etc/postfix/main.cf|/etc/php/*/*/php.ini|/etc/postgresql/*|/etc/sudoers.d/README|/etc/ld.so.conf.d/*|/etc/apt/sources.list.d/*.sources|/etc/security/opasswd|\
+                /etc/apt/apt.conf.d/20auto-upgrades|/etc/apt/apt.conf.d/50unattended-upgrades|/etc/apt/apt.conf.d/02autoremove-postgresql|/etc/apt/sources.list|/etc/apt/sources.list.d/official-package-repositories.list|\
+                /etc/pam.d/common-auth|/etc/pam.d/common-account|/etc/pam.d/common-password|/etc/pam.d/common-session|/etc/pam.d/common-session-noninteractive|\
+                /etc/hosts|/etc/profile|/etc/environment|/etc/postgresql-common/createcluster.conf|/etc/postgresql-common/root.crt|\
+                /etc/postfix/master.cf|/etc/postfix/main.cf.proto|/etc/postfix/master.cf.proto|/etc/postfix/dynamicmaps.cf|/etc/aliases)
+                    if [ -f "$PACK_DIR/$svc/pristine$f" ]; then
+                        r "   generated at install, DIFFERS from clean VM (flagged in B2): $f"
+                    else
+                        r "   generated at install (expected - review content by hand / with the pack): $f"
+                    fi ;;
                 *) flag "B3 not owned by any package: $(stat -c '%A %U:%G %y' "$f" | cut -c1-45) $f" ;;
             esac
         fi
@@ -340,6 +378,10 @@ b4_perms() {
             [[ "$B4SEEN" == *"|$f|"* ]] && continue; B4SEEN+="|$f|"
             exp="$mode ${owner}"; live="$(stat -c '%A %U/%G' "$f")"
             case "$f:$live" in "/etc/bind/:drwxr-sr-x root/bind") continue ;; esac   # set by bind9 postinst
+            pack_stat_same "$svc" "$f" && continue                                   # same as the clean VM
+            case "$f:$live" in   # changed by the package's own postinst (no pack needed)
+                "/etc/sudoers:-r--r----- root/root"|/etc/bind/named.conf*:"-rw-r--r-- root/bind"|"/etc/postgresql/:drwxr-xr-x postgres/postgres"|"/etc/dovecot/private/:drwx------ root/root") continue ;;
+            esac
             [ "$exp" = "$live" ] || flag "B4 differs from package default: $f  default[$exp] live[$live]"
         done < <(awk '$1 !~ /^l/' "$d/listing.txt")
     done
@@ -369,11 +411,13 @@ b5_units() {
         r "   $u:"; echo "$props" | sed 's/^/     /' >> "$REPORT"
         systemctl cat "$u" > "$SVC_DIR/unit-$u.txt" 2>/dev/null
         local frag; frag="$(echo "$props" | sed -n 's/^FragmentPath=//p')"
-        [[ "$frag" == /etc/systemd/system/* ]] && flag "B5 $u vendor unit is overridden by $frag"
+        if [[ "$frag" == /etc/systemd/system/* ]]; then
+            if [ "$(readlink -f "$frag")" = /dev/null ]; then r "     $u is masked (-> /dev/null)"; else flag "B5 $u vendor unit is overridden by $frag"; fi
+        fi
         local drop; drop="$(echo "$props" | sed -n 's/^DropInPaths=//p')"
         [ -n "$drop" ] && flag "B5 $u has drop-in(s): $drop  (check for ExecStart/User changes)"
         exe="$(echo "$props" | sed -n 's/^ExecStart={ path=\([^ ;]*\).*/\1/p' | head -1)"
-        if [ -n "$exe" ] && [ -e "$exe" ] && ! dpkg-query -S "$exe" >/dev/null 2>&1; then
+        if [ -n "$exe" ] && [ -e "$exe" ] && ! owned "$exe"; then
             flag "B5 $u runs a binary no package owns: $exe"
         fi
         echo "$props" | grep -q 'argv\[\]=.*\.conf' && r "     note: ExecStart passes an explicit config file - make sure it's the one you harden"
@@ -383,8 +427,8 @@ b5_units() {
         systemd-delta --no-pager --type=overridden,extended,redirected,masked 2>/dev/null | sed 's/^/     /' >> "$REPORT"
         local f
         while IFS= read -r f; do
-            dpkg-query -S "$f" >/dev/null 2>&1 || flag "B5 unit file not owned by any package: $f"
-        done < <(find /etc/systemd/system /lib/systemd/system /usr/lib/systemd/system -maxdepth 1 -type f \( -name '*.service' -o -name '*.timer' -o -name '*.socket' -o -name '*.path' \) 2>/dev/null)
+            owned "$f" || flag "B5 unit file not owned by any package: $f"
+        done < <(find /etc/systemd/system /lib/systemd/system /usr/lib/systemd/system -maxdepth 1 -type f \( -name '*.service' -o -name '*.timer' -o -name '*.socket' -o -name '*.path' \) -exec readlink -f {} \; 2>/dev/null | sort -u)
     fi
 }
 
@@ -411,6 +455,7 @@ b6_ports() {
         addr="$(echo "$line" | awk '{print $5}')"; port="${addr##*:}"
         r "   $proc listening on $addr"
         [[ " ${PORTS[$svc]:-} " == *" $port "* ]] || { [ "$svc" = vsftpd ] && [ "$port" -ge 1024 ] 2>/dev/null; } \
+            || { [ "$svc" = squid ] && [[ "$line" == udp* ]] && [ "$port" -ge 32768 ] 2>/dev/null; } \
             || flag "B6 $proc on unexpected port $addr (expected: ${PORTS[$svc]:-none})"
         case "$svc" in mysql|postgresql)
             [[ "$addr" == 0.0.0.0:* || "$addr" == "[::]:"* || "$addr" == "*:"* ]] && flag "B6 $proc listens on ALL interfaces ($addr) - should normally be localhost" ;;

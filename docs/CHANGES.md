@@ -1,3 +1,37 @@
+# Changes applied 2026-10-20 (fixes from the live-image test run)
+
+Pre-change copies: `old/2026-10-20/fileandpackage.sh`, `old/2026-10-20/CP Linux Checklist.txt`. Tested on Ubuntu 24.04 with wireshark, samba, john, hydra, nmap, netcat, telnet, a held package and a fake desktop metapackage installed.
+
+### competition/fileandpackage.sh (package section rewritten; file/share/SUID scans unchanged, now sections [4]–[6])
+
+| # | Original | Now | Why (test-run item) |
+|---|---|---|---|
+| 1 | `dpkg -l \| grep -qw "^ii.*${item}"` | `dpkg-query` snapshot, matched on the **whole package name** only | The grep matched any word anywhere in the line, including other packages' names and descriptions (`nc` matched "libxcb-sync1 … sync extension", `apache` matched libapache-pom-java, `php` matched php-common). Removed packages kept being reported (#2, #6) |
+| 2 | One name per item (`samba`, `wireshark`, …) | **Families**: samba = samba, samba-common, samba-common-bin, samba-*-modules, samba-ad-*, python3-samba, winbind…; wireshark = wireshark, wireshark-qt, wireshark-common, tshark, libwireshark*, libwiretap*, libwsutil*; plus ~35 other families (crackers, wireless, scanners, MITM, VNC/RDP, telnet/rsh, inetd/tftp, P2P, games, and every service) | `apt remove wireshark` only removes the package named wireshark (#1, #5) |
+| 3 | Report only | Asks per family: **y** all / **n** keep / **e** each package; then an "add your own" prompt (names or globs, `?word` searches installed names) builds the final list | #4 |
+| 4 | – | **Preview** with `apt-get -s purge`: lists every extra package apt would take along before you confirm | Avoids surprise removals |
+| 5 | – | Metapackage guard: if a removal takes a metapackage with it (ubuntu-standard via telnet, ubuntu-desktop, mint-meta-*), its other dependencies are marked manual so autoremove can't strip the desktop | Needed for #7 to be safe |
+| 6 | – | Held packages on the list are unheld (`apt-mark unhold`), purge runs with `--allow-change-held-packages` | A planted `apt-mark hold` makes apt refuse the removal |
+| 7 | – | `apt-get purge`, then **every package re-checked with `dpkg-query`** (gone / rc / STILL INSTALLED); failures get a direct `dpkg --purge` offer | #6 |
+| 8 | – | `apt-get autoremove --purge` (previewed; default no if the list is over 40), then leftover `rc` configs purged, then the catalog is **re-scanned** | #7 |
+| 9 | – | New section [0]: shadow copies of apt/dpkg/sudo in /usr/local, dpkg diversions, aliases/functions overriding apt/dpkg/sudo in bashrc/profile, unowned APT hook/pinning files, held packages, `dpkg --audit`, `dpkg --verify dpkg apt`. The script calls `/usr/bin/apt-get` etc. by full path | #6: ways apt can be made to lie or fail on a planted image |
+| 10 | – | Software outside dpkg: snaps, flatpaks, /usr/local/bin, /opt, and hacking-tool binaries not owned by any package | dpkg/apt can't see these |
+| 11 | `systemctl list-unit-files \| grep -qw item` | Exact unit names (smbd, nmbd, named, php*-fpm, …), checked after removal | Same fuzzy-match problem as #1 |
+| 12 | – | `--scan` = report only (also automatic when there's no terminal) | – |
+
+Not removed by the samba family on purpose: `samba-libs`, `libsmbclient`, `smbclient` (the desktop file manager uses them). Same for `mysql-common`, `dnsmasq-base`, `bind9-dnsutils`/`bind9-host` (dig). The preview/autoremove steps handle whatever is left orphaned.
+
+### competition/CP Linux Checklist.txt
+
+- New manual step after README user/group work: check the authorized administrator passwords in the README, change any insecure ones with `sudo passwd`, write them down (#8).
+- Script step 4 now describes the new prompts, plus how to find/remove/verify packages by hand with dpkg.
+
+### os-prober (#3) – researched, nothing changed
+
+GRUB helper that, when `update-grub` runs, mounts every partition it can find (as root, via `grub-mount`) to look for other OSes and add them to the boot menu. Installed by default because grub-common *Recommends* it. Not a hacking tool. Upstream GRUB 2.06 turned it off by default "due to security reasons" (`GRUB_DISABLE_OS_PROBER`); Ubuntu keeps an `auto` mode. Useless on a single-OS VM, and removing it only drops a Recommends, nothing else. No evidence it is scored. Optional: `GRUB_DISABLE_OS_PROBER=true` in /etc/default/grub + `update-grub`, or `apt-get purge os-prober`.
+
+---
+
 # Changes applied 2026-09-29 (from "CP19 Service Research Findings.md")
 
 Untouched copies of the original files are in `old/`.

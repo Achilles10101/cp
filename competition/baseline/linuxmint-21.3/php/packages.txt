@@ -1,0 +1,5 @@
+libapache2-mod-php8.1	8.1.2-1ubuntu2.27
+php-common	2:92ubuntu1
+php8.1-cli	8.1.2-1ubuntu2.27
+php8.1-common	8.1.2-1ubuntu2.27
+php8.1-fpm	8.1.2-1ubuntu2.27

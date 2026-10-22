@@ -1,0 +1,1 @@
+tcp LISTEN 0      32            0.0.0.0:21    0.0.0.0:* users:(("vsftpd",pid=21011,fd=3))                                                                                                                                        

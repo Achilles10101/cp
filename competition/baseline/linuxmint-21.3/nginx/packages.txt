@@ -1,0 +1,3 @@
+nginx	1.18.0-6ubuntu14.21
+nginx-common	1.18.0-6ubuntu14.21
+nginx-core	1.18.0-6ubuntu14.21

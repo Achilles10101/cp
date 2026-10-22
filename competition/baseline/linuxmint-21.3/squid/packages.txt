@@ -1,0 +1,2 @@
+squid	5.9-0ubuntu0.22.04.8
+squid-common	5.9-0ubuntu0.22.04.8

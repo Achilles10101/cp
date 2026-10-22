@@ -110,8 +110,8 @@ echo "Checking for suspicious system users with unexpected home directories"
 SUSPICIOUS_SYSTEM_USERS=()
 
 while IFS=: read -r username _ uid gid _ home shell; do
-    # Skip standard system accounts (UID < 1000)
-    if (( uid < 1000 )); then
+    # Skip standard system accounts (UID < 1000); root is expected (UID 0 duplicates are handled in the UID 0 check)
+    if (( uid < 1000 )) && [[ "$username" != "root" ]]; then
         # Check if home directory exists and is not a standard system path
         if [[ -d "$home" ]]; then
             # Flag if home is in /home, /root, /tmp, or other user-like paths
@@ -146,9 +146,8 @@ echo "Checking admin permissions"
 
 for user in "${ADMINS[@]}"; do
     if id "$user" &>/dev/null; then
-        groups_list=$(groups "$user" 2>/dev/null)
-        
-        if [[ "$groups_list" =~ sudo ]] || [[ "$groups_list" =~ admin ]] || [[ "$groups_list" =~ wheel ]]; then
+        # exact group names - "admin" used to match "lpadmin" (Mint/Ubuntu desktop default group)
+        if id -nG "$user" 2>/dev/null | tr ' ' '\n' | grep -qxE 'sudo|admin|wheel'; then
             echo "✓ $user has admin access"
         else
             echo "✗ $user missing admin access"
@@ -169,9 +168,7 @@ echo "Checking user permissions"
 
 for user in "${NORMAL_USERS[@]}"; do
     if id "$user" &>/dev/null; then
-        groups_list=$(groups "$user" 2>/dev/null)
-        
-        if [[ "$groups_list" =~ sudo ]] || [[ "$groups_list" =~ admin ]] || [[ "$groups_list" =~ wheel ]] || [[ "$groups_list" =~ adm ]]; then
+        if id -nG "$user" 2>/dev/null | tr ' ' '\n' | grep -qxE 'sudo|admin|wheel|adm'; then
             echo "✗ $user has admin privileges"
             read -p "Remove from admin groups? (y/n): " response
             if [[ "$response" == "y" ]]; then
@@ -199,13 +196,23 @@ for user in $uid_zero_users; do
     if [ "$user" == "root" ]; then
         echo "✓ root (expected)"
     else
-        echo "✗ CRITICAL: $user has UID 0"
-        read -p "Change UID? (y/n): " response
+        echo "✗ CRITICAL: $user has UID 0 (a second root account)"
+        # usermod/userdel refuse here ("user is currently used by process 1"): UID 0 always has processes.
+        BK="/root/cp-backups/uid0_$(date +%Y%m%d_%H%M%S)"; mkdir -p "$BK"
+        read -p "Delete account $user (recommended unless the README names it)? (y/n): " response
         if [[ "$response" == "y" ]]; then
-            new_uid=$(awk -F: '{print $3}' /etc/passwd | sort -n | tail -1)
-            new_uid=$((new_uid + 1))
-            usermod -u "$new_uid" "$user"
-            echo "✓ Changed to UID $new_uid"
+            cp -a /etc/passwd /etc/shadow /etc/group /etc/gshadow "$BK/"
+            sed -i "/^${user}:/d" /etc/passwd /etc/shadow
+            pwck -r >/dev/null 2>&1
+            if getent passwd "$user" >/dev/null; then echo "✗ $user still exists - remove its line from /etc/passwd by hand"; else echo "✓ Deleted $user (backup: $BK)"; fi
+        else
+            read -p "Give $user a normal UID instead? (y/n): " response
+            if [[ "$response" == "y" ]]; then
+                cp -a /etc/passwd "$BK/"
+                new_uid=1500; while getent passwd "$new_uid" >/dev/null; do new_uid=$((new_uid + 1)); done
+                sed -i -E "s/^(${user}:[^:]*:)0:/\1${new_uid}:/" /etc/passwd
+                [ "$(id -u "$user" 2>/dev/null)" = "$new_uid" ] && echo "✓ Changed $user to UID $new_uid" || echo "✗ Could not change the UID of $user - fix /etc/passwd by hand"
+            fi
         fi
     fi
 done
@@ -223,24 +230,34 @@ if [ -d /etc/sudoers.d ]; then
     done
 fi
 
-# Check for NOPASSWD
-nopasswd_count=$(grep -c "NOPASSWD" "$SUDOERS_CONTENT" 2>/dev/null)
-if [ "$nopasswd_count" -gt 0 ]; then
-    echo "✗ Found $nopasswd_count NOPASSWD entries"
-    read -p "Review with visudo? (y/n): " response
-    [[ "$response" == "y" ]] && visudo
+# Check for NOPASSWD / !authenticate - per file, because plain "visudo" only opens /etc/sudoers.
+# Linux Mint ships /etc/sudoers.d/mintupdate with 3 NOPASSWD lines for its own update helpers - those are stock.
+MINT_STOCK='^[[:space:]]*ALL[[:space:]]+ALL[[:space:]]*=[[:space:]]*NOPASSWD:[[:space:]]*/usr/(bin/mint-refresh-cache|lib/linuxmint/mintUpdate/(synaptic-workaround\.py|dpkg_lock_check\.sh))[[:space:]]*$'
+SUDO_HIT_FILES=()
+for f in /etc/sudoers /etc/sudoers.d/*; do
+    [ -f "$f" ] || continue
+    hits="$(grep -nE '^[^#]*(NOPASSWD|!authenticate)' "$f" 2>/dev/null)"
+    [ -n "$hits" ] || continue
+    real="$(echo "$hits" | cut -d: -f2- | grep -vE "$MINT_STOCK")"
+    if [ -z "$real" ]; then
+        echo "  (stock Linux Mint NOPASSWD lines in $f - leave them)"
+        continue
+    fi
+    echo "✗ $f:"
+    echo "$hits" | grep -vE ":${MINT_STOCK#^}" | sed 's/^/    line /'
+    SUDO_HIT_FILES+=("$f")
+done
+if [ ${#SUDO_HIT_FILES[@]} -eq 0 ]; then
+    echo "✓ No NOPASSWD / !authenticate entries (other than Mint stock)"
 else
-    echo "✓ No NOPASSWD entries"
-fi
-
-# Check for !authenticate
-auth_count=$(grep -c "!authenticate" "$SUDOERS_CONTENT" 2>/dev/null)
-if [ "$auth_count" -gt 0 ]; then
-    echo "✗ Found $auth_count !authenticate entries"
-    read -p "Review with visudo? (y/n): " response
-    [[ "$response" == "y" ]] && visudo
-else
-    echo "✓ No !authenticate entries"
+    for f in "${SUDO_HIT_FILES[@]}"; do
+        read -p "Open $f in visudo to remove them? (y/n): " response
+        [[ "$response" == "y" ]] || continue
+        if [ "$f" = /etc/sudoers ]; then visudo; else visudo -f "$f"; fi
+    done
+    for f in "${SUDO_HIT_FILES[@]}"; do
+        grep -qE '^[^#]*(NOPASSWD|!authenticate)' "$f" 2>/dev/null && grep -nE '^[^#]*(NOPASSWD|!authenticate)' "$f" | grep -vqE ":${MINT_STOCK#^}" && echo "✗ still present in $f"
+    done
 fi
 
 # Check for specific commands (excluding Defaults lines)
@@ -308,7 +325,9 @@ if getent group adm >/dev/null; then
     if [ -n "$adm_members" ]; then
         IFS=',' read -ra members <<< "$adm_members"
         for member in "${members[@]}"; do
-            if [[ " ${ADMINS[@]} " =~ " ${member} " ]]; then
+            if (( $(id -u "$member" 2>/dev/null || echo 1000) < 1000 )); then
+                echo "✓ adm: $member (system account - stock, e.g. syslog needs adm to write logs)"
+            elif [[ " ${ADMINS[@]} " =~ " ${member} " ]]; then
                 echo "✓ adm: $member"
             else
                 echo "✗ adm: $member (unauthorized)"
@@ -322,6 +341,25 @@ if getent group adm >/dev/null; then
     fi
 fi
 
+# Empty passwords: anyone can log in as these users
+echo ""
+echo "Checking for empty passwords"
+EMPTY_PW=$(awk -F: '$2 == "" {print $1}' /etc/shadow)
+if [ -n "$EMPTY_PW" ]; then
+    for u in $EMPTY_PW; do
+        echo "✗ $u has an EMPTY password"
+        read -p "Set a password for $u now (you type it; write it down)? (y/n): " response
+        if [[ "$response" == "y" ]]; then
+            passwd "$u" && echo "✓ Password set for $u" || echo "✗ passwd failed for $u"
+        else
+            read -p "Lock $u instead (passwd -l)? (y/n): " response
+            [[ "$response" == "y" ]] && passwd -l "$u" >/dev/null && echo "✓ Locked $u"
+        fi
+    done
+else
+    echo "✓ No empty passwords"
+fi
+
 # Cleanup
 rm -f "$USER_LIST_FILE"
 
@@ -329,6 +367,11 @@ rm -f "$USER_LIST_FILE"
 echo "Applying password aging policy and forcing all users to change password on next logon..."
 
 current_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+if [ -z "$current_user" ] || [ "$current_user" = root ]; then
+    luid="$(cat /proc/self/loginuid 2>/dev/null)"
+    [ -n "$luid" ] && [ "$luid" != 4294967295 ] && current_user="$(getent passwd "$luid" | cut -d: -f1)"
+fi
+echo "Your account (excluded from forced password change): ${current_user:-UNKNOWN}"
 
 # Get all regular users except the current user
 users=()
@@ -340,7 +383,9 @@ done < /etc/passwd
 
 aging_success=true
 
-if (( ${#users[@]} )) && command -v chage &>/dev/null; then
+if (( ${#users[@]} == 0 )); then
+    echo "  (no other login users to apply it to)"
+elif command -v chage &>/dev/null; then
     for u in "${users[@]}"; do
         chage -M 30 -m 7 -W 14 "$u" &>/dev/null || aging_success=false
         sudo passwd -e "$u" &>/dev/null || aging_success=false
@@ -349,7 +394,9 @@ else
     aging_success=false
 fi
 
-$aging_success && ok "Password aging policy applied and all users forced to change password on next logon" || err "Password aging update or password change force failed."
+if (( ${#users[@]} )); then
+    $aging_success && ok "Password aging policy applied and ${#users[@]} user(s) forced to change password on next logon" || err "Password aging update or password change force failed."
+fi
 
 # Set home directory permissions
 getent passwd | awk -F: '$3 >= 1000 && $3 != 65534 {print $1 ":" $6}' | while IFS=: read -r user home; do

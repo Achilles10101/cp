@@ -1,0 +1,4 @@
+mysql-common	5.8+1.0.8
+mysql-server	8.0.46-0ubuntu0.22.04.4
+mysql-server-8.0	8.0.46-0ubuntu0.22.04.4
+mysql-server-core-8.0	8.0.46-0ubuntu0.22.04.4

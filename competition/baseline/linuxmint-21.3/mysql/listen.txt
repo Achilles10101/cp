@@ -1,0 +1,2 @@
+tcp LISTEN 0      70          127.0.0.1:33060 0.0.0.0:* users:(("mysqld",pid=15724,fd=21))                                                                                                                                       
+tcp LISTEN 0      151         127.0.0.1:3306  0.0.0.0:* users:(("mysqld",pid=15724,fd=23))                                                                                                                                       

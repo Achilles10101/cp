@@ -231,10 +231,12 @@ validate_configuration() {
     local db_type=$1 out
     echo ""
     echo "Validating configuration..."
-    if [ "$db_type" = "mysql" ] && mysqld --help 2>/dev/null | grep -q -- '--validate-config'; then
+    if [ "$db_type" = "mysql" ] && mysqld --verbose --help 2>/dev/null | grep -q -- '--validate-config'; then
         out="$(mysqld --validate-config 2>&1)" || { cp_err "mysqld --validate-config failed:"; echo "$out"; return 1; }
     else
-        out="$( { mariadbd --help --verbose || mysqld --help --verbose; } 2>&1 >/dev/null | grep -iE 'error|unknown' )"
+        # only real errors: "[ERROR]" lines / unknown variables (Notes like 'Error-log destination' and
+        # warnings mentioning ERROR_FOR_DIVISION_BY_ZERO used to roll back every change)
+        out="$( { mariadbd --help --verbose || mysqld --help --verbose; } 2>&1 >/dev/null | grep -E '\[ERROR\]|unknown (variable|option)' )"
         [ -z "$out" ] || { cp_err "Config check failed:"; echo "$out"; return 1; }
     fi
     cp_ok "Configuration is valid"

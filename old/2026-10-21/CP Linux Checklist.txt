@@ -1,0 +1,142 @@
+CP Linux Checklist
+* DO README!!!!
+* Forensics, DELETE FILES AFTER
+* Do README user/group modification
+   * Add users, create groups, set passwords the README asks for (usersandsudo.sh only removes unauthorized users and fixes admin rights)
+* Check the authorized administrator passwords given in the README
+   * Read every admin password the README lists
+   * Change any that stand out as insecure: blank, "password"/"123456"-style, same as the username, a plain dictionary word, short (under 10 characters), or the same as another user's
+      * sudo passwd <user>
+      * New password must pass the policy systemconfig.sh sets: 10+ characters with upper, lower, digit and symbol
+   * WRITE DOWN every password you change, including your own account's (sudo needs it)
+* Check for rootkits
+   * sudo apt install chkrootkit rkhunter
+   * sudo chkrootkit
+   * sudo rkhunter --update
+   * sudo rkhunter --propupd
+   * sudo rkhunter -c --enable all --disable none
+* ClamAV:
+   * Install ClamAV from Web not APT
+   * Go to /usr/local/etc
+   * Rename all files to remove .sample from them (freshclam.conf.sample -> freshclam.conf)
+   * Go into all config files & remove example from them
+   * sudo freshclam
+   * sudo clamscan -r /
+* Disable null password auth
+   * Edit /etc/pam.d/common-auth
+      * Remove the option nullok from the line with pam_unix.so try_first_pass
+* Enable automatic updates (Mint only - Ubuntu is done by systemconfig.sh)
+   * Mint - Update Manager -> Edit -> Preferences -> 
+      * Automation -> Select All
+      * Options -> Refresh the list of updates automatically
+      * Fix mirror -> restore default settings -> refresh
+* Install updates for bash, kernel, LibreOffice, and service specified in the readme
+   * Upgrades
+      * sudo apt update
+      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
+      * sudo apt upgrade $service
+      * sudo apt dist-upgrade -y
+      * sudo apt install libpam-tmpdir (test out)
+* Ensure services are legit 
+   * systemctl list-units --type=service --all
+* Disable root login
+   * sudo passwd -l root
+* Disable CUPS
+* Enforce permissions
+   * chmod 640 /etc/shadow 
+   * chown root:shadow /etc/shadow
+   * chmod 644 /etc/passwd
+   * chmod 644 /etc/group
+* Check cron
+   * sudo crontab -l
+   * crontab -l
+   * sudo ls /etc/cron.*
+   * cat /etc/crontab
+   * check /etc/init/ and /etc/init.d/
+* Secure grub
+   * Add to /etc/default/grub:
+      * GRUB_TIMEOUT_STYLE=hidden
+      * GRUB_TIMEOUT=5
+* Secure session timeout
+   * Set /etc/profile.d/timeout.sh
+      * TMOUT=600
+      * readonly TMOUT
+      * export TMOUT
+   * sudo chmod +x /etc/profile.d/timeout.sh
+   * sudo /etc/profile.d/timeout.sh
+* Change account expiry defaults
+   * Add to /etc/default/useradd
+      * EXPIRE=30
+      * INACTIVE=30
+* Verify package integrity
+   * Apt
+      * Check /etc/apt/sources.list for suspicious repositories and make sure that is secure
+      * Check apt repository policy
+         * apt-cache policy
+      * Check apt trusted keys
+         * apt-key list
+* Monitor processes (top)
+* Implement an account lockout policy
+   * Make /usr/share/pam-configs/faillock:
+Name: Lockout on failed logins
+Default: no
+Priority: 0
+Auth-Type: Primary
+Auth:
+    [default=die] pam_faillock.so authfail
+   * Make /usr/share/pam-configs/faillock_reset
+Name: Reset lockout on success
+Default: no
+Priority: 0
+Auth-Type: Additional
+Auth:
+    sufficient pam_faillock.so authsucc
+   * Run sudo pam-auth-update and select what we just added
+   * Make /usr/share/pam-configs/faillock_notify
+Name: Notify on account lockout
+Default: no
+Priority: 1024
+Auth-Type: Primary
+Auth:
+    requisite pam_faillock.so preauth
+   * Run sudo pam-auth-update and select what we just added
+   set following in /etc/security/faillock.conf:
+deny = 5
+fail_interval = 900
+unlock_time = 600
+   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
+      1. pam_faillock.so preauth is before pam_unix.so
+      2. pam_faillock.so authfail is after pam_unix.so
+      3. pam_faillock.so authsucc is after authfail
+if you still have sudo:
+* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+
+==================== SCRIPTS (everything below is automated - don't redo it by hand) ====================
+* Run all scripts from inside the competition folder, in this order. Backups of everything the scripts change: /root/cp-backups/<timestamp>/
+   1. sudo bash services/baseline.sh - BASELINE FIRST (docs/CP19 Service Research Findings.md, section B)
+      * Detection only; reports in /root/baseline/<svc>/report.txt, diffs in diff.patch
+      * Review every "!!" line and diff.patch (optional: baseline.sh --meld <svc>)
+   2. sudo bash usersandsudo.sh - enter the README's admins and normal users when nano opens
+      * Covers: removes unauthorized users, suspicious system users, sudo/admin/adm group membership, UID 0 users, chage 30/7/14 + forced password change on all users, home dirs 750
+      * It flags NOPASSWD / !authenticate in /etc/sudoers + /etc/sudoers.d and opens visudo - remove them there
+         * Any commands listed can be run without a password (ex: /bin/chmod)
+         * Group lines are preceded by %
+   3. sudo bash systemconfig.sh
+      * Covers: UFW, unattended-upgrades / daily update check, LightDM + GDM guest/autologin, UMASK 027, sysctl
+      * Covers: /etc/login.defs PASS_MAX_DAYS 30, PASS_MIN_DAYS 7, PASS_WARN_AGE 14, ENCRYPT_METHOD SHA512, LOGIN_RETRIES 3
+      * Covers: common-password (pam_unix minlen=10 remember=5), pwquality.conf (minlen=10, u/l/d/ocredit=-1, dictcheck, usercheck)
+      * Covers: common-auth "requisite pam_deny.so" + pam_exec check, sudoers Defaults !env_reset / env_keep PATH removal, sudo.conf
+      * Covers: limits.conf, apparmor/auditd, grub.cfg perms + 40_custom passwords, SUID/SGID on common binaries, ACLs, gshadow, system account shells, aliases, /etc/hosts, ld.so.preload
+   4. sudo bash fileandpackage.sh - hacking tools / unwanted packages + services, network shares, media files, full SUID/SGID scan
+      * Asks about every package family it finds (y = whole family, n = keep, e = each package), then lets you add your own (names or globs; "?word" searches)
+      * Shows everything apt would remove with your list BEFORE removing; then purges, re-checks each package with dpkg-query, runs autoremove, purges leftover configs, and re-scans
+      * Answer n for anything the README lists as a critical service (SERVICE families default to n)
+      * sudo bash fileandpackage.sh --scan = report only, removes nothing
+      * Removing packages by hand: check with dpkg, not apt (apt remove X only removes the package named X)
+         * Find: dpkg -l | grep -i <name>   (read column 2, the package name; "ii" = installed, "rc" = removed but config left)
+         * Remove: sudo apt-get purge <every package from that list>, then sudo apt-get autoremove --purge
+         * Verify: dpkg-query -W -f='${db:Status-Abbrev} ${Package}\n' '<name>*'   (no output or "rc" = gone)
+   5. sudo bash portandmisc.sh - listening ports, lynis, nmap
+   6. Service scripts in services/ - only for the README's critical services: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
+      * Every service script refuses to run until that service has a baseline
+      * ssh.sh lists every ~/.ssh/authorized_keys file - check for unknown users' keys

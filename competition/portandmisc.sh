@@ -199,8 +199,10 @@ nmap_scan() {
     echo "=== NMAP LOCALHOST SCAN ==="
     echo ""
     
+    NMAP_WAS_INSTALLED=1
     if ! command -v nmap &> /dev/null; then
-        echo "Nmap is not installed."
+        NMAP_WAS_INSTALLED=0
+        echo "Nmap is not installed (it is a scored 'hacking tool' on most images - this menu removes it again after the scan)."
         read -p "Install it now? (y/n): " install
         
         if [[ $install =~ ^[Yy]$ ]]; then
@@ -225,6 +227,13 @@ nmap_scan() {
     
     echo ""
     echo "Scan complete."
+    if [[ $NMAP_WAS_INSTALLED -eq 0 ]]; then
+        read -p "Remove nmap again now (recommended - prohibited software on CP images)? (y/n): " rm_nmap
+        if [[ ! $rm_nmap =~ ^[Nn]$ ]]; then
+            sudo apt-get purge -y nmap nmap-common >/dev/null 2>&1 && sudo apt-get autoremove --purge -y >/dev/null 2>&1
+            dpkg-query -W -f='${Status}' nmap 2>/dev/null | grep -q "ok installed" && echo "WARNING: nmap is still installed" || echo "nmap removed"
+        fi
+    fi
     read -p "Press Enter to continue..."
 }
 

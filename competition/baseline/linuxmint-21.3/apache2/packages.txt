@@ -1,0 +1,4 @@
+apache2	2.4.52-1ubuntu4.25
+apache2-bin	2.4.52-1ubuntu4.25
+apache2-data	2.4.52-1ubuntu4.25
+apache2-utils	2.4.52-1ubuntu4.25

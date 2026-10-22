@@ -1,0 +1,2 @@
+bind9	1:9.18.39-0ubuntu0.22.04.7
+bind9-utils	1:9.18.39-0ubuntu0.22.04.7

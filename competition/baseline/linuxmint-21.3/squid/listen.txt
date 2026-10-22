@@ -1,0 +1,2 @@
+udp UNCONN 0      0             0.0.0.0:55337 0.0.0.0:* users:(("squid",pid=13293,fd=8))                                                                                                                                         
+tcp LISTEN 0      256           0.0.0.0:3128  0.0.0.0:* users:(("squid",pid=13293,fd=11))                                                                                                                                        

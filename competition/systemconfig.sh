@@ -100,6 +100,20 @@ Unattended-Upgrade::Allowed-Origins {
 EOF
 
 
+# Linux Mint: Update Manager > Preferences > Automation is what Mint images score
+# (1984: PathExists /var/lib/linuxmint/mintupdate-automatic-upgrades-enabled). Same as the GUI toggles.
+if command -v mintupdate-automation >/dev/null 2>&1; then
+    if cp_ask "Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)?" y; then
+        mintupdate-automation upgrade enable >/dev/null 2>&1
+        mintupdate-automation autoremove enable >/dev/null 2>&1
+        [ -e /var/lib/linuxmint/mintupdate-automatic-upgrades-enabled ] && cp_ok "Mint automatic updates enabled" || cp_warn "Mint automation did not enable - use Update Manager > Edit > Preferences > Automation"
+    fi
+    if command -v gsettings >/dev/null 2>&1 && [ -n "${SUDO_USER:-}" ]; then
+        sudo -u "$SUDO_USER" dbus-launch gsettings set com.linuxmint.updates refresh-schedule-enabled true >/dev/null 2>&1 \
+            && cp_ok "Update Manager: refresh the list of updates automatically (for $SUDO_USER)"
+    fi
+fi
+
 # Disable guest user
 if systemctl list-unit-files | grep -q "lightdm.service"; then
     echo "LightDM detected. Configuring..."
@@ -115,15 +129,13 @@ if systemctl list-unit-files | grep -q "lightdm.service"; then
     fi
     grep -q '^\[Seat:\*\]' "$LIGHTDM_CONF" || printf '\n[Seat:*]\n' >> "$LIGHTDM_CONF"
 
-    cp "$LIGHTDM_CONF" "${LIGHTDM_CONF}.backup"
+    # backup goes to /root/cp-backups: a lightdm.conf.backup next to it kept the planted
+    # autologin/guest lines inside /etc/lightdm, where a directory-wide check still finds them
+    cp_backup "$LIGHTDM_CONF"
+    [ -f "${LIGHTDM_CONF}.backup" ] && { cp_backup "${LIGHTDM_CONF}.backup"; rm -f "${LIGHTDM_CONF}.backup"; }
 
-    sed -i '/^allow-guest=/d' "$LIGHTDM_CONF"
-    sed -i '/^greeter-hide-users=/d' "$LIGHTDM_CONF"
-    sed -i '/^greeter-allow-guest=/d' "$LIGHTDM_CONF"
-    sed -i '/^greeter-show-manual-login=/d' "$LIGHTDM_CONF"
-    sed -i '/^autologin-guest=/d' "$LIGHTDM_CONF"
-    sed -i '/^autologin-user=/d' "$LIGHTDM_CONF"
-    sed -i '/^xserver-allow-tcp=/d' "$LIGHTDM_CONF"
+    # LightDM (GKeyFile) also accepts "key = value" - match optional spaces
+    sed -i -E '/^[[:space:]]*(allow-guest|greeter-hide-users|greeter-allow-guest|greeter-show-manual-login|autologin-guest|autologin-user|autologin-user-timeout|autologin-session|xserver-allow-tcp)[[:space:]]*=/d' "$LIGHTDM_CONF"
 
     sed -i '/^\[Seat:\*\]/a \
 allow-guest=false\
@@ -137,9 +149,10 @@ xserver-allow-tcp=false' "$LIGHTDM_CONF"
     # SYS6 / B3: drop-in files override lightdm.conf - remove insecure lines there too
     for f in /etc/lightdm/lightdm.conf.d/*.conf /usr/share/lightdm/lightdm.conf.d/*.conf; do
         [ -f "$f" ] || continue
-        if grep -qE '^(allow-guest=true|greeter-allow-guest=true|autologin-guest=true|autologin-user=[^N ]|xserver-allow-tcp=true)' "$f"; then
+        LDM_BAD='^[[:space:]]*((allow-guest|greeter-allow-guest|autologin-guest|xserver-allow-tcp)[[:space:]]*=[[:space:]]*true|autologin-user[[:space:]]*=[[:space:]]*([^N[:space:]].*|N[^O].*|)|autologin-user-timeout[[:space:]]*=.*)[[:space:]]*$'
+        if grep -qE "$LDM_BAD" "$f"; then
             cp_backup "$f"
-            sed -i -E '/^(allow-guest=true|greeter-allow-guest=true|autologin-guest=true|autologin-user=[^N ].*|autologin-user=$|xserver-allow-tcp=true)$/d' "$f"
+            sed -i -E "/$LDM_BAD/d" "$f"
             echo "  Removed guest/autologin/TCP settings from drop-in $f"
         fi
     done
@@ -353,6 +366,11 @@ for f in /etc/pam.d/common-auth /etc/pam.d/common-account /etc/pam.d/common-pass
     fi
 done
 grep -rlE '^[[:space:]]*[a-z]+[[:space:]].*pam_exec\.so' /etc/pam.d/ 2>/dev/null | while read -r f; do cp_warn "pam_exec still referenced in $f - review"; done
+# Install pwquality FIRST: its postinst runs pam-auth-update, which writes a fresh pam_pwquality line
+# (only "retry=3") - arguments added before the install never reached that line (Mint has no pwquality by default).
+if ! dpkg -s libpam-pwquality >/dev/null 2>&1; then
+    cp_ask "Install libpam-pwquality (needed for pwquality.conf rules)?" y && apt-get install -y libpam-pwquality >/dev/null 2>&1
+fi
 # Checklist step "add minlen=10 remember=5 to pam_unix" automated, plus the pam_pwquality arguments
 # that a 1984-style check looks for on the common-password line itself.
 CPW=/etc/pam.d/common-password
@@ -368,9 +386,6 @@ if [ -f "$CPW" ]; then
     done
     cp_ok "common-password: pam_unix remember=5 minlen=10; pam_pwquality dictcheck/usercheck/minlen/credits"
     grep -E '^[[:space:]]*password.*(pam_unix|pam_pwquality)' "$CPW" | sed 's/^/        /'
-fi
-if ! dpkg -s libpam-pwquality >/dev/null 2>&1; then
-    cp_ask "Install libpam-pwquality (needed for pwquality.conf rules)?" y && apt-get install -y libpam-pwquality >/dev/null 2>&1
 fi
 if [ -f /etc/security/pwquality.conf ] || dpkg -s libpam-pwquality >/dev/null 2>&1; then
     cp_backup /etc/security/pwquality.conf
@@ -442,6 +457,14 @@ fi
 
 # ====================================================================== SYS9 permission plants ==
 cp_hdr "SYS9 permission plants"
+# Checklist "Enforce permissions" step, automated (a world-readable /etc/shadow is scored)
+chown root:shadow /etc/shadow /etc/gshadow 2>/dev/null; chmod 640 /etc/shadow /etc/gshadow
+chown root:root /etc/passwd /etc/group; chmod 644 /etc/passwd /etc/group
+cp_ok "/etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root"
+# Checklist "Disable root login" step
+# (checked as "root:!" in /etc/shadow - a "*" root hash counts as locked for passwd -S but not for that check)
+if grep -q '^root:!' /etc/shadow; then cp_ok "root account already locked (root:! in /etc/shadow)"
+elif cp_ask "Lock the root account (passwd -l root)? You keep using sudo" y; then passwd -l root >/dev/null && grep -q '^root:!' /etc/shadow && cp_ok "root locked"; fi
 chown root:root /home; chmod 755 /home; cp_ok "/home -> 755 root:root"
 [ -f /swapfile ] && { chmod 600 /swapfile; chown root:root /swapfile; cp_ok "/swapfile -> 600"; }
 # group passwords in gshadow
@@ -503,6 +526,19 @@ grep -nE '^[[:space:]]*alias[[:space:]]' /root/.bashrc /home/*/.bashrc /home/*/.
     | sed 's/^/        alias (review): /'
 grep -vE '^[[:space:]]*(#|$)|^(127\.0\.0\.1|127\.0\.1\.1)[[:space:]]+(localhost|'"$(hostname)"')|^::1|^(fe00|ff0[0-2])::' /etc/hosts | sed 's|^|        /etc/hosts entry (review): |'
 HOLDS="$(apt-mark showhold 2>/dev/null)"; [ -n "$HOLDS" ] && echo "        apt holds (README may require these): $HOLDS"
+# Cron (checklist "Check cron"): jobs no package installed, plus every user crontab
+BACKDOOR_RE='(\bnc(at)?(\.traditional|\.openbsd)?\b.*-[a-z]*[el]|socat|/dev/tcp/|bash -i|sh -i|python[0-9.]* -c|perl -e|curl[^|]*\|[[:space:]]*(ba)?sh|wget[^|]*\|[[:space:]]*(ba)?sh|mkfifo|chmod [0-7]*[4-7][0-7]{3} )'
+for f in /etc/crontab /etc/cron.d/* /etc/cron.hourly/* /etc/cron.daily/* /etc/cron.weekly/* /etc/cron.monthly/* /var/spool/cron/crontabs/*; do
+    [ -f "$f" ] || continue
+    case "$f" in */.placeholder) continue ;; esac
+    if [ "$f" != /etc/crontab ] && dpkg-query -S "$f" >/dev/null 2>&1; then continue; fi
+    [ "$f" = /etc/crontab ] && dpkg --verify cron 2>/dev/null | grep -q ' /etc/crontab$' || [ "$f" != /etc/crontab ] || continue
+    cp_warn "Cron file not from any package (or modified): $f"
+    grep -vE '^[[:space:]]*(#|$)' "$f" | sed 's/^/          /' | head -10
+    if grep -qE "$BACKDOOR_RE" "$f" && [ "$f" != /etc/crontab ]; then
+        cp_ask "It looks like a backdoor (reverse shell / download-and-run). Delete $f?" y && { cp_backup "$f"; rm -f "$f"; cp_ok "Deleted $f"; }
+    fi
+done
 
 echo ""
 echo "✓ Hardening complete"

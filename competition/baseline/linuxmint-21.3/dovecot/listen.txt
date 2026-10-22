@@ -1,0 +1,4 @@
+tcp LISTEN 0      100           0.0.0.0:110   0.0.0.0:* users:(("dovecot",pid=20906,fd=21))                                                                                                                                      
+tcp LISTEN 0      100           0.0.0.0:143   0.0.0.0:* users:(("dovecot",pid=20906,fd=36))                                                                                                                                      
+tcp LISTEN 0      100           0.0.0.0:995   0.0.0.0:* users:(("dovecot",pid=20906,fd=22))                                                                                                                                      
+tcp LISTEN 0      100           0.0.0.0:993   0.0.0.0:* users:(("dovecot",pid=20906,fd=37))                                                                                                                                      
