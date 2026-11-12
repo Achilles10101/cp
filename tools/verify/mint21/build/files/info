@@ -1,0 +1,10 @@
+RELEASE=21.3
+CODENAME=virginia
+EDITION="Cinnamon Edition"
+DESCRIPTION="Linux Mint 21.3 Virginia"
+DESKTOP=Gnome
+TOOLKIT=GTK
+NEW_FEATURES_URL=https://www.linuxmint.com/rel_virginia_cinnamon_whatsnew.php
+RELEASE_NOTES_URL=https://www.linuxmint.com/rel_virginia_cinnamon.php
+USER_GUIDE_URL=https://www.linuxmint.com/documentation.php
+GRUB_TITLE=Linux Mint 21.3 Cinnamon

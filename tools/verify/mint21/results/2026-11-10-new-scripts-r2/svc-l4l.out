@@ -1,0 +1,38 @@
+[17:55:44] container V2-svc-l4l from cp-mint-svcplanted: systemd degraded
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:55:44] step s0-readme: bash readme.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:55:45]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.2s  exit=0  findings=- (-)
+[17:55:45] step s1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:55:53]   done in 8s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=8.3s  exit=0  findings=23 (fix=8 review=15 info=3 bang=24)
+[17:55:53] step s3-sysconfig: bash systemconfig.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:56:29]   done in 35s  STATS prompts=5 rule=4 default=1 stall=0 wait=12.5s elapsed=35.5s  exit=0  findings=- (-)
+[17:56:29] step s-critical: bash services/critical.sh
+[17:57:53]   done in 83s  STATS prompts=19 rule=16 default=3 stall=0 wait=47.6s elapsed=83.5s  exit=1  findings=- (-)
+image cp-mint-svcplanted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-svc.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+s0-readme            0.3       0.2     0.0     0.2        0     0     0     0     0        -   2.63>2.50
+s1-baseline          8.4       8.3     0.0     8.3        0     0     0     0     0       23   2.50>2.70
+s3-sysconfig        35.6      35.5    12.5    23.0        5     4     1     0     0        -   2.70>1.80
+s-critical          83.6      83.5    47.6    35.9       19    16     3     0     1        -   1.80>0.59
+TOTAL              128.6              60.1    68.5       24
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 132/144 PASS   planted: 40/44 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx
+baseline findings: 23  (fix=8 review=15 info=3 bang=24; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+
+[17:57:54] container kept: V2-svc-l4l

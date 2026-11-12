@@ -1,0 +1,33 @@
+### B2 full round (user-section paste)
+[    5.8s] '? Critical services in the README - type numbers or names, or none:' -> '' (rule)
+[    8.3s] '? Critical services in the README - type numbers or names, or none:' -> '1' (rule)
+[   10.8s] '? Correct? Enter = yes | a = admins  u = users  m = you  s = services  p = paste again [y]:' -> '' (rule)
+[  133.7s] '? Remove all of these (e = choose per family)? [Y/n/e]:' -> 'y' (rule)
+[  136.5s] '? Remove these too? [y/N/e]:' -> 'n' (rule)
+STATS prompts=63 rule=43 default=20 stall=0 wait=157.7s elapsed=202.1s
+  README answers (/root/cp-state/readme.conf):
+    ADMINS    cpuser alice
+    USERS     bob carol dave frank
+    ME        cpuser
+    SERVICES  ssh
+    WEAKPW    -
+    GROUPS    -
+    PWSET     alice bob carol dave frank
+    SSH_PORT  22
+    SSH_PASSAUTH yes
+    SSH_ALLOWUSERS 
+    SSH_DENYUSERS 
+    SSH_DENYGROUPS 
+    SSH_SFTP_DIR 
+TOTAL b2: PASS 110 / FAIL 34 / SKIP 0
+PASS  APERTURE          LD_PRELOAD rootkit .so removed
+PASS  APERTURE          UFW OpenSSH profile   [needs real ufw]
+PASS  PLANTED-MINT      OpenSSH still running (critical)
+PASS  PLANTED-MINT      Desktop still installed (cinnamon, lightdm, mint-meta-cinnamon)
+service check 02:15:49
+  OK   ssh         keyscan ok on 22
+ii  openssh-server 1:8.9p1-3ubuntu0.18 amd64        secure shell (SSH) server, for secure access from remote machines
+--- README passwords on disk:
+none
+--- readme.log:
+README intake output is not logged (the paste contains passwords). Saved answers: sudo bash readme.sh --show

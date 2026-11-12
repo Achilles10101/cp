@@ -1,0 +1,59 @@
+BASELINE FINDINGS   FIX NOW: 4   REVIEW: 7   info: 2      (2026-11-11 00:30, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[system] file no package owns: 644 root:root /etc/lightdm/lightdm.conf
+      [Seat:*]
+      autologin-user=bob
+      autologin-user-timeout=0
+      -> quarantine (q) unless the README needs it
+[system] unexpected listener: tcp 0.0.0.0:4444  nc.traditional (pid 435)
+      cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash 
+      unit: cron.service
+      -> kill/stop it (k) unless the README needs it; also check cron + units
+[system] unexpected listener: tcp 0.0.0.0:23  inetd (pid 256)
+      cmd: /usr/sbin/inetd 
+      unit: inetd.service
+      -> kill/stop it (k) unless the README needs it; also check cron + units
+
+=== REVIEW - differs from the default; keep only what the README needs ===
+[ssh] /etc/ssh/sshd_config differs from pristine (2 line(s))
+      + PermitRootLogin yes
+      + PermitEmptyPasswords yes
+      -> restore (r) or edit (e); ssh.sh hardens it
+[ssh] config file not owned by root: 644 bob:root /etc/ssh/sshd_config  (clean VM: 644 root:root)
+      -> fix (f) -> 644 root:root; ssh.sh hardens it
+[system] /etc/sudoers differs from pristine (2 line(s))
+      + Defaults !env_reset
+      + Defaults env_keep += "PATH"
+      -> restore (r) or edit (e); usersandsudo.sh checks sudoers
+[system] /etc/sysctl.conf differs from pristine (7 line(s))
+      + net.ipv4.tcp_syncookies=0
+      + net.ipv4.ip_forward=1
+      + net.ipv4.conf.all.accept_source_route = 1
+      + net.ipv4.conf.all.send_redirects=1
+      + net.ipv4.conf.all.accept_redirects = 1
+      + kernel.randomize_va_space=0
+      ... 1 more (full diff: --review d, or diff.patch)
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+[system] /etc/login.defs changed since install (login) - no pristine copy to compare
+      -> open it (e) and check every setting; systemconfig.sh also hardens this
+[system] /etc/bash.bashrc differs from pristine (1 line(s))
+      + alias GOODBYE='rm -rf ~'
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+[system] /etc/pam.d/common-auth differs from pristine (3 line(s))
+      + auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+      - auth requisite   pam_deny.so
+      + auth requisite   pam_permit.so
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+
+=== INFO - no action needed ===
+[apache2] 3 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/apache2/conf-available/php8.1-fpm.conf /etc/apache2/mods-available/php8.1.conf /etc/apache2/mods-available/php8.1.load
+[mysql] 4 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/mysql/debian-start /etc/mysql/mysql.cnf /etc/mysql/mysql.conf.d/mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

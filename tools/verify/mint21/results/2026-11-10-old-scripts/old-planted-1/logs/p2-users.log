@@ -1,0 +1,166 @@
+=== User Audit Script ===
+Have you taken a screenshot of the points? (y/n): y
+
+=== STEP 1: User Categorization ===
+Administrators: cpuser alice
+Normal users: bob carol dave frank
+
+Scanning for unauthorized users
+Found unauthorized users: eve mallory
+Remove these users? (y/n): y
+✓ Removed eve
+✓ Removed mallory
+
+Checking for suspicious system users with unexpected home directories
+✗ Found suspicious system users:
+  - syslog:103:interactive_shell:/bin/bash
+  - sysbackup:998:/home/sysbackup
+  - sysbackup:998:interactive_shell:/bin/bash
+  - toor:0:/root
+  - toor:0:interactive_shell:/bin/bash
+Review these users manually (press Enter to continue): 
+
+Checking admin permissions
+✓ cpuser has admin access
+✗ alice missing admin access
+Add alice to sudo group? (y/n): y
+✓ Added to sudo group
+
+Checking user permissions
+✗ bob has admin privileges
+Remove from admin groups? (y/n): y
+Removing user bob from group sudo
+Removing user bob from group adm
+✓ Removed admin privileges
+✓ carol is standard user
+✓ dave is standard user
+✓ frank is standard user
+
+UID 0 Check
+✓ root (expected)
+✗ CRITICAL: toor has UID 0 (a second root account)
+Delete account toor (recommended unless the README names it)? (y/n): y
+✓ Deleted toor (backup: /root/cp-backups/uid0_20261110_234059)
+
+Auditing sudoers
+✗ /etc/sudoers.d/90-cloud-init-users:
+    line 1:bob ALL=(ALL) NOPASSWD: ALL
+  (stock Linux Mint NOPASSWD lines in /etc/sudoers.d/mintupdate - leave them)
+Open /etc/sudoers.d/90-cloud-init-users in visudo to remove them? (y/n): y
+Full sudoers output, review:
+
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults	use_pty
+
+# This preserves proxy settings from user environments of root
+# equivalent users (group sudo)
+#Defaults:%sudo env_keep += "http_proxy https_proxy ftp_proxy all_proxy no_proxy"
+
+# This allows running arbitrary commands, but so does ALL, and it means
+# different sudoers have their choice of editor respected.
+#Defaults:%sudo env_keep += "EDITOR"
+
+# Completely harmless preservation of a user preference.
+#Defaults:%sudo env_keep += "GREP_COLOR"
+
+# While you shouldn't normally run git as root, you need to with etckeeper
+#Defaults:%sudo env_keep += "GIT_AUTHOR_* GIT_COMMITTER_*"
+
+# Per-user preferences; root won't have sensible values for them.
+#Defaults:%sudo env_keep += "EMAIL DEBEMAIL DEBFULLNAME"
+
+# "sudo scp" or "sudo rsync" should be able to use your SSH agent.
+#Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+
+# Ditto for GPG agent
+#Defaults:%sudo env_keep += "GPG_AGENT_INFO"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "@include" directives:
+
+@includedir /etc/sudoers.d
+Defaults !env_reset
+Defaults env_keep += "PATH"
+Defaults pwfeedback
+bob ALL=(ALL) NOPASSWD: ALL
+#
+# The default /etc/sudoers file created on installation of the
+# sudo  package now includes the directive:
+# 
+# 	@includedir /etc/sudoers.d
+# 
+# This will cause sudo to read and parse any files in the /etc/sudoers.d 
+# directory that do not end in '~' or contain a '.' character.
+# 
+# Note that there must be at least one file in the sudoers.d directory (this
+# one will do).
+# 
+# Note also, that because sudoers contents can vary widely, no attempt is 
+# made to add this directive to existing sudoers files on upgrade.  Feel free
+# to add the above directive to the end of your /etc/sudoers file to enable 
+# this functionality for existing installations if you wish! Sudo
+# versions older than the one in Debian 11 (bullseye) require the
+# directive will only support the old syntax #includedir, and the current
+# sudo will happily accept both @includedir and #includedir
+#
+# Finally, please note that using the visudo command is the recommended way
+# to update sudoers content, since it protects against many failure modes.
+# See the man page for visudo and sudoers for more information.
+#
+# Allow any user to check for new system updates without
+# requiring user authentication.
+
+ALL ALL = NOPASSWD:/usr/bin/mint-refresh-cache
+ALL ALL = NOPASSWD:/usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+ALL ALL = NOPASSWD:/usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+
+Administrative groups
+✓ sudo: cpuser
+✓ sudo: alice
+✓ adm: syslog (system account - stock, e.g. syslog needs adm to write logs)
+✓ adm: cpuser
+
+Checking for empty passwords
+✗ carol has an EMPTY password
+Set a password for carol now (you type it; write it down)? (y/n): y
+New password: 
+Retype new password: 
+passwd: password updated successfully
+✓ Password set for carol
+Applying password aging policy and forcing all users to change password on next logon...
+Your account (excluded from forced password change): cpuser
+✓ Password aging policy applied and 5 user(s) forced to change password on next logon
+Set secure home on /home/cpuser (user: cpuser)
+Set secure home on /home/alice (user: alice)
+Set secure home on /home/bob (user: bob)
+Set secure home on /home/carol (user: carol)
+Set secure home on /home/dave (user: dave)
+Set secure home on /home/frank (user: frank)
+
+=== Script Complete ===
+
+[drive2] EXIT 0

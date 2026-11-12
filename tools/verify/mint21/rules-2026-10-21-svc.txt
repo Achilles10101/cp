@@ -1,0 +1,75 @@
+# Rules for the OLD scripts, services pipeline on cp-mint-svcplanted (moved from the 2026-10-21 svcpipe.sh):
+# baseline, systemconfig, then every service script with defaults + the README answers the checks use.
+set HARD=900
+
+step s1-baseline bash services/baseline.sh
+
+step s3-sysconfig bash systemconfig.sh
+rule Proceed with operation             => y
+rule Open or Close a port               => n
+rule Enable IPv6                        => n
+rule install stable updates             => yes
+rule Do you want to continue            => y
+rule Remove ALL superuser               => n
+rule Lock the root account              => y
+rule Linux Mint: turn on Update Manager => y
+
+step s-ssh bash services/ssh.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-vsftpd bash services/vsftpd.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-apache2 bash services/apache2.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-php bash services/php.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-mysql bash services/mysql.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-postgresql bash services/postgresql.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-samba bash services/samba.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-bind9 bash services/bind9.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-mail bash services/mail.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y
+
+step s-squid bash services/squid.sh
+rule Test login - FTP username => ftpuser
+rule Password for ftpuser      => Ftp-Us3r!pass
+rule \(END\)                    => q
+rule Do you want to continue   => y

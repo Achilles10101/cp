@@ -1,0 +1,13 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.3s] '? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none:' -> '' (rule)
+[    9.3s] '? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]:' -> 'y' (rule)
+[   11.9s] '? Lock the root account (passwd -l root)? You keep using sudo [Y/n]:' -> '' (DEFAULT(Enter))
+[   14.5s] '? Remove these group passwords? [Y/n]:' -> '' (DEFAULT(Enter))
+[   17.0s] '? Set their shell to /usr/sbin/nologin? [Y/n]:' -> '' (DEFAULT(Enter))
+[   19.5s] "? Remove their passwords (set to '*')? [Y/n]:" -> '' (DEFAULT(Enter))
+[   22.1s] '? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   24.7s] '? Strip these ACLs (setfacl -b; stock has none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   28.2s] '? Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   34.7s] '? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=11 rule=3 default=8 stall=0 wait=27.5s elapsed=36.6s
+EXIT 0

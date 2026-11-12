@@ -1,0 +1,3 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[drive2] EXIT 0

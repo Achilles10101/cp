@@ -1,0 +1,18 @@
+[18:59:37] start start-planted
+[19:03:58] done  start-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[19:03:58] start start-enterreview
+[19:08:00] done  start-enterreview: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[19:08:00] start svc-start
+[19:12:45] done  svc-start: checks: 132/144 PASS   planted: 40/44 PASS services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx 
+[19:12:45] start baseline-clean
+[19:12:48] done  baseline-clean: 
+[19:12:48] start baseline-services
+[19:12:58] done  baseline-services: 
+[19:12:58] start baseline-planted
+[19:13:04] done  baseline-planted: 
+[19:13:04] start merge-planted
+[19:17:48] done  merge-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[19:17:48] start notty
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+done
+[19:18:38] ALL DONE

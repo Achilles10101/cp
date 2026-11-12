@@ -1,14 +1,123 @@
 CP Linux Checklist
-* DO README!!!!
-* Forensics, DELETE FILES AFTER
-* Do README user/group modification
-   * Add users, create groups, set passwords the README asks for (usersandsudo.sh only removes unauthorized users and fixes admin rights)
-* Check the authorized administrator passwords given in the README
+==================== MAIN FLOW (modular: one script at a time, check the score after each) ====================
+* DO README!!!! Read the whole README: authorized admins/users (and their passwords), critical services, required software, users/groups to add, anything it says NOT to change
+   * Doing ClamAV from source (OPTIONAL at the end)? Start its download now so it is ready later
+* Forensics, DELETE FILES AFTER - answer every Forensics Question on the Desktop BEFORE anything is changed
+* Manual items - the MANUAL section below
+* Baseline: sudo bash services/baseline.sh (or cd services; sudo ./baseline.sh) - read-only scan, prints the findings (/root/baseline/FINDINGS.txt), then asks once "Go through the findings now? [y/N]" (SCRIPTS 1)
+* Category scripts, one at a time - each takes a score snapshot (or asks for a screenshot) first, so check the score after each:
+   1. sudo bash usersandsudo.sh - SCRIPTS 2
+   2. sudo bash systemconfig.sh - SCRIPTS 3
+   3. sudo bash fileandpackage.sh - SCRIPTS 4
+   4. sudo bash portandmisc.sh - SCRIPTS 5
+* Critical services: sudo bash services/critical.sh - SCRIPTS 6
+* Upgrades: sudo bash upgrades.sh - SCRIPTS 7
+* LAST - account expiry defaults, then the LOCKOUT POLICY (faillock, then nullok) - the LAST section below
+* Every script ends with "=== <script> finished - listed for you (N): ===" and a numbered list of what it found for you to act on (forbidden files, README decisions, fixes you declined)
+
+==================== SPEEDRUN (intro rounds: the same scripts in one go) ====================
+* sudo bash speedrun.sh - from inside the competition folder
+   * Starts the read-only baseline scan in the background, then stops once: do the Forensics Questions now (nothing has been changed yet), Enter
+   * Then starts apt-get update + the upgrade download in the background and runs usersandsudo.sh, baseline.sh --review, systemconfig.sh, fileandpackage.sh, portandmisc.sh, services/critical.sh, upgrades.sh - each asks its own questions
+   * Ends with the reminder that the lockout policy comes last (LAST section) and the time per step; each script ends with a list of what it found for you to act on
+   * Output of each step: /root/cp-state/logs/<step>.log; Ctrl-C stops it - run it again and finished steps are skipped (sudo bash speedrun.sh --reset forgets them)
+
+==================== MANUAL (after forensics, before the scripts) ====================
+* Do README user/group modification (usersandsudo.sh does most of it - do by hand only what it cannot)
+   * Add users, create groups, set passwords the README asks for (usersandsudo.sh creates missing README accounts, asks for the README's groups and removes unauthorized users / fixes admin rights - do by hand only what it could not)
+* Check the authorized administrator passwords given in the README (usersandsudo.sh warns about insecure ones and offers to change them)
    * Read every admin password the README lists
-   * Change any that stand out as insecure: blank, "password"/"123456"-style, same as the username, a plain dictionary word, short (under 10 characters), or the same as another user's
+   * Change any that stand out as insecure: blank, "password"/"123456"-style, same as the username, a plain dictionary word, short (under 12 characters), or the same as another user's
       * sudo passwd <user>
-      * New password must pass the policy systemconfig.sh sets: 10+ characters with upper, lower, digit and symbol
+      * New password must pass the policy systemconfig.sh sets: 12+ characters with upper, lower, digit and symbol
    * WRITE DOWN every password you change, including your own account's (sudo needs it)
+* Ensure services are legit (fileandpackage.sh asks about unwanted service packages, baseline B5/B6 lists unknown units/listeners)
+   * systemctl list-units --type=service --all
+* Disable CUPS - unless the README needs printing (fileandpackage.sh offers to remove it, default keep)
+   * sudo systemctl disable --now cups cups-browsed
+* Check cron (systemconfig.sh SYS10 lists cron files no package installed + all user crontabs, deletes obvious reverse shells - verify)
+   * sudo crontab -l
+   * crontab -l
+   * sudo ls /etc/cron.*
+   * cat /etc/crontab
+   * check /etc/init/ and /etc/init.d/
+* Verify package integrity
+   * Apt
+      * Check /etc/apt/sources.list (and /etc/apt/sources.list.d/) for suspicious repositories and make sure that is secure
+      * Check apt repository policy
+         * apt-cache policy
+      * Check apt trusted keys
+         * apt-key list
+* Secure session timeout - writes /etc/profile.d/timeout.sh (TMOUT=600, readonly TMOUT, export TMOUT) and makes it executable; new login shells pick it up
+printf 'TMOUT=600\nreadonly TMOUT\nexport TMOUT\n' | sudo tee /etc/profile.d/timeout.sh >/dev/null && sudo chmod +x /etc/profile.d/timeout.sh && sudo bash /etc/profile.d/timeout.sh && cat /etc/profile.d/timeout.sh
+* Secure grub - GRUB_TIMEOUT_STYLE=hidden and GRUB_TIMEOUT=5 in /etc/default/grub (replaces existing lines), then update-grub applies it
+sudo sed -i -E '/^#?[[:space:]]*GRUB_TIMEOUT(_STYLE)?=/d' /etc/default/grub && printf 'GRUB_TIMEOUT_STYLE=hidden\nGRUB_TIMEOUT=5\n' | sudo tee -a /etc/default/grub >/dev/null && sudo update-grub
+* Monitor processes (top)
+* Install updates for bash, kernel, LibreOffice, and service specified in the readme (upgrades.sh does this, or by hand:)
+   * Upgrades
+      * sudo apt update
+      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
+      * sudo apt upgrade $service
+      * sudo apt dist-upgrade -y
+* Enable automatic updates (systemconfig.sh now does Mint's Automation tab too - just verify here)
+   * Mint - Update Manager -> Edit -> Preferences ->
+      * Automation -> Select All
+      * Options -> Refresh the list of updates automatically
+      * Fix mirror -> restore default settings -> refresh (also the fix when apt-get update fails)
+* Disable root login (systemconfig.sh asks; verify: sudo grep '^root:!' /etc/shadow)
+   * sudo passwd -l root
+* Enforce permissions (automated in systemconfig.sh SYS9 - verify)
+   * chmod 640 /etc/shadow
+   * chown root:shadow /etc/shadow
+   * chmod 644 /etc/passwd
+   * chmod 644 /etc/group
+if you still have sudo:
+* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+
+==================== LAST (after every script - accounts all exist, PAM edits are done) ====================
+* Change account expiry defaults - EXPIRE=30 and INACTIVE=30 in /etc/default/useradd - AFTER every README user has been added
+   * Careful: EXPIRE is a date - a plain number means days since 1970, so accounts created AFTER this are already expired (users that exist are not affected)
+sudo sed -i -E '/^#?[[:space:]]*(EXPIRE|INACTIVE)=/d' /etc/default/useradd && printf 'EXPIRE=30\nINACTIVE=30\n' | sudo tee -a /etc/default/useradd >/dev/null && grep -E '^(EXPIRE|INACTIVE)=' /etc/default/useradd
+* LOCKOUT POLICY: implement an account lockout policy (faillock) - paste the whole block into a root-capable terminal (creates the 3 pam-configs files)
+sudo tee /usr/share/pam-configs/faillock >/dev/null <<'EOF'
+Name: Lockout on failed logins
+Default: no
+Priority: 0
+Auth-Type: Primary
+Auth:
+    [default=die] pam_faillock.so authfail
+EOF
+sudo tee /usr/share/pam-configs/faillock_reset >/dev/null <<'EOF'
+Name: Reset lockout on success
+Default: no
+Priority: 0
+Auth-Type: Additional
+Auth:
+    sufficient pam_faillock.so authsucc
+EOF
+sudo tee /usr/share/pam-configs/faillock_notify >/dev/null <<'EOF'
+Name: Notify on account lockout
+Default: no
+Priority: 1024
+Auth-Type: Primary
+Auth:
+    requisite pam_faillock.so preauth
+EOF
+   * Enable all three at once (same as running sudo pam-auth-update twice and selecting what we just added; keeps your other PAM edits)
+sudo pam-auth-update --enable faillock faillock_reset faillock_notify
+   * Set deny = 5, fail_interval = 900, unlock_time = 600 in /etc/security/faillock.conf (edits the lines in place, adds missing ones)
+for kv in "deny = 5" "fail_interval = 900" "unlock_time = 600"; do k=${kv%% *}; sudo sed -i -E "s/^[#[:space:]]*$k[[:space:]]*=.*/$kv/" /etc/security/faillock.conf; grep -qE "^$k[[:space:]]*=" /etc/security/faillock.conf || echo "$kv" | sudo tee -a /etc/security/faillock.conf >/dev/null; done; grep -E '^(deny|fail_interval|unlock_time)' /etc/security/faillock.conf
+   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
+      1. pam_faillock.so preauth is before pam_unix.so
+      2. pam_faillock.so authfail is after pam_unix.so
+      3. pam_faillock.so authsucc is after authfail
+grep -n 'pam_faillock\|pam_unix' /etc/pam.d/common-auth
+* Disable null password auth - AFTER the faillock step (pam-auth-update writes the pam_unix line)
+   * Edit /etc/pam.d/common-auth
+      * Remove the option nullok from the line with pam_unix.so try_first_pass (backup to /root/cp-backups/manual/, then edit in place):
+sudo mkdir -p /root/cp-backups/manual && sudo cp -a /etc/pam.d/common-auth /root/cp-backups/manual/ && sudo sed -i -E 's/[[:space:]]nullok(_secure)?([[:space:]]|$)/\2/' /etc/pam.d/common-auth && grep -n pam_unix /etc/pam.d/common-auth
+
+==================== OPTIONAL (slow, low yield - only when everything above is done) ====================
 * Check for rootkits
    * sudo apt install chkrootkit rkhunter
    * sudo chkrootkit
@@ -16,130 +125,51 @@ CP Linux Checklist
    * sudo rkhunter --propupd
    * sudo rkhunter -c --enable all --disable none
 * ClamAV:
-   * Install ClamAV from Web not APT
+   * Install ClamAV from Web not APT (start the download at the beginning of the round)
    * Go to /usr/local/etc
    * Rename all files to remove .sample from them (freshclam.conf.sample -> freshclam.conf)
    * Go into all config files & remove example from them
    * sudo freshclam
    * sudo clamscan -r /
-* Disable null password auth
-   * Edit /etc/pam.d/common-auth
-      * Remove the option nullok from the line with pam_unix.so try_first_pass
-* Enable automatic updates (systemconfig.sh now does Mint's Automation tab too - just verify here)
-   * Mint - Update Manager -> Edit -> Preferences -> 
-      * Automation -> Select All
-      * Options -> Refresh the list of updates automatically
-      * Fix mirror -> restore default settings -> refresh
-* Install updates for bash, kernel, LibreOffice, and service specified in the readme
-   * Upgrades
-      * sudo apt update
-      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
-      * sudo apt upgrade $service
-      * sudo apt dist-upgrade -y
-      * sudo apt install libpam-tmpdir (test out)
-* Ensure services are legit 
-   * systemctl list-units --type=service --all
-* Disable root login (systemconfig.sh asks; verify: sudo grep '^root:!' /etc/shadow)
-   * sudo passwd -l root
-* Disable CUPS
-* Enforce permissions (automated in systemconfig.sh SYS9 - verify)
-   * chmod 640 /etc/shadow 
-   * chown root:shadow /etc/shadow
-   * chmod 644 /etc/passwd
-   * chmod 644 /etc/group
-* Check cron (systemconfig.sh SYS10 lists cron files no package installed + all user crontabs, deletes obvious reverse shells)
-   * sudo crontab -l
-   * crontab -l
-   * sudo ls /etc/cron.*
-   * cat /etc/crontab
-   * check /etc/init/ and /etc/init.d/
-* Secure grub
-   * Add to /etc/default/grub:
-      * GRUB_TIMEOUT_STYLE=hidden
-      * GRUB_TIMEOUT=5
-* Secure session timeout
-   * Set /etc/profile.d/timeout.sh
-      * TMOUT=600
-      * readonly TMOUT
-      * export TMOUT
-   * sudo chmod +x /etc/profile.d/timeout.sh
-   * sudo /etc/profile.d/timeout.sh
-* Change account expiry defaults
-   * Add to /etc/default/useradd
-      * EXPIRE=30
-      * INACTIVE=30
-* Verify package integrity
-   * Apt
-      * Check /etc/apt/sources.list for suspicious repositories and make sure that is secure
-      * Check apt repository policy
-         * apt-cache policy
-      * Check apt trusted keys
-         * apt-key list
-* Monitor processes (top)
-* Implement an account lockout policy
-   * Make /usr/share/pam-configs/faillock:
-Name: Lockout on failed logins
-Default: no
-Priority: 0
-Auth-Type: Primary
-Auth:
-    [default=die] pam_faillock.so authfail
-   * Make /usr/share/pam-configs/faillock_reset
-Name: Reset lockout on success
-Default: no
-Priority: 0
-Auth-Type: Additional
-Auth:
-    sufficient pam_faillock.so authsucc
-   * Run sudo pam-auth-update and select what we just added
-   * Make /usr/share/pam-configs/faillock_notify
-Name: Notify on account lockout
-Default: no
-Priority: 1024
-Auth-Type: Primary
-Auth:
-    requisite pam_faillock.so preauth
-   * Run sudo pam-auth-update and select what we just added
-   set following in /etc/security/faillock.conf:
-deny = 5
-fail_interval = 900
-unlock_time = 600
-   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
-      1. pam_faillock.so preauth is before pam_unix.so
-      2. pam_faillock.so authfail is after pam_unix.so
-      3. pam_faillock.so authsucc is after authfail
-if you still have sudo:
-* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+* sudo apt install libpam-tmpdir (test out)
 
 ==================== SCRIPTS (everything below is automated - don't redo it by hand) ====================
-* Run all scripts from inside the competition folder, in this order. Backups of everything the scripts change: /root/cp-backups/<timestamp>/
-   1. sudo bash services/baseline.sh - BASELINE FIRST (docs/CP19 Service Research Findings.md, section B)
-      * Detection only; reports in /root/baseline/<svc>/report.txt, diffs in diff.patch
-      * Review every "!!" line and diff.patch (optional: baseline.sh --meld <svc>)
-   2. sudo bash usersandsudo.sh - enter the README's admins and normal users when nano opens
-      * Covers: removes unauthorized users, suspicious system users, sudo/admin/adm group membership (exact group names), UID 0 users (deletes the account - usermod can't), EMPTY passwords (you type a new one - write it down), chage 30/7/14 + forced password change on all other users, home dirs 750
+* /opt/CyberPatriot is the scoring engine - the scripts never touch it, never delete anything there
+* Run all scripts from inside the competition folder, in this order (speedrun.sh runs them in one go). Backups of everything the scripts change: /root/cp-backups/<timestamp>/
+   1. sudo bash services/baseline.sh - BASELINE FIRST (docs/CP19 Service Research Findings.md, section B); speedrun.sh starts it in the background
+      * Detection only; START HERE: /root/baseline/FINDINGS.txt (FIX NOW first, one line each + what to do); per service: reports in /root/baseline/<svc>/report.txt, diffs in diff.patch
+      * No arguments needed: after the scan it asks once "Go through the findings now (review: fix / quarantine / skip each)? [y/N]"; later, optional: sudo bash services/baseline.sh --review - FIX NOW first, then "Also go through the N REVIEW item(s)? [y/N]"; per finding a key + Enter (diff / restore / quarantine / skip ..., Enter alone = default); optional: baseline.sh --meld
+   2. sudo bash usersandsudo.sh - asks for the README itself on every run: click in the README page, Ctrl-A, Ctrl-C, paste (readme.sh is only its paste parser; nothing is saved for other scripts); insecure README passwords are flagged with an offer to change them
+      * Covers: removes unauthorized users (one list: y = all, n = none, e = each; homes backed up), hidden/suspicious system users, sudo/admin/adm group membership (exact group names, one list), UID 0 users (deletes the account - usermod can't), creates missing README accounts, one "Change it now? [Y/n]" per insecure README password, EMPTY password or new account (12+ characters, typed twice; Enter reuses the previous one; your own account defaults to n - write them down), the blanket "one password for all README users" only as an Extra [y/N], EMPTY passwords locked if still empty, chage 30/7/14 + forced password change on all other users (a separate [y/N] for passwd -e when vsftpd/dovecot/samba is installed - an expired password blocks those logins), home dirs 750, README groups (one line: "group: a b; group2: c")
       * It lists NOPASSWD / !authenticate per file and opens visudo -f on that exact file - remove them there
          * /etc/sudoers.d/mintupdate has 3 stock Linux Mint NOPASSWD lines - leave those
          * syslog in the adm group is stock - leave it
          * Any commands listed can be run without a password (ex: /bin/chmod)
          * Group lines are preceded by %
-   3. sudo bash systemconfig.sh
-      * Covers: UFW, unattended-upgrades / daily update check, Mint Update Manager automation, LightDM + GDM guest/autologin (incl. lightdm.conf.d drop-ins), UMASK 027, sysctl
+   3. sudo bash systemconfig.sh - README questions: firewall rules (detected daemons listed with a hint; Enter = none, e = decide each - usually e), extra ports, "Disable IPv6?" (Enter = yes), GRUB passwords; everything else is a [Y/n] with the right default
+      * Covers: UFW (lists the server daemons found installed/listening with the rule each needs - you choose - plus one "extra ports" question; no open/close loop), unattended-upgrades / daily update check, Mint Update Manager automation, LightDM + GDM guest/autologin (incl. lightdm.conf.d drop-ins), UMASK 027, sysctl
+      * Covers (Debian only): /etc/apt/sources.list is ALWAYS rewritten to <codename> main, <codename>-updates main, <codename>-security main (security.debian.org/debian-security); sources.list.d extras listed + moved aside (backed up); skipped on Ubuntu/Mint
       * Covers: /etc/login.defs PASS_MAX_DAYS 30, PASS_MIN_DAYS 7, PASS_WARN_AGE 14, ENCRYPT_METHOD SHA512, LOGIN_RETRIES 3
-      * Covers: common-password (pam_unix minlen=10 remember=5), pwquality.conf (minlen=10, u/l/d/ocredit=-1, dictcheck, usercheck)
+      * Covers: common-password (pam_unix minlen=12 remember=5; pam_pwquality retry=3 minlen=12), pwquality.conf (minlen=12, u/l/d/ocredit=-1, dictcheck, usercheck)
       * Covers: common-auth "requisite pam_deny.so" + pam_exec check, sudoers Defaults !env_reset / env_keep PATH removal, sudo.conf
       * Covers: limits.conf, apparmor/auditd, grub.cfg perms + 40_custom passwords, shadow/passwd/group perms, root lock, SUID/SGID on common binaries, ACLs, gshadow, system account shells, aliases, /etc/hosts, ld.so.preload, cron
    4. sudo bash fileandpackage.sh - hacking tools / unwanted packages + services, network shares, media files, full SUID/SGID scan
-      * [5] lists media in home/data folders, planted media in system folders (files no package installed), then other files (look for passwords.txt-style files) - it only LISTS, delete by hand
-      * Asks about every package family it finds (y = whole family, n = keep, e = each package), then lets you add your own (names or globs; "?word" searches)
-      * Shows everything apt would remove with your list BEFORE removing; then purges, re-checks each package with dpkg-query, runs autoremove, purges leftover configs, and re-scans
+      * "Remove" list (hacking tools, remote access, P2P, games incl. AisleRiot; Enter = remove all, e = choose per family/package); SERVICE families (apache2, vsftpd, samba, mail ...) in their own list, Enter = keep, each with a hint (installed / running / listening on :port) - remove what the README does not need; the OpenSSH server gets its own [y/N]; desktop defaults and review items: Enter = keep; then lets you add your own (names or globs; "?word" searches)
+      * Shows everything apt would remove with your list BEFORE removing; then purges, re-checks each package with dpkg-query, runs autoremove, purges leftover configs, and re-scans (the purge asks [y/N] when the preview takes a desktop/metapackage or a service package you did not choose)
       * Answer n for anything the README lists as a critical service (SERVICE families default to n)
+      * [5] media in home/data folders and planted media in system folders (files no package installed): Enter moves them to /root/cp-quarantine (restorable); passwords.txt-style files and other files are only listed - delete by hand what the README does not need
       * sudo bash fileandpackage.sh --scan = report only, removes nothing
+      * [5b] also searches the whole disk for pyrdp (pip/pipx/git installs that dpkg can't see, same filesystem pass) and offers to uninstall + quarantine it: one [Y/n]
       * Removing packages by hand: check with dpkg, not apt (apt remove X only removes the package named X)
          * Find: dpkg -l | grep -i <name>   (read column 2, the package name; "ii" = installed, "rc" = removed but config left)
          * Remove: sudo apt-get purge <every package from that list>, then sudo apt-get autoremove --purge
          * Verify: dpkg-query -W -f='${db:Status-Abbrev} ${Package}\n' '<name>*'   (no output or "rc" = gone)
-   5. sudo bash portandmisc.sh - listening ports, lynis, nmap (option 3 installs nmap and offers to remove it again after the scan - say y, nmap is a scored hacking tool)
-   6. Service scripts in services/ - only for the README's critical services: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
-      * Every service script refuses to run until that service has a baseline
-      * ssh.sh lists every ~/.ssh/authorized_keys file - check for unknown users' keys
+   5. sudo bash portandmisc.sh - no menu: every listening port with its process/package/unit; backdoor-looking listeners are offered for stop + disable, services (with state and ports as hints; Enter = keep, SSH its own [y/N]) too, unknown ones are listed; then one optional question (l = lynis in the background, n = nmap localhost scan - nmap is a scored hacking tool, it is purged right after; Enter = skip)
+      * Flags: --scan = report only, --lynis = only lynis in the background, --nmap = only the nmap scan
+   6. sudo bash services/critical.sh - detects the services installed here and asks for each: "Run <svc>.sh (the README must list it as critical)? [y/N]" (shows installed / active / listening :port), then runs them in a safe order (or run one by hand: sudo bash services/<svc>.sh)
+      * Service scripts in services/ - only for the README's critical services: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
+      * Each asks its own README questions (one "Does the README change any of these?", Enter = no; mail.sh first asks whether MAIL is critical); each remembers only its own answers - <script> --reask to change them
+      * Every service script refuses to run until that service has a baseline (it scans the service itself when missing)
+      * mail.sh asks whether the README needs POP3; if not it purges dovecot-pop3d, drops pop3 from `protocols =` and closes ports 110/995 in UFW
+      * ssh.sh lists every ~/.ssh/authorized_keys file - check for unknown users' keys (root's are removed automatically)
+   7. sudo bash upgrades.sh - lists the apt repositories (non-official ones -> warning, listed), shows what the full-upgrade installs (notable packages, anything it would remove), one y/N, then installs keeping your hardened config files (--force-confold); uses the upgrades speedrun.sh downloaded when they are there; official = known Ubuntu/Mint/Debian hosts only

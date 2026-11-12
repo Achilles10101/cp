@@ -1,0 +1,14 @@
+aisleriot: dpkg-query: no packages found matching aisleriot
+ls: cannot access '/usr/local/lib/python3.10/dist-packages/pyrdp*': No such file or directory
+ls: cannot access '/usr/local/bin/pyrdp-mitm': No such file or directory
+# used to change user passwords.  The default is pam_unix.
+# Explanation of pam_unix options:
+#`OBSCURE_CHECKS_ENAB' option in login.defs.  See the pam_unix manpage
+password	requisite			pam_pwquality.so retry=3 dictcheck=1 usercheck=1 minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass yescrypt remember=5 minlen=12
+minlen = 12
+/root/cp-quarantine/usr/local/bin/pyrdp-mitm
+/root/cp-quarantine/usr/local/lib/python3.10/dist-packages/pyrdp
+/root/cp-quarantine/usr/local/lib/python3.10/dist-packages/pyrdp_mitm-1.2.0.dist-info
+
+[drive2] EXIT 0

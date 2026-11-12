@@ -1,0 +1,30 @@
+
+=== Listening ports (process, package, unit) ===
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:21             vsftpd (178)                 vsftpd                 vsftpd.service  -> service
+  tcp   0.0.0.0:22             sshd (191)                   openssh-server         ssh.service  -> service
+  tcp   0.0.0.0:23             inetd (259)                  openbsd-inetd          inetd.service  -> service
+  tcp   127.0.0.53%lo:53       systemd-resolve (67)         systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (67)         systemd                systemd-resolved.service  -> system
+  tcp   0.0.0.0:80             apache2 (227)                apache2-bin            apache2.service  -> service
+  tcp   127.0.0.1:631          cupsd (169)                  cups-daemon            cups.service  -> system
+  tcp   0.0.0.0:4444           nc.traditional (2530)        netcat-traditional     cron.service  -> backdoor
+          cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash    unit file: /lib/systemd/system/cron.service
+  udp   0.0.0.0:5353           avahi-daemon (85)            avahi-daemon           avahi-daemon.service  -> system
+  tcp   0.0.0.0:31337          python3 (104)                python3.10-minimal     system-sync.service  -> backdoor
+          cmd: /usr/bin/python3 -m http.server 31337 --directory /    unit file: /etc/systemd/system/system-sync.service (no package)
+  udp   0.0.0.0:53924          avahi-daemon (85)            avahi-daemon           avahi-daemon.service  -> system
+  [!] README critical services unknown (run readme.sh) - nothing is treated as critical
+
+  [*] 5 listener(s) are critical services, stock system daemons or the scoring engine
+  [TODO] Listener tcp/4444 (cron.service): /bin/nc.traditional -l -p 4444 -e /bin/bash  - stop it unless the README needs it
+  [TODO] Listener tcp/31337 (system-sync.service): /usr/bin/python3 -m http.server 31337 --directory /  - stop it unless the README needs it
+  [TODO] Listener tcp/21 (vsftpd.service): /usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO  - stop it unless the README needs it
+  [TODO] Listener tcp/22 (ssh.service): sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups  - stop it unless the README needs it
+  [TODO] Listener tcp/23 (inetd.service): /usr/sbin/inetd  - stop it unless the README needs it
+  [TODO] Listener tcp/80 (apache2.service): /usr/sbin/apache2 -k start  - stop it unless the README needs it
+  [!] nmap is installed (scored hacking tool)
+  [TODO] Purge nmap (scored hacking tool): sudo apt-get purge nmap nmap-common
+
+  [+] portandmisc done in 1s. Listener table: /root/cp-state/listeners.tsv
+[exit 0]

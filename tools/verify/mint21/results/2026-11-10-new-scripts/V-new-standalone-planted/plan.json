@@ -1,0 +1,1043 @@
+{
+ "steps": [
+  {
+   "name": "wait65",
+   "cmd": [
+    "sleep",
+    "65"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p0-readme",
+   "cmd": [
+    "bash",
+    "readme.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank",
+    "CP_SERVICES": "ssh"
+   },
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p1-baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p1b-review",
+   "cmd": [
+    "bash",
+    "services/baseline.sh",
+    "--review"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": [
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p2-users",
+   "cmd": [
+    "bash",
+    "usersandsudo.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p3-sysconfig",
+   "cmd": [
+    "bash",
+    "systemconfig.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p4-filepkg",
+   "cmd": [
+    "bash",
+    "fileandpackage.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p5-portmisc",
+   "cmd": [
+    "bash",
+    "portandmisc.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "p6-ssh",
+   "cmd": [
+    "bash",
+    "services/ssh.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ]
+   ]
+  }
+ ],
+ "global": {
+  "HARD": "1500"
+ }
+}

@@ -1,0 +1,53 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'samba' exists (/root/baseline/samba)
+
+----- Baseline findings for samba (full report: /root/baseline/samba/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 differs from pristine default: /etc/samba/smb.conf
+!! B2 differs from clean-VM pack: /etc/samba/smb.conf
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B7 service-internal accounts vs defaults
+## B9 snapshot of live state saved to /root/baseline/samba/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+  [*] Backup: /root/cp-backups/20261110_235330/etc/samba/smb.conf
+=========================================
+Samba Security Hardening (/etc/samba/smb.conf)
+=========================================
+  [+] [global] hardened: SMB2+ only, encryption + signing required, no guests/anonymous, NTLMv2 only
+  ? Enable full_audit logging of file operations (vfs objects = full_audit)? [y/N]: 
+
+Shares (compare with the README):
+
+  [printers]
+         comment = All Printers
+         browseable = no
+         path = /var/spool/samba
+         printable = yes
+         guest ok = no
+         read only = yes
+         create mask = 0700
+
+  [print$]
+         comment = Printer Drivers
+         path = /var/lib/samba/printers
+         browseable = yes
+         read only = yes
+         guest ok = no
+
+  [+] testparm: config valid
+
+Samba password database (pdbedit -L) - Samba keeps its own users; userdel does not remove them:
+  ? Samba users to REMOVE (space separated, Enter = none): 
+  [+] UFW: allowed application profile 'Samba'
+  [+] smbd restarted and active
+  [+] nmbd restarted and active
+  [+] Anonymous access refused
+  ? Test an authorized Samba user (Enter to skip): 
+Samba hardening complete.
+
+[drive2] EXIT 0

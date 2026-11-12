@@ -1,0 +1,7 @@
+apt.end    apt.pid  apt.start	   baseline.end  baseline.rc
+apt.phase  apt.rc   apt.update_rc  baseline.pid  baseline.start
+apt rc=0 secs=4
+baseline rc=0 secs=3
+upgrade rc= secs=0
+
+[drive2] EXIT 0

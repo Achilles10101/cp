@@ -1,0 +1,4 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[   16.8s] '? Install them now (your hardened config files are kept)? [Y/n]:' -> 'y' (rule)
+STATS prompts=2 rule=2 default=0 stall=0 wait=5.0s elapsed=30.7s
+EXIT 0

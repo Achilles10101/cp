@@ -1,0 +1,9 @@
+
+=== Critical services ===
+  Detected services below are suggestions only - the README decides which ones are critical.
+  ssh: openssh-server installed, active, listening on :22
+  vsftpd: vsftpd installed, active, listening on :21
+  apache2: apache2 installed, active, listening on :80
+  Plan: (nothing)
+  [*] Nothing chosen - no service hardened.
+[exit 0]

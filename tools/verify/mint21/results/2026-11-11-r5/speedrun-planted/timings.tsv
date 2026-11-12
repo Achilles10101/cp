@@ -1,0 +1,3 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+wait65	65.1	65.0	0.0	0	0	0	0	0	-	0.80	0.27	-
+speedrun	227.6	227.5	185.3	74	53	21	0	0	-	0.27	0.61	-

@@ -1,0 +1,13 @@
+[18:06:56] start svcnone
+[18:11:24] done svcnone: checks: 104/144 PASS   planted: 41/44 PASS services answering: 1 OK ssh | FAIL: - 
+[18:11:24] start manual
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+manual-done
+[18:18:24] done manual
+[18:18:24] start notty
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+done
+[18:19:16] done notty
+[18:19:16] QUEUE2 DONE

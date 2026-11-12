@@ -1,0 +1,13 @@
+[19:13:05] container V3-merge-planted from cp-mint-planted: systemd running
+[19:13:05] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+[19:13:06] step wait65: sleep 65
+[19:14:11]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[19:14:11] step plant: bash -c apt-get update -qq >/dev/null 2>&1; DEBIAN_FRONTEND=noninteractive apt-get install -y -qq aisleriot >/tmp/aisleriot.log 2>&1; dpkg -l aisleriot | tail -1; D=/usr/local/lib/python3.10/dist-packages; mkdir -p $D/pyrdp/mitm $D/pyrdp_mitm-1.2.0.dist-info; printf "# pyrdp\n" > $D/pyrdp/__init__.py; printf "def main(): pass\n" > $D/pyrdp/mitm/__init__.py; printf "Metadata-Version: 2.1\nName: pyrdp-mitm\nVersion: 1.2.0\n" > $D/pyrdp_mitm-1.2.0.dist-info/METADATA; printf "pyrdp/__init__.py,,\n" > $D/pyrdp_mitm-1.2.0.dist-info/RECORD; printf "#!/usr/bin/python3\nfrom pyrdp.mitm import main\nmain()\n" > /usr/local/bin/pyrdp-mitm; chmod 755 /usr/local/bin/pyrdp-mitm; ls -d $D/pyrdp* /usr/local/bin/pyrdp-mitm
+[19:14:28]   done in 16s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=16.4s  exit=0  findings=- (-)
+[19:14:28] step start: bash start.sh
+[19:17:44]   done in 196s  STATS prompts=61 rule=41 default=20 stall=0 wait=152.7s elapsed=196.4s  exit=0  findings=- (-)
+[19:17:44] step zz-wait-bg: bash -c for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; ls /root/cp-state/start/jobs/; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null) secs=$(( $(cat /root/cp-state/start/jobs/$j.end 2>/dev/null || echo 0) - $(cat /root/cp-state/start/jobs/$j.start 2>/dev/null || echo 0) ))"; done
+[19:17:45]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+[19:17:45] step zz-merge-check: bash -c echo "aisleriot: $(dpkg-query -W -f="\${db:Status-Abbrev}" aisleriot 2>&1)"; ls -d /usr/local/lib/python3.10/dist-packages/pyrdp* /usr/local/bin/pyrdp-mitm 2>&1; grep -E "pam_(unix|pwquality)" /etc/pam.d/common-password; grep -E "^\s*minlen" /etc/security/pwquality.conf; grep -i pyrdp /root/cp-quarantine/INDEX.txt 2>/dev/null; ls -d /root/cp-quarantine/usr/local/lib/python3.10/dist-packages/pyrdp* /root/cp-quarantine/usr/local/bin/pyrdp-mitm 2>&1
+[19:17:45]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+[19:17:46] container kept: V3-merge-planted

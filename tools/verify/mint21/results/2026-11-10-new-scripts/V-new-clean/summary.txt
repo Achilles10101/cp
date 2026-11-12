@@ -1,0 +1,15 @@
+image cp-mint-clean
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-clean.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+start               88.0      88.0    70.1    17.9       28     7    21     0     0        -   0.17>0.36
+zz-wait-bg           0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.36>0.36
+TOTAL               88.3              70.1    18.2       28
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 98/144 PASS   planted: 39/44 PASS
+services answering: 0 OK  | FAIL: -

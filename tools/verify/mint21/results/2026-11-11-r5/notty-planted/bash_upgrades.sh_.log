@@ -1,0 +1,11 @@
+
+=== Package lists ===
+  [+] apt-get update ran 0 min ago - not repeated
+
+=== Repositories ===
+      http://archive.ubuntu.com/ubuntu
+      http://security.ubuntu.com/ubuntu
+
+=== Upgrades ===
+  [+] Nothing to upgrade.
+[exit 0]

@@ -1,0 +1,76 @@
+{
+ "image": "cp-mint-svcplanted",
+ "competition": "/home/claude/work/competition",
+ "rules": "/home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-svc-start.txt",
+ "steps": [
+  {
+   "step": "wait65",
+   "wall_s": "65.1",
+   "script_elapsed_s": "65.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.57",
+   "load_end": "0.19",
+   "findings_detail": "-"
+  },
+  {
+   "step": "start",
+   "wall_s": "213.9",
+   "script_elapsed_s": "213.8",
+   "harness_wait_s": "142.7",
+   "prompts": "57",
+   "rule": "35",
+   "default": "22",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.19",
+   "load_end": "0.32",
+   "findings_detail": "-"
+  },
+  {
+   "step": "zz-wait-bg",
+   "wall_s": "0.1",
+   "script_elapsed_s": "0.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.32",
+   "load_end": "0.32",
+   "findings_detail": "-"
+  }
+ ],
+ "total_wall_s": 279.5,
+ "total_prompts": 57,
+ "total_harness_wait_s": 142.7,
+ "checks_pass": 132,
+ "checks_total": 144,
+ "planted_pass": 40,
+ "planted_total": 44,
+ "services_ok": [
+  "ssh",
+  "vsftpd",
+  "apache2",
+  "php-fpm",
+  "mysql",
+  "postgres",
+  "samba",
+  "bind9",
+  "postfix",
+  "dovecot",
+  "openvpn",
+  "squid"
+ ],
+ "services_fail": [
+  "nginx"
+ ]
+}

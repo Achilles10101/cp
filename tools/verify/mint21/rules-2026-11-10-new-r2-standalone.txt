@@ -1,0 +1,55 @@
+# ROUND 2 (2026-11-10, after the fix round): same answers as the round-1 file of the same name, plus the new
+# review question 'Also go through the N REVIEW item(s)? [y/N]' where noted.
+# V (verifier) 2026-11-10: NEW scripts run STANDALONE in the README order, no CP_AUTO (every cp_auto is a [Y/n]
+# question answered with Enter), on cp-mint-planted. Same answers as rules-2026-11-10-new-start.txt.
+# README facts: readme.sh env mode in its own step only; the other scripts must read /root/cp-state/readme.conf.
+set HARD=1500
+rule Delete account toor                          => y
+rule Delete these \d+ accounts                    => y
+rule Apply these \d+ admin-group fixes            => y
+rule Set ONE new strong password                  => y
+rule Retype new password:                         => Car0l-Str0ng!pw
+rule New password:                                => Car0l-Str0ng!pw
+rule README groups, as                            =>
+rule Open /etc/sudoers.* in visudo                => y
+rule Extra ports the README needs                 =>
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Disable IPv6                                 => y
+rule Remove ALL superuser                         => n
+rule Remove all of these \(e = choose per family\) => y
+rule Remove these too\?                           => n
+rule Other packages to remove                     =>
+rule Delete these \d+ media file                  => y
+rule Remove the SUID/SGID bit                     => y
+rule Stop \+ disable these backdoor-looking listeners => y
+rule Stop \+ disable these services the README does not list => y
+rule Stop these unknown listeners                 => n
+rule Optional: l = lynis                          =>
+rule Does the README change any of these          => n
+rule Triage the \d+ FIX NOW finding               => n
+
+step wait65 sleep 65
+
+step p0-readme bash readme.sh
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+env CP_SERVICES=ssh
+
+step p1-baseline bash services/baseline.sh
+
+step p1b-review bash services/baseline.sh --review
+rule Also go through the \d+ REVIEW item           => y
+rule cptest-noipv6\.conf: d=show                  => s
+rule pid \d+: d=show  k=kill                      => k
+rule kill pid \d+ .*\[y/N\]                       => y
+rule stop \+ disable .*\(pid \d+.*\[y/N\]         => y
+rule sshd_config: d=diff                          => r
+rule Restore the default anyway\? \[y/N\]         => y
+rule sshd_config: d=show  f=fix                   => f
+rule (sudoers|sysctl\.conf|bash\.bashrc|common-auth): d=diff  r=restore => r
+
+step p2-users bash usersandsudo.sh
+step p3-sysconfig bash systemconfig.sh
+step p4-filepkg bash fileandpackage.sh
+step p5-portmisc bash portandmisc.sh
+step p6-ssh bash services/ssh.sh

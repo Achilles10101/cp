@@ -1,0 +1,13 @@
+[16:03:13] container T-pipe-planted from cp-mint-planted: systemd running
+[16:03:14] step p1-baseline: bash services/baseline.sh
+[16:03:50]   done in 36s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=36.0s  exit=0  findings=27 (bang=27)
+[16:03:50] step p2-users: bash usersandsudo.sh
+[16:04:16]   done in 25s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.0s elapsed=25.3s  exit=0  findings=- (-)
+[16:04:16] step p3-sysconfig: bash systemconfig.sh
+[16:05:20]   done in 64s  STATS prompts=15 rule=6 default=9 stall=0 wait=37.5s elapsed=64.0s  exit=0  findings=- (-)
+[16:05:20] step p4-filepkg: bash fileandpackage.sh
+[16:06:27]   done in 66s  STATS prompts=20 rule=19 default=1 stall=0 wait=50.1s elapsed=66.7s  exit=0  findings=- (-)
+[16:06:27] step p5-portmisc: bash portandmisc.sh
+[16:07:23]   done in 55s  STATS prompts=7 rule=5 default=2 stall=0 wait=17.5s elapsed=55.8s  exit=0  findings=- (-)
+[16:07:23] step p6-ssh: bash services/ssh.sh
+[16:07:51]   done in 28s  STATS prompts=8 rule=1 default=7 stall=0 wait=20.0s elapsed=28.2s  exit=0  findings=- (-)

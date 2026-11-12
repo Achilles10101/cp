@@ -1,0 +1,578 @@
+{
+"APERTURE|TIME-WAIT assassination protection": [
+"PASS",
+""
+],
+"APERTURE|TCP SYN cookies": [
+"PASS",
+""
+],
+"APERTURE|IPv4 forwarding disabled": [
+"PASS",
+""
+],
+"APERTURE|Source routing disabled": [
+"PASS",
+""
+],
+"APERTURE|Send redirects ignored": [
+"PASS",
+""
+],
+"APERTURE|Martian logging": [
+"PASS",
+""
+],
+"APERTURE|Source address verification (rp_filter)": [
+"PASS",
+""
+],
+"APERTURE|ICMP redirects ignored": [
+"PASS",
+""
+],
+"APERTURE|ASLR enabled": [
+"PASS",
+""
+],
+"APERTURE|Kernel ExecShield": [
+"PASS",
+""
+],
+"APERTURE|Core dumps disabled": [
+"PASS",
+""
+],
+"APERTURE|Hard nproc <= 2500": [
+"PASS",
+""
+],
+"APERTURE|IPv6 disabled": [
+"PASS",
+"README-dependent: only if you answer 'n' to 'Enable IPv6?'"
+],
+"APERTURE|SSH root login disabled": [
+"PASS",
+""
+],
+"APERTURE|SSH port 1382 (README)": [
+"FAIL",
+"README prompt"
+],
+"APERTURE|SSH DenyGroups testsubjects (README)": [
+"FAIL",
+"README prompt"
+],
+"APERTURE|Apache ServerTokens Prod": [
+"FAIL",
+""
+],
+"APERTURE|Apache ServerSignature Off": [
+"FAIL",
+""
+],
+"APERTURE|Anonymous FTP disabled": [
+"FAIL",
+""
+],
+"APERTURE|FTP only TLS": [
+"FAIL",
+""
+],
+"APERTURE|Anonymous TLS disabled": [
+"FAIL",
+""
+],
+"APERTURE|turret chrooted (chroot_list)": [
+"FAIL",
+""
+],
+"APERTURE|Passive range 50000-50100 (README)": [
+"FAIL",
+"README prompt"
+],
+"APERTURE|gdm3 AutomaticLoginEnable=False": [
+"FAIL",
+""
+],
+"APERTURE|gdm3 not running as rick": [
+"FAIL",
+""
+],
+"APERTURE|gdm3 DisallowTCP": [
+"FAIL",
+""
+],
+"APERTURE|auditd local_events": [
+"PASS",
+""
+],
+"APERTURE|pwquality minlen": [
+"PASS",
+""
+],
+"APERTURE|pwquality credits": [
+"PASS",
+""
+],
+"APERTURE|pwquality dictcheck": [
+"PASS",
+""
+],
+"APERTURE|pwquality usercheck": [
+"PASS",
+""
+],
+"APERTURE|ENCRYPT_METHOD SHA512": [
+"PASS",
+""
+],
+"APERTURE|LOGIN_RETRIES 1-5": [
+"PASS",
+""
+],
+"APERTURE|PASS_MAX_DAYS <= 30": [
+"PASS",
+"checklist says 90 (manual step)"
+],
+"APERTURE|PASS_MIN_DAYS >= 5": [
+"PASS",
+"checklist says 7 (manual step)"
+],
+"APERTURE|remember >= 5 on pam_unix": [
+"PASS",
+"checklist (manual step)"
+],
+"APERTURE|faillock authfail + authsucc(sufficient)": [
+"FAIL",
+"checklist (manual step)"
+],
+"APERTURE|PAM pam_exec backdoor removed": [
+"PASS",
+""
+],
+"APERTURE|syslog has nologin shell": [
+"PASS",
+""
+],
+"APERTURE|/home owned by root": [
+"PASS",
+""
+],
+"APERTURE|/swapfile 600": [
+"PASS",
+""
+],
+"APERTURE|cp not SUID": [
+"PASS",
+""
+],
+"APERTURE|LD_PRELOAD rootkit .so removed": [
+"FAIL",
+""
+],
+"APERTURE|malicious bash alias removed": [
+"PASS",
+""
+],
+"APERTURE|shadow not world-readable": [
+"PASS",
+""
+],
+"APERTURE|UFW OpenSSH profile": [
+"PASS",
+"needs real ufw"
+],
+"1984|Removed group password on root group": [
+"PASS",
+""
+],
+"1984|A default minimum password age is set": [
+"PASS",
+""
+],
+"1984|Previous passwords are remembered": [
+"PASS",
+""
+],
+"1984|Extra dictionary-strength checks enabled": [
+"PASS",
+""
+],
+"1984|Root account is locked or disabled": [
+"PASS",
+""
+],
+"1984|Kernel pointers hidden from all users": [
+"PASS",
+"live /proc value"
+],
+"1984|Ignore broadcast ICMP echo requests enabled": [
+"PASS",
+"live /proc value"
+],
+"1984|Restrict access to unprivileged kernel syslog enabled": [
+"PASS",
+"live /proc value"
+],
+"1984|IPv4 TCP SYN cookies have been enabled": [
+"PASS",
+"live /proc value"
+],
+"1984|Address space layout randomization enabled": [
+"PASS",
+"live /proc value"
+],
+"1984|IPv4 forwarding has been disabled": [
+"PASS",
+"live /proc value"
+],
+"1984|Removed malicious FACL from /bin/sudo": [
+"PASS",
+""
+],
+"1984|Dovecot SSL is required": [
+"FAIL",
+""
+],
+"1984|Dovecot debug passwords disabled": [
+"FAIL",
+""
+],
+"1984|SSH forces SFTP": [
+"FAIL",
+"README"
+],
+"1984|SFTP chroots to /opt/documents": [
+"FAIL",
+"README"
+],
+"NARNIA(recon)|sshd_config owned by root": [
+"PASS",
+""
+],
+"NARNIA(recon)|SSH PermitEmptyPasswords no": [
+"PASS",
+""
+],
+"NARNIA(recon)|SSH Protocol 2": [
+"PASS",
+""
+],
+"NARNIA(recon)|SSH PermitRootLogin no": [
+"PASS",
+""
+],
+"NARNIA(recon)|nginx server_tokens off": [
+"FAIL",
+""
+],
+"NARNIA(recon)|PAM requisite pam_deny": [
+"PASS",
+""
+],
+"RESIDENT(recon)|dev.tty.ldisc_autoload=0": [
+"PASS",
+""
+],
+"RESIDENT(recon)|kexec_load_disabled=1": [
+"PASS",
+""
+],
+"RESIDENT(recon)|sudo developer_mode false": [
+"PASS",
+""
+],
+"RESIDENT(recon)|sudo disable_coredump true": [
+"PASS",
+""
+],
+"RESIDENT(recon)|sudo probe_interfaces false": [
+"PASS",
+""
+],
+"RESIDENT(recon)|sudoers !env_reset removed": [
+"PASS",
+""
+],
+"RESIDENT(recon)|sudoers env_keep PATH removed": [
+"PASS",
+""
+],
+"RESIDENT(recon)|gdm3 root login disallowed": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|Samba encryption required": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|Samba SMB1 disabled": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|Samba no usershare guests": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|Samba obey pam restrictions": [
+"PASS",
+""
+],
+"RESIDENT(recon)|Samba security = user": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|Samba server signing mandatory": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|Squid no 'http_access allow all'": [
+"FAIL",
+""
+],
+"RESIDENT(recon)|wget not SUID": [
+"PASS",
+""
+],
+"RESIDENT(recon)|system account bin has no password": [
+"PASS",
+""
+],
+"HIVESTORM(recon)|PostgreSQL no trust auth": [
+"FAIL",
+""
+],
+"HIVESTORM(recon)|PostgreSQL no map to postgres": [
+"FAIL",
+""
+],
+"HIVESTORM(recon)|PostgreSQL pg_hba not world-readable": [
+"FAIL",
+""
+],
+"HIVESTORM(recon)|PostgreSQL ssl on (README)": [
+"FAIL",
+""
+],
+"HIVESTORM(recon)|PHP display_errors Off": [
+"FAIL",
+""
+],
+"HIVESTORM(recon)|phpinfo file removed": [
+"PASS",
+""
+],
+"HIVESTORM(recon)|LightDM X server no TCP": [
+"PASS",
+"only if LightDM installed"
+],
+"HIVESTORM(recon)|grub.cfg not world-readable": [
+"FAIL",
+"no /boot/grub in container"
+],
+"HIVESTORM(recon)|dmesg_restrict": [
+"PASS",
+""
+],
+"HIVESTORM(recon)|icmp_echo_ignore_broadcasts": [
+"PASS",
+""
+],
+"OFFICIAL(recon)|SSH root login disabled (CP18 R1)": [
+"PASS",
+""
+],
+"OFFICIAL(recon)|FTP users may log in with SSL (CP18 R2)": [
+"FAIL",
+""
+],
+"OFFICIAL(recon)|FTP root dir not world-writable (CP18 R2)": [
+"FAIL",
+""
+],
+"OFFICIAL(recon)|IPv4 TCP SYN cookies (CP18 R2)": [
+"PASS",
+""
+],
+"OFFICIAL(recon)|IPv4 forwarding disabled (CP17 TR2)": [
+"PASS",
+""
+],
+"PLANTED-MINT|Unauthorized user eve removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Unauthorized user mallory removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Hidden user sysbackup removed or no shell": [
+"PASS",
+""
+],
+"PLANTED-MINT|No UID 0 user except root": [
+"PASS",
+""
+],
+"PLANTED-MINT|bob is not an administrator": [
+"PASS",
+""
+],
+"PLANTED-MINT|alice is an administrator": [
+"PASS",
+""
+],
+"PLANTED-MINT|cpuser still an administrator": [
+"PASS",
+""
+],
+"PLANTED-MINT|carol has a password": [
+"PASS",
+""
+],
+"PLANTED-MINT|No NOPASSWD sudo for bob": [
+"PASS",
+""
+],
+"PLANTED-MINT|LightDM autologin disabled (all files)": [
+"PASS",
+""
+],
+"PLANTED-MINT|LightDM guest disabled": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package nmap removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package john removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package hydra removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package wireshark removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package wireshark-common removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package tshark removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package aircrack-ng removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package ophcrack removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package minetest removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package netcat-traditional removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited package telnetd removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|vsftpd (not authorized) stopped or removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|apache2 (not authorized) stopped or removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|OpenSSH still running (critical)": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited mp3 in bob's home removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Prohibited mp4 in carol's home removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Hidden ogg in dave's home removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Hidden mp3 under /usr/share removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Plaintext password file removed": [
+"FAIL",
+""
+],
+"PLANTED-MINT|netcat cron backdoor removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|python http.server backdoor stopped": [
+"PASS",
+""
+],
+"PLANTED-MINT|Unknown root authorized_keys removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|SSH PermitEmptyPasswords not yes": [
+"PASS",
+""
+],
+"PLANTED-MINT|SSH drop-in PermitRootLogin yes removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|Effective sshd PermitRootLogin no": [
+"PASS",
+""
+],
+"PLANTED-MINT|sysctl.d override of ip_forward removed": [
+"PASS",
+""
+],
+"PLANTED-MINT|shadow not world readable (perm fixed)": [
+"PASS",
+""
+],
+"PLANTED-MINT|pam_pwquality args on common-password line": [
+"PASS",
+""
+],
+"PLANTED-MINT|Firewall (ufw) active": [
+"PASS",
+""
+],
+"PLANTED-MINT|Mint Update Manager installs updates automatically (1984 check)": [
+"PASS",
+""
+],
+"PLANTED-MINT|Root password locked": [
+"PASS",
+"manual checklist step"
+],
+"PLANTED-MINT|Desktop still installed (cinnamon, lightdm, mint-meta-cinnamon)": [
+"PASS",
+""
+],
+"PLANTED-MINT|cpuser can still sudo (account not expired/locked)": [
+"PASS",
+""
+]
+}

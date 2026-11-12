@@ -1,0 +1,23 @@
+{
+ "image": "cp-mint-clean",
+ "competition": "/home/claude/orig/competition",
+ "rules": "/home/claude/work/tools/verify/mint21/rules-baseline-only.txt",
+ "steps": [
+  {
+   "step": "baseline",
+   "wall_s": "19.2",
+   "script_elapsed_s": "19.2",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "0"
+  }
+ ],
+ "total_wall_s": 19.4,
+ "total_prompts": 0,
+ "total_harness_wait_s": 0.0,
+ "baseline_findings": 0
+}

@@ -1,0 +1,16 @@
+image cp-mint-planted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-start-svcnone.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   0.27>0.09
+start              196.8     196.7   150.2    46.5       60    38    22     0     0        -   0.09>0.30
+zz-wait-bg           0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.30>0.30
+TOTAL              262.3             150.2   112.1       60
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 104/144 PASS   planted: 41/44 PASS
+services answering: 1 OK ssh | FAIL: -

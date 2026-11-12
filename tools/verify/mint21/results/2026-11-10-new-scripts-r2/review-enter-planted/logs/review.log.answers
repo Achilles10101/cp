@@ -1,0 +1,17 @@
+[    2.7s] '60-evil.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[    6.3s] 'cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   11.1s] 'cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   13.6s] '99-zz-net.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   16.1s] '90-cloud-init-users: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   18.7s] '80-autologin.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   21.2s] 'lightdm.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   23.7s] 'ld.so.preload: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   26.3s] '0hourly-sync: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   28.9s] 'system-sync.service: d=show  q=quarantine (stop+disable+move)  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   31.7s] 'pid 262: d=show  k=kill/stop  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   34.3s] 'pid 432: d=show  k=kill/stop  s=skip  x=exit  [Enter=kill] >' -> '' (DEFAULT(Enter))
+[   36.8s] 'kill pid 432 (/bin/nc.traditional -l -p 4444 -e /bin/bash )? [y/N]' -> '' (DEFAULT(Enter))
+[   39.3s] 'pid 432: d=show  k=kill/stop  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   41.8s] 'Also go through the 7 REVIEW item(s)? [y/N]' -> '' (DEFAULT(Enter))
+STATS prompts=15 rule=0 default=15 stall=0 wait=37.6s elapsed=41.9s
+EXIT 0

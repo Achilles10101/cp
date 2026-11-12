@@ -1,0 +1,50 @@
+# ROUND 2 (2026-11-10, after the fix round): same answers as the round-1 file of the same name, plus the new
+# review question 'Also go through the N REVIEW item(s)? [y/N]' where noted.
+# (no change needed: the REVIEW question gets Enter = no)
+# V (verifier) 2026-11-10: NEW scripts, services round on cp-mint-svcplanted through start.sh (the whole round).
+# README: admin cpuser (you), user ftpuser, ALL 13 services critical. Review: Enter everywhere except the two
+# test-only overrides (vsftpd no-IPv6 drop-in, dovecot local.conf) -> s. New password for ftpuser = its test password
+# (strong; keeps svccheck's FTP login meaningful).
+set HARD=3600
+env CP_ADMINS=cpuser
+env CP_USERS=ftpuser
+env CP_SERVICES=ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid
+step wait65 sleep 65
+step start bash start.sh
+rule All steps done                               => q
+rule Forensics answered and EARLY MANUAL          =>
+rule LATE MANUAL items done                       =>
+rule All TODO items handled                       =>
+rule Install them now in the background           => y
+rule cptest-noipv6\.conf: d=show                  => s
+rule local\.conf: d=show                          => s
+rule Delete account toor                          => y
+rule Delete these \d+ accounts                    => y
+rule Apply these \d+ admin-group fixes            => y
+rule Set ONE new strong password                  => y
+rule Retype new password:                         => Ftp-Us3r!pass
+rule New password:                                => Ftp-Us3r!pass
+rule README groups, as                            =>
+rule Open /etc/sudoers.* in visudo                => y
+rule Extra ports the README needs                 =>
+rule REMOTE access to                             => n
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Remove ALL superuser                         => n
+rule Remove all of these \(e = choose per family\) => y
+rule Remove these too\?                           => n
+rule Other packages to remove                     =>
+rule Delete these \d+ media file                  => y
+rule Remove the SUID/SGID bit                     => y
+rule Stop \+ disable these backdoor-looking listeners => y
+rule Stop \+ disable these services the README does not list => y
+rule Stop these unknown listeners                 => n
+rule Optional: l = lynis                          =>
+rule Does the README change any of these          => n
+rule Does the README or the                       => n
+rule Does the README require                      => n
+rule Test login - FTP username                    => ftpuser
+rule Password for ftpuser                         => Ftp-Us3r!pass
+rule Quarantine these phpinfo                     => y
+rule Triage the \d+ FIX NOW finding               => n
+rule \(END\)                                      => q
+step zz-wait-bg bash -c 'for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)"; done'

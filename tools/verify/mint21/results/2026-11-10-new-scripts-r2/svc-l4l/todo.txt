@@ -1,0 +1,7 @@
+[readme.sh] README lists 'wordpress' as critical but it is not installed - re-check the README (install it? other name?)
+[baseline.sh] Triage the baseline findings: sudo bash services/baseline.sh --review   (list: /root/baseline/FINDINGS.txt)
+[systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+[critical.sh] README lists 'wordpress' as critical: no wp-config.php found under /var/www, /srv, /usr/share/wordpress, /etc/wordpress - nothing to harden; check the README / where its config lives
+[critical.sh] README lists 'openvpn' as critical: installed, but no server config found in /etc/openvpn or /etc/openvpn/server - nothing to harden; check the README / where its config lives
+[nginx.sh] nginx.sh: the existing nginx config already fails 'nginx -t' (nginx: [emerg] socket() [::]:80 failed (97: Unknown error)) - fix that first, then re-run; nothing was changed
+[critical.sh] CRITICAL service nginx is DOWN: nginx - journalctl -xe; restore from /root/cp-backups if needed

@@ -1,0 +1,8 @@
+[    2.5s] '? Paste the README now:' -> 'Authorized Administrators:\ncpuser (you)\n\tpassword: Cyb3rP@triot!\nalice\n\tpassword: Alic3-Adm1n!\n\nAuthorized Users:\nbob\ncarol\ndave\nfrank\n' (rule)
+[    5.5s] '? Critical services in the README - type numbers or names, or none:' -> 'none' (rule)
+[    8.0s] '? Correct? Enter = yes | a = admins  u = users  m = you  s = services  p = paste again [y]:' -> '' (rule)
+[   10.6s] '? README lists NO critical services, but these are installed and will be offered for removal: openssh-server vsftpd apache2 - correct? [y/N]:' -> '' (rule)
+[   13.1s] '? Critical services in the README - type numbers or names, or none:' -> '1' (rule)
+[   15.6s] '? Correct? Enter = yes | a = admins  u = users  m = you  s = services  p = paste again [y]:' -> '' (rule)
+STATS prompts=6 rule=6 default=0 stall=0 wait=15.0s elapsed=15.6s
+EXIT 0

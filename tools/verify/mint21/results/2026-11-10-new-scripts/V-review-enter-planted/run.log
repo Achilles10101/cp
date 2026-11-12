@@ -1,0 +1,11 @@
+[16:28:57] container V-review from cp-mint-planted: systemd running
+[16:28:57] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+[16:28:58] step wait65: sleep 65
+[16:30:03]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[16:30:03] step readme: bash readme.sh
+[16:30:03]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.1s  exit=0  findings=- (-)
+[16:30:03] step baseline: bash services/baseline.sh
+[16:30:05]   done in 1s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=1.4s  exit=0  findings=19 (fix=12 review=7 info=2 bang=19)
+[16:30:05] step review: bash services/baseline.sh --review
+[16:30:58]   done in 52s  STATS prompts=19 rule=0 default=19 stall=0 wait=47.6s elapsed=52.5s  exit=0  findings=11 (fix=4 review=7 info=2 bang=19)
+[16:31:01] container kept: V-review

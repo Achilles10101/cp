@@ -1,0 +1,6 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    6.2s] 'service) tcp/993(dovecot.service) tcp/995(dovecot.service) udp/137(nmbd.service) udp/138(nmbd.service) udp/51259(squid.service) udp/53(named.service) ? [y/N/e]:' -> 'n' (rule)
+[    8.7s] '? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]:' -> 'n' (rule)
+[   11.2s] '? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip:' -> '' (rule)
+STATS prompts=4 rule=4 default=0 stall=0 wait=10.0s elapsed=11.2s
+EXIT 0

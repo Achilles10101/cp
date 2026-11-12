@@ -1,0 +1,5 @@
+apt rc=0
+baseline rc=0
+upgrade rc=
+
+[drive2] EXIT 0

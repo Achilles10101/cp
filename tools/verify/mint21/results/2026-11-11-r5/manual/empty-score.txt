@@ -1,0 +1,3 @@
+TOTAL empty: PASS 109 / FAIL 35 / SKIP 0
+service check 02:39:50
+  OK   ssh         keyscan ok on 22

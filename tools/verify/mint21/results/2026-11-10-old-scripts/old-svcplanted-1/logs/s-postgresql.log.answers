@@ -1,0 +1,9 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.5s] '? Does the README require REMOTE connections to PostgreSQL? [y/N]:' -> '' (DEFAULT(Enter))
+[   10.0s] '? Replace: local trust -> peer, host trust/password -> scram-sha-256? [Y/n]:' -> '' (DEFAULT(Enter))
+[   12.5s] '? Comment them out (README does not need remote access)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   20.7s] '? Roles to strip SUPERUSER/CREATEROLE/CREATEDB from (comma separated, Enter = none):' -> '' (DEFAULT(Enter))
+[   23.2s] '? Roles to DROP (comma separated, Enter = none):' -> '' (DEFAULT(Enter))
+STATS prompts=7 rule=1 default=6 stall=0 wait=17.5s elapsed=23.2s
+EXIT 0

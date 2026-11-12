@@ -1,0 +1,56 @@
+[17:51:10] container V2-standalone-planted from cp-mint-planted: systemd running
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:51:10] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:51:11] step wait65: sleep 65
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:52:16]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[17:52:16] step p0-readme: bash readme.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:52:16]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.1s  exit=0  findings=- (-)
+[17:52:16] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:52:18]   done in 1s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=1.8s  exit=0  findings=19 (fix=12 review=7 info=2 bang=19)
+[17:52:18] step p1b-review: bash services/baseline.sh --review
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[17:53:18]   done in 59s  STATS prompts=22 rule=13 default=9 stall=0 wait=55.1s elapsed=58.9s  exit=0  findings=3 (fix=2 review=1 info=2 bang=19)
+[17:53:18] step p2-users: bash usersandsudo.sh
+[17:53:44]   done in 26s  STATS prompts=10 rule=8 default=2 stall=0 wait=25.0s elapsed=26.3s  exit=0  findings=- (-)
+[17:53:44] step p3-sysconfig: bash systemconfig.sh
+[17:54:26]   done in 41s  STATS prompts=11 rule=3 default=8 stall=0 wait=27.5s elapsed=41.2s  exit=0  findings=- (-)
+[17:54:26] step p4-filepkg: bash fileandpackage.sh
+[17:55:08]   done in 42s  STATS prompts=8 rule=5 default=3 stall=0 wait=20.0s elapsed=42.3s  exit=0  findings=- (-)
+[17:55:08] step p5-portmisc: bash portandmisc.sh
+[17:55:14]   done in 5s  STATS prompts=2 rule=2 default=0 stall=0 wait=5.0s elapsed=5.6s  exit=0  findings=- (-)
+[17:55:14] step p6-ssh: bash services/ssh.sh
+[17:55:26]   done in 11s  STATS prompts=4 rule=2 default=2 stall=0 wait=10.0s elapsed=11.2s  exit=0  findings=- (-)
+image cp-mint-planted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-standalone.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   0.97>0.32
+p0-readme            0.2       0.1     0.0     0.1        0     0     0     0     0        -   0.32>0.32
+p1-baseline          1.9       1.8     0.0     1.8        0     0     0     0     0       19   0.32>0.32
+p1b-review          59.0      58.9    55.1     3.8       22    13     9     0     0        3   0.32>0.12
+p2-users            26.4      26.3    25.0     1.3       10     8     2     0     0        -   0.12>0.08
+p3-sysconfig        41.3      41.2    27.5    13.7       11     3     8     0     0        -   0.08>0.43
+p4-filepkg          42.4      42.3    20.0    22.3        8     5     3     0     0        -   0.43>1.62
+p5-portmisc          5.7       5.6     5.0     0.6        2     2     0     0     0        -   1.62>1.49
+p6-ssh              11.3      11.2    10.0     1.2        4     2     2     0     0        -   1.49>1.16
+TOTAL              254.7             142.6   112.1       57
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 110/144 PASS   planted: 43/44 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 3  (fix=2 review=1 info=2 bang=19; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+
+[17:55:26] container kept: V2-standalone-planted

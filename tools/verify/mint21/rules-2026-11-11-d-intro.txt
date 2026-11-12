@@ -1,0 +1,10 @@
+# D 2026-11-11 (round 5): intro image cp-mint-planted, critical service OpenSSH only (planted README:
+# admins cpuser(you) alice, users bob carol dave frank). Isolates services/critical.sh + ssh.sh.
+set HARD=1500
+rule Run ssh\.sh \(the README must list it as critical\) => y
+rule Run \w+\.sh \(the README must list it as critical\) => n
+rule Does the README change any of these          => n
+rule Triage the \d+ FIX NOW finding               => n
+step wait65 sleep 65
+step p1-baseline bash services/baseline.sh
+step p6-critical bash services/critical.sh

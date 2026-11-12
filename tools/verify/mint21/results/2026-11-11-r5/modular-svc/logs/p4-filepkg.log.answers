@@ -1,0 +1,12 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    6.6s] '? Remove all of these (e = choose per family)? [Y/n/e]:' -> 'y' (rule)
+[   10.2s] '? Remove these service packages (e = choose per family)? [y/N/e]:' -> 'n' (rule)
+[   12.8s] '? Remove these too? [y/N/e]:' -> 'n' (rule)
+[   15.4s] '? Remove the OpenSSH server? Only if the README does not need SSH! [y/N]:' -> 'n' (rule)
+[   17.9s] '? Other packages to remove (names/globs, ?word = search), Enter = none:' -> '' (rule)
+[   21.5s] '? Purge these 4 package(s) (no desktop/critical package among them)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   28.1s] '? Stop + disable these 12 server service(s) (e = each)? [y/N/e]:' -> 'n' (rule)
+[   30.6s] '? Stop + disable these 3 desktop service(s)? [y/N/e]:' -> 'y' (rule)
+[   34.9s] '? Stop + disable the SSH server? Only if the README does not need SSH! [y/N]:' -> 'n' (rule)
+STATS prompts=10 rule=9 default=1 stall=0 wait=25.0s elapsed=35.9s
+EXIT 0

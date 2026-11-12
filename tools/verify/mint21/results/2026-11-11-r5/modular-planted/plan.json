@@ -1,0 +1,2342 @@
+{
+ "steps": [
+  {
+   "name": "wait65",
+   "cmd": [
+    "sleep",
+    "65"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p1-baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p1b-review",
+   "cmd": [
+    "bash",
+    "services/baseline.sh",
+    "--review"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p2-users",
+   "cmd": [
+    "bash",
+    "usersandsudo.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank"
+   },
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p3-sysconfig",
+   "cmd": [
+    "bash",
+    "systemconfig.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p4-filepkg",
+   "cmd": [
+    "bash",
+    "fileandpackage.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p5-portmisc",
+   "cmd": [
+    "bash",
+    "portandmisc.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p6-critical",
+   "cmd": [
+    "bash",
+    "services/critical.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  },
+  {
+   "name": "p7-upgrades",
+   "cmd": [
+    "bash",
+    "upgrades.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3000",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Create these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "README password is insecure .* Change it now",
+     "y"
+    ],
+    [
+     "Change your own password anyway",
+     "n"
+    ],
+    [
+     "has an EMPTY password .* Set one now",
+     "y"
+    ],
+    [
+     "Set a password for the new account",
+     "y"
+    ],
+    [
+     "Extra: also set ONE new password",
+     "n"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "New password for .*Enter = same as before",
+     ""
+    ],
+    [
+     "New password for",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Lock the \\d+ account\\(s\\)",
+     "y"
+    ],
+    [
+     "Password aging 30/7/14",
+     "y"
+    ],
+    [
+     "Also force a password change at next login",
+     "y"
+    ],
+    [
+     "Home folders: mode 750",
+     "y"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "pid \\d+: d=show  k=kill",
+     "k"
+    ],
+    [
+     "kill pid \\d+ .*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "stop \\+ disable .*\\(pid \\d+.*\\[y/N\\]",
+     "y"
+    ],
+    [
+     "Also go through the \\d+ REVIEW item",
+     "y"
+    ],
+    [
+     "sshd_config: d=diff",
+     "r"
+    ],
+    [
+     "Restore the default anyway\\? \\[y/N\\]",
+     "y"
+    ],
+    [
+     "sshd_config: d=show  f=fix",
+     "f"
+    ],
+    [
+     "(sudoers|sysctl\\.conf|bash\\.bashrc|common-auth): d=diff  r=restore",
+     "r"
+    ],
+    [
+     "Allow the \\d+ \\[Y\\] rule",
+     "e"
+    ],
+    [
+     "Allow OpenSSH \\(",
+     "y"
+    ],
+    [
+     "Allow (?!OpenSSH).* \\(",
+     "n"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Disable IPv6",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these service packages",
+     "e"
+    ],
+    [
+     "Remove apache2 \\(",
+     "y"
+    ],
+    [
+     "Remove FTP servers \\(",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Remove the OpenSSH server",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Purge \\(including the metapackage\\)",
+     "y"
+    ],
+    [
+     "Purge anyway",
+     "n"
+    ],
+    [
+     "remote-access service",
+     "y"
+    ],
+    [
+     "desktop service",
+     "y"
+    ],
+    [
+     "server service",
+     "y"
+    ],
+    [
+     "Stop \\+ disable the SSH server",
+     "n"
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Uninstall pyrdp",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "services the README does NOT need",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Run ssh\\.sh \\(the README must list it as critical\\)",
+     "y"
+    ],
+    [
+     "Run \\w+\\.sh \\(the README must list it as critical\\)",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "Install them now",
+     "y"
+    ],
+    [
+     "Do the Forensics Questions now",
+     ""
+    ]
+   ]
+  }
+ ],
+ "global": {
+  "HARD": "3000"
+ }
+}

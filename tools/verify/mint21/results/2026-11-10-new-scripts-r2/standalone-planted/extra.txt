@@ -1,0 +1,14 @@
+ls: cannot access '/usr/src/evil_rabbit.so': No such file or directory
+ADMINS=cpuser alice
+USERS=bob carol dave frank
+ME=cpuser
+WEAKPW=
+SERVICES=ssh
+PWSET=alice bob carol dave frank
+GROUPS=
+SSH_PORT=22
+SSH_PASSAUTH=yes
+SSH_ALLOWUSERS=
+SSH_DENYUSERS=
+SSH_DENYGROUPS=
+SSH_SFTP_DIR=

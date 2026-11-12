@@ -1,0 +1,11 @@
+[    2.6s] '60-evil.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[    6.2s] 'vsftpd.chroot_list: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[    8.7s] 'ftp: d=show  f=fix -> 755 root:ftp  s=skip  x=exit  [Enter=fix] >' -> '' (DEFAULT(Enter))
+[   11.3s] 'cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> 's' (rule)
+[   13.8s] 'info.php: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   16.3s] 'local.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> 's' (rule)
+[   18.8s] 'custom.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   21.3s] 'ld.so.preload: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   24.0s] 'Also go through the 15 REVIEW item(s)? [y/N]' -> '' (DEFAULT(Enter))
+STATS prompts=9 rule=2 default=7 stall=0 wait=22.5s elapsed=24.1s
+EXIT 0

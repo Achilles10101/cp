@@ -1,0 +1,255 @@
+{
+ "steps": [
+  {
+   "name": "p1-baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": []
+  },
+  {
+   "name": "p2-users",
+   "cmd": [
+    "bash",
+    "usersandsudo.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank"
+   },
+   "rules": [
+    [
+     "Remove these users\\?",
+     "y"
+    ],
+    [
+     "adm: syslog.*Remove\\?",
+     "n"
+    ],
+    [
+     "unauthorized\\).*Remove\\?",
+     "y"
+    ],
+    [
+     "Add .* to sudo group",
+     "y"
+    ],
+    [
+     "Remove from admin groups",
+     "y"
+    ],
+    [
+     "Change UID",
+     "y"
+    ],
+    [
+     "Review with visudo",
+     "y"
+    ],
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Set a password for carol",
+     "y"
+    ],
+    [
+     "New password:",
+     "Car0l-Str0ng!pw"
+    ],
+    [
+     "Retype new password:",
+     "Car0l-Str0ng!pw"
+    ]
+   ]
+  },
+  {
+   "name": "p3-sysconfig",
+   "cmd": [
+    "bash",
+    "systemconfig.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Proceed with operation",
+     "y"
+    ],
+    [
+     "Open or Close a port",
+     "n"
+    ],
+    [
+     "Enable IPv6",
+     "n"
+    ],
+    [
+     "install stable updates",
+     "yes"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Lock the root account",
+     "y"
+    ],
+    [
+     "Linux Mint: turn on Update Manager",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "p4-filepkg",
+   "cmd": [
+    "bash",
+    "fileandpackage.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "\\[SERVICE\\] (apache2|FTP servers|PHP):.*Remove\\?",
+     "y"
+    ],
+    [
+     "\\[SERVICE\\].*Remove\\?",
+     "n"
+    ],
+    [
+     "\\[REVIEW\\].*Remove\\?",
+     "n"
+    ],
+    [
+     "Remove\\? \\[",
+     "y"
+    ],
+    [
+     "Purge these",
+     "y"
+    ],
+    [
+     "Run autoremove",
+     "y"
+    ],
+    [
+     "Purge their config",
+     "y"
+    ],
+    [
+     "dpkg --purge",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "p5-portmisc",
+   "cmd": [
+    "bash",
+    "portandmisc.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Select option",
+     "SEQ:2,3,4"
+    ],
+    [
+     "Install it now",
+     "y"
+    ],
+    [
+     "Remove nmap again",
+     "y"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "p6-ssh",
+   "cmd": [
+    "bash",
+    "services/ssh.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Remove /root/.ssh",
+     "y"
+    ]
+   ]
+  }
+ ],
+ "global": {
+  "HARD": "1500"
+ }
+}

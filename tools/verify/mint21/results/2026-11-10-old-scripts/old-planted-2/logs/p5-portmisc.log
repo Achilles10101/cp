@@ -1,0 +1,196 @@
+===========================================
+  Linux Port Analyzer
+===========================================
+
+
+MAIN MENU:
+  1) Run Lynis Security Audit
+  2) Analyze Listening Ports
+  3) Run Nmap Scan on Localhost
+  4) Exit
+
+Select option [1-4]: 2
+
+=== LISTENING PORTS ANALYSIS ===
+
+--- NORMAL PORTS (<=1024) ---
+
+[1] Port: 5353 | Protocol: udp | State: UNCONN
+    Address: 0.0.0.0:5353
+    PID: 95 | User: avahi
+    Executable: /usr/sbin/avahi-daemon
+    Command: avahi-daemon: running [mint-cptest.local] 
+    Service: mdns
+
+[2] Port: 53 | Protocol: udp | State: UNCONN
+    Address: 127.0.0.53%lo:53
+    PID: 65 | User: systemd-resolve
+    Executable: /usr/lib/systemd/systemd-resolved
+    Command: /lib/systemd/systemd-resolved 
+    Service: domain
+
+[3] Port: 53 | Protocol: tcp | State: LISTEN
+    Address: 127.0.0.53%lo:53
+    PID: 65 | User: systemd-resolve
+    Executable: /usr/lib/systemd/systemd-resolved
+    Command: /lib/systemd/systemd-resolved 
+    Service: domain
+
+[4] Port: 631 | Protocol: tcp | State: LISTEN
+    Address: 127.0.0.1:631
+    PID: 152 | User: root
+    Executable: /usr/sbin/cupsd
+    Command: /usr/sbin/cupsd -l 
+    Service: ipp
+
+[5] Port: 22 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:22
+    PID: 174 | User: root
+    Executable: /usr/sbin/sshd
+    Command: sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups 
+    Service: ssh
+
+
+Total normal ports: 5
+
+--- SUSPICIOUS PORTS (>1024) ---
+
+[1] Port: 59583 | Protocol: udp | State: UNCONN
+    Address: 0.0.0.0:59583
+    PID: 95 | User: avahi
+    Executable: /usr/sbin/avahi-daemon
+    Command: avahi-daemon: running [mint-cptest.local] 
+
+[2] Port: 4444 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:4444
+    PID: 7442 | User: root
+    Executable: /usr/bin/nc.traditional (deleted)
+    Command: /bin/nc.traditional -l -p 4444 -e /bin/bash 
+
+[3] Port: 4444 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:4444
+    PID: 4507 | User: root
+    Executable: /usr/bin/nc.traditional (deleted)
+    Command: /bin/nc.traditional -l -p 4444 -e /bin/bash 
+
+[4] Port: 31337 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:31337
+    PID: 118 | User: root
+    Executable: /usr/bin/python3.10
+    Command: /usr/bin/python3 -m http.server 31337 --directory / 
+
+
+Total suspicious ports: 4
+
+Press Enter to continue...
+
+MAIN MENU:
+  1) Run Lynis Security Audit
+  2) Analyze Listening Ports
+  3) Run Nmap Scan on Localhost
+  4) Exit
+
+Select option [1-4]: 3
+
+=== NMAP LOCALHOST SCAN ===
+
+Nmap is not installed (it is a scored 'hacking tool' on most images - this menu removes it again after the scan).
+Install it now? (y/n): y
+Installing Nmap...
+0% [Working]            Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease
+0% [Waiting for headers]0% [Waiting for headers] [Waiting for headers]                                              Hit:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+                                              0% [Waiting for headers]                        Hit:3 http://security.ubuntu.com/ubuntu jammy-security InRelease
+0% [Waiting for headers]0% [Waiting for headers]                        Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+                        0% [Working]0% [Working]20% [Working]             Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 2%Reading package lists... 2%Reading package lists... 2%Reading package lists... 2%Reading package lists... 3%Reading package lists... 3%Reading package lists... 3%Reading package lists... 3%Reading package lists... 22%Reading package lists... 22%Reading package lists... 31%Reading package lists... 31%Reading package lists... 31%Reading package lists... 31%Reading package lists... 31%Reading package lists... 31%Reading package lists... 38%Reading package lists... 38%Reading package lists... 43%Reading package lists... 43%Reading package lists... 55%Reading package lists... 55%Reading package lists... 59%Reading package lists... 63%Reading package lists... 63%Reading package lists... 65%Reading package lists... 65%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 73%Reading package lists... 73%Reading package lists... 77%Reading package lists... 77%Reading package lists... 89%Reading package lists... 89%Reading package lists... 96%Reading package lists... 96%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 8%Reading state information... Done
+2 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 8%Reading state information... Done
+The following additional packages will be installed:
+  liblinear4 liblua5.3-0 lua-lpeg nmap-common
+Suggested packages:
+  liblinear-tools liblinear-dev ncat ndiff zenmap
+The following NEW packages will be installed:
+  liblinear4 liblua5.3-0 lua-lpeg nmap nmap-common
+0 upgraded, 5 newly installed, 0 to remove and 2 not upgraded.
+Need to get 5,884 kB of archives.
+After this operation, 26.1 MB of additional disk space will be used.
+0% [Working]            Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 liblinear4 amd64 2.3.0+dfsg-5 [41.4 kB]
+0% [1 liblinear4 13.8 kB/41.4 kB 33%]                                     5% [Working]            Get:2 http://archive.ubuntu.com/ubuntu jammy/main amd64 liblua5.3-0 amd64 5.3.6-1build1 [140 kB]
+5% [2 liblua5.3-0 2,524 B/140 kB 2%]                                    10% [Waiting for headers]                         Get:3 http://archive.ubuntu.com/ubuntu jammy/universe amd64 lua-lpeg amd64 1.0.2-1 [31.4 kB]
+10% [3 lua-lpeg 0 B/31.4 kB 0%]                               15% [Waiting for headers]                         Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 nmap-common all 7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1 [3,940 kB]
+15% [4 nmap-common 2,522 B/3,940 kB 0%]                                       72% [Waiting for headers]                         Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 nmap amd64 7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1 [1,731 kB]
+73% [5 nmap 39.7 kB/1,731 kB 2%]                                100% [Working]              Fetched 5,884 kB in 2s (3,794 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 78, <> line 5.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package liblinear4:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 61015 files and directories currently installed.)
+Preparing to unpack .../liblinear4_2.3.0+dfsg-5_amd64.deb ...
+Unpacking liblinear4:amd64 (2.3.0+dfsg-5) ...
+Selecting previously unselected package liblua5.3-0:amd64.
+Preparing to unpack .../liblua5.3-0_5.3.6-1build1_amd64.deb ...
+Unpacking liblua5.3-0:amd64 (5.3.6-1build1) ...
+Selecting previously unselected package lua-lpeg:amd64.
+Preparing to unpack .../lua-lpeg_1.0.2-1_amd64.deb ...
+Unpacking lua-lpeg:amd64 (1.0.2-1) ...
+Selecting previously unselected package nmap-common.
+Preparing to unpack .../nmap-common_7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1_all.deb ...
+Unpacking nmap-common (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Selecting previously unselected package nmap.
+Preparing to unpack .../nmap_7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1_amd64.deb ...
+Unpacking nmap (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Setting up lua-lpeg:amd64 (1.0.2-1) ...
+Setting up liblinear4:amd64 (2.3.0+dfsg-5) ...
+Setting up nmap-common (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Setting up liblua5.3-0:amd64 (5.3.6-1build1) ...
+Setting up nmap (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.15) ...
+Running Nmap scan on localhost...
+Scan type: TCP SYN scan with version detection
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-11-10 23:59 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000027s latency).
+Not shown: 65531 closed ports
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.18 (Ubuntu Linux; protocol 2.0)
+631/tcp   open  ipp     CUPS 2.4
+4444/tcp  open  krb524?
+31337/tcp open  http    SimpleHTTPServer 0.6 (Python 3.10.12)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=11/10%OT=22%CT=1%CU=41425%PV=N%DS=0%DC=L%G=Y%TM=6AF3AF
+OS:E4%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=10B%TI=Z%CI=Z%TS=21)OPS(O1
+OS:=MFFD7ST11NW8%O2=MFFD7ST11NW8%O3=MFFD7NNT11NW8%O4=MFFD7ST11NW8%O5=MFFD7S
+OS:T11NW8%O6=MFFD7ST11)WIN(W1=FFCB%W2=FFCB%W3=FFCB%W4=FFCB%W5=FFCB%W6=FFCB)
+OS:ECN(R=Y%DF=Y%T=40%W=FFD7%O=MFFD7NNSNW8%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+
+OS:%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)
+OS:T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A
+OS:=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%D
+OS:F=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=N)
+
+Network Distance: 0 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 28.25 seconds
+
+Scan complete.
+Remove nmap again now (recommended - prohibited software on CP images)? (y/n): y
+nmap removed
+Press Enter to continue...
+
+MAIN MENU:
+  1) Run Lynis Security Audit
+  2) Analyze Listening Ports
+  3) Run Nmap Scan on Localhost
+  4) Exit
+
+Select option [1-4]: 4
+Exiting...
+
+[drive2] EXIT 0

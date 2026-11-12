@@ -1,0 +1,14 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Listening ports (process, package, unit) ===[0m
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:22             sshd (2374)                  openssh-server         ssh.service  -> critical
+  tcp   127.0.0.53%lo:53       systemd-resolve (67)         systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (67)         systemd                systemd-resolved.service  -> system
+
+  [*] 3 listener(s) are critical services, stock system daemons or the scoring engine
+  ? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip: 
+
+  [1;32m[+][0m portandmisc done in 3s. Listener table: /root/cp-state/listeners.tsv
+
+[drive2] EXIT 0

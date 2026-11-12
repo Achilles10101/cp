@@ -1,0 +1,48 @@
+# C round 5 (2026-11-11): orig usersandsudo (same as fin-old) + the NEW systemconfig / fileandpackage / portandmisc,
+# answered as a competitor with the planted README (admins cpuser alice; users bob carol dave frank; critical: OpenSSH only).
+set HARD=1500
+step p2-users bash usersandsudo.sh
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+rule Remove these users\?               => y
+rule adm: syslog.*Remove\?              => n
+rule unauthorized\).*Remove\?           => y
+rule Add .* to sudo group               => y
+rule Remove from admin groups           => y
+rule Change UID                         => y
+rule Review with visudo                 => y
+rule Delete account toor                => y
+rule Open /etc/sudoers.* in visudo      => y
+rule Set a password for carol           => y
+rule New password:                      => Car0l-Str0ng!pw
+rule Retype new password:               => Car0l-Str0ng!pw
+step p3-sysconfig bash systemconfig.sh
+rule Allow OpenSSH \(                   => y
+rule Allow Apache Full \(               => n
+rule Allow vsftpd \(                    => n
+rule Allow the \d+ \[Y\] rule           => e
+rule Extra ports                        =>
+rule Disable IPv6                       => y
+rule Remove ALL superuser               => n
+rule Delete these \d+ rule              => n
+step p4-filepkg bash fileandpackage.sh
+rule Remove all of these                => y
+rule Remove apache2 \(                  => y
+rule Remove FTP servers \(              => y
+rule Remove these service packages      => e
+rule Remove these too                   => n
+rule Remove the OpenSSH server          => n
+rule Other packages to remove           =>
+rule Purge \(including the metapackage\) => y
+rule Purge anyway                       => n
+rule remote-access service              => y
+rule desktop service                    => y
+rule Stop \+ disable the SSH server     => n
+rule Delete these \d+ media             => y
+rule Remove the SUID/SGID bit           => y
+step p5-portmisc bash portandmisc.sh
+rule backdoor-looking                   => y
+rule Stop \+ disable the SSH server     => n
+rule services the README does NOT need  => n
+rule unknown listeners                  => n
+rule Optional:                          => n

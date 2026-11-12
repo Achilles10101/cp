@@ -1,0 +1,5 @@
+.DS_Store
+Claude outputs/
+# large test-run artifacts (snapshots of code already in git, raw state dumps)
+tools/verify/mint21/results/*/code-snapshot/
+tools/verify/mint21/results/*/state/

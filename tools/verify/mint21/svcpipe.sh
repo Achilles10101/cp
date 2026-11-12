@@ -1,6 +1,7 @@
 #!/bin/bash
+# LEGACY (2026-10-21) - superseded by run-pipeline.sh + rules-2026-10-21-svc.txt; kept so the old runs can be repeated.
 # svcpipe.sh CONTAINER SRC  - baseline, systemconfig, then every service script (defaults + README answers used by the Aperture/1984 checks)
-C="$1"; SRC="$2"; H=/home/claude/harness
+C="$1"; SRC="$2"; H="${H:-$(cd "$(dirname "$0")" && pwd)}"   # was /home/claude/harness (2026-10-21)
 docker exec $C bash -c 'rm -rf /root/competition /root/harness; mkdir -p /root/logs'; docker cp "$SRC" $C:/root/competition; docker cp $H $C:/root/harness
 docker exec $C bash -c '[ -d /root/competition/baseline/linuxmint-21.3 ] || true'
 export HARD=900

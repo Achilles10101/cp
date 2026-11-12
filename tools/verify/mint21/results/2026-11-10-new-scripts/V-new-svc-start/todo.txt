@@ -1,0 +1,11 @@
+[readme.sh] README lists 'wordpress' as critical but it is not installed - re-check the README (install it? other name?)
+[baseline.sh] Triage the baseline findings: sudo bash services/baseline.sh --review   (list: /root/baseline/FINDINGS.txt)
+[usersandsudo.sh] WRITE DOWN the new password you set for: ftpuser
+[systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+[fileandpackage.sh] Glance over 4 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+[critical.sh] README lists 'wordpress' as critical but it is NOT installed - install it (apt install ...) and re-run: sudo bash services/critical.sh wordpress
+[critical.sh] README lists 'openvpn' as critical but it is NOT installed - install it (apt install ...) and re-run: sudo bash services/critical.sh openvpn
+[vsftpd.sh] vsftpd.sh: FTPS test login for ftpuser failed - check chroot mode / README
+[nginx.sh] nginx.sh: the hardening snippet broke nginx -t (nginx: [emerg] socket() [::]:80 failed (97: Unknown error)) and was left out
+[nginx.sh] nginx.sh: nginx -t failed - hardening rolled back; check nginx -t by hand
+[critical.sh] CRITICAL service nginx is DOWN: nginx - journalctl -xe; restore from /root/cp-backups if needed

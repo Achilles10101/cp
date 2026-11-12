@@ -1,0 +1,3 @@
+0 samba
+0 system
+HEADER BASELINE FINDINGS   FIX NOW: 0   REVIEW: 0   info: 0      (2026-11-12 02:33, linuxmint-21.3, pack: linuxmint-21.3)

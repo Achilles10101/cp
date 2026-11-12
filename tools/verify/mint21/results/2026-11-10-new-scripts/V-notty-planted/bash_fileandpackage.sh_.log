@@ -1,0 +1,69 @@
+File, Package, and SUID/GUID Scanner
+  [!] README critical services unknown - service packages are asked one family at a time (default keep)
+
+=== [0] Package tool sanity (can apt/dpkg be trusted on this image?) ===
+  [*] 'apt' at /usr/local/bin/apt is from package mintsystem (Linux Mint's apt wrapper is normal) - unmodified
+  [!] Packages on HOLD (unheld automatically if you remove them): john
+  [+] apt/dpkg binaries, diversions, aliases and APT hooks look normal
+
+=== [1] Unauthorized packages (dpkg-query, whole package names) ===
+    [TOOL   ] john: john (HELD) john-data
+    [TOOL   ] hydra: hydra
+    [TOOL   ] nmap: nmap nmap-common
+    [TOOL   ] wireshark: libwireshark-data libwireshark15:amd64 libwiretap12:amd64 libwsutil13:amd64 tshark wireshark wireshark-common wireshark-qt
+    [TOOL   ] netcat: netcat-openbsd netcat-traditional
+    [TOOL   ] password crackers: ophcrack
+    [TOOL   ] wireless attack: aircrack-ng
+    [REMOTE ] telnet/rsh/finger: telnet telnetd
+    [REMOTE ] inetd/tftp/NIS: openbsd-inetd
+    [P2P    ] P2P/torrent: transmission-common transmission-gtk
+    [GAME   ] minetest/luanti: minetest minetest-data
+    [SSHD   ] OpenSSH server: openssh-server openssh-sftp-server
+    [SERVICE] apache2: apache2 apache2-bin apache2-data apache2-utils
+    [SERVICE] FTP servers: vsftpd
+    [DESKTOP] CUPS printing: cups cups-browsed cups-bsd cups-client cups-daemon
+    [DESKTOP] avahi: avahi-daemon avahi-utils
+    [REVIEW ] misc review: ftp tcpdump tnftp
+
+  [*] Scan-only mode (--scan or no terminal): nothing removed.
+
+=== [3] Unauthorized services (exact unit names) ===
+    inetd (active)
+    openbsd-inetd (active)
+    vsftpd (active)
+    apache2 (active)
+    avahi-daemon (active)
+    cups (active)
+    cups-browsed (active)
+  [*] (If the README needs it: keep it. Otherwise: sudo systemctl disable --now <unit>, or remove its package.)
+
+=== [4] Mounted network shares ===
+  [+] No mounted network shares
+
+=== [5] Unauthorized files  +  [6] SUID/SGID/sticky (one pass over the filesystem) ===
+  [*] filesystem pass took 0s
+  Media files in user/data folders (3) - usually scored:
+    /home/bob/Music/never_gonna.mp3
+    /home/carol/Videos/movie.mp4
+    /home/dave/.local/share/.cache/stash.ogg
+  Media/archives in system folders that NO package installed (2) - planted:
+    /usr/share/fonts/truetype/.x/track01.mp3
+    /usr/share/nmap/nselib/data/psexec/nmap_service.exe
+  Other files in user/data folders (5: archives, scripts, documents, images) - first 25, full list /root/cp-state/files-other.txt:
+    /home/bob/passwords.txt
+    /root/harness/checks_cp.py
+    /root/harness/mintchecks.py
+    /root/harness/svccheck.sh
+    /root/postcheck.sh
+  [TODO] Archive/executable no package installed: /usr/share/nmap/nselib/data/psexec/nmap_service.exe - delete if unauthorized
+  [TODO] Media file: /home/bob/Music/never_gonna.mp3 - delete unless the README needs it
+  [TODO] Media file: /home/carol/Videos/movie.mp4 - delete unless the README needs it
+  [TODO] Media file: /home/dave/.local/share/.cache/stash.ogg - delete unless the README needs it
+  [TODO] Media file: /usr/share/fonts/truetype/.x/track01.mp3 - delete unless the README needs it
+  [TODO] Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+  [TODO] Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  [*] 23 SUID/SGID/sticky files (full list: /root/cp-state/files-suid-sgid.txt); stock helpers not shown
+  [+] Only stock SUID/SGID helpers found
+
+  [+] fileandpackage done in 2s
+[exit 0]

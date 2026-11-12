@@ -1,0 +1,63 @@
+{
+ "image": "cp-mint-planted",
+ "competition": "/home/claude/work/competition",
+ "rules": "/home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-start-enterreview.txt",
+ "steps": [
+  {
+   "step": "wait65",
+   "wall_s": "65.1",
+   "script_elapsed_s": "65.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.83",
+   "load_end": "0.28",
+   "findings_detail": "-"
+  },
+  {
+   "step": "start",
+   "wall_s": "177.4",
+   "script_elapsed_s": "177.4",
+   "harness_wait_s": "130.2",
+   "prompts": "52",
+   "rule": "26",
+   "default": "26",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.28",
+   "load_end": "0.36",
+   "findings_detail": "-"
+  },
+  {
+   "step": "zz-wait-bg",
+   "wall_s": "0.1",
+   "script_elapsed_s": "0.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.36",
+   "load_end": "0.36",
+   "findings_detail": "-"
+  }
+ ],
+ "total_wall_s": 243.0,
+ "total_prompts": 52,
+ "total_harness_wait_s": 130.2,
+ "checks_pass": 110,
+ "checks_total": 144,
+ "planted_pass": 43,
+ "planted_total": 44,
+ "services_ok": [
+  "ssh"
+ ],
+ "services_fail": []
+}

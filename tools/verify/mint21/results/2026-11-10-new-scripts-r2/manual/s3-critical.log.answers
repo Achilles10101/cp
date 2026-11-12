@@ -1,0 +1,6 @@
+[    2.5s] '? README answers not recorded yet. Run readme.sh now? [Y/n]:' -> 'n' (rule)
+[    5.0s] '? Critical services listed in the README (names, or none):' -> '' (rule)
+[    7.5s] '? Critical services listed in the README (names, or none):' -> '' (rule)
+[   10.0s] '? Critical services listed in the README (names, or none):' -> '' (rule)
+STATS prompts=4 rule=4 default=0 stall=0 wait=10.0s elapsed=10.0s
+EXIT 1

@@ -1,0 +1,18 @@
+image cp-mint-planted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r3-merge.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   2.29>0.77
+plant               16.5      16.4     0.0    16.4        0     0     0     0     0        -   0.77>0.90
+start              196.5     196.4   152.7    43.7       61    41    20     0     0        -   0.90>0.31
+zz-wait-bg           0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.31>0.31
+zz-merge-check       0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.31>0.31
+TOTAL              278.8             152.7   126.1       61
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 110/144 PASS   planted: 43/44 PASS
+services answering: 1 OK ssh | FAIL: -

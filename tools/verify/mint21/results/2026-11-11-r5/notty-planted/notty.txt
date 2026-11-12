@@ -1,0 +1,225 @@
+### before
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: inactive readme.conf: 
+
+################ bash speedrun.sh </dev/null
+  16. [portandmisc.sh] Purge nmap (scored hacking tool): sudo apt-get purge nmap nmap-common
+
+  [+] Speedrun done in 31s | users 0s review 0s system 11s packages 2s ports 1s critical 0s upgrades 4s
+[exit 0]
+(31 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash readme.sh </dev/null
+  [x] No README text on stdin
+[exit 1]
+(0 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash services/baseline.sh --review </dev/null
+--review is interactive - run it in a terminal. Findings: /root/baseline/FINDINGS.txt
+[exit 1]
+(0 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash usersandsudo.sh </dev/null
+=== Users and sudo ===
+  [x] No README text on stdin
+  [x] No README users given - nothing changed
+[exit 1]
+(0 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash systemconfig.sh </dev/null
+  [+] unattended-upgrades enabled and running
+
+  [+] System hardening complete in 10s. Backups: /root/cp-backups/20261112_024231/
+[exit 0]
+(10 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash fileandpackage.sh </dev/null
+  [+] Only stock SUID/SGID helpers found
+
+  [+] fileandpackage done in 2s
+[exit 0]
+(3 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash portandmisc.sh </dev/null
+  [TODO] Purge nmap (scored hacking tool): sudo apt-get purge nmap nmap-common
+
+  [+] portandmisc done in 1s. Listener table: /root/cp-state/listeners.tsv
+[exit 0]
+(1 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+bash: line 1: /root/cp-state/readme.conf: No such file or directory
+media: 2/2 ssh=active ufw=Status: active readme.conf: 
+
+################ bash services/ssh.sh </dev/null
+      ClientAliveInterval:0->300 AllowAgentForwarding:yes->no LogLevel:info->verbose DisableForwarding:no->yes
+      ~ /etc/ssh/sshd_config.d/60-evil.conf: (lines removed)
+  [+] SSH hardening complete (1s)
+[exit 0]
+(1 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+media: 2/2 ssh=active ufw=Status: active readme.conf: SSH_PORT=22 SSH_PASSAUTH=yes SSH_ALLOWUSERS= SSH_DENYUSERS= SSH_DENYGROUPS= SSH_SFTP_DIR= 
+
+################ bash services/critical.sh </dev/null
+  apache2: apache2 installed, active, listening on :80
+  Plan: (nothing)
+  [*] Nothing chosen - no service hardened.
+[exit 0]
+(0 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+media: 2/2 ssh=active ufw=Status: active readme.conf: SSH_PORT=22 SSH_PASSAUTH=yes SSH_ALLOWUSERS= SSH_DENYUSERS= SSH_DENYGROUPS= SSH_SFTP_DIR= 
+
+################ bash upgrades.sh </dev/null
+
+=== Upgrades ===
+  [+] Nothing to upgrade.
+[exit 0]
+(1 s)
+users: cpuser alice bob carol dave frank eve mallory | toor: toor
+pkgs: ii apache2 ii hydra hi john ii nmap ii openssh-server ii vsftpd ii wireshark 
+media: 2/2 ssh=active ufw=Status: active readme.conf: SSH_PORT=22 SSH_PASSAUTH=yes SSH_ALLOWUSERS= SSH_DENYUSERS= SSH_DENYGROUPS= SSH_SFTP_DIR= 
+
+### path with spaces (detection-only entry points)
+-- services/baseline.sh ssh
+   exit 0
+-- fileandpackage.sh --scan
+   exit 0
+-- portandmisc.sh --scan
+   exit 0
+-- speedrun.sh --help
+   exit 0
+-- readme.sh --parse /dev/null
+   exit 0
+
+### TODO
+[baseline.sh] Triage the baseline findings: sudo bash services/baseline.sh --review   (list: /root/baseline/FINDINGS.txt)
+[systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+[fileandpackage.sh] Archive/executable no package installed: /usr/share/nmap/nselib/data/psexec/nmap_service.exe - delete if unauthorized
+[fileandpackage.sh] Media file: /home/bob/Music/never_gonna.mp3 - delete unless the README needs it
+[fileandpackage.sh] Media file: /home/carol/Videos/movie.mp4 - delete unless the README needs it
+[fileandpackage.sh] Media file: /home/dave/.local/share/.cache/stash.ogg - delete unless the README needs it
+[fileandpackage.sh] Media file: /usr/share/fonts/truetype/.x/track01.mp3 - delete unless the README needs it
+[fileandpackage.sh] Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+[fileandpackage.sh] Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+[portandmisc.sh] Listener tcp/4444 (cron.service): /bin/nc.traditional -l -p 4444 -e /bin/bash  - stop it unless the README needs it
+[portandmisc.sh] Listener tcp/31337 (system-sync.service): /usr/bin/python3 -m http.server 31337 --directory /  - stop it unless the README needs it
+[portandmisc.sh] Listener tcp/21 (vsftpd.service): /usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO  - stop it unless the README needs it
+[portandmisc.sh] Listener tcp/22 (ssh.service): sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups  - stop it unless the README needs it
+[portandmisc.sh] Listener tcp/23 (inetd.service): /usr/sbin/inetd  - stop it unless the README needs it
+[portandmisc.sh] Listener tcp/80 (apache2.service): /usr/sbin/apache2 -k start  - stop it unless the README needs it
+[portandmisc.sh] Purge nmap (scored hacking tool): sudo apt-get purge nmap nmap-common
+[portandmisc.sh] Listener tcp/22 (ssh.service): sshd: /usr/sbin/sshd -D [listener] 0 of 10-60 startups  - stop it unless the README needs it
+
+### score
+TOTAL notty: PASS 87 / FAIL 57 / SKIP 0
+service check 02:42:54
+  OK   ssh         keyscan ok on 22
+  FAIL vsftpd      login+list ok (530)
+  OK   apache2     http 200 https 000
+
+### postcheck
+== desktop packages
+  cinnamon               install ok installed
+  cinnamon-core          install ok installed
+  lightdm                install ok installed
+  network-manager        install ok installed
+  mint-meta-cinnamon     install ok installed
+  mint-meta-core         install ok installed
+  slick-greeter          install ok installed
+  lightdm-settings       install ok installed
+  xorg                   not-known
+  default target: graphical.target  lightdm enabled: indirect  NetworkManager: active/enabled
+== sudo
+-rwsr-xr-x 1 root root 232416 Oct  6 14:05 /usr/bin/sudo
+user::rwx group::r-x other::r-x  
+  visudo -c OK
+  cpuser  id: uid=1000(cpuser) gid=1000(cpuser) groups=1000(cpuser),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),115(lpadmin)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  alice   id: uid=1001(alice) gid=1001(alice) groups=1001(alice),115(lpadmin)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  bob     id: uid=1002(bob) gid=1002(bob) groups=1002(bob),4(adm),27(sudo)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (ALL) NOPASSWD: ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  carol   id: uid=1003(carol) gid=1003(carol) groups=1003(carol)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  dave    id: uid=1004(dave) gid=1004(dave) groups=1004(dave)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  frank   id: uid=1005(frank) gid=1005(frank) groups=1005(frank)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  root passwd status: L  cpuser: P 11/10/2026 0 99999 7 -1
+  cpuser sudo -n -l rc=0 (1 = needs password = OK, sudo works)
+  sudo binary runs as cpuser
+== homes
+  /home/cpuser drwxr-x--- cpuser:cpuser files=8
+  /home/alice  drwxr-x--- alice:alice files=3
+  /home/bob    drwxr-x--- bob:bob files=5
+  /home/carol  drwxr-x--- carol:carol files=4
+  /home/dave   drwxr-x--- dave:dave files=4
+  /home/frank  drwxr-x--- frank:frank files=3
+== human accounts (uid>=1000 or with /home)
+  cpuser 1000 /home/cpuser /bin/bash
+  alice 1001 /home/alice /bin/bash
+  bob 1002 /home/bob /bin/bash
+  carol 1003 /home/carol /bin/bash
+  dave 1004 /home/dave /bin/bash
+  frank 1005 /home/frank /bin/bash
+  eve 1006 /home/eve /bin/bash
+  mallory 1007 /home/mallory /bin/bash
+== quarantine
+  (none)
+== services active
+ssh=active vsftpd=active apache2=active nginx=inactive php8.1-fpm=inactive mysql=inactive postgresql=inactive smbd=inactive named=inactive postfix=inactive dovecot=inactive openvpn=inactive squid=inactive cups=active avahi-daemon=active ufw=active 
+== ufw
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+Apache Full                ALLOW       Anywhere                  
+21/tcp                     ALLOW       Anywhere                  
+
+== sysctl ipv6 disable: 
+== TODO count: 17
+== /opt

@@ -1,0 +1,295 @@
+{
+ "steps": [
+  {
+   "name": "s0-readme",
+   "cmd": [
+    "bash",
+    "readme.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid",
+    "CP_AUTO": "1"
+   },
+   "rules": [
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "REMOTE access to",
+     "n"
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Does the README or the",
+     "n"
+    ],
+    [
+     "Does the README require",
+     "n"
+    ],
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "Quarantine these phpinfo",
+     "y"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ]
+   ]
+  },
+  {
+   "name": "s1-baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid",
+    "CP_AUTO": "1"
+   },
+   "rules": [
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "REMOTE access to",
+     "n"
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Does the README or the",
+     "n"
+    ],
+    [
+     "Does the README require",
+     "n"
+    ],
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "Quarantine these phpinfo",
+     "y"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ]
+   ]
+  },
+  {
+   "name": "s3-sysconfig",
+   "cmd": [
+    "bash",
+    "systemconfig.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid",
+    "CP_AUTO": "1"
+   },
+   "rules": [
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "REMOTE access to",
+     "n"
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Does the README or the",
+     "n"
+    ],
+    [
+     "Does the README require",
+     "n"
+    ],
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "Quarantine these phpinfo",
+     "y"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ]
+   ]
+  },
+  {
+   "name": "s-critical",
+   "cmd": [
+    "bash",
+    "services/critical.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "1500",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid",
+    "CP_AUTO": "1"
+   },
+   "rules": [
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "REMOTE access to",
+     "n"
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Does the README or the",
+     "n"
+    ],
+    [
+     "Does the README require",
+     "n"
+    ],
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "Quarantine these phpinfo",
+     "y"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ]
+   ]
+  }
+ ],
+ "global": {
+  "HARD": "1500"
+ }
+}

@@ -1,0 +1,5 @@
+[18:33:27] container V5-baseline-planted from cp-mint-planted: systemd running
+[18:33:27] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+[18:33:28] step baseline: bash services/baseline.sh
+[18:33:30]   done in 2s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=2.1s  exit=0  findings=18 (fix=11 review=7 info=2 bang=18)
+[18:33:30] container kept: V5-baseline-planted

@@ -1,0 +1,48 @@
+{
+ "image": "cp-mint-planted",
+ "competition": "/home/claude/work/competition",
+ "rules": "/home/claude/work/tools/verify/mint21/rules-2026-11-11-V5-speedrun-planted.txt",
+ "steps": [
+  {
+   "step": "wait65",
+   "wall_s": "65.1",
+   "script_elapsed_s": "65.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.80",
+   "load_end": "0.27",
+   "findings_detail": "-"
+  },
+  {
+   "step": "speedrun",
+   "wall_s": "227.6",
+   "script_elapsed_s": "227.5",
+   "harness_wait_s": "185.3",
+   "prompts": "74",
+   "rule": "53",
+   "default": "21",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.27",
+   "load_end": "0.61",
+   "findings_detail": "-"
+  }
+ ],
+ "total_wall_s": 292.9,
+ "total_prompts": 74,
+ "total_harness_wait_s": 185.3,
+ "checks_pass": 110,
+ "checks_total": 144,
+ "planted_pass": 43,
+ "planted_total": 44,
+ "services_ok": [
+  "ssh"
+ ],
+ "services_fail": []
+}

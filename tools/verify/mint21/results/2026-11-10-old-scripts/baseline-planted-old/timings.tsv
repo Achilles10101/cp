@@ -1,0 +1,2 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings
+baseline	37.3	37.2	0.0	0	0	0	0	0	28

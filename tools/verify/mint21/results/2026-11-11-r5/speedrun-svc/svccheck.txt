@@ -1,0 +1,14 @@
+service check 02:33:08
+  OK   ssh         keyscan ok on 22
+  OK   vsftpd      login+list ok (226)
+  OK   apache2     http 200 https 200
+  FAIL nginx       not active: nginx
+  OK   php-fpm     active
+  OK   mysql       query ok 8.0.46-0ubuntu0.22.04.5
+  OK   postgres    query ok
+  OK   samba       smb answers
+  OK   bind9       resolves localhost
+  OK   postfix     220 mint-cptest ESMTP
+  OK   dovecot     * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITE
+  OK   openvpn     active
+  OK   squid       proxied 200
