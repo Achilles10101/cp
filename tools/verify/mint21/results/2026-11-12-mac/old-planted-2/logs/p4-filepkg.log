@@ -1,0 +1,456 @@
+Have you taken a screenshot of the points? (y/n): y
+File, Package, and SUID/GUID Scanner
+
+=== [0] Package tool sanity (can apt/dpkg be trusted on this image?) ===
+  [*] 'apt' at /usr/local/bin/apt is from package mintsystem (Linux Mint's apt wrapper is normal) - unmodified
+  [!] Packages on HOLD (apt refuses to remove/upgrade them; this script unholds the ones you remove):
+        john
+  [+] apt/dpkg binaries, diversions, aliases and APT hooks look normal
+
+=== [1] Scanning for unauthorized packages (dpkg-query, whole package names) ===
+  [TOOL   ] john:
+              john (HELD)
+              john-data
+  [TOOL   ] hydra:
+              hydra
+  [TOOL   ] nmap:
+              nmap
+              nmap-common
+  [TOOL   ] wireshark:
+              libwireshark-data
+              libwireshark15:arm64
+              libwiretap12:arm64
+              libwsutil13:arm64
+              tshark
+              wireshark
+              wireshark-common
+              wireshark-qt
+  [TOOL   ] netcat:
+              netcat-openbsd
+              netcat-traditional
+  [TOOL   ] password crackers:
+              ophcrack
+  [TOOL   ] wireless attack:
+              aircrack-ng
+  [REMOTE ] telnet/rsh/finger:
+              telnet
+              telnetd
+  [REMOTE ] inetd/tftp/NIS:
+              openbsd-inetd
+  [P2P    ] P2P/torrent:
+              transmission-common
+              transmission-gtk
+  [GAME   ] minetest/luanti:
+              minetest
+              minetest-data
+  [SERVICE] apache2:
+              apache2
+              apache2-bin
+              apache2-data
+              apache2-utils
+  [SERVICE] FTP servers:
+              vsftpd
+  [SERVICE] CUPS printing:
+              cups
+              cups-browsed
+              cups-bsd
+              cups-client
+              cups-daemon
+  [SERVICE] avahi:
+              avahi-daemon
+              avahi-utils
+  [REVIEW ] misc review:
+              ftp
+              tcpdump
+              tnftp
+
+  [*] Software installed outside dpkg (remove by hand if unauthorized):
+      /usr/local/bin: apt highlight-mint search
+      /usr/local/sbin: unminimize
+
+=== [2] Build the removal list ===
+  Answer per family: y = remove all listed, n = keep all, e = ask for each package.
+  Services marked SERVICE: keep anything the README lists as a critical service!
+
+  [TOOL] john: john john-data
+  ? Remove? [Y/n/e]: y
+
+  [TOOL] hydra: hydra
+  ? Remove? [Y/n/e]: y
+
+  [TOOL] nmap: nmap nmap-common
+  ? Remove? [Y/n/e]: y
+
+  [TOOL] wireshark: libwireshark-data libwireshark15:arm64 libwiretap12:arm64 libwsutil13:arm64 tshark wireshark wireshark-common wireshark-qt
+  ? Remove? [Y/n/e]: y
+
+  [TOOL] netcat: netcat-openbsd netcat-traditional
+      note: netcat-openbsd ships with Ubuntu (removing it is fine; the preview shows the metapackage it takes along)
+  ? Remove? [Y/n/e]: y
+
+  [TOOL] password crackers: ophcrack
+  ? Remove? [Y/n/e]: y
+
+  [TOOL] wireless attack: aircrack-ng
+  ? Remove? [Y/n/e]: y
+
+  [REMOTE] telnet/rsh/finger: telnet telnetd
+      note: telnet ships with some Ubuntu releases (the preview shows the metapackage it takes along)
+  ? Remove? [Y/n/e]: y
+
+  [REMOTE] inetd/tftp/NIS: openbsd-inetd
+  ? Remove? [Y/n/e]: y
+
+  [P2P] P2P/torrent: transmission-common transmission-gtk
+      note: transmission-gtk ships with Ubuntu desktop - remove unless the README needs it
+  ? Remove? [Y/n/e]: y
+
+  [GAME] minetest/luanti: minetest minetest-data
+  ? Remove? [Y/n/e]: y
+
+  [SERVICE] apache2: apache2 apache2-bin apache2-data apache2-utils
+      note: KEEP if the README lists a web server / website
+  ? Remove? [y/N/e]: y
+
+  [SERVICE] FTP servers: vsftpd
+      note: KEEP if the README lists FTP
+  ? Remove? [y/N/e]: y
+
+  [SERVICE] CUPS printing: cups cups-browsed cups-bsd cups-client cups-daemon
+      note: Ubuntu desktop default - checklist says disable, removing is optional
+  ? Remove? [y/N/e]: n
+
+  [SERVICE] avahi: avahi-daemon avahi-utils
+      note: Ubuntu desktop default
+  ? Remove? [y/N/e]: n
+
+  [REVIEW] misc review: ftp tcpdump tnftp
+      note: tcpdump/ftp ship with Ubuntu; vino = GNOME VNC server on older releases
+  ? Remove? [y/N/e]: n
+
+  Add any other packages to remove. Names or globs (e.g. 'zenmap', 'freeciv*'), space separated.
+  '?word' lists installed packages whose name contains word. Empty line = done.
+  + 
+
+=== Removal preview (apt-get -s purge) ===
+  Your list (29): john john-data hydra nmap nmap-common libwireshark-data libwireshark15:arm64 libwiretap12:arm64 libwsutil13:arm64 tshark wireshark wireshark-common wireshark-qt netcat-openbsd netcat-traditional ophcrack aircrack-ng telnet telnetd openbsd-inetd transmission-common transmission-gtk minetest minetest-data apache2 apache2-bin apache2-data apache2-utils vsftpd
+  [+] Nothing else would be removed.
+  ? Purge these 29 package(s)? [y/N]: y
+  [*] Unheld john
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 11%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 1%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  ethtool firebird3.0-common firebird3.0-common-doc hwloc ieee-data libapr1
+  libaprutil1 libaprutil1-dbd-sqlite3 libaprutil1-ldap libbcg729-0
+  libbson-1.0-0 libc-ares2 libdouble-conversion3 libfbclient2 libfreerdp2-2
+  libhwloc-plugins libhwloc15 libirrlicht1.8 libjsoncpp25 libleveldb1d
+  liblinear4 liblua5.1-0 liblua5.3-0 libmd4c0 libmemcached11 libminizip1
+  libmongoc-1.0-0 libmongocrypt0 libmysqlclient21 libnl-route-3-200
+  libpcre2-16-0 libpq5 libqt5charts5 libqt5core5a libqt5dbus5 libqt5gui5
+  libqt5multimedia5 libqt5multimedia5-plugins libqt5multimediagsttools5
+  libqt5multimediawidgets5 libqt5network5 libqt5printsupport5 libqt5svg5
+  libqt5widgets5 libsbc1 libserf-1-1 libsmi2ldbl libspandsp2 libspatialindex6
+  libspeexdsp1 libsvn1 libtommath1 libutf8proc2 libwinpr2-2 libxcb-icccm4
+  libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0
+  libxcb-xinput0 libxnvctrl0 lua-lpeg mysql-common qt5-gtk-platformtheme
+  qttranslations5-l10n rfkill tcpd
+Use 'sudo apt autoremove' to remove them.
+The following packages will be REMOVED:
+  aircrack-ng* apache2* apache2-bin* apache2-data* apache2-utils* hydra* john*
+  john-data* libwireshark-data* libwireshark15* libwiretap12* libwsutil13*
+  minetest* minetest-data* netcat-openbsd* netcat-traditional* nmap*
+  nmap-common* openbsd-inetd* ophcrack* telnet* telnetd* transmission-common*
+  transmission-gtk* tshark* vsftpd* wireshark* wireshark-common* wireshark-qt*
+0 upgraded, 0 newly installed, 29 to remove and 0 not upgraded.
+After this operation, 197 MB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 66072 files and directories currently installed.)
+Removing aircrack-ng (1:1.6+git20210130.91820bc-2) ...
+Removing apache2 (2.4.52-1ubuntu4.26) ...
+Removing apache2-bin (2.4.52-1ubuntu4.26) ...
+dpkg: warning: while removing apache2-bin, directory '/var/lib/apache2' not empty so not removed
+Removing apache2-data (2.4.52-1ubuntu4.26) ...
+Removing apache2-utils (2.4.52-1ubuntu4.26) ...
+Removing hydra (9.2-1ubuntu1) ...
+Removing john (1.8.0-4ubuntu3) ...
+Removing john-data (1.8.0-4ubuntu3) ...
+Removing wireshark (3.6.2-2) ...
+Removing wireshark-qt (3.6.2-2) ...
+Removing tshark (3.6.2-2) ...
+Removing wireshark-common (3.6.2-2) ...
+Removing libwireshark15:arm64 (3.6.2-2) ...
+Removing libwireshark-data (3.6.2-2) ...
+Removing libwiretap12:arm64 (3.6.2-2) ...
+Removing libwsutil13:arm64 (3.6.2-2) ...
+Removing minetest (5.4.1+repack-2build1) ...
+Removing minetest-data (5.4.1+repack-2build1) ...
+Removing netcat-openbsd (1.218-4ubuntu1) ...
+update-alternatives: using /bin/nc.traditional to provide /bin/nc (nc) in auto mode
+Removing netcat-traditional (1.10-47) ...
+Removing nmap (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Removing nmap-common (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Removing telnetd (0.17-44build1) ...
+Removing openbsd-inetd (0.20160825-5) ...
+Removing ophcrack (3.8.0-3build1) ...
+Removing telnet (0.17-44build1) ...
+Removing transmission-gtk (3.00-2ubuntu2.2) ...
+Removing transmission-common (3.00-2ubuntu2.2) ...
+Removing vsftpd (3.0.5-0ubuntu1.1) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.15) ...
+Processing triggers for ufw (0.36.1-4ubuntu0.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for shared-mime-info (2.1-2) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1.22.04.1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 61949 files and directories currently installed.)
+Purging configuration files for wireshark-common (3.6.2-2) ...
+Purging configuration files for telnet (0.17-44build1) ...
+Purging configuration files for john (1.8.0-4ubuntu3) ...
+rmdir: removing directory, '/var/lib/john'
+rmdir: removing directory, '/var/lib'
+rmdir: failed to remove directory '/var/lib': Directory not empty
+rmdir: removing directory, '/var/run/john'
+rmdir: removing directory, '/var/run'
+rmdir: failed to remove directory '/var/run': Not a directory
+Purging configuration files for apache2 (2.4.52-1ubuntu4.26) ...
+Purging configuration files for transmission-gtk (3.00-2ubuntu2.2) ...
+Purging configuration files for vsftpd (3.0.5-0ubuntu1.1) ...
+Purging configuration files for openbsd-inetd (0.20160825-5) ...
+Purging configuration files for libwireshark-data (3.6.2-2) ...
+Purging configuration files for telnetd (0.17-44build1) ...
+Processing triggers for ufw (0.36.1-4ubuntu0.1) ...
+
+=== Verify with dpkg-query (not apt) ===
+  [+] john: gone
+  [+] john-data: gone
+  [+] hydra: gone
+  [+] nmap: gone
+  [+] nmap-common: gone
+  [+] libwireshark-data: gone
+  [+] libwireshark15:arm64: gone
+  [+] libwiretap12:arm64: gone
+  [+] libwsutil13:arm64: gone
+  [+] tshark: gone
+  [+] wireshark: gone
+  [+] wireshark-common: gone
+  [+] wireshark-qt: gone
+  [+] netcat-openbsd: gone
+  [+] netcat-traditional: gone
+  [+] ophcrack: gone
+  [+] aircrack-ng: gone
+  [+] telnet: gone
+  [+] telnetd: gone
+  [+] openbsd-inetd: gone
+  [+] transmission-common: gone
+  [+] transmission-gtk: gone
+  [+] minetest: gone
+  [+] minetest-data: gone
+  [+] apache2: gone
+  [+] apache2-bin: gone
+  [+] apache2-data: gone
+  [+] apache2-utils: gone
+  [+] vsftpd: gone
+
+=== apt-get autoremove --purge (dependencies nothing needs any more) ===
+  Would remove 67:
+        ethtool firebird3.0-common firebird3.0-common-doc hwloc ieee-data libapr1 libaprutil1 
+        libaprutil1-dbd-sqlite3 libaprutil1-ldap libbcg729-0 libbson-1.0-0 libc-ares2 
+        libdouble-conversion3 libfbclient2 libfreerdp2-2 libhwloc-plugins libhwloc15 
+        libirrlicht1.8 libjsoncpp25 libleveldb1d liblinear4 liblua5.1-0 liblua5.3-0 libmd4c0 
+        libmemcached11 libminizip1 libmongoc-1.0-0 libmongocrypt0 libmysqlclient21 
+        libnl-route-3-200 libpcre2-16-0 libpq5 libqt5charts5 libqt5core5a libqt5dbus5 libqt5gui5 
+        libqt5multimedia5 libqt5multimedia5-plugins libqt5multimediagsttools5 
+        libqt5multimediawidgets5 libqt5network5 libqt5printsupport5 libqt5svg5 libqt5widgets5 
+        libsbc1 libserf-1-1 libsmi2ldbl libspandsp2 libspatialindex6 libspeexdsp1 libsvn1 
+        libtommath1 libutf8proc2 libwinpr2-2 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 
+        libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 libxnvctrl0 lua-lpeg mysql-common 
+        qt5-gtk-platformtheme qttranslations5-l10n rfkill tcpd
+  [!] Large list - make sure the desktop/critical services are not in it.
+  ? Run autoremove? [y/N]: y
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 1%Reading state information... Done
+The following packages will be REMOVED:
+  ethtool* firebird3.0-common* firebird3.0-common-doc* hwloc* ieee-data*
+  libapr1* libaprutil1* libaprutil1-dbd-sqlite3* libaprutil1-ldap*
+  libbcg729-0* libbson-1.0-0* libc-ares2* libdouble-conversion3* libfbclient2*
+  libfreerdp2-2* libhwloc-plugins* libhwloc15* libirrlicht1.8* libjsoncpp25*
+  libleveldb1d* liblinear4* liblua5.1-0* liblua5.3-0* libmd4c0*
+  libmemcached11* libminizip1* libmongoc-1.0-0* libmongocrypt0*
+  libmysqlclient21* libnl-route-3-200* libpcre2-16-0* libpq5* libqt5charts5*
+  libqt5core5a* libqt5dbus5* libqt5gui5* libqt5multimedia5*
+  libqt5multimedia5-plugins* libqt5multimediagsttools5*
+  libqt5multimediawidgets5* libqt5network5* libqt5printsupport5* libqt5svg5*
+  libqt5widgets5* libsbc1* libserf-1-1* libsmi2ldbl* libspandsp2*
+  libspatialindex6* libspeexdsp1* libsvn1* libtommath1* libutf8proc2*
+  libwinpr2-2* libxcb-icccm4* libxcb-image0* libxcb-keysyms1*
+  libxcb-render-util0* libxcb-xinerama0* libxcb-xinput0* libxnvctrl0*
+  lua-lpeg* mysql-common* qt5-gtk-platformtheme* qttranslations5-l10n* rfkill*
+  tcpd*
+0 upgraded, 0 newly installed, 67 to remove and 0 not upgraded.
+After this operation, 96.7 MB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 61768 files and directories currently installed.)
+Removing ethtool (1:5.16-1ubuntu0.2) ...
+Removing libfbclient2:arm64 (3.0.8.33535.ds4-1ubuntu2) ...
+Removing firebird3.0-common (3.0.8.33535.ds4-1ubuntu2) ...
+Removing firebird3.0-common-doc (3.0.8.33535.ds4-1ubuntu2) ...
+Removing hwloc (2.7.0-2ubuntu1) ...
+Removing ieee-data (20210605.1) ...
+Removing libsvn1:arm64 (1.14.1-3ubuntu0.22.04.1) ...
+Removing libaprutil1-dbd-sqlite3:arm64 (1.6.1-5ubuntu4.22.04.3) ...
+Removing libaprutil1-ldap:arm64 (1.6.1-5ubuntu4.22.04.3) ...
+Removing libbcg729-0:arm64 (1.1.1-2) ...
+Removing libmongoc-1.0-0 (1.21.0-1build1) ...
+Removing libmongocrypt0:arm64 (1.3.0-1ubuntu1) ...
+Removing libbson-1.0-0 (1.21.0-1build1) ...
+Removing libc-ares2:arm64 (1.18.1-1ubuntu0.22.04.4) ...
+Removing qt5-gtk-platformtheme:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libqt5printsupport5:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libqt5charts5:arm64 (5.15.3-1) ...
+Removing libqt5svg5:arm64 (5.15.3-1) ...
+Removing libfreerdp2-2:arm64 (2.6.1+dfsg1-3ubuntu2.11) ...
+Removing libhwloc-plugins:arm64 (2.7.0-2ubuntu1) ...
+Removing libhwloc15:arm64 (2.7.0-2ubuntu1) ...
+Removing libirrlicht1.8:arm64 (1.8.5+ds-2) ...
+Removing libjsoncpp25:arm64 (1.9.5-3) ...
+Removing libleveldb1d:arm64 (1.23-3build1) ...
+Removing liblinear4:arm64 (2.3.0+dfsg-5) ...
+Removing liblua5.1-0:arm64 (5.1.5-8.1build4) ...
+Removing liblua5.3-0:arm64 (5.3.6-1build1) ...
+Removing libmemcached11:arm64 (1.0.18-4.2ubuntu4) ...
+Removing libminizip1:arm64 (1.1-8build1) ...
+Removing libmysqlclient21:arm64 (8.0.46-0ubuntu0.22.04.5) ...
+Removing libnl-route-3-200:arm64 (3.5.0-0.1) ...
+Removing libpq5:arm64 (14.24-0ubuntu0.22.04.1) ...
+Removing libqt5multimedia5-plugins:arm64 (5.15.3-1) ...
+Removing libqt5multimediagsttools5:arm64 (5.15.3-1) ...
+Removing libqt5multimediawidgets5:arm64 (5.15.3-1) ...
+Removing libqt5multimedia5:arm64 (5.15.3-1) ...
+Removing libsbc1:arm64 (1.5-3build2) ...
+Removing libserf-1-1:arm64 (1.3.9-10ubuntu2) ...
+Removing libsmi2ldbl:arm64 (0.4.8+dfsg2-16) ...
+Removing libspandsp2:arm64 (0.0.6+dfsg-2) ...
+Removing libspatialindex6:arm64 (1.9.3-2) ...
+Removing libspeexdsp1:arm64 (1.2~rc1.2-1.1ubuntu3) ...
+Removing libtommath1:arm64 (1.2.0-6ubuntu0.22.04.1) ...
+Removing libutf8proc2:arm64 (2.7.0-3) ...
+Removing libwinpr2-2:arm64 (2.6.1+dfsg1-3ubuntu2.11) ...
+Removing libxnvctrl0:arm64 (510.47.03-0ubuntu1.22.04.1) ...
+Removing lua-lpeg:arm64 (1.0.2-1) ...
+Removing mysql-common (5.8+1.0.8) ...
+Removing qttranslations5-l10n (5.15.3-1) ...
+Removing rfkill (2.37.2-4ubuntu3.6) ...
+Removing tcpd (7.6.q-31build2) ...
+Removing libaprutil1:arm64 (1.6.1-5ubuntu4.22.04.3) ...
+Removing libapr1:arm64 (1.7.0-8ubuntu0.22.04.2) ...
+Removing libqt5widgets5:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libqt5gui5:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libqt5network5:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libqt5dbus5:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libqt5core5a:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Removing libdouble-conversion3:arm64 (3.1.7-4) ...
+Removing libmd4c0:arm64 (0.4.8-1) ...
+Removing libpcre2-16-0:arm64 (10.39-3ubuntu0.2) ...
+Removing libxcb-icccm4:arm64 (0.4.1-1.1build2) ...
+Removing libxcb-image0:arm64 (0.4.0-2) ...
+Removing libxcb-keysyms1:arm64 (0.4.0-1build3) ...
+Removing libxcb-render-util0:arm64 (0.3.9-1build3) ...
+Removing libxcb-xinerama0:arm64 (1.14-3ubuntu3) ...
+Removing libxcb-xinput0:arm64 (1.14-3ubuntu3) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.15) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1.22.04.1) ...
+Processing triggers for desktop-file-utils (0.26-1ubuntu3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 60823 files and directories currently installed.)
+Purging configuration files for mysql-common (5.8+1.0.8) ...
+Purging configuration files for libqt5gui5:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Purging configuration files for firebird3.0-common (3.0.8.33535.ds4-1ubuntu2) ...
+Purging configuration files for libsmi2ldbl:arm64 (0.4.8+dfsg2-16) ...
+Purging configuration files for libqt5core5a:arm64 (5.15.3+dfsg-2ubuntu0.2) ...
+Purging configuration files for ieee-data (20210605.1) ...
+Purging configuration files for ethtool (1:5.16-1ubuntu0.2) ...
+
+=== Re-scan after removal ===
+  [kept] cups (CUPS printing)
+  [kept] cups-browsed (CUPS printing)
+  [kept] cups-bsd (CUPS printing)
+  [kept] cups-client (CUPS printing)
+  [kept] cups-daemon (CUPS printing)
+  [kept] avahi-daemon (avahi)
+  [kept] avahi-utils (avahi)
+  [kept] ftp (misc review)
+  [kept] tcpdump (misc review)
+  [kept] tnftp (misc review)
+
+=== [3] Scanning for unauthorized services (exact unit names) ===
+  [ALERT] avahi-daemon.service is ACTIVE
+  [ALERT] avahi-daemon.socket is ACTIVE
+  [ALERT] cups.service is ACTIVE
+  [ALERT] cups.socket is ACTIVE
+  [ALERT] cups-browsed.service is ACTIVE
+  (If the README needs it: keep it. Otherwise: sudo systemctl disable --now <unit>, or remove its package.)
+
+
+=== [3b] Scanning for non-apt hacking tools (pip / pipx / source): pyrdp ===
+  [+] No pyrdp files found
+
+[4] Scanning for mounted network shares...
+  No mounted network shares found
+
+[5] Scanning for unauthorized files...
+  Media files in user/data folders (usually scored - check the README before deleting):
+    /home/bob/Music/never_gonna.mp3
+    /home/carol/Videos/movie.mp4
+    /home/dave/.local/share/.cache/stash.ogg
+  Media/archives in system folders that NO package installed (planted):
+    /usr/share/fonts/truetype/.x/track01.mp3
+  Other files in user/data folders (archives, scripts, documents, images - review; passwords.txt-style files are scored):
+    /home/bob/passwords.txt
+    /root/harness/checks_cp.py
+    /root/harness/drive2.py
+    /root/harness/mintchecks.py
+    /root/harness/statedump.sh
+    /root/harness/svccheck.sh
+
+[6] Scanning for SUID/SGID/Sticky bit files...
+  Found 21 SUID file(s):
+    -rwsr-xr-x root:root /root/baseline/_pristine/passwd/root/usr/bin/gpasswd
+    -rwsr-xr-x root:root /root/baseline/_pristine/passwd/root/usr/bin/passwd
+    -rwsr-xr-x root:root /root/baseline/_pristine/passwd/root/usr/bin/chfn
+    -rwsr-xr-x root:root /root/baseline/_pristine/passwd/root/usr/bin/chsh
+    -rwsr-xr-x root:root /root/baseline/_pristine/sudo/root/usr/bin/sudo
+    -rwsr-xr-x root:root /root/baseline/_pristine/login/root/usr/bin/newgrp
+    -rwsr-xr-x root:root /usr/bin/newgrp
+    -rwsr-xr-x root:root /usr/bin/gpasswd
+    -rwsr-xr-x root:root /usr/bin/su
+    -rwsr-xr-x root:root /usr/bin/passwd
+    -rwsr-xr-x root:root /usr/bin/chfn
+    -rwsr-xr-x root:root /usr/bin/umount
+    -rwsr-xr-x root:root /usr/bin/chsh
+    -rwsr-xr-x root:root /usr/bin/mount
+    -rwsr-xr-x root:root /usr/bin/sudo
+    -rwsr-sr-x daemon:daemon /usr/bin/at
+    -rwsr-xr-x root:root /usr/bin/pkexec
+    -rwsr-xr-x root:root /usr/sbin/mount.cifs
+    -rwsr-xr-x root:root /usr/libexec/polkit-agent-helper-1
+    -rwsr-xr-x root:root /usr/lib/openssh/ssh-keysign
+    -rwsr-xr-- root:messagebus /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+  Found 12 SGID file(s):
+    -rwxr-sr-x root:shadow /root/baseline/_pristine/libpam-modules-bin/root/sbin/unix_chkpwd
+    -rwxr-sr-x root:shadow /root/baseline/_pristine/libpam-modules-bin/root/sbin/pam_extrausers_chkpwd
+    -rwxr-sr-x root:shadow /root/baseline/_pristine/passwd/root/usr/bin/expiry
+    -rwxr-sr-x root:shadow /root/baseline/_pristine/passwd/root/usr/bin/chage
+    -rwxr-sr-x root:shadow /usr/bin/expiry
+    -rwxr-sr-x root:shadow /usr/bin/chage
+    -rwsr-sr-x daemon:daemon /usr/bin/at
+    -rwxr-sr-x root:crontab /usr/bin/crontab
+    -rwxr-sr-x root:_ssh /usr/bin/ssh-agent
+    -rwxr-sr-x root:shadow /usr/sbin/unix_chkpwd
+    -rwxr-sr-x root:shadow /usr/sbin/pam_extrausers_chkpwd
+    -rwxr-sr-x root:mail /usr/libexec/camel-lock-helper-1.2
+  No Sticky bit files found
+
+=== Scan Complete ===
+
+[drive2] EXIT 0

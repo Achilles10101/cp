@@ -1,0 +1,8 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.5s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[   10.1s] '? Is MAIL a critical service in the README (other machines send/receive mail through this one)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   14.5s] '? Does the README require ENCRYPTED SMTP only (smtpd_tls_security_level = encrypt)? [y/N]:' -> '' (DEFAULT(Enter))
+[   21.3s] '? Does the README REQUIRE POP3 (users fetch mail over POP3 / port 110 or 995)? [y/N]:' -> '' (DEFAULT(Enter))
+STATS prompts=6 rule=1 default=5 stall=0 wait=15.1s elapsed=26.5s
+EXIT 0

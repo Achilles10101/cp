@@ -1,0 +1,18 @@
+image cp-mint-svcplanted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-svc.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+s0-readme            0.2       0.1     0.0     0.1        0     0     0     0     0        -   0.62>0.62
+s1-baseline          4.6       4.5     0.0     4.5        0     0     0     0     0       23   0.62>0.81
+s3-sysconfig        24.0      23.9    12.5    11.4        5     4     1     0     0        -   0.81>0.61
+s-critical          80.9      80.9    50.1    30.8       20    17     3     0     1        -   0.61>0.28
+TOTAL              110.1              62.6    47.5       25
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 131/144 PASS   planted: 40/44 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx
+baseline findings: 23  (fix=8 review=15 info=3 bang=24; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)

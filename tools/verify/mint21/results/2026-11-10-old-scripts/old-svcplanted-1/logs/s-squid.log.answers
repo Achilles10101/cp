@@ -1,0 +1,4 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+STATS prompts=2 rule=1 default=1 stall=0 wait=5.0s elapsed=37.7s
+EXIT 0

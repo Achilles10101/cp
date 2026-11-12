@@ -1,0 +1,121 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+File, Package, and SUID/GUID Scanner
+
+[1;36m=== [0] Package tool sanity (can apt/dpkg be trusted on this image?) ===[0m
+  [*] 'apt' at /usr/local/bin/apt is from package mintsystem (Linux Mint's apt wrapper is normal) - unmodified
+  [1;33m[!][0m Packages on HOLD (unheld automatically if you remove them): john
+  [1;32m[+][0m apt/dpkg binaries, diversions, aliases and APT hooks look normal
+
+[1;36m=== [1] Unauthorized packages (dpkg-query, whole package names) ===[0m
+
+[1;36m=== [2] Build the removal list ===[0m
+  Hacking tools, remote access, P2P, games:
+    [TOOL   ] john: john (HELD) john-data
+    [TOOL   ] hydra: hydra
+    [TOOL   ] nmap: nmap nmap-common
+    [TOOL   ] wireshark: libwireshark-data libwireshark15:amd64 libwiretap12:amd64 libwsutil13:amd64 tshark wireshark wireshark-common wireshark-qt
+    [TOOL   ] netcat: netcat-openbsd netcat-traditional
+    [TOOL   ] password crackers: ophcrack
+    [TOOL   ] wireless attack: aircrack-ng
+    [REMOTE ] telnet/rsh/finger: telnet telnetd
+    [REMOTE ] inetd/tftp/NIS: openbsd-inetd
+    [P2P    ] P2P/torrent: transmission-common transmission-gtk
+    [GAME   ] minetest/luanti: minetest minetest-data
+  ? Remove all of these (e = choose per family)? [Y/n/e]: y
+  Services - remove only what the README does NOT list as critical:
+    [SERVICE] apache2: apache2 apache2-bin apache2-data apache2-utils
+              ↳ apache2 running
+    [SERVICE] FTP servers: vsftpd
+              ↳ vsftpd running
+  ? Remove these service packages (e = choose per family)? [y/N/e]: e
+  ? Remove apache2 (apache2 apache2-bin apache2-data apache2-utils)? [y/N/e]: y
+  ? Remove FTP servers (vsftpd)? [y/N/e]: y
+  Review - usually kept (desktop defaults, tools that ship with Ubuntu/Mint):
+    [DESKTOP] CUPS printing: cups cups-browsed cups-bsd cups-client cups-daemon
+              note: desktop default - [3] disables the service instead (scored as "disabled or removed")
+    [DESKTOP] avahi: avahi-daemon avahi-utils
+              note: desktop default - [3] disables the service instead
+    [REVIEW ] misc review: ftp tcpdump tnftp
+              note: tcpdump/ftp ship with Ubuntu
+  ? Remove these too? [y/N/e]: n
+    [SSHD   ] OpenSSH server: openssh-server openssh-sftp-server
+              ↳ ssh running
+  ? Remove the OpenSSH server? Only if the README does not need SSH! [y/N]: n
+  ? Other packages to remove (names/globs, ?word = search), Enter = none: 
+
+[1;36m=== Removal preview (apt-get -s purge) ===[0m
+  Your list (29): john john-data hydra nmap nmap-common libwireshark-data libwireshark15:amd64 
+libwiretap12:amd64 libwsutil13:amd64 tshark wireshark wireshark-common wireshark-qt netcat-openbsd 
+netcat-traditional ophcrack aircrack-ng telnet telnetd openbsd-inetd transmission-common transmission-gtk 
+minetest minetest-data apache2 apache2-bin apache2-data apache2-utils vsftpd
+  [1;32m[+][0m Nothing else would be removed.
+  ? Purge these 29 package(s) (no desktop/critical package among them)? [Y/n]: 
+  [*] Unheld john
+  [*] apt-get purge 29 package(s) (waits for any background apt job; log: /root/cp-state/apt-purge.log)
+  [*] purge took 11s
+  [1;32m[+][0m dpkg-query: 29 of 29 packages gone
+
+[1;36m=== apt-get autoremove --purge (dependencies nothing needs any more) ===[0m
+  Would remove 73:
+        ethtool firebird3.0-common firebird3.0-common-doc hwloc ieee-data iw libapr1 libaprutil1 
+        libaprutil1-dbd-sqlite3 libaprutil1-ldap libbcg729-0 libbson-1.0-0 libc-ares2 libdouble-conversion3 
+        libfbclient2 libfreerdp2-2 libhwloc-plugins libhwloc15 libirrlicht1.8 libiw30 libjsoncpp25 
+        libleveldb1d liblinear4 liblua5.3-0 libluajit-5.1-2 libluajit-5.1-common libmd4c0 libmemcached11 
+        libminizip1 libmongoc-1.0-0 libmongocrypt0 libmysqlclient21 libnl-3-200 libnl-genl-3-200 
+        libnl-route-3-200 libpcre2-16-0 libpq5 libqt5charts5 libqt5core5a libqt5dbus5 libqt5gui5 
+        libqt5multimedia5 libqt5multimedia5-plugins libqt5multimediagsttools5 libqt5multimediawidgets5 
+        libqt5network5 libqt5printsupport5 libqt5svg5 libqt5widgets5 libsbc1 libserf-1-1 libsmi2ldbl 
+        libspandsp2 libspatialindex6 libspeexdsp1 libsvn1 libtommath1 libutf8proc2 libwinpr2-2 
+        libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 
+        libxnvctrl0 lua-lpeg mysql-common qt5-gtk-platformtheme qttranslations5-l10n rfkill tcpd 
+        wireless-tools
+  ? Run autoremove (73 unused dependencies, no desktop/critical package)? [Y/n]: 
+  [1;32m[+][0m autoremove done
+
+[1;36m=== Re-scan after removal ===[0m
+  [*] Kept: openssh-server openssh-sftp-server cups cups-browsed cups-bsd cups-client cups-daemon 
+avahi-daemon avahi-utils ftp tcpdump tnftp 
+
+[1;36m=== [3] Unauthorized services (exact unit names) ===[0m
+  Desktop defaults (printing / zeroconf; disabling is scored on some images): avahi-daemon (active) cups (active) cups-browsed (active)
+  ? Stop + disable these 3 desktop service(s)? [y/N/e]: y
+  [1;32m[+][0m avahi-daemon stopped and disabled
+  [1;32m[+][0m cups stopped and disabled
+  [1;32m[+][0m cups-browsed stopped and disabled
+  SSH: ssh (active)
+  ? Stop + disable the SSH server? Only if the README does not need SSH! [y/N]: n
+
+[1;36m=== [4] Mounted network shares ===[0m
+  [1;32m[+][0m No mounted network shares
+
+[1;36m=== [5] Unauthorized files  +  [6] SUID/SGID/sticky (one pass over the filesystem) ===[0m
+  [*] filesystem pass took 2s
+  Media files in user/data folders (3) - usually scored:
+    /home/bob/Music/never_gonna.mp3
+    /home/carol/Videos/movie.mp4
+    /home/dave/.local/share/.cache/stash.ogg
+  Media/archives in system folders that NO package installed (1) - planted:
+    /usr/share/fonts/truetype/.x/track01.mp3
+  Other files in user/data folders (5: archives, scripts, documents, images) - first 25, full list /root/cp-state/files-other.txt:
+    /home/bob/passwords.txt
+    /root/harness/checks_cp.py
+    /root/harness/drive2.py
+    /root/harness/mintchecks.py
+    /root/harness/svccheck.sh
+  ? Delete these 4 media file(s) (moved to /root/cp-quarantine, restorable)? [Y/n/e]: y
+  [1;32m[+][0m Moved /home/bob/Music/never_gonna.mp3 -> /root/cp-quarantine/home/bob/Music/never_gonna.mp3
+  [1;32m[+][0m Moved /home/carol/Videos/movie.mp4 -> /root/cp-quarantine/home/carol/Videos/movie.mp4
+  [1;32m[+][0m Moved /home/dave/.local/share/.cache/stash.ogg -> /root/cp-quarantine/home/dave/.local/share/.cache/stash.ogg
+  [1;32m[+][0m Moved /usr/share/fonts/truetype/.x/track01.mp3 -> /root/cp-quarantine/usr/share/fonts/truetype/.x/track01.mp3
+  [1;31m[TODO][0m Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+  [1;31m[TODO][0m Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  [*] 22 SUID/SGID/sticky files (full list: /root/cp-state/files-suid-sgid.txt); stock helpers not shown
+  [1;32m[+][0m Only stock SUID/SGID helpers found
+
+  [1;32m[+][0m fileandpackage done in 59s. Quarantined files: /root/cp-quarantine (restore: mv /root/cp-quarantine/<path> /<path>)
+
+[1;31m=== fileandpackage.sh finished - 2 item(s) NOT done, do these by hand: ===[0m
+   1. Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+   2. Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+
+[drive2] EXIT 0

@@ -1,0 +1,3 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+pre-stop	0.1	0.0	0.0	0	0	0	0	2	-	1.22	1.22	-
+ssh-stopped	15.7	15.7	10.1	4	2	2	0	0	-	1.22	1.44	-

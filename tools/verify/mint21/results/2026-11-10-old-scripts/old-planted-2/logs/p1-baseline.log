@@ -1,0 +1,19 @@
+Baselining (detection only - nothing is changed). OS: linuxmint-21.3
+Using baseline pack: /root/competition/baseline/linuxmint-21.3
+  -> ssh
+  -> vsftpd
+  -> apache2
+  -> mysql
+  -> samba
+  -> system
+
+=== Baseline summary (reports in /root/baseline) ===
+  ssh           5 finding(s)   /root/baseline/ssh/report.txt
+  vsftpd        1 finding(s)   /root/baseline/vsftpd/report.txt
+  apache2       3 finding(s)   /root/baseline/apache2/report.txt
+  mysql         4 finding(s)   /root/baseline/mysql/report.txt
+  samba         0 finding(s)   /root/baseline/samba/report.txt
+  system       15 finding(s)   /root/baseline/system/report.txt
+Review each report ('!!' lines) and the diff.patch files, then run the matching hardening script.
+
+[drive2] EXIT 0

@@ -1,0 +1,17 @@
+forensics prompt after 0.1s; output before it:
+  [*] Baseline scan started in the background (read-only, log: /root/cp-state/logs/bg-baseline.log)
+
+[1;36m=== Forensics ===[0m
+  ? Do the Forensics Questions now - nothing has been changed yet. Press Enter when done. 
+---- waiting 30 s at the prompt
+apt processes: 230 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+apt lists newer than start: 0
+speedrun jobs: baseline.end baseline.pid baseline.rc baseline.start 
+files under /etc changed since start:
+other changed (excluding /root/baseline /root/cp-state /proc /sys /run /tmp /var/log):
+   /root/.sudo_as_admin_successful
+   /var/cache/samba/browse.dat
+   /var/lib/postgresql/14/main/global/pg_internal.init
+   /var/lib/postgresql/14/main/base/13761/pg_internal.init
+baseline job: 0
+

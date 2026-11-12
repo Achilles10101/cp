@@ -1,0 +1,61 @@
+{
+ "image": "cp-mint-svcplanted",
+ "competition": "/home/claude/work/competition",
+ "rules": "/home/claude/work/tools/verify/mint21/rules-2026-11-11-V5-speedrun-svc.txt",
+ "steps": [
+  {
+   "step": "wait65",
+   "wall_s": "65.1",
+   "script_elapsed_s": "65.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.43",
+   "load_end": "0.14",
+   "findings_detail": "-"
+  },
+  {
+   "step": "speedrun",
+   "wall_s": "308.3",
+   "script_elapsed_s": "308.3",
+   "harness_wait_s": "227.8",
+   "prompts": "91",
+   "rule": "62",
+   "default": "29",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "0.14",
+   "load_end": "0.54",
+   "findings_detail": "-"
+  }
+ ],
+ "total_wall_s": 373.6,
+ "total_prompts": 91,
+ "total_harness_wait_s": 227.8,
+ "checks_pass": 132,
+ "checks_total": 144,
+ "planted_pass": 40,
+ "planted_total": 44,
+ "services_ok": [
+  "ssh",
+  "vsftpd",
+  "apache2",
+  "php-fpm",
+  "mysql",
+  "postgres",
+  "samba",
+  "bind9",
+  "postfix",
+  "dovecot",
+  "openvpn",
+  "squid"
+ ],
+ "services_fail": [
+  "nginx"
+ ]
+}

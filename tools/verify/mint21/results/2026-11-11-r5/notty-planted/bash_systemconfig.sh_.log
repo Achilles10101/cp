@@ -1,0 +1,61 @@
+Starting system hardening...
+
+=== Firewall (UFW) ===
+  Server daemons found - [Y] = suggested (listening now). Allow only what the README needs:
+    [Y] OpenSSH                (22/tcp)                 openssh-server installed, sshd listening on :22
+    [Y] Apache Full            (80/tcp 443/tcp)         apache2 installed, listening on :80
+    [Y] vsftpd                 (21/tcp)                 vsftpd installed, listening on :21
+  [+] UFW: allowed profile 'OpenSSH'
+  [+] UFW: allowed profile 'Apache Full'
+  [+] UFW: allowed 21/tcp (no 'vsftpd' profile)
+  [+] UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+        OpenSSH                    ALLOW       Anywhere                  
+        Apache Full                ALLOW       Anywhere                  
+        21/tcp                     ALLOW       Anywhere                  
+  [*] firewall done (5s)
+
+=== LightDM (guest / autologin) ===
+  [+] LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+=== UMASK, login.defs ===
+  [+] login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [+] /etc/profile: umask 027
+
+=== Kernel parameters (sysctl) ===
+  [+] 44 parameters set in place in /etc/sysctl.conf
+  [+] IPv6 disabled
+  [+] Applied (sysctl --system: same order as at boot)
+
+=== SYS3 PAM backdoors ===
+  [+] pam_deny present, no pam_exec lines
+
+=== SYS4 sudo.conf / sudoers defaults ===
+  [+] sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [+] sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [+] limits.conf: * hard core 0, * hard nproc 2500
+
+=== SYS9 permissions, root, system accounts ===
+  [+] /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  [+] root account already locked (root:! in /etc/shadow)
+  [+] /home -> 755 root:root
+  [+] /swapfile -> 600
+
+=== SYS10 persistence spots ===
+  [TODO] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+  [*] apt holds: john (fileandpackage.sh unholds what it removes and lists the rest as TODO)
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+=== Packages + automatic updates ===
+  [+] Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  [+] Mint automatic updates enabled
+  [+] Update Manager: refresh the list of updates automatically (for cpuser)
+  [+] common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [+] pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [+] apparmor enabled and running
+  [!] could not enable auditd
+  [+] ufw enabled and running
+  [+] unattended-upgrades enabled and running
+
+  [+] System hardening complete in 10s. Backups: /root/cp-backups/20261112_024231/
+[exit 0]

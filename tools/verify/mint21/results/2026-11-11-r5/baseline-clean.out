@@ -1,0 +1,18 @@
+[18:33:13] container V5-baseline-clean from cp-mint-clean: systemd running
+[18:33:13] step baseline: bash services/baseline.sh
+[18:33:14]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.8s  exit=0  findings=0 (fix=0 review=0 info=0 bang=0)
+image cp-mint-clean
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-baseline-only.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+baseline             0.9       0.8     0.0     0.8        0     0     0     0     0        0   0.58>0.58
+TOTAL                1.1               0.0     1.1        0
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+baseline findings: 0  (fix=0 review=0 info=0 bang=0; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+
+[18:33:14] container kept: V5-baseline-clean

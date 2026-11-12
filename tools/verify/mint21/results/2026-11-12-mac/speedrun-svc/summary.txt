@@ -1,0 +1,15 @@
+image cp-mint-svcplanted
+competition /Users/max/Documents/cp stuff/competition
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-speedrun-svc.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   1.22>0.68
+speedrun           297.8     297.7   230.3    67.4       91    61    30     0     0        -   0.68>0.30
+TOTAL              363.3             230.3   133.0       91
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 133/145 PASS   planted: 41/45 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx

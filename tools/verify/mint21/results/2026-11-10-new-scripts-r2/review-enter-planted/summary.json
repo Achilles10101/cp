@@ -1,0 +1,83 @@
+{
+ "image": "cp-mint-planted",
+ "competition": "/home/claude/work/competition",
+ "rules": "/home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-review-enter.txt",
+ "steps": [
+  {
+   "step": "wait65",
+   "wall_s": "65.1",
+   "script_elapsed_s": "65.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "3.50",
+   "load_end": "1.18",
+   "findings_detail": "-"
+  },
+  {
+   "step": "readme",
+   "wall_s": "0.2",
+   "script_elapsed_s": "0.1",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "1.18",
+   "load_end": "1.18",
+   "findings_detail": "-"
+  },
+  {
+   "step": "baseline",
+   "wall_s": "1.9",
+   "script_elapsed_s": "1.8",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "19",
+   "load_start": "1.18",
+   "load_end": "1.18",
+   "findings_detail": "fix=12 review=7 info=2 bang=19"
+  },
+  {
+   "step": "review",
+   "wall_s": "42.0",
+   "script_elapsed_s": "41.9",
+   "harness_wait_s": "37.6",
+   "prompts": "15",
+   "rule": "0",
+   "default": "15",
+   "stall": "0",
+   "exit": "0",
+   "findings": "11",
+   "load_start": "1.17",
+   "load_end": "0.60",
+   "findings_detail": "fix=4 review=7 info=2 bang=19"
+  }
+ ],
+ "total_wall_s": 109.9,
+ "total_prompts": 15,
+ "total_harness_wait_s": 37.6,
+ "checks_pass": 22,
+ "checks_total": 144,
+ "planted_pass": 10,
+ "planted_total": 44,
+ "services_ok": [
+  "ssh",
+  "apache2"
+ ],
+ "services_fail": [
+  "vsftpd"
+ ],
+ "baseline_findings": 11,
+ "baseline_findings_detail": "fix=4 review=7 info=2 bang=19"
+}

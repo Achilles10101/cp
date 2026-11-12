@@ -1,0 +1,1021 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] Baseline scan started in the background (read-only, log: /root/cp-state/logs/bg-baseline.log)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Forensics ===[0m
+  ? Do the Forensics Questions now - nothing has been changed yet. Press Enter when done. 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] apt-get update + upgrade download started in the background (log: /root/cp-state/logs/bg-apt.log)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== usersandsudo.sh   (not logged: may contain README passwords) ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Users and sudo ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] README users from the environment (test harness): admins: cpuser | users: ftpuser | you: cpuser
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] README: admins: cpuser | users: ftpuser | you: cpuser
+
+[1;36m=== UID 0 accounts ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Only root has UID 0
+
+[1;36m=== Accounts not in the README ===[0m
+  [1;32m[+][0m Every human account is in the README
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] System accounts with a login shell: syslog postgres (systemconfig.sh sets nologin; postgres is left alone)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Admin rights (exact groups sudo/admin/wheel/adm - lpadmin is not one) ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Admin groups match the README
+
+[1;36m=== Passwords ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  ? Extra: also set ONE new password for the 1 other README users (ftpuser)? [y/N]: n
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Password aging and home folders ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  ? Password aging 30/7/14 for 1 users (not you)? [Y/n]: y
+  [*] Installed: vsftpd dovecot samba - if the README needs it, an EXPIRED password blocks those users' logins there (PAM)
+  ? Also force a password change at next login (passwd -e)? [y/N]: n
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] Backup: /root/cp-backups/20261112_062136/etc/passwd
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] Backup: /root/cp-backups/20261112_062136/etc/shadow
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] Backup: /root/cp-backups/20261112_062136/etc/group
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] Backup: /root/cp-backups/20261112_062136/etc/gshadow
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Aging set for: ftpuser
+  [1;33m[act][0m No forced password change at next login (vsftpd dovecot samba installed - an expired password blocks those logins). If the README does not need vsftpd dovecot samba: sudo passwd -e NAME
+  ? Home folders: mode 750, owned by their user (2 folders)? [Y/n]: y
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m 750 + owner set on 2 home folders
+
+[1;36m=== Groups the README asks for ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  ? README groups, as "group: member member" ("; " between groups, Enter = none): 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] None
+
+[1;36m=== sudoers: NOPASSWD / !authenticate, sudo rights for non-admins ===[0m
+  [*] Stock Linux Mint NOPASSWD lines in /etc/sudoers.d/mintupdate - leave them
+  [1;32m[+][0m No NOPASSWD / !authenticate (other than Mint stock) and only admins have sudo rights
+
+[1;36m=== Re-check ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Accounts, admin groups and UID 0 match the README
+
+=== usersandsudo.sh done ===
+
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[1;33m=== usersandsudo.sh finished - listed for you (1): ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+   1. No forced password change at next login (vsftpd dovecot samba installed - an expired password blocks those logins). If the README does not need vsftpd dovecot samba: sudo passwd -e NAME
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m usersandsudo.sh done in 15s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== services/baseline.sh --review   log: /root/cp-state/logs/review.log ===[0m
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+Baseline triage: 8 FIX NOW, then 18 REVIEW (asked once). Type a key + Enter; Enter alone = the [default];
+x = exit. Every change is backed up, quarantine moves files to /root/cp-quarantine (undo in INDEX.txt), services are re-checked.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 1/26[0m  [1;31mFIX NOW[0m  [ssh]  file no package owns: 644 root:root /etc/ssh/sshd_config.d/60-evil.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      PermitRootLogin yes
+      -> quarantine (q) unless the README needs it
+  60-evil.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m ssh.service restarted and active
+  [1;32m[+][0m quarantined /etc/ssh/sshd_config.d/60-evil.conf -> /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf   (undo: mv /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf /etc/ssh/sshd_config.d/60-evil.conf)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 2/26[0m  [1;31mFIX NOW[0m  [vsftpd]  file no package owns: 644 root:root /etc/vsftpd.chroot_list
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      turret
+      -> quarantine (q) unless the README needs it
+  vsftpd.chroot_list: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 3/26[0m  [1;31mFIX NOW[0m  [vsftpd]  world-writable: 777 root:ftp /srv/ftp  (clean VM: 755 root:ftp)
+      -> fix (f) -> 755 root:ftp; vsftpd.sh hardens it
+  ftp: d=show  f=fix -> 755 root:ftp  s=skip  x=exit  [Enter=fix] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m /srv/ftp is now 755 root:ftp   (undo: /root/cp-backups/20261112_062151/PERMS-UNDO.sh)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 4/26[0m  [1;31mFIX NOW[0m  [vsftpd]  vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+  cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 5/26[0m  [1;31mFIX NOW[0m  [apache2]  phpinfo() file: /var/www/html/info.php
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      <?php phpinfo(); ?>
+      -> quarantine (q)
+  info.php: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined /var/www/html/info.php -> /root/cp-quarantine/var/www/html/info.php   (undo: mv /root/cp-quarantine/var/www/html/info.php /var/www/html/info.php)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 6/26[0m  [1;31mFIX NOW[0m  [dovecot]  file no package owns: 644 root:root /etc/dovecot/local.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      listen = *
+      -> quarantine (q) unless the README needs it
+  local.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] > s
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 7/26[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/gdm3/custom.conf
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      [daemon]
+      AutomaticLoginEnable = true
+      AutomaticLogin = ratman
+      -> quarantine (q) unless the README needs it
+  custom.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m--- 8/26[0m  [1;31mFIX NOW[0m  [system]  file no package owns: 644 root:root /etc/ld.so.preload - preloads: /usr/src/evil_rabbit.so
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+      preloads /usr/src/evil_rabbit.so  (no package owns it - quarantined together with this file)
+      -> quarantine (q) = this file + the unowned libraries it lists
+  ld.so.preload: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] > 
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m quarantined preloaded library /usr/src/evil_rabbit.so -> /root/cp-quarantine/usr/src/evil_rabbit.so
+  [1;32m[+][0m quarantined /etc/ld.so.preload -> /root/cp-quarantine/etc/ld.so.preload   (undo: mv /root/cp-quarantine/etc/ld.so.preload /etc/ld.so.preload)
+
+  REVIEW = config/perms that differ from the default. The hardening scripts fix most of these later.
+  Also go through the 18 REVIEW item(s)? [y/N] 
+
+  [1;32m[+][0m Triage done: 4 changed, 22 skipped, 0 already resolved.
+  Backups: /root/cp-backups/20261112_062151   Quarantine: /root/cp-quarantine/INDEX.txt
+  Re-scan to confirm: sudo bash services/baseline.sh 
+  [1;32m[+][0m services/baseline.sh done in 24s
+
+[1;36m=== systemconfig.sh   log: /root/cp-state/logs/system.log ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+Starting system hardening...
+
+[1;36m=== SYS10 /etc/ld.so.preload ===[0m
+  [*] baseline --review already quarantined ld.so.preload (/root/cp-quarantine/etc/ld.so.preload) - checking the libraries it listed
+
+[1;36m=== Firewall (UFW) ===[0m
+  Server daemons found (SSH first) - [Y] = listening now. Allow only what the README needs:
+    [Y] OpenSSH                (22/tcp)                 openssh-server installed, sshd listening on :22
+    [Y] Apache Full            (80/tcp 443/tcp)         apache2 installed, listening on :80
+    [N] Nginx Full             (80/tcp 443/tcp)         nginx installed
+    [Y] vsftpd                 (21/tcp)                 vsftpd installed, listening on :21
+    [Y] Samba                  (137,138/udp 139,445/tcp) samba installed, listening on :137 :138 :139 :445
+    [Y] Bind9                  (53)                     bind9 installed, named listening on :53 :953
+    [Y] Postfix                (25/tcp)                 postfix installed, listening on :25
+    [Y] Postfix Submission     (587/tcp)                postfix submission port
+    [Y] Dovecot IMAP           (143/tcp)                dovecot installed, listening on :110 :143 :993 :995
+    [Y] Dovecot Secure IMAP    (993/tcp)                IMAPS
+    [Y] Dovecot POP3           (110/tcp)                POP3 - only if the README needs POP3
+    [Y] Dovecot Secure POP3    (995/tcp)                POP3S - only if the README needs POP3
+    [N] OpenVPN                (1194/udp)               openvpn installed
+    [Y] Squid                  (3128/tcp)               squid installed, listening on :3128 :54040 :55365
+    [N] MySQL (remote)         (3306/tcp)               MySQL/MariaDB installed - only if the README needs REMOTE database access
+    [N] PostgreSQL (remote)    (5432/tcp)               PostgreSQL installed - only if the README needs REMOTE database access
+  ? Allow the 12 [Y] rule(s)? (y = all [Y], e = decide each - usually e: only what the README needs) [y/N/e]: 
+  ? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none: 
+  [1;32m[+][0m UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+  [*] firewall done (5s)
+
+[1;36m=== LightDM (guest / autologin) ===[0m
+  [*] /etc/lightdm/lightdm.conf not found - creating it
+  [1;32m[+][0m LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+[1;36m=== GDM (/etc/gdm3/custom.conf) ===[0m
+  [*] Removed 'AutomaticLogin' from /etc/gdm3/custom.conf
+  [*] Removed 'User' from /etc/gdm3/custom.conf
+  [*] Removed 'Group' from /etc/gdm3/custom.conf
+  [1;32m[+][0m GDM: no automatic login, no custom User/Group, DisallowTCP=true, AllowRoot=false
+
+[1;36m=== UMASK, login.defs ===[0m
+  [1;32m[+][0m login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [1;32m[+][0m /etc/profile: umask 027
+
+[1;36m=== Kernel parameters (sysctl) ===[0m
+  [1;32m[+][0m 44 parameters set in place in /etc/sysctl.conf
+  ? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]: 
+  [1;32m[+][0m IPv6 disabled
+  [1;32m[+][0m Applied (sysctl --system: same order as at boot)
+
+[1;36m=== SYS3 PAM backdoors ===[0m
+  [1;33m[!][0m common-auth has no 'auth requisite pam_deny.so' - failed passwords may be accepted:
+        auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+        auth	[success=1 default=ignore]	pam_unix.so nullok
+        auth	requisite			pam_permit.so
+        auth	required			pam_permit.so
+  ? Replace 'requisite pam_permit.so' with 'requisite pam_deny.so' (stock line)? [Y/n]: 
+  [1;32m[+][0m pam_deny restored
+        /etc/pam.d/common-auth:1:auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+  ? Remove these pam_exec lines (stock Ubuntu/Mint has none)? [Y/n]: 
+  [1;32m[+][0m Removed pam_exec from /etc/pam.d/common-auth
+
+[1;36m=== SYS4 sudo.conf / sudoers defaults ===[0m
+  [1;32m[+][0m sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [1;32m[+][0m Removed insecure Defaults (!env_reset / env_keep PATH) from /etc/sudoers
+  [1;32m[+][0m sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [1;32m[+][0m limits.conf: * hard core 0, * hard nproc 2500
+
+[1;36m=== SYS9 permissions, root, system accounts ===[0m
+  [1;32m[+][0m /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  ? Lock the root account (passwd -l root)? You keep using sudo [Y/n]: 
+  [1;32m[+][0m root locked
+  [1;32m[+][0m /home -> 755 root:root
+  [1;32m[+][0m /swapfile -> 600
+  [1;33m[!][0m Groups with a group password in /etc/gshadow: root 
+  ? Remove these group passwords? [Y/n]: 
+  [1;32m[+][0m Group passwords removed
+  [1;33m[!][0m System accounts with a login shell: syslog(/bin/bash) 
+  ? Set their shell to /usr/sbin/nologin (e = each; a README user with a low UID keeps it)? [Y/n/e]: 
+  [1;32m[+][0m syslog -> nologin
+  [1;33m[!][0m System accounts with a password hash: bin
+  ? Remove their passwords (set to '*'; e = each)? [Y/n/e]: 
+  [1;32m[+][0m bin password removed
+  [1;33m[!][0m SUID/SGID on: /usr/bin/cp(-rwsr-xr-x) /usr/bin/wget(-rwsr-xr-x) 
+  ? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]: 
+  [1;32m[+][0m Fixed /usr/bin/cp
+  [1;32m[+][0m Fixed /usr/bin/wget
+
+[1;36m=== SYS10 persistence spots ===[0m
+        /etc/bash.bashrc:72:alias GOODBYE='rm -rf ~'
+  ? Remove these system-wide aliases (stock files have none)? [Y/n]: 
+  [1;32m[+][0m Removed aliases from /etc/bash.bashrc
+  [1;33m[act][0m Review /etc/hosts entries (hijack?): 172.17.0.3 mint-cptest;
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+[1;36m=== Packages + automatic updates ===[0m
+  ? Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? [Y/n]: 
+  [*] apt-get install libpam-pwquality auditd - waits for any background apt job (log: /root/cp-state/apt-systemconfig.log)
+  [1;32m[+][0m apt done (3s): libpam-pwquality auditd installed
+  [1;32m[+][0m Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  ? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]: 
+  [1;32m[+][0m Mint automatic updates enabled
+  [1;32m[+][0m Update Manager: refresh the list of updates automatically (for cpuser)
+  [1;32m[+][0m common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [1;32m[+][0m pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [1;33m[!][0m could not enable apparmor
+  [1;33m[!][0m could not enable auditd
+  [1;32m[+][0m ufw enabled and running
+  [1;32m[+][0m unattended-upgrades enabled and running
+
+  [1;32m[+][0m System hardening complete in 39s. Backups: /root/cp-backups/20261112_062215/
+
+[1;33m=== systemconfig.sh finished - listed for you (1): ===[0m
+   1. Review /etc/hosts entries (hijack?): 172.17.0.3 mint-cptest;
+  [1;32m[+][0m systemconfig.sh done in 42s
+
+[1;36m=== fileandpackage.sh   log: /root/cp-state/logs/packages.log ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+File, Package, and SUID/GUID Scanner
+
+[1;36m=== [0] Package tool sanity (can apt/dpkg be trusted on this image?) ===[0m
+  [*] 'apt' at /usr/local/bin/apt is from package mintsystem (Linux Mint's apt wrapper is normal) - unmodified
+  [1;32m[+][0m apt/dpkg binaries, diversions, aliases and APT hooks look normal
+
+[1;36m=== [1] Unauthorized packages (dpkg-query, whole package names) ===[0m
+  [1;33m[act][0m Software installed outside dpkg - remove by hand if unauthorized: /usr/local/sbin/unminimize; 
+
+[1;36m=== [2] Build the removal list ===[0m
+  Hacking tools, remote access, P2P, games:
+    [TOOL   ] netcat: netcat-openbsd
+    [REMOTE ] telnet/rsh/finger: telnet
+    [P2P    ] P2P/torrent: transmission-common transmission-gtk
+  ? Remove all of these (e = choose per family)? [Y/n/e]: y
+  Services - remove only what the README does NOT list as critical:
+    [SERVICE] samba (server): python3-samba samba samba-dsdb-modules:arm64 samba-vfs-modules:arm64
+              ↳ smbd running on :139 :445; nmbd running on :137 :138; samba-ad-dc stopped
+    [SERVICE] apache2: apache2 apache2-bin apache2-data apache2-utils libapache2-mod-php libapache2-mod-php8.1
+              ↳ apache2 running on :80
+    [SERVICE] nginx: libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip2 nginx nginx-common nginx-core
+              ↳ nginx stopped
+    [SERVICE] PHP: php php-common php-fpm php-mysql php8.1 php8.1-cli php8.1-common php8.1-fpm php8.1-mysql php8.1-opcache php8.1-readline
+              ↳ php8.1-fpm running
+    [SERVICE] MySQL/MariaDB: mysql-client-8.0 mysql-client-core-8.0 mysql-server mysql-server-8.0 mysql-server-core-8.0
+              ↳ mysql running on :3306 :33060
+    [SERVICE] PostgreSQL: postgresql postgresql-14 postgresql-client-14 postgresql-client-common postgresql-common
+              ↳ postgresql running
+    [SERVICE] FTP servers: vsftpd
+              ↳ vsftpd running on :21
+    [SERVICE] mail: dovecot-core dovecot-imapd dovecot-pop3d postfix
+              ↳ postfix running; dovecot running on :110 :143 :993 :995
+    [SERVICE] DNS servers: bind9
+              ↳ named running on :53 :953; bind9 running on :53 :953
+    [SERVICE] squid: squid squid-common
+              ↳ squid running on :3128 :54040 :55365
+  ? Remove these service packages (e = choose per family)? [y/N/e]: n
+  Review - usually kept (desktop defaults, tools that ship with Ubuntu/Mint):
+    [DESKTOP] CUPS printing: cups cups-browsed cups-bsd cups-client cups-daemon
+              note: desktop default - [3] disables the service instead (scored as "disabled or removed")
+    [DESKTOP] avahi: avahi-daemon avahi-utils
+              note: desktop default - [3] disables the service instead
+    [REVIEW ] misc review: ftp tcpdump tnftp
+              note: tcpdump/ftp ship with Ubuntu
+  ? Remove these too? [y/N/e]: n
+    [SSHD   ] OpenSSH server: openssh-server openssh-sftp-server
+              ↳ ssh running on :22
+  ? Remove the OpenSSH server? Only if the README does not need SSH! [y/N]: n
+  ? Other packages to remove (names/globs, ?word = search), Enter = none: 
+
+[1;36m=== Removal preview (apt-get -s purge) ===[0m
+  Your list (4): netcat-openbsd telnet transmission-common transmission-gtk
+  [1;32m[+][0m Nothing else would be removed.
+  ? Purge these 4 package(s) (no desktop/critical package among them)? [Y/n]: 
+  [*] apt-get purge 4 package(s) (waits for any background apt job; log: /root/cp-state/apt-purge.log)
+  [*] purge took 2s
+  [1;32m[+][0m dpkg-query: 4 of 4 packages gone
+
+[1;36m=== Re-scan after removal ===[0m
+  [*] Kept: openssh-server openssh-sftp-server python3-samba samba samba-dsdb-modules:arm64 
+samba-vfs-modules:arm64 apache2 apache2-bin apache2-data apache2-utils libapache2-mod-php 
+libapache2-mod-php8.1 libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter 
+libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip2 nginx nginx-common nginx-core php php-common 
+php-fpm php-mysql php8.1 php8.1-cli php8.1-common php8.1-fpm php8.1-mysql php8.1-opcache php8.1-readline 
+mysql-client-8.0 mysql-client-core-8.0 mysql-server mysql-server-8.0 mysql-server-core-8.0 postgresql 
+postgresql-14 postgresql-client-14 postgresql-client-common postgresql-common vsftpd dovecot-core 
+dovecot-imapd dovecot-pop3d postfix bind9 squid squid-common cups cups-browsed cups-bsd cups-client 
+cups-daemon avahi-daemon avahi-utils ftp tcpdump tnftp 
+
+[1;36m=== [3] Unauthorized services (exact unit names) ===[0m
+  Server services - stop only what the README does NOT need: postfix (active) smbd (active on :139 :445) nmbd (active on :137 :138) postgresql (active) vsftpd (active on :21) apache2 (active on :80) mysql (active on :3306 :33060) dovecot (active on :110 :143 :993 :995) named (active on :53 :953) bind9 (active on :53 :953) squid (active on :3128 :54040 :55365) php8.1-fpm (active)
+  ? Stop + disable these 12 server service(s) (e = each)? [y/N/e]: n
+  Desktop defaults (printing / zeroconf; disabling is scored on some images): avahi-daemon (active on :5353 :33461 :46225) cups (active on :631) cups-browsed (active)
+  ? Stop + disable these 3 desktop service(s)? [y/N/e]: y
+  [1;32m[+][0m avahi-daemon stopped and disabled
+  [1;32m[+][0m cups stopped and disabled
+  [1;32m[+][0m cups-browsed stopped and disabled
+  SSH: ssh (active on :22)
+  ? Stop + disable the SSH server? Only if the README does not need SSH! [y/N]: n
+
+[1;36m=== [4] Mounted network shares ===[0m
+  [1;32m[+][0m No mounted network shares
+
+[1;36m=== [5] Unauthorized files  +  [6] SUID/SGID/sticky (one pass over the filesystem) ===[0m
+  [*] filesystem pass took 1s
+  Media files in user/data folders (0) - usually scored:
+  Media/archives in system folders that NO package installed (0) - planted:
+  Other files in user/data folders (5: archives, scripts, documents, images) - first 25, full list /root/cp-state/files-other.txt:
+    /root/harness/checks_cp.py
+    /root/harness/drive2.py
+    /root/harness/mintchecks.py
+    /root/harness/statedump.sh
+    /root/harness/svccheck.sh
+  [1;33m[act][0m Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  [*] 24 SUID/SGID/sticky files (full list: /root/cp-state/files-suid-sgid.txt); stock helpers not shown
+  [1;32m[+][0m Only stock SUID/SGID helpers found
+
+  [1;32m[+][0m fileandpackage done in 29s. Quarantined files: /root/cp-quarantine (restore: mv /root/cp-quarantine/<path> /<path>)
+
+[1;33m=== fileandpackage.sh finished - listed for you (2): ===[0m
+   1. Software installed outside dpkg - remove by hand if unauthorized: /usr/local/sbin/unminimize; 
+   2. Glance over 5 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+  [1;32m[+][0m fileandpackage.sh done in 31s
+
+[1;36m=== portandmisc.sh   log: /root/cp-state/logs/ports.log ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Listening ports (process, package, unit) ===[0m
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:21             vsftpd (248)                 vsftpd                 vsftpd.service  -> service
+  tcp   0.0.0.0:22             sshd (8336)                  openssh-server         ssh.service  -> service
+  tcp   0.0.0.0:25             master (966)                 postfix                postfix@-.service  -> service
+  tcp   127.0.0.1:53           named (250)                  bind9                  named.service  -> service
+  tcp   127.0.0.53%lo:53       systemd-resolve (105)        systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (105)        systemd                systemd-resolved.service  -> system
+  udp   172.17.0.3:53          named (250)                  bind9                  named.service  -> service
+  tcp   0.0.0.0:80             apache2 (387)                apache2-bin            apache2.service  -> service
+  tcp   0.0.0.0:110            dovecot (329)                dovecot-core           dovecot.service  -> service
+  udp   172.17.255.255:137     nmbd (330)                   samba                  nmbd.service  -> service
+  udp   172.17.255.255:138     nmbd (330)                   samba                  nmbd.service  -> service
+  tcp   0.0.0.0:139            smbd (378)                   samba                  smbd.service  -> service
+  tcp   0.0.0.0:143            dovecot (329)                dovecot-core           dovecot.service  -> service
+  tcp   0.0.0.0:445            smbd (378)                   samba                  smbd.service  -> service
+  tcp   127.0.0.1:953          named (250)                  bind9                  named.service  -> service
+  tcp   0.0.0.0:993            dovecot (329)                dovecot-core           dovecot.service  -> service
+  tcp   0.0.0.0:995            dovecot (329)                dovecot-core           dovecot.service  -> service
+  tcp   *:3128                 squid (419)                  squid                  squid.service  -> service
+  tcp   127.0.0.1:3306         mysqld (369)                 mysql-server-core-8.0  mysql.service  -> service
+  tcp   127.0.0.1:5432         postgres (298)               postgresql-14          postgresql@14-main.service  -> service
+  tcp   127.0.0.1:33060        mysqld (369)                 mysql-server-core-8.0  mysql.service  -> service
+  udp   0.0.0.0:54040          squid (419)                  squid                  squid.service  -> service
+  udp   *:55365                squid (419)                  squid                  squid.service  -> service
+
+  [*] 2 listener(s) are stock system daemons or the scoring engine
+  ? Stop + disable services the README does NOT need (e = each): tcp/110(dovecot.service) tcp/139(smbd.service) tcp/143(dovecot.service) tcp/21(vsftpd.service) tcp/25(postfix@-.service) tcp/3128(squid.service) tcp/3306(mysql.service) tcp/33060(mysql.service) tcp/445(smbd.service) tcp/53(named.service) tcp/5432(postgresql@14-main.service) tcp/80(apache2.service) tcp/953(named.service) tcp/993(dovecot.service) tcp/995(dovecot.service) udp/137(nmbd.service) udp/138(nmbd.service) udp/53(named.service) udp/54040(squid.service) udp/55365(squid.service) ? [y/N/e]: n
+  ? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]: n
+  ? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip: 
+
+  [1;32m[+][0m portandmisc done in 8s. Listener table: /root/cp-state/listeners.tsv
+  [1;32m[+][0m portandmisc.sh done in 10s
+
+[1;36m=== services/critical.sh   log: /root/cp-state/logs/critical.log ===[0m
+
+[1;36m=== Critical services ===[0m
+  [*] openvpn: installed, but no server config in /etc/openvpn(/server) - nothing to harden
+  Detected services below are suggestions only - the README decides which ones are critical.
+  ssh: openssh-server installed, active, listening on :22
+  ? Run ssh.sh (the README must list it as critical)? [y/N]: y
+  vsftpd: vsftpd installed, active, listening on :21
+  ? Run vsftpd.sh (the README must list it as critical)? [y/N]: y
+  mysql: mysql-server installed, active, listening on :3306 :33060
+  ? Run mysql.sh (the README must list it as critical)? [y/N]: y
+  postgresql: postgresql 14 installed, active, listening on :5432
+  ? Run postgresql.sh (the README must list it as critical)? [y/N]: y
+  apache2: apache2 installed, active, listening on :80
+  ? Run apache2.sh (the README must list it as critical)? [y/N]: y
+  nginx: nginx installed, NOT active
+  ? Run nginx.sh (the README must list it as critical)? [y/N]: y
+  php: php 8.1/apache2 8.1/cli 8.1/fpm installed, active (PHP serves the apache2/nginx site: yes when the web server is critical)
+  ? Run php.sh (the README must list it as critical)? [y/N]: y
+  samba: samba installed, active, listening on :137 :138 :139 :445
+  ? Run samba.sh (the README must list it as critical)? [y/N]: y
+  bind9: bind9 installed, active, listening on :53 :953
+  ? Run bind9.sh (the README must list it as critical)? [y/N]: y
+  mail: dovecot-core postfix installed, active, listening on :110 :143 :25 :993 :995
+  ? Run mail.sh (the README must list it as critical)? [y/N]: y
+  squid: squid installed, active, listening on :3128 :54040 :55365
+  ? Run squid.sh (the README must list it as critical)? [y/N]: y
+  Plan: ssh vsftpd mysql postgresql apache2 nginx php samba bind9 mail squid
+
+[1;36m################ ssh ################[0m
+
+[1;36m=== SSH hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for ssh: FIX NOW 0, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/ssh/sshd_config differs from pristine (2 line(s))
+              + PermitRootLogin yes
+              + PermitEmptyPasswords yes
+  [*] Review later: sudo bash services/baseline.sh --review ssh
+  [*] Backup: /root/cp-backups/20261112_062407/etc/ssh/sshd_config
+  [*] Backup: /root/cp-backups/20261112_062407/etc/ssh/sshd_config.d
+  [*] Backup: /root/cp-backups/20261112_062407/etc/issue.net
+  README-dependent SSH settings (current values) - Enter keeps all of them:
+      Port 22 | password login allowed | AllowUsers none | DenyUsers none | DenyGroups none | SFTP-only no
+  ? Does the README change any of these (port, key-only login, allowed/denied users or groups, SFTP-only)? [y/N]: n
+  [1;32m[+][0m Perms: sshd_config + drop-ins 600 root, host keys 600/644, ~/.ssh 700 + keys 600 for 3 accounts
+  [1;32m[+][0m sshd -t: config valid
+  [1;32m[+][0m UFW: allowed application profile 'OpenSSH'
+  ? Install fail2ban (bans SSH brute force; needs network)? [Y/n]: 
+  [*] Installing fail2ban...
+  [1;32m[+][0m fail2ban installed and active
+  [1;32m[+][0m SSH restarted and active
+  [1;32m[+][0m Effective sshd settings (sshd -T) match
+  [1;32m[+][0m SSH answers on localhost:22
+  Changed (effective): Banner:none->/etc/issue.net Compression:yes->no MaxAuthTries:6->3 
+      PermitRootLogin:yes->no PermitEmptyPasswords:yes->no ClientAliveCountMax:3->2 X11Forwarding:yes->no 
+      AllowTcpForwarding:yes->no LoginGraceTime:120->30 MaxSessions:10->4 MaxStartups:10:30:100->10:30:60 
+      ClientAliveInterval:0->300 AllowAgentForwarding:yes->no LogLevel:info->verbose DisableForwarding:no->yes
+      ~ /etc/ssh/sshd_config: Port LogLevel LoginGraceTime StrictModes MaxAuthTries MaxSessions PubkeyAuthentication HostbasedAuthentication IgnoreRhosts PasswordAuthentication GSSAPIAuthentication AllowAgentForwarding (+13 more)
+  [1;32m[+][0m SSH hardening complete (11s)
+
+[1;36m################ vsftpd ################[0m
+
+[1;36m=== vsftpd hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for vsftpd: FIX NOW 2, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;31mFIX NOW[0m file no package owns: 644 root:root /etc/vsftpd.chroot_list
+              turret
+    [1;31mFIX NOW[0m vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+              [Service]
+              ExecStart=
+    [1;33mREVIEW [0m /etc/vsftpd.conf differs from pristine (6 line(s))
+              - anonymous_enable=NO
+              + anonymous_enable=YES
+  ? Triage the 2 FIX NOW finding(s) for vsftpd now (baseline.sh --review vsftpd)? [y/N]: n
+  [*] Backup: /root/cp-backups/20261112_062418/etc/vsftpd.conf
+  README-dependent FTP settings - Enter keeps all of them:
+      anonymous login NO | uploads (write_enable) YES | TLS forced for logins+data YES
+      chroot b (users jailed in their home, allow_writeable_chroot=YES) | passive ports 40000-50000
+  ? Does the README change any of these (anonymous FTP, uploads, plain FTP, chroot, passive range)? [y/N]: n
+  [1;32m[+][0m Self-signed certificate created (/etc/ssl/certs/vsftpd.crt)
+  [1;32m[+][0m FTP root /srv/ftp -> 755 root:ftp (contents: no world-write)
+  [1;33m[!][0m Users NOT chrooted (listed in /etc/vsftpd.chroot_list; chroot_local_user=YES inverts the list): turret 
+  ? Empty /etc/vsftpd.chroot_list so every user is chrooted? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261112_062418/etc/vsftpd.chroot_list
+  [1;32m[+][0m Emptied /etc/vsftpd.chroot_list
+  [1;32m[+][0m UFW: allowed 21/tcp (no 'vsftpd' profile found)
+  [1;32m[+][0m UFW: allowed 40000:50000/tcp (passive mode)
+  [1;32m[+][0m Config test passed (test instance started cleanly)
+  [1;32m[+][0m vsftpd restarted and active
+  [1;32m[+][0m FTP answers: 220 Welcome to FTP
+  ? Test login - FTP username (Enter to skip): ftpuser
+  Password for ftpuser: 
+  [1;32m[+][0m FTPS login for ftpuser works
+  [1;32m[+][0m Anonymous login refused
+  Changed:
+      ~ /etc/vsftpd.conf: listen listen_ipv6 anonymous_enable write_enable chroot_local_user rsa_cert_file rsa_private_key_file ssl_enable ssl_sslv3 allow_anon_ssl local_umask ascii_upload_enable (+28 more)
+  [1;32m[+][0m vsftpd hardening complete (19s)
+
+[1;36m################ mysql ################[0m
+
+[1;36m=== MySQL/MariaDB hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  [1;32m[+][0m Baseline 'mysql': no open findings
+  [*] Database type: mysql
+  [*] Backup: /root/cp-backups/20261112_062437/etc/mysql
+  [1;32m[+][0m Perms: /var/lib/mysql 700 mysql, /etc/mysql root:mysql 750/640 (debian.cnf 600), /var/log/mysql 2750 mysql:adm
+  [1;32m[+][0m TLS certificates generated in /etc/mysql/ssl
+  README-dependent MySQL settings - Enter keeps all of them:
+      local connections only (bind-address 127.0.0.1) | TLS not forced for TCP clients | general_log off
+  ? Does the README change any of these (remote DB access, TLS-only clients, query logging)? [y/N]: n
+  [1;32m[+][0m Configuration is valid
+  [1;32m[+][0m mysql restarted and active
+  [1;32m[+][0m Anonymous accounts, remote root and the test database removed
+  [1;32m[+][0m Only default MySQL accounts exist (root, mysql.*, debian-sys-maint)
+  [1;32m[+][0m Database answers queries: bind_address=127.0.0.1 local_infile=0 secure_file_priv=/var/lib/mysql-files/ have_ssl=YES general_log=0
+  Changed:
+      ~ /etc/mysql/mysql.conf.d/mysqld.cnf: bind-address general_log_file general_log ssl-ca ssl-cert ssl-key require_secure_transport local-infile secure_file_priv skip-symbolic-links sql_mode performance_schema (+1 more)
+      + new file: /etc/mysql/ssl
+  [1;32m[+][0m MySQL hardening complete (9s)
+
+[1;36m################ postgresql ################[0m
+
+[1;36m=== PostgreSQL hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for postgresql: FIX NOW 0, REVIEW 3   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/postgresql/14/main/pg_hba.conf differs from pristine (1 line(s))
+              + host all all 0.0.0.0/0 trust
+    [1;33mREVIEW [0m /etc/postgresql/14/main/postgresql.conf differs from pristine (2 line(s))
+              - ssl = on
+              + ssl = off
+    [1;33mREVIEW [0m perms differ from the clean VM: /etc/postgresql/14/main/pg_hba.conf  clean[640 postgres:postgres] live[644 postgres:postgres]
+  [*] Review later: sudo bash services/baseline.sh --review postgresql
+  ? Does the README require REMOTE connections to PostgreSQL? [y/N]: n
+  [*] Backup: /root/cp-backups/20261112_062446/etc/postgresql/14/main
+  [*] Cluster 14/main (/etc/postgresql/14/main)
+  [1;33m[!][0m pg_hba.conf: 'trust' (no password) or 'password' (cleartext) authentication:
+      105:host all all 0.0.0.0/0 trust
+  ? Replace: local trust -> peer, host trust/password -> scram-sha-256? [Y/n]: 
+  [1;32m[+][0m pg_hba.conf: authentication required for every connection
+  [*] world-open: host all all 0.0.0.0/0 scram-sha-256
+  ? Comment out the entries open to ANY address (README does not need remote access)? [Y/n]: 
+  [1;32m[+][0m World-open pg_hba entries disabled
+  [1;32m[+][0m Perms: config files postgres:postgres (pg_hba/pg_ident 640), data dir 700
+  [1;32m[+][0m postgresql restarted and active
+  [1;32m[+][0m PostgreSQL answers queries: ssl=on password_encryption=scram-sha-256 listen_addresses=localhost log_connections=on
+  [1;32m[+][0m Only the default 'postgres' role exists
+  Changed:
+      ~ /etc/postgresql/14/main/pg_hba.conf: (lines removed)
+      ~ /etc/postgresql/14/main/postgresql.conf: listen_addresses password_encryption ssl log_connections log_disconnections 
+  [1;32m[+][0m PostgreSQL hardening complete (26s)
+
+[1;36m################ apache2 ################[0m
+
+[1;36m=== Apache hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for apache2: FIX NOW 0, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/apache2/conf-available/security.conf differs from pristine (2 line(s))
+              - ServerTokens OS
+              + ServerTokens Full
+  [*] Review later: sudo bash services/baseline.sh --review apache2
+  [*] Backup: /root/cp-backups/20261112_062512/etc/apache2
+  [*] Backup: /root/cp-backups/20261112_062512/etc/ssl/private
+  ? Enable HTTPS (mod_ssl + default-ssl site, TLS 1.2/1.3 only)? [Y/n]: 
+  Site-dependent Apache settings (detected: WordPress=0, PHP files=0, .htaccess rewrites=0) - Enter keeps all:
+      .htaccess rewrites allowed: no | strict Content-Security-Policy: yes | firewall: 'Apache Full' (80+443)
+  ? Does the README or the site need any of these changed (.htaccess apps, CDN assets, HTTPS-only)? [y/N]: n
+  ? Disable unneeded Apache modules (status autoindex negotiation)? y = all, e = choose each, n = keep [n]: 
+  [1;32m[+][0m Enabled site default-ssl
+  ? Install optional mod_security2 (+CRS) and mod_evasive? (no scoring evidence; needs network) [y/N]: 
+  ? Reset /var/www to root ownership, dirs 755 / files 644 (app folders above stay writable)? [Y/n]: 
+  [1;32m[+][0m /var/www root-owned, 755/644
+  [1;32m[+][0m Perms: /etc/apache2 root 755/644, /var/log/apache2 750 root:adm, /etc/ssl/private keys 640
+
+[1;36m=== Web content scan (phpinfo / webshell indicators) ===[0m
+  [1;32m[+][0m No phpinfo() files or webshell indicators
+  [1;32m[+][0m UFW: allowed application profile 'Apache Full'
+  [1;32m[+][0m apachectl configtest: Syntax OK
+  [1;32m[+][0m apache2 restarted and active
+  [1;32m[+][0m HTTP answers: HTTP/1.1 200 OK | Server: Apache | TRACE 405
+  [1;32m[+][0m HTTPS answers
+  Changed:
+      ~ /etc/apache2/apache2.conf: Timeout LogLevel Options Header Header always set Permissions-Policy "geolocation <Directory AllowOverride Require </Directory> <LimitExcept </LimitExcept> 
+      + new file: /etc/apache2/apache2.conf.backup
+      ~ /etc/apache2/conf-available/security.conf: ServerTokens ServerSignature FileETag LimitRequestBody 
+      + new file: /etc/apache2/conf-available/security.conf.backup
+      ~ /etc/apache2/conf-enabled/security.conf: ServerTokens ServerSignature FileETag LimitRequestBody 
+      ~ /etc/apache2/mods-available/ssl.conf: SSLHonorCipherOrder SSLProtocol SSLCompression 
+      + new file: /etc/apache2/mods-enabled/headers.load
+      + new file: /etc/apache2/mods-enabled/socache_shmcb.load
+      + new file: /etc/apache2/mods-enabled/ssl.conf
+      + new file: /etc/apache2/mods-enabled/ssl.load
+      ~ /etc/apache2/sites-available/default-ssl.conf: Header always set Strict-Transport-Security "max-age 
+      + new file: /etc/apache2/sites-enabled/default-ssl.conf
+  [1;32m[+][0m Apache hardening complete (17s). Backups: /root/cp-backups/20261112_062512/etc/apache2
+
+[1;36m################ nginx ################[0m
+
+[1;36m=== Nginx hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  [1;32m[+][0m Baseline 'nginx': no open findings
+  [*] Backup: /root/cp-backups/20261112_062529/etc/nginx
+  [1;32m[+][0m server_tokens off, ssl_protocols TLSv1.2 TLSv1.3, ssl_prefer_server_ciphers on, client_max_body_size 10m
+  ? Include the hardening snippet (deny dotfiles, only GET/HEAD/POST, security headers) in every server block? [Y/n]: 
+  [1;32m[+][0m Snippet included in: /etc/nginx/sites-available/default
+
+[1;36m=== Web content scan (phpinfo / webshell indicators) ===[0m
+  [1;32m[+][0m No phpinfo() files or webshell indicators
+  [1;32m[+][0m UFW: allowed application profile 'Nginx Full'
+  [1;32m[+][0m nginx -t: config valid
+  [1;31m[x][0m nginx failed to (re)start - check: journalctl -xeu nginx
+  [1;31m[x][0m nginx did not come back up - restoring /etc/nginx
+  [1;33m[!][0m Restored /etc/nginx from /root/cp-backups/20261112_062529/etc/nginx
+  [1;33m[act][0m nginx.sh: nginx did not come back up - hardening rolled back; check nginx -t by hand
+
+[1;33m=== nginx.sh finished - listed for you (1): ===[0m
+   1. nginx.sh: nginx did not come back up - hardening rolled back; check nginx -t by hand
+
+[1;36m################ php ################[0m
+
+[1;36m=== PHP hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for php: FIX NOW 0, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/php/8.1/apache2/php.ini differs from pristine (2 line(s))
+              - display_errors = Off
+              + display_errors = On
+  [*] Review later: sudo bash services/baseline.sh --review php
+  [*] php.ini files: /etc/php/8.1/apache2/php.ini /etc/php/8.1/cli/php.ini /etc/php/8.1/fpm/php.ini
+  App-dependent PHP settings - Enter keeps all of them:
+      allow_url_fopen Off | exec/system/shell_exec... disabled | no open_basedir | file uploads On | session.cookie_secure 0 (site also on HTTP)
+  ? Does the README or the web app need any of these changed (remote URL reads, exec(), open_basedir, no uploads, HTTPS cookies)? [y/N]: n
+  [*] Backup: /root/cp-backups/20261112_062539/etc/php/8.1/apache2/php.ini
+  [*] Backup: /root/cp-backups/20261112_062539/etc/php/8.1/apache2/conf.d
+  [*] Backup: /root/cp-backups/20261112_062539/etc/php/8.1/cli/php.ini
+  [*] Backup: /root/cp-backups/20261112_062539/etc/php/8.1/cli/conf.d
+  [*] Backup: /root/cp-backups/20261112_062539/etc/php/8.1/fpm/php.ini
+  [*] Backup: /root/cp-backups/20261112_062539/etc/php/8.1/fpm/conf.d
+  [1;32m[+][0m apache2 restarted and active
+  [1;32m[+][0m php8.1-fpm restarted and active
+  [1;32m[+][0m No X-Powered-By header
+  /etc/php/8.1/apache2/php.ini: expose_php=Off display_errors=Off allow_url_include=Off allow_url_fopen=Off
+  /etc/php/8.1/cli/php.ini: expose_php=Off display_errors=Off allow_url_include=Off allow_url_fopen=On
+  /etc/php/8.1/fpm/php.ini: expose_php=Off display_errors=Off allow_url_include=Off allow_url_fopen=Off
+  Changed:
+      ~ /etc/php/8.1/apache2/php.ini: disable_functions display_errors allow_url_fopen session.use_strict_mode session.cookie_httponly session.cookie_samesite 
+      ~ /etc/php/8.1/cli/php.ini: expose_php session.use_strict_mode session.cookie_httponly session.cookie_samesite 
+      + new file: /etc/php/8.1/fpm/php-fpm.conf
+      ~ /etc/php/8.1/fpm/php.ini: disable_functions cgi.fix_pathinfo allow_url_fopen session.use_strict_mode session.cookie_httponly session.cookie_samesite 
+      + new file: /etc/php/8.1/fpm/pool.d
+  [1;32m[+][0m PHP hardening complete (8s)
+
+[1;36m################ samba ################[0m
+
+[1;36m=== Samba hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for samba: FIX NOW 0, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/samba/smb.conf differs from pristine (1 line(s))
+              + server min protocol = NT1
+  [*] Review later: sudo bash services/baseline.sh --review samba
+  [*] Backup: /root/cp-backups/20261112_062547/etc/samba/smb.conf
+  [1;32m[+][0m [global] hardened: SMB2+ only, encryption + signing required, no guests/anonymous, NTLMv2 only
+  ? Enable full_audit logging of file operations (vfs objects = full_audit)? [y/N]: 
+  [1;32m[+][0m Shares: guest ok = no, masks 0660/0770, wide links no, read only unless README-writable (none)
+  [1;32m[+][0m testparm: config valid
+  [1;32m[+][0m UFW: allowed application profile 'Samba'
+  [1;32m[+][0m smbd restarted and active
+  [1;32m[+][0m nmbd restarted and active
+  [1;32m[+][0m Anonymous access refused
+  ? Test an authorized Samba user (Enter to skip): 
+  Changed:
+      ~ /etc/samba/smb.conf: server min protocol map to guest usershare allow guests null passwords ntlm auth log level smb encrypt restrict anonymous client min protocol security wide links server signing 
+  [1;32m[+][0m Samba hardening complete (10s)
+
+[1;36m################ bind9 ################[0m
+
+[1;36m=== BIND9 hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  [1;32m[+][0m Baseline 'bind9': no open findings
+  [*] Backup: /root/cp-backups/20261112_062557/etc/bind
+  [*] Backup: /root/cp-backups/20261112_062557/etc/default/named
+  README-dependent DNS settings - Enter keeps all of them:
+      no zone transfers (allow-transfer none) | recursion for local clients only (localhost; localnets)
+  ? Does the README change any of these (secondary DNS servers, authoritative-only server)? [y/N]: n
+  [1;32m[+][0m options: version hidden, zone transfers restricted, recursion local only, DNSSEC validation auto, query log
+  [1;32m[+][0m Perms: /etc/bind root:bind 2755, configs/zones 644, keys 640
+  [1;32m[+][0m named-checkconf -z passed
+  [1;32m[+][0m UFW: allowed application profile 'Bind9'
+  [1;32m[+][0m named restarted and active
+  [1;32m[+][0m DNS answers, version.bind hidden
+  Changed:
+      ~ /etc/bind/named.conf.options: allow-transfer version querylog recursion allow-recursion 
+  [1;32m[+][0m BIND9 hardening complete (7s)
+
+[1;36m################ mail ################[0m
+
+[1;36m=== Mail hardening (Postfix / Dovecot) ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for postfix: FIX NOW 0, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/postfix/main.cf differs from pristine (2 line(s))
+              - inet_protocols = ipv4
+              + inet_protocols = all
+  [*] Review later: sudo bash services/baseline.sh --review postfix
+  Baseline findings for dovecot: FIX NOW 1, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;31mFIX NOW[0m file no package owns: 644 root:root /etc/dovecot/local.conf
+              listen = *
+    [1;33mREVIEW [0m /etc/dovecot/conf.d/10-auth.conf differs from pristine (1 line(s))
+              + auth_debug_passwords = yes
+  ? Triage the 1 FIX NOW finding(s) for dovecot now (baseline.sh --review dovecot)? [y/N]: n
+  mail: dovecot-core postfix installed, listening on :110 :143 :25 :993 :995 - critical only if the README lists mail
+  ? Is MAIL a critical service in the README (other machines send/receive mail through this one)? [Y/n]: y
+  README-dependent mail settings - Enter keeps all of them:
+      SMTP TLS offered, not forced (smtpd_tls_security_level = may) | POP3 not needed: removed (dovecot-pop3d purged, pop3 dropped from protocols, UFW 110/995 closed) - POP3 is ON now
+  ? Does the README change any of these (encrypted-only SMTP, POP3 access)? [y/N]: n
+  [*] Backup: /root/cp-backups/20261112_062604/etc/postfix
+  [*] Mail is critical - leaving inet_interfaces = all
+  [1;32m[+][0m Postfix: banner hides version, VRFY off, HELO required, no open relay, TLS 1.2+ (encrypt-only: no)
+  [1;32m[+][0m postfix check passed
+  [1;32m[+][0m postfix restarted and active
+  [1;32m[+][0m UFW: allowed application profile 'Postfix'
+  [1;32m[+][0m UFW: allowed application profile 'Postfix Submission'
+  [*] SMTP banner: 220 mint-cptest ESMTP
+  [1;32m[+][0m VRFY disabled
+  [*] Backup: /root/cp-backups/20261112_062604/etc/dovecot
+  [1;33m[!][0m /etc/dovecot/conf.d/10-auth.conf also set auth_debug_passwords - removed there
+  [1;32m[+][0m Dovecot 2.3.16: ssl = required;
+  [1;32m[+][0m dovecot restarted and active
+  [1;32m[+][0m IMAP answers: * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE
+  [1;32m[+][0m UFW: removed 'allow Dovecot POP3'
+  [1;32m[+][0m UFW: removed 'allow Dovecot Secure POP3'
+  [1;32m[+][0m UFW: removed 'allow 110/tcp'
+  [1;32m[+][0m UFW: removed 'allow 110'
+  [1;32m[+][0m UFW: removed 'allow 995/tcp'
+  [1;32m[+][0m UFW: removed 'allow 995'
+  [1;32m[+][0m dovecot-pop3d purged (README does not require POP3)
+  [1;32m[+][0m Dovecot still answers after the purge: * OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE
+  [1;32m[+][0m UFW: allowed application profile 'Dovecot Secure IMAP'
+  Changed:
+      ~ /etc/postfix/main.cf: smtpd_banner smtpd_tls_security_level smtpd_relay_restrictions disable_vrfy_command smtpd_tls_auth_only smtpd_helo_required smtpd_tls_mandatory_protocols smtpd_tls_protocols 
+      ~ /etc/dovecot/conf.d/10-auth.conf: disable_plaintext_auth 
+      ~ /etc/dovecot/conf.d/10-logging.conf: auth_debug_passwords 
+      ~ /etc/dovecot/conf.d/10-ssl.conf: ssl ssl_min_protocol 
+      - removed: /etc/dovecot/conf.d/20-pop3.conf
+  [1;32m[+][0m Mail hardening complete (20s)
+
+[1;36m################ squid ################[0m
+
+[1;36m=== Squid hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  Baseline findings for squid: FIX NOW 0, REVIEW 1   (all: /root/baseline/FINDINGS.txt)
+    [1;33mREVIEW [0m /etc/squid/squid.conf differs from pristine (1 line(s))
+              + http_access allow all
+  [*] Review later: sudo bash services/baseline.sh --review squid
+  [*] Backup: /root/cp-backups/20261112_062624/etc/squid
+  [1;32m[+][0m Removed 'http_access allow all' (open proxy)
+  [1;32m[+][0m Version string suppressed, Via/X-Forwarded-For removed
+  [*] http_access rules now (order matters - compare with the README): deny !Safe_ports;deny CONNECT !SSL_ports;allow localhost manager;deny manager;allow localhost;deny all;
+  [*] http_port: 3128 (README may require a specific port)
+  [1;32m[+][0m squid -k parse passed
+  [1;32m[+][0m squid reloaded (squid -k reconfigure) and active
+  [1;32m[+][0m UFW: allowed 3128/tcp (squid http_port)
+  Changed:
+      ~ /etc/squid/squid.conf: via httpd_suppress_version_string forwarded_for 
+  [1;32m[+][0m Squid hardening complete (3s)
+
+[1;36m=== Critical services summary (140s) ===[0m
+  ssh        active hardened ok                                      11s
+  vsftpd     active hardened ok                                      19s
+  mysql      active hardened ok                                       9s
+  postgresql active hardened ok                                      26s
+  apache2    active hardened ok                                      17s
+[1;31m  nginx      DOWN   ROLLED BACK: nginx did not come back up          10s  <- FIX NOW (nginx)[0m
+  [1;33m[act][0m CRITICAL service nginx is DOWN: nginx - journalctl -xe; restore from /root/cp-backups if needed
+  php        active hardened ok                                       8s
+  samba      active hardened ok                                      10s
+  bind9      active hardened ok                                       7s
+  mail       active hardened ok                                      20s
+  squid      active hardened ok                                       3s
+
+[1;33m=== critical.sh finished - listed for you (1): ===[0m
+   1. CRITICAL service nginx is DOWN: nginx - journalctl -xe; restore from /root/cp-backups if needed
+  [1;33m[!][0m services/critical.sh ended with exit 1 after 2m49s - check the end of its output (not marked done: running speedrun.sh again repeats it)
+
+[1;36m=== upgrades.sh   log: /root/cp-state/logs/upgrades.log ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Package lists ===[0m
+  [1;32m[+][0m apt-get update ran 4 min ago - not repeated
+
+[1;36m=== Repositories ===[0m
+      http://ports.ubuntu.com/ubuntu-ports
+
+[1;36m=== Upgrades ===[0m
+  [1;32m[+][0m Nothing to upgrade.
+  [1;32m[+][0m upgrades.sh done in 3s
+
+  [1;33m[!][0m LAST: set the lockout policy now - faillock, then nullok (checklist: LOCKOUT POLICY).
+
+  [1;32m[+][0m Speedrun done in 4m57s | users 15s review 24s system 42s packages 31s ports 10s upgrades 3s
+
+[drive2] EXIT 0

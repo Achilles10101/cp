@@ -1,0 +1,63 @@
+[22:13:33] container T-old-svc2 from cp-mint-svcplanted: systemd degraded
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:13:34] step s1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:14:35]   done in 60s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=60.7s  exit=0  findings=36 (bang=36)
+[22:14:35] step s3-sysconfig: bash systemconfig.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:15:31]   done in 56s  STATS prompts=15 rule=6 default=9 stall=0 wait=37.7s elapsed=56.3s  exit=0  findings=- (-)
+[22:15:31] step s-ssh: bash services/ssh.sh
+[22:15:54]   done in 22s  STATS prompts=8 rule=1 default=7 stall=0 wait=20.2s elapsed=22.3s  exit=0  findings=- (-)
+[22:15:54] step s-vsftpd: bash services/vsftpd.sh
+[22:16:28]   done in 34s  STATS prompts=10 rule=3 default=7 stall=0 wait=25.1s elapsed=34.1s  exit=0  findings=- (-)
+[22:16:28] step s-apache2: bash services/apache2.sh
+[22:16:53]   done in 24s  STATS prompts=9 rule=1 default=8 stall=0 wait=22.6s elapsed=24.2s  exit=0  findings=- (-)
+[22:16:53] step s-php: bash services/php.sh
+[22:17:13]   done in 20s  STATS prompts=7 rule=1 default=6 stall=0 wait=17.6s elapsed=20.4s  exit=0  findings=- (-)
+[22:17:13] step s-mysql: bash services/mysql.sh
+[22:17:35]   done in 21s  STATS prompts=7 rule=1 default=6 stall=0 wait=17.6s elapsed=20.9s  exit=0  findings=- (-)
+[22:17:35] step s-postgresql: bash services/postgresql.sh
+[22:17:58]   done in 23s  STATS prompts=7 rule=1 default=6 stall=0 wait=17.6s elapsed=23.2s  exit=0  findings=- (-)
+[22:17:58] step s-samba: bash services/samba.sh
+[22:18:13]   done in 15s  STATS prompts=5 rule=1 default=4 stall=0 wait=12.6s elapsed=15.0s  exit=0  findings=- (-)
+[22:18:13] step s-bind9: bash services/bind9.sh
+[22:18:25]   done in 11s  STATS prompts=4 rule=1 default=3 stall=0 wait=10.0s elapsed=11.4s  exit=0  findings=- (-)
+[22:18:25] step s-mail: bash services/mail.sh
+[22:18:52]   done in 26s  STATS prompts=6 rule=1 default=5 stall=0 wait=15.1s elapsed=26.5s  exit=0  findings=- (-)
+[22:18:52] step s-squid: bash services/squid.sh
+[22:19:29]   done in 37s  STATS prompts=2 rule=1 default=1 stall=0 wait=5.0s elapsed=37.5s  exit=0  findings=- (-)
+image cp-mint-svcplanted
+competition /private/tmp/claude-502/-Users-max-Documents-cp-stuff/41286131-46ee-4224-b5a4-68f18e8531cc/scratchpad/old-fixed
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-10-21-svc.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+s1-baseline         60.8      60.7     0.0    60.7        0     0     0     0     0       36   1.03>1.04
+s3-sysconfig        56.3      56.3    37.7    18.6       15     6     9     0     0        -   1.04>1.82
+s-ssh               22.4      22.3    20.2     2.1        8     1     7     0     0        -   1.82>1.28
+s-vsftpd            34.2      34.1    25.1     9.0       10     3     7     0     0        -   1.28>1.09
+s-apache2           24.2      24.2    22.6     1.6        9     1     8     0     0        -   1.09>0.92
+s-php               20.4      20.4    17.6     2.8        7     1     6     0     0        -   0.92>0.88
+s-mysql             21.0      20.9    17.6     3.3        7     1     6     0     0        -   0.88>0.94
+s-postgresql        23.3      23.2    17.6     5.6        7     1     6     0     0        -   0.94>1.04
+s-samba             15.1      15.0    12.6     2.4        5     1     4     0     0        -   1.04>1.03
+s-bind9             11.4      11.4    10.0     1.4        4     1     3     0     0        -   1.03>0.95
+s-mail              26.5      26.5    15.1    11.4        6     1     5     0     0        -   0.95>0.70
+s-squid             37.6      37.5     5.0    32.5        2     1     1     0     0        -   0.70>0.65
+TOTAL              355.8             201.1   154.7       80
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 133/145 PASS   planted: 41/45 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx
+baseline findings: 36  (bang=36; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+

@@ -1,0 +1,1945 @@
+
+## sysctl
+fs.protected_fifos = 1
+fs.protected_hardlinks = 1
+fs.protected_regular = 2
+fs.protected_symlinks = 1
+fs.suid_dumpable = 0
+kernel.core_uses_pid = 1
+kernel.dmesg_restrict = 1
+kernel.kptr_restrict = 2
+kernel.perf_event_paranoid = 3
+kernel.randomize_va_space = 2
+kernel.sysrq = 0
+kernel.unprivileged_bpf_disabled = 2
+kernel.yama.ptrace_scope = 1
+net.ipv4.conf.all.accept_local = 0
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.all.arp_accept = 0
+net.ipv4.conf.all.arp_announce = 0
+net.ipv4.conf.all.arp_evict_nocarrier = 1
+net.ipv4.conf.all.arp_filter = 0
+net.ipv4.conf.all.arp_ignore = 0
+net.ipv4.conf.all.arp_notify = 0
+net.ipv4.conf.all.bc_forwarding = 0
+net.ipv4.conf.all.bootp_relay = 0
+net.ipv4.conf.all.disable_policy = 0
+net.ipv4.conf.all.disable_xfrm = 0
+net.ipv4.conf.all.drop_gratuitous_arp = 0
+net.ipv4.conf.all.drop_unicast_in_l2_multicast = 0
+net.ipv4.conf.all.force_igmp_version = 0
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.all.igmpv2_unsolicited_report_interval = 10000
+net.ipv4.conf.all.igmpv3_unsolicited_report_interval = 1000
+net.ipv4.conf.all.ignore_routes_with_linkdown = 0
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.all.mc_forwarding = 0
+net.ipv4.conf.all.medium_id = 0
+net.ipv4.conf.all.promote_secondaries = 0
+net.ipv4.conf.all.proxy_arp = 0
+net.ipv4.conf.all.proxy_arp_pvlan = 0
+net.ipv4.conf.all.route_localnet = 0
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.all.secure_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.all.shared_media = 1
+net.ipv4.conf.all.src_valid_mark = 0
+net.ipv4.conf.all.tag = 0
+net.ipv4.conf.default.accept_local = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.conf.default.arp_accept = 0
+net.ipv4.conf.default.arp_announce = 0
+net.ipv4.conf.default.arp_evict_nocarrier = 1
+net.ipv4.conf.default.arp_filter = 0
+net.ipv4.conf.default.arp_ignore = 0
+net.ipv4.conf.default.arp_notify = 0
+net.ipv4.conf.default.bc_forwarding = 0
+net.ipv4.conf.default.bootp_relay = 0
+net.ipv4.conf.default.disable_policy = 0
+net.ipv4.conf.default.disable_xfrm = 0
+net.ipv4.conf.default.drop_gratuitous_arp = 0
+net.ipv4.conf.default.drop_unicast_in_l2_multicast = 0
+net.ipv4.conf.default.force_igmp_version = 0
+net.ipv4.conf.default.forwarding = 0
+net.ipv4.conf.default.igmpv2_unsolicited_report_interval = 10000
+net.ipv4.conf.default.igmpv3_unsolicited_report_interval = 1000
+net.ipv4.conf.default.ignore_routes_with_linkdown = 0
+net.ipv4.conf.default.log_martians = 1
+net.ipv4.conf.default.mc_forwarding = 0
+net.ipv4.conf.default.medium_id = 0
+net.ipv4.conf.default.promote_secondaries = 1
+net.ipv4.conf.default.proxy_arp = 0
+net.ipv4.conf.default.proxy_arp_pvlan = 0
+net.ipv4.conf.default.route_localnet = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.secure_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.conf.default.shared_media = 1
+net.ipv4.conf.default.src_valid_mark = 0
+net.ipv4.conf.default.tag = 0
+net.ipv4.icmp_echo_enable_probe = 0
+net.ipv4.icmp_echo_ignore_all = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.icmp_errors_use_inbound_ifaddr = 0
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.icmp_ratelimit = 1000
+net.ipv4.icmp_ratemask = 6168
+net.ipv4.ip_forward = 0
+net.ipv4.ip_forward_update_priority = 1
+net.ipv4.ip_forward_use_pmtu = 0
+net.ipv4.tcp_syncookies = 1
+net.ipv6.conf.all.accept_ra = 1
+net.ipv6.conf.all.accept_ra_defrtr = 1
+net.ipv6.conf.all.accept_ra_from_local = 0
+net.ipv6.conf.all.accept_ra_min_hop_limit = 1
+net.ipv6.conf.all.accept_ra_min_lft = 0
+net.ipv6.conf.all.accept_ra_mtu = 1
+net.ipv6.conf.all.accept_ra_pinfo = 1
+net.ipv6.conf.all.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.all.accept_ra_rt_info_min_plen = 0
+net.ipv6.conf.all.accept_ra_rtr_pref = 1
+net.ipv6.conf.all.accept_redirects = 0
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.all.forwarding = 0
+net.ipv6.conf.default.accept_ra = 1
+net.ipv6.conf.default.accept_ra_defrtr = 1
+net.ipv6.conf.default.accept_ra_from_local = 0
+net.ipv6.conf.default.accept_ra_min_hop_limit = 1
+net.ipv6.conf.default.accept_ra_min_lft = 0
+net.ipv6.conf.default.accept_ra_mtu = 1
+net.ipv6.conf.default.accept_ra_pinfo = 1
+net.ipv6.conf.default.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.default.accept_ra_rt_info_min_plen = 0
+net.ipv6.conf.default.accept_ra_rtr_pref = 1
+net.ipv6.conf.default.accept_redirects = 0
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.default.forwarding = 0
+
+## sysctl-files
+dev.tty.ldisc_autoload = 0
+fs.file-max = 65535
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+fs.suid_dumpable = 0
+kernel.core_uses_pid = 1
+kernel.dmesg_restrict = 1
+kernel.exec-shield = 1
+kernel.kexec_load_disabled = 1
+kernel.kptr_restrict = 1
+kernel.kptr_restrict = 2
+kernel.perf_event_paranoid = 3
+kernel.pid_max = 65536
+kernel.printk = 4 4 1 7
+kernel.randomize_va_space = 2
+kernel.sysrq = 0
+kernel.sysrq = 176
+kernel.yama.ptrace_scope = 1
+net.core.netdev_max_backlog = 5000
+net.core.rmem_max = 8388608
+net.core.wmem_max = 8388608
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.all.rp_filter=2
+net.ipv4.conf.all.secure_redirects = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.conf.default.log_martians = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.rp_filter=2
+net.ipv4.conf.default.secure_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
+net.ipv4.icmp_echo_ignore_all = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.ip_forward = 0
+net.ipv4.ip_local_port_range = 2000 65000
+net.ipv4.tcp_max_syn_backlog = 2048
+net.ipv4.tcp_rfc1337 = 1
+net.ipv4.tcp_rmem = 10240 87380 12582912
+net.ipv4.tcp_syn_retries = 5
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_wmem = 10240 87380 12582912
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.all.use_tempaddr = 2
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.default.use_tempaddr = 2
+net.ipv6.conf.lo.disable_ipv6 = 1
+vm.mmap_min_addr = 32768
+
+## login.defs
+CHFN_RESTRICT		rwh
+DEFAULT_HOME	yes
+ENCRYPT_METHOD SHA512
+ENV_PATH	PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+ENV_SUPATH	PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ERASECHAR	0177
+FAILLOG_ENAB		yes
+FTMP_FILE	/var/log/btmp
+GID_MAX			60000
+GID_MIN			 1000
+HOME_MODE	0750
+HUSHLOGIN_FILE	.hushlogin
+KILLCHAR	025
+LOGIN_RETRIES 3
+LOGIN_TIMEOUT		60
+LOG_OK_LOGINS		no
+LOG_UNKFAIL_ENAB	no
+MAIL_DIR        /var/mail
+PASS_MAX_DAYS 30
+PASS_MIN_DAYS 7
+PASS_WARN_AGE 14
+SU_NAME		su
+SYSLOG_SG_ENAB		yes
+SYSLOG_SU_ENAB		yes
+TTYGROUP	tty
+TTYPERM		0600
+UID_MAX			60000
+UID_MIN			 1000
+UMASK		027
+USERGROUPS_ENAB yes
+
+## useradd
+SHELL=/bin/sh
+
+## pam common-auth
+auth	[success=1 default=ignore]	pam_unix.so nullok
+auth	requisite			pam_deny.so
+auth	required			pam_permit.so
+
+## pam common-password
+password	requisite			pam_pwquality.so retry=3 dictcheck=1 usercheck=1 minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
+password	[success=1 default=ignore]	pam_unix.so obscure use_authtok try_first_pass yescrypt remember=5 minlen=12
+password	requisite			pam_deny.so
+password	required			pam_permit.so
+password	optional	pam_gnome_keyring.so 
+
+## pam common-account
+account	[success=1 new_authtok_reqd=done default=ignore]	pam_unix.so 
+account	requisite			pam_deny.so
+account	required			pam_permit.so
+
+## pam common-session
+session	[default=1]			pam_permit.so
+session	requisite			pam_deny.so
+session	required			pam_permit.so
+session optional			pam_umask.so
+session	required	pam_unix.so 
+session	optional	pam_systemd.so 
+
+## pwquality
+minlen = 12
+dcredit = -1
+ucredit = -1
+lcredit = -1
+ocredit = -1
+dictcheck = 1
+usercheck = 1
+
+## faillock
+
+## limits
+* hard core 0
+* hard nproc 2500
+
+## sshd -T
+acceptenv LANG
+acceptenv LC_*
+addressfamily any
+allowagentforwarding no
+allowstreamlocalforwarding yes
+allowtcpforwarding no
+authenticationmethods any
+authorizedkeyscommand none
+authorizedkeyscommanduser none
+authorizedkeysfile .ssh/authorized_keys .ssh/authorized_keys2
+authorizedprincipalscommand none
+authorizedprincipalscommanduser none
+authorizedprincipalsfile none
+banner /etc/issue.net
+casignaturealgorithms ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+chrootdirectory none
+ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+clientalivecountmax 2
+clientaliveinterval 300
+compression no
+disableforwarding yes
+exposeauthinfo no
+fingerprinthash SHA256
+forcecommand none
+gatewayports no
+gssapiauthentication no
+gssapicleanupcredentials yes
+gssapikexalgorithms gss-group14-sha256-,gss-group16-sha512-,gss-nistp256-sha256-,gss-curve25519-sha256-,gss-group14-sha1-,gss-gex-sha1-
+gssapikeyexchange no
+gssapistorecredentialsonrekey no
+gssapistrictacceptorcheck yes
+hostbasedacceptedalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+hostbasedauthentication no
+hostbasedusesnamefrompacketonly no
+hostkey /etc/ssh/ssh_host_ecdsa_key
+hostkey /etc/ssh/ssh_host_ed25519_key
+hostkey /etc/ssh/ssh_host_rsa_key
+hostkeyagent none
+hostkeyalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+ignorerhosts yes
+ignoreuserknownhosts no
+ipqos lowdelay throughput
+kbdinteractiveauthentication no
+kerberosauthentication no
+kerberosorlocalpasswd yes
+kerberosticketcleanup yes
+kexalgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,sntrup761x25519-sha512@openssh.com,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256
+listenaddress 0.0.0.0:22
+listenaddress [::]:22
+logingracetime 30
+loglevel VERBOSE
+macs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+maxauthtries 3
+maxsessions 4
+maxstartups 10:30:60
+modulifile /etc/ssh/moduli
+passwordauthentication yes
+permitemptypasswords no
+permitlisten any
+permitopen any
+permitrootlogin no
+permittty yes
+permittunnel no
+permituserenvironment no
+permituserrc yes
+persourcemaxstartups none
+persourcenetblocksize 32:128
+pidfile /run/sshd.pid
+port 22
+printlastlog yes
+printmotd no
+pubkeyacceptedalgorithms ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+pubkeyauthentication yes
+pubkeyauthoptions none
+rekeylimit 0 0
+revokedkeys none
+securitykeyprovider internal
+streamlocalbindmask 0177
+streamlocalbindunlink no
+strictmodes yes
+subsystem sftp /usr/lib/openssh/sftp-server
+syslogfacility AUTH
+tcpkeepalive yes
+trustedusercakeys none
+usedns no
+usepam yes
+versionaddendum none
+x11displayoffset 10
+x11forwarding no
+x11uselocalhost yes
+xauthlocation /usr/bin/xauth
+
+## ufw
+Status: active
+Logging: on (high)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp (OpenSSH)           ALLOW IN    Anywhere                  
+21/tcp                     ALLOW IN    Anywhere                  
+40000:50000/tcp            ALLOW IN    Anywhere                  
+80,443/tcp (Apache Full)   ALLOW IN    Anywhere                  
+80,443/tcp (Nginx Full)    ALLOW IN    Anywhere                  
+137,138/udp (Samba)        ALLOW IN    Anywhere                  
+139,445/tcp (Samba)        ALLOW IN    Anywhere                  
+53 (Bind9)                 ALLOW IN    Anywhere                  
+25/tcp (Postfix)           ALLOW IN    Anywhere                  
+587/tcp (Postfix Submission) ALLOW IN    Anywhere                  
+993/tcp (Dovecot Secure IMAP) ALLOW IN    Anywhere                  
+3128/tcp                   ALLOW IN    Anywhere                  
+22/tcp (OpenSSH (v6))      ALLOW IN    Anywhere (v6)             
+21/tcp (v6)                ALLOW IN    Anywhere (v6)             
+40000:50000/tcp (v6)       ALLOW IN    Anywhere (v6)             
+80,443/tcp (Apache Full (v6)) ALLOW IN    Anywhere (v6)             
+80,443/tcp (Nginx Full (v6)) ALLOW IN    Anywhere (v6)             
+137,138/udp (Samba (v6))   ALLOW IN    Anywhere (v6)             
+139,445/tcp (Samba (v6))   ALLOW IN    Anywhere (v6)             
+53 (Bind9 (v6))            ALLOW IN    Anywhere (v6)             
+25/tcp (Postfix (v6))      ALLOW IN    Anywhere (v6)             
+587/tcp (Postfix Submission (v6)) ALLOW IN    Anywhere (v6)             
+993/tcp (Dovecot Secure IMAP (v6)) ALLOW IN    Anywhere (v6)             
+3128/tcp (v6)              ALLOW IN    Anywhere (v6)             
+
+
+## accounts
+root 0 0 /root /bin/bash
+daemon 1 1 /usr/sbin /usr/sbin/nologin
+bin 2 2 /bin /usr/sbin/nologin
+sys 3 3 /dev /usr/sbin/nologin
+sync 4 65534 /bin /bin/sync
+games 5 60 /usr/games /usr/sbin/nologin
+man 6 12 /var/cache/man /usr/sbin/nologin
+lp 7 7 /var/spool/lpd /usr/sbin/nologin
+mail 8 8 /var/mail /usr/sbin/nologin
+news 9 9 /var/spool/news /usr/sbin/nologin
+uucp 10 10 /var/spool/uucp /usr/sbin/nologin
+proxy 13 13 /bin /usr/sbin/nologin
+www-data 33 33 /var/www /usr/sbin/nologin
+backup 34 34 /var/backups /usr/sbin/nologin
+list 38 38 /var/list /usr/sbin/nologin
+irc 39 39 /run/ircd /usr/sbin/nologin
+gnats 41 41 /var/lib/gnats /usr/sbin/nologin
+nobody 65534 65534 /nonexistent /usr/sbin/nologin
+_apt 100 65534 /nonexistent /usr/sbin/nologin
+systemd-network 101 102 /run/systemd /usr/sbin/nologin
+systemd-resolve 102 103 /run/systemd /usr/sbin/nologin
+messagebus 103 104 /nonexistent /usr/sbin/nologin
+systemd-timesync 104 105 /run/systemd /usr/sbin/nologin
+tcpdump 105 112 /nonexistent /usr/sbin/nologin
+syslog 106 113 /home/syslog /usr/sbin/nologin
+cups-pk-helper 107 115 /home/cups-pk-helper /usr/sbin/nologin
+lightdm 108 116 /var/lib/lightdm /bin/false
+avahi 109 118 /run/avahi-daemon /usr/sbin/nologin
+geoclue 110 120 /var/lib/geoclue /usr/sbin/nologin
+_flatpak 111 121 /nonexistent /usr/sbin/nologin
+cpuser 1000 1000 /home/cpuser /bin/bash
+mysql 112 122 /nonexistent /bin/false
+ftp 113 123 /srv/ftp /usr/sbin/nologin
+postfix 114 124 /var/spool/postfix /usr/sbin/nologin
+bind 115 126 /var/cache/bind /usr/sbin/nologin
+dovecot 116 127 /usr/lib/dovecot /usr/sbin/nologin
+dovenull 117 128 /nonexistent /usr/sbin/nologin
+sshd 118 65534 /run/sshd /usr/sbin/nologin
+postgres 119 129 /var/lib/postgresql /bin/bash
+ftpuser 1001 1001 /home/ftpuser /bin/bash
+
+## groups
+root 0 
+adm 4 syslog,cpuser
+cdrom 24 cpuser
+sudo 27 cpuser
+dip 30 cpuser
+plugdev 46 cpuser
+ssl-cert 107 postgres
+lpadmin 115 cpuser
+sambashare 130 
+
+## shadow
+root LOCKED:! last=set min=0 max=99999 warn=7 inact= exp=
+daemon LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+bin LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+sys LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+sync LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+games LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+man LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+lp LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+mail LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+news LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+uucp LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+proxy LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+www-data LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+backup LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+list LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+irc LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+gnats LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+nobody LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+_apt LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+systemd-network LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+systemd-resolve LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+messagebus LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+systemd-timesync LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+tcpdump LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+syslog LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+cups-pk-helper LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+lightdm LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+avahi LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+geoclue LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+_flatpak LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+cpuser $y$ last=set min=0 max=99999 warn=7 inact= exp=
+mysql LOCKED:! last=set min=0 max=99999 warn=7 inact= exp=
+ftp LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+postfix LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+bind LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+dovecot LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+dovenull LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+sshd LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+postgres LOCKED:* last=set min=0 max=99999 warn=7 inact= exp=
+ftpuser $y$ last=set min=7 max=30 warn=14 inact= exp=
+
+## gshadow
+
+## sudoers
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults	use_pty
+root	ALL=(ALL:ALL) ALL
+%admin ALL=(ALL) ALL
+%sudo	ALL=(ALL:ALL) ALL
+Defaults pwfeedback
+Defaults use_pty
+Defaults logfile="/var/log/sudo.log"
+ALL ALL = NOPASSWD:/usr/bin/mint-refresh-cache
+ALL ALL = NOPASSWD:/usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+ALL ALL = NOPASSWD:/usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+
+## lightdm
+/etc/lightdm/users.conf:[UserList]
+/etc/lightdm/users.conf:minimum-uid=500
+/etc/lightdm/users.conf:hidden-users=nobody nobody4 noaccess
+/etc/lightdm/users.conf:hidden-shells=/bin/false /usr/sbin/nologin /sbin/nologin
+/etc/lightdm/lightdm.conf:[Seat:*]
+/etc/lightdm/lightdm.conf:allow-guest=false
+/etc/lightdm/lightdm.conf:greeter-hide-users=true
+/etc/lightdm/lightdm.conf:greeter-allow-guest=false
+/etc/lightdm/lightdm.conf:greeter-show-manual-login=true
+/etc/lightdm/lightdm.conf:autologin-guest=false
+/etc/lightdm/lightdm.conf:autologin-user=NONE
+/etc/lightdm/lightdm.conf:xserver-allow-tcp=false
+
+## gdm
+/etc/gdm3/custom.conf:[daemon]
+/etc/gdm3/custom.conf:AutomaticLoginEnable=False
+/etc/gdm3/custom.conf:TimedLoginEnable=false
+/etc/gdm3/custom.conf:[security]
+/etc/gdm3/custom.conf:DisallowTCP=true
+/etc/gdm3/custom.conf:AllowRoot=false
+/etc/gdm3/custom.conf:[xdmcp]
+/etc/gdm3/custom.conf:[chooser]
+/etc/gdm3/custom.conf:[debug]
+
+## apt-config
+APT::Periodic "";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::Unattended-Upgrade "1";
+APT::Periodic::Update-Package-Lists "1";
+APT::Update::Post-Invoke-Success:: "touch /var/lib/apt/periodic/update-success-stamp 2>/dev/null || true";
+Unattended-Upgrade::Allowed-Origins "";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id} ${distro_codename}-security";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id} ${distro_codename}-updates";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id} stable";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id}:${distro_codename}";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id}:${distro_codename}-security";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id}ESM:${distro_codename}-infra-security";
+Unattended-Upgrade::Allowed-Origins:: "${distro_id}ESMApps:${distro_codename}-apps-security";
+
+## sources
+deb http://ports.ubuntu.com/ubuntu-ports jammy main restricted universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports jammy-updates main restricted universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports jammy-backports main restricted universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports jammy-security main restricted universe multiverse
+official-package-repositories.list
+
+## holds
+
+## packages-installed
+accountsservice
+acl
+adduser
+adwaita-icon-theme
+anacron
+apache2
+apache2-bin
+apache2-data
+apache2-utils
+apg
+apparmor
+apparmor-utils
+appstream
+apt
+apt-config-icons
+apt-transport-https
+apt-utils
+aptdaemon
+aptdaemon-data
+aptitude
+aptitude-common
+at
+at-spi2-core
+attr
+auditd
+avahi-daemon
+avahi-utils
+base-files
+base-passwd
+bash
+bash-completion
+bc
+bind9
+bind9-dnsutils
+bind9-host
+bind9-libs
+bind9-utils
+bsdextrautils
+bsdutils
+bubblewrap
+busybox-initramfs
+ca-certificates
+celluloid
+cifs-utils
+cinnamon
+cinnamon-common
+cinnamon-control-center
+cinnamon-control-center-data
+cinnamon-core
+cinnamon-desktop-data
+cinnamon-screensaver
+cinnamon-session
+cinnamon-session-common
+cinnamon-settings-daemon
+cjs
+command-not-found
+console-setup
+console-setup-linux
+coreutils
+cpio
+cron
+cups
+cups-browsed
+cups-bsd
+cups-client
+cups-common
+cups-core-drivers
+cups-daemon
+cups-filters
+cups-filters-core-drivers
+cups-ipp-utils
+cups-pk-helper
+cups-ppdc
+cups-server-common
+curl
+dash
+dbus
+dbus-x11
+dconf-gsettings-backend
+dconf-service
+debconf
+debianutils
+desktop-base
+desktop-file-utils
+dictionaries-common
+diffutils
+dirmngr
+distro-info
+distro-info-data
+dmidecode
+dmsetup
+dns-root-data
+dnsutils
+dovecot-core
+dovecot-imapd
+dpkg
+e2fsprogs
+emacsen-common
+evolution-data-server
+evolution-data-server-common
+fail2ban
+fdisk
+file
+findutils
+flatpak
+fontconfig
+fontconfig-config
+fonts-dejavu-core
+fonts-opensymbol
+fonts-quicksand
+fonts-urw-base35
+ftp
+gcc-12-base
+gcr
+gdisk
+geoclue-2.0
+gettext
+gettext-base
+ghostscript
+gir1.2-accountsservice-1.0
+gir1.2-adw-1
+gir1.2-appstreamglib-1.0
+gir1.2-atk-1.0
+gir1.2-atspi-2.0
+gir1.2-camel-1.2
+gir1.2-caribou-1.0
+gir1.2-cinnamondesktop-3.0
+gir1.2-clutter-1.0
+gir1.2-cmenu-3.0
+gir1.2-cogl-1.0
+gir1.2-coglpango-1.0
+gir1.2-cvc-1.0
+gir1.2-ecal-2.0
+gir1.2-edataserver-1.2
+gir1.2-freedesktop
+gir1.2-gck-1
+gir1.2-gcr-3
+gir1.2-gdata-0.0
+gir1.2-gdesktopenums-3.0
+gir1.2-gdkpixbuf-2.0
+gir1.2-gdm-1.0
+gir1.2-geoclue-2.0
+gir1.2-gkbd-3.0
+gir1.2-glib-2.0
+gir1.2-gnomebluetooth-3.0
+gir1.2-gnomedesktop-3.0
+gir1.2-goa-1.0
+gir1.2-graphene-1.0
+gir1.2-gstreamer-1.0
+gir1.2-gtk-3.0
+gir1.2-gtk-4.0
+gir1.2-gtkclutter-1.0
+gir1.2-gweather-3.0
+gir1.2-handy-1
+gir1.2-harfbuzz-0.0
+gir1.2-ibus-1.0
+gir1.2-ical-3.0
+gir1.2-javascriptcoregtk-4.0
+gir1.2-json-1.0
+gir1.2-keybinder-3.0
+gir1.2-meta-muffin-0.0
+gir1.2-mutter-10
+gir1.2-nemo-3.0
+gir1.2-nm-1.0
+gir1.2-nma-1.0
+gir1.2-notify-0.7
+gir1.2-packagekitglib-1.0
+gir1.2-pango-1.0
+gir1.2-polkit-1.0
+gir1.2-rsvg-2.0
+gir1.2-soup-2.4
+gir1.2-timezonemap-1.0
+gir1.2-upowerglib-1.0
+gir1.2-vte-2.91
+gir1.2-webkit2-4.0
+gir1.2-xapp-1.0
+gir1.2-xkl-1.0
+gkbd-capplet
+glib-networking
+glib-networking-common
+glib-networking-services
+gnome-backgrounds
+gnome-bluetooth-3-common
+gnome-calculator
+gnome-desktop3-data
+gnome-keyring
+gnome-settings-daemon
+gnome-settings-daemon-common
+gnome-shell
+gnome-shell-common
+gnome-software
+gnome-software-common
+gnome-software-plugin-flatpak
+gnome-system-monitor
+gnome-terminal
+gnome-terminal-data
+gnome-themes-extra
+gnome-themes-extra-data
+gnupg
+gnupg-l10n
+gnupg-utils
+gpg
+gpg-agent
+gpg-wks-client
+gpg-wks-server
+gpgconf
+gpgsm
+gpgv
+grep
+groff-base
+grub-common
+gsettings-desktop-schemas
+gstreamer1.0-pipewire
+gstreamer1.0-plugins-base
+gstreamer1.0-plugins-good
+gstreamer1.0-x
+gtk-update-icon-cache
+gtk2-engines-pixbuf
+gufw
+gvfs
+gvfs-common
+gvfs-daemons
+gvfs-libs
+gzip
+hexchat
+hexchat-common
+hicolor-icon-theme
+hostname
+humanity-icon-theme
+hunspell-en-us
+ibverbs-providers
+init-system-helpers
+initramfs-tools-bin
+initramfs-tools-core
+inxi
+iproute2
+iptables
+iputils-ping
+isc-dhcp-client
+iso-codes
+iso-flag-png
+iso-flags-png-320x240
+kbd
+keyboard-configuration
+klibc-utils
+kmod
+less
+libaa1
+libabsl20210324
+libabw-0.1-1
+libaccountsservice0
+libacl1
+libadwaita-1-0
+libaio1
+libaom3
+libapache2-mod-php
+libapache2-mod-php8.1
+libapparmor1
+libappstream-glib8
+libappstream4
+libapr1
+libaprutil1
+libaprutil1-dbd-sqlite3
+libaprutil1-ldap
+libapt-pkg6.0
+libarchive13
+libargon2-1
+libasound2
+libasound2-data
+libaspell15
+libass9
+libassuan0
+libasyncns0
+libatasmart4
+libatk-bridge2.0-0
+libatk1.0-0
+libatk1.0-data
+libatkmm-1.6-1v5
+libatomic1
+libatspi2.0-0
+libattr1
+libaudit-common
+libaudit1
+libauparse0
+libavahi-client3
+libavahi-common-data
+libavahi-common3
+libavahi-core7
+libavahi-glib1
+libavc1394-0
+libavcodec58
+libavdevice58
+libavfilter7
+libavformat58
+libavutil56
+libayatana-appindicator3-1
+libayatana-ido3-0.4-0
+libayatana-indicator3-7
+libblas3
+libblkid1
+libblockdev-fs2
+libblockdev-loop2
+libblockdev-part-err2
+libblockdev-part2
+libblockdev-swap2
+libblockdev-utils2
+libblockdev2
+libbluetooth3
+libbluray2
+libboost-filesystem1.74.0
+libboost-iostreams1.74.0
+libboost-locale1.74.0
+libboost-thread1.74.0
+libbpf0
+libbrotli1
+libbs2b0
+libbsd0
+libbz2-1.0
+libc-bin
+libc6
+libcaca0
+libcairo-gobject-perl
+libcairo-gobject2
+libcairo-perl
+libcairo-script-interpreter2
+libcairo2
+libcairomm-1.0-1v5
+libcamel-1.2-63
+libcanberra-gtk3-0
+libcanberra0
+libcap-ng0
+libcap2
+libcap2-bin
+libcaribou-common
+libcaribou0
+libcbor0.8
+libcdio-cdda2
+libcdio-paranoia2
+libcdio19
+libcdparanoia0
+libcephfs2
+libcgi-fast-perl
+libcgi-pm-perl
+libchromaprint1
+libcinnamon-control-center1
+libcinnamon-desktop4
+libcinnamon-menu-3-0
+libcjs0
+libclone-perl
+libclucene-contribs1v5
+libclucene-core1v5
+libclutter-1.0-0
+libclutter-gtk-1.0-0
+libcodec2-1.0
+libcogl-pango20
+libcogl-path20
+libcogl20
+libcolamd2
+libcolord2
+libcom-err2
+libcommon-sense-perl
+libcrack2
+libcrypt1
+libcryptsetup12
+libcscreensaver0
+libcups2
+libcupsfilters1
+libcurl3-gnutls
+libcurl4
+libcvc0
+libcwidget4
+libdaemon0
+libdatrie1
+libdav1d5
+libdb5.3
+libdbi-perl
+libdbus-1-3
+libdbus-glib-1-2
+libdbusmenu-glib4
+libdbusmenu-gtk3-4
+libdc1394-25
+libdconf1
+libdebconfclient0
+libdecor-0-0
+libdeflate0
+libdevmapper1.02.1
+libdns-export1110
+libdrm-amdgpu1
+libdrm-common
+libdrm-nouveau2
+libdrm-radeon1
+libdrm2
+libdv4
+libdvdnav4
+libdvdread8
+libdw1
+libe-book-0.1-1
+libebackend-1.2-10
+libebook-1.2-20
+libebook-contacts-1.2-3
+libecal-2.0-1
+libecap3
+libedata-book-1.2-26
+libedata-cal-2.0-1
+libedataserver-1.2-26
+libedataserverui-1.2-3
+libedit2
+libefiboot1
+libefivar1
+libegl-mesa0
+libegl1
+libelf1
+libenchant-2-2
+libencode-locale-perl
+libeot0
+libepoxy0
+libept1.6.0
+libepubgen-0.1-1
+libestr0
+libetonyek-0.1-1
+libevdev2
+libevent-2.1-7
+libevent-core-2.1-7
+libevent-pthreads-2.1-7
+libexempi8
+libexif12
+libexpat1
+libext2fs2
+libexttextcat-2.0-0
+libexttextcat-data
+libextutils-depends-perl
+libfastjson4
+libfcgi-bin
+libfcgi-perl
+libfcgi0ldbl
+libfdisk1
+libffi8
+libfido2-1
+libflac8
+libflatpak0
+libflite1
+libfontconfig1
+libfontembed1
+libfontenc1
+libfreetype6
+libfribidi0
+libfuse2
+libfuse3-3
+libfwupd2
+libgail-3-0
+libgbm1
+libgcc-s1
+libgck-1-0
+libgcr-base-3-1
+libgcr-ui-3-1
+libgcrypt20
+libgd3
+libgdata-common
+libgdata22
+libgdbm-compat4
+libgdbm6
+libgdk-pixbuf-2.0-0
+libgdk-pixbuf2.0-common
+libgdm1
+libgee-0.8-2
+libgeoclue-2-0
+libgeocode-glib0
+libgfapi0
+libgfortran5
+libgfrpc0
+libgfxdr0
+libgirepository-1.0-1
+libgjs0g
+libgl1
+libgl1-mesa-dri
+libglapi-mesa
+libgles2
+libglib-object-introspection-perl
+libglib-perl
+libglib2.0-0
+libglib2.0-bin
+libglib2.0-data
+libglibmm-2.4-1v5
+libglusterfs0
+libglvnd0
+libglx-mesa0
+libglx0
+libgme0
+libgmp10
+libgnome-autoar-0-0
+libgnome-bluetooth-3.0-13
+libgnome-desktop-3-19
+libgnomekbd-common
+libgnomekbd8
+libgnutls30
+libgoa-1.0-0b
+libgoa-1.0-common
+libgomp1
+libgpg-error0
+libgpgme11
+libgpgmepp6
+libgpm2
+libgraphene-1.0-0
+libgraphite2-3
+libgs9
+libgs9-common
+libgsf-1-114
+libgsf-1-common
+libgsm1
+libgspell-1-2
+libgspell-1-common
+libgssapi-krb5-2
+libgstreamer-gl1.0-0
+libgstreamer-plugins-base1.0-0
+libgstreamer-plugins-good1.0-0
+libgstreamer1.0-0
+libgtk-3-0
+libgtk-3-common
+libgtk-4-1
+libgtk-4-common
+libgtk2.0-0
+libgtk2.0-common
+libgtk3-perl
+libgtkmm-3.0-1v5
+libgtksourceview-4-0
+libgtksourceview-4-common
+libgtop-2.0-11
+libgtop2-common
+libgudev-1.0-0
+libgweather-3-16
+libgweather-common
+libhandy-1-0
+libharfbuzz-icu0
+libharfbuzz0b
+libhogweed6
+libhtml-parser-perl
+libhtml-tagset-perl
+libhtml-template-perl
+libhttp-date-perl
+libhttp-message-perl
+libhunspell-1.7-0
+libhyphen0
+libibus-1.0-5
+libibverbs1
+libical3
+libice6
+libicu70
+libidn12
+libidn2-0
+libiec61883-0
+libijs-0.35
+libimagequant0
+libimobiledevice6
+libinput-bin
+libinput10
+libio-html-perl
+libip4tc2
+libip6tc2
+libisc-export1105
+libjack-jackd2-0
+libjansson4
+libjavascriptcoregtk-4.0-18
+libjbig0
+libjbig2dec0
+libjcat1
+libjpeg-turbo8
+libjpeg8
+libjson-c5
+libjson-glib-1.0-0
+libjson-glib-1.0-common
+libjson-perl
+libjson-xs-perl
+libk5crypto3
+libkeybinder-3.0-0
+libkeyutils1
+libklibc
+libkmod2
+libkrb5-3
+libkrb5support0
+libksba8
+liblangtag-common
+liblangtag1
+liblapack3
+liblcms2-2
+libldap-2.5-0
+libldb2
+liblightdm-gobject-1-0
+liblilv-0-0
+libllvm14
+libllvm15
+liblmdb0
+liblocale-gettext-perl
+libltdl7
+liblua5.2-0
+liblua5.3-0
+liblwp-mediatypes-perl
+liblz4-1
+liblzma5
+liblzo2-2
+libmagic-mgc
+libmagic1
+libmalcontent-0-0
+libmanette-0.2-0
+libmaxminddb0
+libmd0
+libmecab2
+libmhash2
+libminiupnpc17
+libmm-glib0
+libmnl0
+libmount1
+libmozjs-78-0
+libmozjs-91-0
+libmp3lame0
+libmpc3
+libmpdec3
+libmpfr6
+libmpg123-0
+libmpv1
+libmtdev1
+libmuffin0
+libmujs1
+libmutter-10-0
+libmwaw-0.3-3
+libmysofa1
+libmythes-1.2-0
+libnatpmp1
+libncurses6
+libncursesw6
+libndp0
+libnemo-extension1
+libnetfilter-conntrack3
+libnettle8
+libnewt0.52
+libnfnetlink0
+libnftnl11
+libnghttp2-14
+libnginx-mod-http-geoip2
+libnginx-mod-http-image-filter
+libnginx-mod-http-xslt-filter
+libnginx-mod-mail
+libnginx-mod-stream
+libnginx-mod-stream-geoip2
+libnl-3-200
+libnl-route-3-200
+libnm0
+libnma-common
+libnma0
+libnorm1
+libnotify4
+libnpth0
+libnsl2
+libnspr4
+libnss-systemd
+libnss3
+libnuma1
+libodfgen-0.1-1
+libogg0
+libopenal-data
+libopenal1
+libopenjp2-7
+libopenmpt0
+libopus0
+liborc-0.4-0
+liborcus-0.17-0
+liborcus-parser-0.17-0
+libostree-1-1
+libp11-kit0
+libpackagekit-glib2-18
+libpam-gnome-keyring
+libpam-modules
+libpam-modules-bin
+libpam-pwquality
+libpam-runtime
+libpam-systemd
+libpam0g
+libpango-1.0-0
+libpangocairo-1.0-0
+libpangoft2-1.0-0
+libpangomm-1.4-1v5
+libpangoxft-1.0-0
+libpaper1
+libparted-fs-resize0
+libparted2
+libpcap0.8
+libpci3
+libpciaccess0
+libpcre2-8-0
+libpcre3
+libpeas-1.0-0
+libpeas-common
+libperl5.34
+libpgm-5.3-0
+libphonenumber8
+libpipeline1
+libpipewire-0.3-0
+libpipewire-0.3-modules
+libpixman-1-0
+libpkcs11-helper1
+libplacebo192
+libplist3
+libplymouth5
+libpng16-16
+libpocketsphinx3
+libpolkit-agent-1-0
+libpolkit-gobject-1-0
+libpoppler-cpp0v5
+libpoppler118
+libpopt0
+libpostproc55
+libpq5
+libprocps8
+libprotobuf-lite23
+libprotobuf23
+libproxy1v5
+libpsl5
+libpulse-mainloop-glib0
+libpulse0
+libpwquality-common
+libpwquality-tools
+libpwquality1
+libpython3-stdlib
+libpython3.10
+libpython3.10-minimal
+libpython3.10-stdlib
+libqpdf28
+librabbitmq4
+librados2
+libraptor2-0
+libraqm0
+librasqal3
+libraw1394-11
+librdf0
+librdmacm1
+libreadline8
+libreoffice-base-core
+libreoffice-calc
+libreoffice-common
+libreoffice-core
+libreoffice-style-colibre
+libreoffice-writer
+librevenge-0.0-0
+librhythmbox-core10
+librsvg2-2
+librsvg2-common
+librtmp1
+librubberband2
+libsamplerate0
+libsasl2-2
+libsasl2-modules-db
+libsdl2-2.0-0
+libseccomp2
+libsecret-1-0
+libsecret-common
+libselinux1
+libsemanage-common
+libsemanage2
+libsensors-config
+libsensors5
+libsepol2
+libserd-0-0
+libshine3
+libshout3
+libsigc++-2.0-0v5
+libsixel1
+libslang2
+libsm6
+libsmartcols1
+libsmbclient
+libsnapd-glib1
+libsnappy1v5
+libsndfile1
+libsndio7.0
+libsodium23
+libsord-0-0
+libsoup-gnome2.4-1
+libsoup2.4-1
+libsoup2.4-common
+libsoxr0
+libspa-0.2-modules
+libspeex1
+libsphinxbase3
+libsqlite3-0
+libsratom-0-0
+libsrt1.4-gnutls
+libss2
+libssh-4
+libssh-gcrypt-4
+libssl3
+libstartup-notification0
+libstdc++6
+libstemmer0d
+libsuitesparseconfig5
+libswresample3
+libswscale5
+libsystemd0
+libtag1v5
+libtag1v5-vanilla
+libtalloc2
+libtasn1-6
+libtdb1
+libteamdctl0
+libtevent0
+libtext-iconv-perl
+libthai-data
+libthai0
+libtheora0
+libtiff5
+libtimedate-perl
+libtimezonemap-data
+libtimezonemap1
+libtinfo6
+libtirpc-common
+libtirpc3
+libtotem-plparser-common
+libtotem-plparser18
+libtwolame0
+libtypes-serialiser-perl
+libuchardet0
+libudev1
+libudfread0
+libudisks2-0
+libunistring2
+libuno-cppu3
+libuno-cppuhelpergcc3-3
+libuno-purpenvhelpergcc3-3
+libuno-sal3
+libuno-salhelpergcc3-3
+libunwind8
+libupower-glib3
+liburi-perl
+liburing2
+libusb-1.0-0
+libusbmuxd6
+libuuid1
+libuv1
+libv4l-0
+libv4lconvert0
+libva-drm2
+libva-wayland2
+libva-x11-2
+libva2
+libvdpau1
+libvidstab1.1
+libvisual-0.4-0
+libvorbis0a
+libvorbisenc2
+libvorbisfile3
+libvpx7
+libvte-2.91-0
+libvte-2.91-common
+libvulkan1
+libwacom-common
+libwacom9
+libwavpack1
+libwayland-client0
+libwayland-cursor0
+libwayland-egl1
+libwayland-server0
+libwbclient0
+libwebkit2gtk-4.0-37
+libwebp7
+libwebpdemux2
+libwebpmux3
+libwebrtc-audio-processing1
+libwoff1
+libwpd-0.10-10
+libwpg-0.3-3
+libwps-0.4-4
+libwrap0
+libx11-6
+libx11-data
+libx11-xcb1
+libx264-163
+libx265-199
+libxapian30
+libxapp1
+libxau6
+libxaw7
+libxcb-dri2-0
+libxcb-dri3-0
+libxcb-glx0
+libxcb-present0
+libxcb-randr0
+libxcb-render0
+libxcb-res0
+libxcb-shape0
+libxcb-shm0
+libxcb-sync1
+libxcb-util1
+libxcb-xfixes0
+libxcb-xkb1
+libxcb1
+libxcomposite1
+libxcursor1
+libxcvt0
+libxdamage1
+libxdmcp6
+libxext6
+libxfixes3
+libxfont2
+libxft2
+libxi6
+libxinerama1
+libxkbcommon-x11-0
+libxkbcommon0
+libxkbfile1
+libxkbregistry0
+libxklavier16
+libxml2
+libxmlb2
+libxmlsec1
+libxmlsec1-nss
+libxmu6
+libxmuu1
+libxpm4
+libxrandr2
+libxrender1
+libxshmfence1
+libxslt1.1
+libxss1
+libxt6
+libxtables12
+libxtst6
+libxv1
+libxvidcore4
+libxxf86vm1
+libxxhash0
+libyajl2
+libyaml-0-2
+libzimg2
+libzmq5
+libzstd1
+libzvbi-common
+libzvbi0
+lightdm
+lightdm-settings
+locales
+login
+logrotate
+logsave
+lp-solve
+lsb-base
+lsb-release
+lsof
+mailcap
+man-db
+manpages
+mawk
+mecab-ipadic
+mecab-ipadic-utf8
+mecab-utils
+media-player-info
+media-types
+mesa-utils
+mesa-utils-bin
+mime-support
+mint-common
+mint-info
+mint-meta-cinnamon
+mint-meta-core
+mint-mirrors
+mint-translations
+mint-upgrade-info
+mintsources
+mintsystem
+mintupdate
+mount
+muffin
+muffin-common
+mutter-common
+mysql-client-8.0
+mysql-client-core-8.0
+mysql-common
+mysql-server
+mysql-server-8.0
+mysql-server-core-8.0
+nano
+ncurses-base
+ncurses-bin
+ncurses-term
+nemo
+nemo-data
+net-tools
+netbase
+network-manager
+network-manager-gnome
+networkd-dispatcher
+nginx
+nginx-common
+nginx-core
+ocl-icd-libopencl1
+openssh-client
+openssh-server
+openssh-sftp-server
+openssl
+openvpn
+os-prober
+p11-kit
+p11-kit-modules
+packagekit
+parted
+passwd
+patch
+pci.ids
+pciutils
+perl
+perl-base
+perl-modules-5.34
+php
+php-common
+php-fpm
+php-mysql
+php8.1
+php8.1-cli
+php8.1-common
+php8.1-fpm
+php8.1-mysql
+php8.1-opcache
+php8.1-readline
+pinentry-curses
+pinentry-gnome3
+pipewire
+pipewire-bin
+pkexec
+plymouth
+policykit-1
+policykit-1-gnome
+polkitd
+poppler-data
+poppler-utils
+postfix
+postgresql
+postgresql-14
+postgresql-client-14
+postgresql-client-common
+postgresql-common
+procps
+psmisc
+python-apt-common
+python-tinycss2-common
+python3
+python3-apparmor
+python3-apport
+python3-apt
+python3-aptdaemon
+python3-aptdaemon.gtk3widgets
+python3-blinker
+python3-cairo
+python3-certifi
+python3-cffi-backend
+python3-chardet
+python3-click
+python3-colorama
+python3-commandnotfound
+python3-cryptography
+python3-dateutil
+python3-dbus
+python3-debconf
+python3-debian
+python3-defer
+python3-distro
+python3-distro-info
+python3-distupgrade
+python3-dnspython
+python3-gdbm
+python3-gi
+python3-gi-cairo
+python3-gpg
+python3-httplib2
+python3-idna
+python3-importlib-metadata
+python3-jeepney
+python3-jwt
+python3-keyring
+python3-launchpadlib
+python3-lazr.restfulclient
+python3-lazr.uri
+python3-ldb
+python3-libapparmor
+python3-markdown
+python3-minimal
+python3-more-itertools
+python3-oauthlib
+python3-pampy
+python3-pexpect
+python3-pil
+python3-pkg-resources
+python3-problem-report
+python3-psutil
+python3-ptyprocess
+python3-pycurl
+python3-pygments
+python3-pyinotify
+python3-pyparsing
+python3-requests
+python3-requests-toolbelt
+python3-samba
+python3-secretstorage
+python3-setproctitle
+python3-six
+python3-software-properties
+python3-systemd
+python3-talloc
+python3-tdb
+python3-tinycss
+python3-tinycss2
+python3-tz
+python3-update-manager
+python3-urllib3
+python3-wadllib
+python3-webencodings
+python3-xapp
+python3-xkit
+python3-xlib
+python3-yaml
+python3-zipp
+python3.10
+python3.10-minimal
+readline-common
+rhythmbox
+rhythmbox-data
+rsync
+rsyslog
+samba
+samba-common
+samba-common-bin
+samba-dsdb-modules
+samba-libs
+samba-vfs-modules
+sed
+sensible-utils
+session-migration
+shared-mime-info
+slick-greeter
+smbclient
+software-properties-common
+software-properties-gtk
+sound-theme-freedesktop
+squid
+squid-common
+squid-langpack
+ssh-import-id
+ssl-cert
+sudo
+synaptic
+sysstat
+systemd
+systemd-sysv
+systemd-timesyncd
+sysvinit-utils
+tar
+tcpdump
+tdb-tools
+tnftp
+tzdata
+ubuntu-advantage-desktop-daemon
+ubuntu-advantage-tools
+ubuntu-drivers-common
+ubuntu-keyring
+ubuntu-mono
+ubuntu-pro-client
+ubuntu-release-upgrader-core
+ubuntu-wallpapers
+ubuntu-wallpapers-jammy
+ucf
+udev
+udisks2
+ufw
+unattended-upgrades
+uno-libs-private
+update-manager-core
+update-notifier-common
+upower
+ure
+usbutils
+usrmerge
+util-linux
+vim-common
+vim-tiny
+vsftpd
+wget
+whois
+x11-common
+x11-xkb-utils
+xapp
+xapps-common
+xauth
+xdg-dbus-proxy
+xdg-user-dirs
+xdg-utils
+xinit
+xkb-data
+xserver-common
+xserver-xorg
+xserver-xorg-core
+xserver-xorg-input-all
+xserver-xorg-input-libinput
+xxd
+xz-utils
+zenity
+zenity-common
+zlib1g
+zstd
+
+## services-running
+NetworkManager.service
+accounts-daemon.service
+anacron.service
+apache2.service
+atd.service
+cron.service
+dbus.service
+dovecot.service
+fail2ban.service
+mysql.service
+named.service
+networkd-dispatcher.service
+nmbd.service
+packagekit.service
+php8.1-fpm.service
+polkit.service
+postfix@-.service
+postgresql@14-main.service
+rsyslog.service
+smbd.service
+squid.service
+ssh.service
+systemd-journald.service
+systemd-logind.service
+systemd-resolved.service
+systemd-udevd.service
+udisks2.service
+unattended-upgrades.service
+vsftpd.service
+
+## services-enabled
+NetworkManager-dispatcher.service
+NetworkManager-wait-online.service
+NetworkManager.service
+accounts-daemon.service
+anacron.service
+apache2.service
+apparmor.service
+atd.service
+auditd.service
+console-setup.service
+cron.service
+dmesg.service
+dovecot.service
+e2scrub_reap.service
+fail2ban.service
+grub-common.service
+grub-initrd-fallback.service
+keyboard-setup.service
+mintsystem.service
+mysql.service
+named.service
+networkd-dispatcher.service
+nmbd.service
+openvpn.service
+php8.1-fpm.service
+postfix.service
+postgresql.service
+rsyslog.service
+setvtrgb.service
+smbd.service
+squid.service
+ssh.service
+systemd-pstore.service
+systemd-resolved.service
+systemd-timesyncd.service
+ua-reboot-cmds.service
+ubuntu-advantage.service
+udisks2.service
+ufw.service
+unattended-upgrades.service
+vsftpd.service
+
+## listening
+tcp *:3128
+tcp 0.0.0.0:139
+tcp 0.0.0.0:143
+tcp 0.0.0.0:21
+tcp 0.0.0.0:22
+tcp 0.0.0.0:25
+tcp 0.0.0.0:443
+tcp 0.0.0.0:445
+tcp 0.0.0.0:80
+tcp 0.0.0.0:993
+tcp 127.0.0.1:3306
+tcp 127.0.0.1:33060
+tcp 127.0.0.1:53
+tcp 127.0.0.1:5432
+tcp 127.0.0.1:953
+tcp 127.0.0.53%lo:53
+tcp 172.17.0.3:53
+tcp [::1]:953
+tcp [::]:139
+tcp [::]:22
+tcp [::]:25
+tcp [::]:445
+udp *:43194
+udp 0.0.0.0:137
+udp 0.0.0.0:138
+udp 0.0.0.0:30458
+udp 127.0.0.1:53
+udp 127.0.0.53%lo:53
+udp 172.17.0.3:137
+udp 172.17.0.3:138
+udp 172.17.0.3:53
+udp 172.17.255.255:137
+udp 172.17.255.255:138
+
+## perms
+644 root:root /etc/passwd
+640 root:shadow /etc/shadow
+644 root:root /etc/group
+640 root:shadow /etc/gshadow
+440 root:root /etc/sudoers
+600 root:root /etc/ssh/sshd_config
+644 root:root /etc/crontab
+755 root:root /home
+700 root:root /root
+750 cpuser:cpuser /home/cpuser
+750 ftpuser:ftpuser /home/ftpuser
+600 root:root /swapfile
+644 root:root /etc/hosts.allow
+644 root:root /etc/hosts.deny
+775 root:syslog /var/log
+
+## suid
+/usr/bin/at
+/usr/bin/chage
+/usr/bin/chfn
+/usr/bin/chsh
+/usr/bin/crontab
+/usr/bin/expiry
+/usr/bin/gpasswd
+/usr/bin/mount
+/usr/bin/newgrp
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/ssh-agent
+/usr/bin/su
+/usr/bin/sudo
+/usr/bin/umount
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/openssh/ssh-keysign
+/usr/libexec/camel-lock-helper-1.2
+/usr/libexec/polkit-agent-helper-1
+/usr/sbin/mount.cifs
+/usr/sbin/pam_extrausers_chkpwd
+/usr/sbin/postdrop
+/usr/sbin/postqueue
+/usr/sbin/unix_chkpwd
+
+## acl
+
+## world-writable
+
+## cron
+/etc/cron.d: /etc/cron.d:
+total 32
+drwxr-xr-x .
+drwxr-xr-x ..
+-rw-r--r-- .placeholder
+-rw-r--r-- anacron
+-rw-r--r-- e2scrub_all
+-rw-r--r-- php
+-rw-r--r-- sysstat
+ 
+/etc/cron.daily: /etc/cron.daily:
+total 52
+drwxr-xr-x .
+drwxr-xr-x ..
+-rw-r--r-- .placeholder
+-rwxr-xr-x 0anacron
+-rwxr-xr-x apache2
+-rwxr-xr-x apt-compat
+-rwxr-xr-x aptitude
+-rwxr-xr-x dpkg
+-rwxr-xr-x logrotate
+-rwxr-xr-x man-db
+-rwxr-xr-x samba
+-rwxr-xr-x sysstat
+ 
+/etc/cron.hourly: /etc/cron.hourly:
+total 16
+drwxr-xr-x .
+drwxr-xr-x ..
+-rw-r--r-- .placeholder
+
+## preload
+
+## bashrc-aliases
+
+## umask
+umask 027
+
+## media
+/usr/share/cinnamon/sounds/bell.ogg
+/usr/share/cinnamon/sounds/togglekeys-sound-off.ogg
+/usr/share/cinnamon/sounds/togglekeys-sound-on.ogg

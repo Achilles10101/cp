@@ -1,0 +1,2 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+baseline	3.0	2.9	2.5	1	0	1	0	0	7	3.71	3.50	fix=5 review=2 info=1 bang=7

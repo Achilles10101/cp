@@ -1,0 +1,15 @@
+2 apache2
+0 bind9
+2 dovecot
+0 mysql
+1 nginx
+0 openvpn
+1 php
+1 postfix
+3 postgresql
+1 samba
+1 squid
+2 ssh
+9 system
+4 vsftpd
+HEADER BASELINE FINDINGS   FIX NOW: 4   REVIEW: 18   info: 4      (2026-11-12 06:15, linuxmint-21.3, pack: linuxmint-21.3)

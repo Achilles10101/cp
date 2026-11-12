@@ -1,0 +1,35 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'squid' exists (/root/baseline/squid)
+
+----- Baseline findings for squid (full report: /root/baseline/squid/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 conffile modified since install: /etc/squid/squid.conf (squid)
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B9 snapshot of live state saved to /root/baseline/squid/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+  [*] Backup: /root/cp-backups/20261110_235419/etc/squid
+=========================================
+Squid Security Hardening
+=========================================
+  [+] Removed 'http_access allow all'
+  [+] Version string suppressed, Via/X-Forwarded-For removed
+
+http_access rules now (order matters - compare with the README):
+      1529:http_access deny !Safe_ports
+      1532:http_access deny CONNECT !SSL_ports
+      1535:http_access allow localhost manager
+      1536:http_access deny manager
+      1541:http_access allow localhost
+      1565:http_access deny all
+  http_port: 3128 (README may require a specific port)
+  [+] squid -k parse passed
+  [+] squid restarted and active
+  [+] UFW: allowed application profile 'Squid'
+Squid hardening complete.
+
+[drive2] EXIT 0

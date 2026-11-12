@@ -1,0 +1,4 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.4s] '? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip:' -> '' (rule)
+STATS prompts=2 rule=2 default=0 stall=0 wait=5.0s elapsed=5.5s
+EXIT 0

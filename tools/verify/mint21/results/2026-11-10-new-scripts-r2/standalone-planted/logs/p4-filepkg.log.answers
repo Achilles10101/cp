@@ -1,0 +1,10 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    6.7s] '? Remove all of these (e = choose per family)? [Y/n/e]:' -> 'y' (rule)
+[    9.4s] '? Remove these too? [y/N/e]:' -> 'n' (rule)
+[   11.9s] '? Other packages to remove (names/globs, ?word = search), Enter = none:' -> '' (rule)
+[   15.9s] '? Purge these 29 package(s) (no desktop/critical package among them)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   29.9s] '? Run autoremove (73 unused dependencies, no desktop/critical package)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   37.2s] '? Stop + disable these 3 service(s)? [Y/n/e]:' -> '' (DEFAULT(Enter))
+[   42.2s] '? Delete these 4 media file(s) (moved to /root/cp-quarantine, restorable)? [Y/n/e]:' -> 'y' (rule)
+STATS prompts=8 rule=5 default=3 stall=0 wait=20.0s elapsed=42.3s
+EXIT 0

@@ -1,0 +1,31 @@
+
+[1;36m=== Critical services ===[0m
+  Detected services below are suggestions only - the README decides which ones are critical.
+  ssh: openssh-server installed, active, listening on :22
+  ? Run ssh.sh (the README must list it as critical)? [y/N]: y
+  Plan: ssh
+
+[1;36m################ ssh ################[0m
+
+[1;36m=== SSH hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  [1;32m[+][0m Baseline 'ssh': no open findings
+  [*] Backup: /root/cp-backups/20261112_061847/etc/ssh/sshd_config
+  [*] Backup: /root/cp-backups/20261112_061847/etc/ssh/sshd_config.d
+  [*] Backup: /root/cp-backups/20261112_061847/etc/issue.net
+  [*] README answers (stored; --reask to change): Port 22, PasswordAuthentication yes, AllowUsers -, DenyUsers -, DenyGroups -, SFTP-only no
+  [1;32m[+][0m Perms: sshd_config + drop-ins 600 root, host keys 600/644, ~/.ssh 700 + keys 600 for 7 accounts
+  [1;32m[+][0m sshd -t: config valid
+  [1;32m[+][0m UFW: allowed application profile 'OpenSSH'
+  [1;32m[+][0m fail2ban installed and active
+  [1;32m[+][0m sshd config unchanged - no restart needed
+  [1;32m[+][0m Effective sshd settings (sshd -T) match
+  [1;32m[+][0m SSH answers on localhost:22
+  Changed (effective): nothing
+      (no config file changed - already hardened)
+  [1;32m[+][0m SSH hardening complete (3s)
+
+[1;36m=== Critical services summary (3s) ===[0m
+  ssh        active hardened ok                                       3s
+
+[drive2] EXIT 0

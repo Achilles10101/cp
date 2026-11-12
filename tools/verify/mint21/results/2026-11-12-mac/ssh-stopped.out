@@ -1,0 +1,31 @@
+[22:20:27] container T-ssh-stop from cp-mint-svcplanted: systemd degraded
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:20:27] step pre-stop: bash -c systemctl stop ssh ssh.socket 2>/dev/null; rm -rf /run/sshd; systemctl is-active ssh; ls -d /run/sshd 2>&1
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:20:27]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=2  findings=- (-)
+[22:20:27] step ssh-stopped: bash services/ssh.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:20:43]   done in 15s  STATS prompts=4 rule=2 default=2 stall=0 wait=10.1s elapsed=15.7s  exit=0  findings=- (-)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+image cp-mint-svcplanted
+competition /Users/max/Documents/cp stuff/competition
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-ssh-stopped.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+pre-stop             0.1       0.0     0.0     0.0        0     0     0     0     2        -   1.22>1.22
+ssh-stopped         15.7      15.7    10.1     5.6        4     2     2     0     0        -   1.22>1.44
+TOTAL               16.2              10.1     6.1        4
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 53/145 PASS   planted: 37/45 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx
+

@@ -1,0 +1,5 @@
+# 2026-11-12: ssh.sh when ssh.service is STOPPED (no /run/sshd): must still harden and bring SSH up
+set HARD=600
+rule Does the README change any of these => n
+step pre-stop bash -c "systemctl stop ssh ssh.socket 2>/dev/null; rm -rf /run/sshd; systemctl is-active ssh; ls -d /run/sshd 2>&1"
+step ssh-stopped bash services/ssh.sh

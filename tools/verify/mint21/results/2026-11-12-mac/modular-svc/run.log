@@ -1,0 +1,17 @@
+[21:55:40] container T-new-svc from cp-mint-svcplanted: systemd degraded
+[21:55:41] step wait65: sleep 65
+[21:56:46]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[21:56:46] step p1-baseline: bash services/baseline.sh
+[21:57:30]   done in 43s  STATS prompts=15 rule=3 default=12 stall=0 wait=37.7s elapsed=43.1s  exit=0  findings=22 (fix=4 review=18 info=4 bang=32)
+[21:57:30] step p2-users: bash usersandsudo.sh
+[21:57:45]   done in 15s  STATS prompts=6 rule=6 default=0 stall=0 wait=15.1s elapsed=15.2s  exit=0  findings=- (-)
+[21:57:45] step p3-sysconfig: bash systemconfig.sh
+[21:58:29]   done in 43s  STATS prompts=14 rule=3 default=11 stall=0 wait=35.6s elapsed=43.4s  exit=0  findings=- (-)
+[21:58:29] step p4-filepkg: bash fileandpackage.sh
+[21:59:02]   done in 32s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.1s elapsed=32.3s  exit=0  findings=- (-)
+[21:59:02] step p5-portmisc: bash portandmisc.sh
+[21:59:13]   done in 10s  STATS prompts=4 rule=4 default=0 stall=0 wait=10.1s elapsed=10.6s  exit=0  findings=- (-)
+[21:59:13] step p6-critical: bash services/critical.sh
+[22:01:48]   done in 154s  STATS prompts=46 rule=35 default=11 stall=0 wait=115.6s elapsed=154.7s  exit=1  findings=- (-)
+[22:01:48] step p7-upgrades: bash upgrades.sh
+[22:01:56]   done in 8s  STATS prompts=1 rule=1 default=0 stall=0 wait=2.5s elapsed=8.6s  exit=0  findings=- (-)

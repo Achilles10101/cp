@@ -1,0 +1,48 @@
+[22:01:05] container T-old-pl2 from cp-mint-planted: systemd running
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:01:05] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:01:05] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:01:32]   done in 27s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=27.1s  exit=0  findings=30 (bang=30)
+[22:01:32] step p2-users: bash usersandsudo.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:01:59]   done in 25s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.5s elapsed=25.8s  exit=0  findings=- (-)
+[22:01:59] step p3-sysconfig: bash systemconfig.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:02:58]   done in 59s  STATS prompts=16 rule=6 default=10 stall=0 wait=40.3s elapsed=59.5s  exit=0  findings=- (-)
+[22:02:58] step p4-filepkg: bash fileandpackage.sh
+[22:04:01]   done in 62s  STATS prompts=20 rule=19 default=1 stall=0 wait=50.4s elapsed=62.4s  exit=0  findings=- (-)
+[22:04:01] step p5-portmisc: bash portandmisc.sh
+[22:04:55]   done in 53s  STATS prompts=7 rule=5 default=2 stall=0 wait=17.6s elapsed=53.4s  exit=0  findings=- (-)
+[22:04:55] step p6-ssh: bash services/ssh.sh
+[22:05:23]   done in 28s  STATS prompts=8 rule=1 default=7 stall=0 wait=20.5s elapsed=27.9s  exit=0  findings=- (-)
+image cp-mint-planted
+competition /Users/max/Documents/cp stuff/old/2026-11-10
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-10-21.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+p1-baseline         27.2      27.1     0.0    27.1        0     0     0     0     0       30   8.97>6.34
+p2-users            25.9      25.8    25.5     0.3       10     9     1     0     0        -   6.34>3.98
+p3-sysconfig        59.6      59.5    40.3    19.2       16     6    10     0     0        -   3.98>1.89
+p4-filepkg          62.5      62.4    50.4    12.0       20    19     1     0     0        -   1.89>1.10
+p5-portmisc         53.4      53.4    17.6    35.8        7     5     2     0     0        -   1.10>0.87
+p6-ssh              28.0      27.9    20.5     7.4        8     1     7     0     0        -   0.87>0.79
+TOTAL              257.8             154.3   103.5       61
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 105/145 PASS   planted: 38/45 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 30  (bang=30; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+

@@ -1,0 +1,79 @@
+== desktop packages
+  cinnamon               install ok installed
+  cinnamon-core          install ok installed
+  lightdm                install ok installed
+  network-manager        install ok installed
+  mint-meta-cinnamon     install ok installed
+  mint-meta-core         install ok installed
+  slick-greeter          install ok installed
+  lightdm-settings       install ok installed
+  xorg                   not-known
+  default target: graphical.target  lightdm enabled: indirect  NetworkManager: active/enabled
+== sudo
+-rwsr-xr-x 1 root root 232416 Oct  6 14:05 /usr/bin/sudo
+user::rwx group::r-x other::r-x  
+  visudo -c OK
+  cpuser  id: uid=1000(cpuser) gid=1000(cpuser) groups=1000(cpuser),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),115(lpadmin)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  alice   id: uid=1001(alice) gid=1001(alice) groups=1001(alice),27(sudo),115(lpadmin)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  bob     id: uid=1002(bob) gid=1002(bob) groups=1002(bob)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  carol   id: uid=1003(carol) gid=1003(carol) groups=1003(carol)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  dave    id: uid=1004(dave) gid=1004(dave) groups=1004(dave)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  frank   id: uid=1005(frank) gid=1005(frank) groups=1005(frank)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  root passwd status: L  cpuser: P 11/10/2026 0 99999 7 -1
+  cpuser sudo -n -l rc=0 (1 = needs password = OK, sudo works)
+  sudo binary runs as cpuser
+== homes
+  /home/cpuser drwxr-x--- cpuser:cpuser files=7
+  /home/alice  drwxr-x--- alice:alice files=3
+  /home/bob    drwxr-x--- bob:bob files=4
+  /home/carol  drwxr-x--- carol:carol files=3
+  /home/dave   drwxr-x--- dave:dave files=3
+  /home/frank  drwxr-x--- frank:frank files=3
+== human accounts (uid>=1000 or with /home)
+  cpuser 1000 /home/cpuser /bin/bash
+  alice 1001 /home/alice /bin/bash
+  bob 1002 /home/bob /bin/bash
+  carol 1003 /home/carol /bin/bash
+  dave 1004 /home/dave /bin/bash
+  frank 1005 /home/frank /bin/bash
+== quarantine
+  2026-11-11 01:43:53  /etc/ssh/sshd_config.d/60-evil.conf -> /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf   undo: mv /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf /etc/ssh/sshd_config.d/60-evil.conf
+  2026-11-11 01:43:59  /etc/sysctl.d/99-zz-net.conf -> /root/cp-quarantine/etc/sysctl.d/99-zz-net.conf   undo: mv /root/cp-quarantine/etc/sysctl.d/99-zz-net.conf /etc/sysctl.d/99-zz-net.conf
+  2026-11-11 01:44:01  /etc/sudoers.d/90-cloud-init-users -> /root/cp-quarantine/etc/sudoers.d/90-cloud-init-users   undo: mv /root/cp-quarantine/etc/sudoers.d/90-cloud-init-users /etc/sudoers.d/90-cloud-init-users
+  2026-11-11 01:44:04  /etc/lightdm/lightdm.conf.d/80-autologin.conf -> /root/cp-quarantine/etc/lightdm/lightdm.conf.d/80-autologin.conf   undo: mv /root/cp-quarantine/etc/lightdm/lightdm.conf.d/80-autologin.conf /etc/lightdm/lightdm.conf.d/80-autologin.conf
+  2026-11-11 01:44:09  /etc/ld.so.preload -> /root/cp-quarantine/etc/ld.so.preload   undo: mv /root/cp-quarantine/etc/ld.so.preload /etc/ld.so.preload
+  2026-11-11 01:44:09  /usr/src/evil_rabbit.so -> /root/cp-quarantine/usr/src/evil_rabbit.so  (listed in /etc/ld.so.preload)   undo: mv /root/cp-quarantine/usr/src/evil_rabbit.so /usr/src/evil_rabbit.so
+  2026-11-11 01:44:11  /etc/cron.d/0hourly-sync -> /root/cp-quarantine/etc/cron.d/0hourly-sync   undo: mv /root/cp-quarantine/etc/cron.d/0hourly-sync /etc/cron.d/0hourly-sync
+  2026-11-11 01:44:14  /etc/systemd/system/system-sync.service -> /root/cp-quarantine/etc/systemd/system/system-sync.service  (unit was enabled)   undo: mv /root/cp-quarantine/etc/systemd/system/system-sync.service /etc/systemd/system/system-sync.service
+== services active
+ssh=active vsftpd=inactive apache2=inactive nginx=inactive php8.1-fpm=inactive mysql=inactive postgresql=inactive smbd=inactive named=inactive postfix=inactive dovecot=inactive openvpn=inactive squid=inactive cups=inactive avahi-daemon=inactive ufw=active 
+== ufw
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+
+== sysctl ipv6 disable: 
+== TODO count: 5
+== /opt

@@ -1,0 +1,27 @@
+  [+] Background: apt: apt-get update running 1s | baseline scan: running 1s
+
+=== Step: README intake  (readme.sh --if-missing)   (not logged: the README paste contains passwords) ===
+  [x] No README text on stdin and no CP_ADMINS - nothing saved
+
+  [!] README answers were not saved (exit 1) - not ticked; Enter runs the README intake again.
+
+======== CP19 start.sh ========  1s since start | auto mode ON
+  README: not entered yet (step 1)
+  Background: apt: apt-get update running 1s | baseline scan: running 1s
+   1 [ ] README intake                   
+   2 [ ] Forensics + EARLY MANUAL list   
+   3 [ ] Baseline review                 (waits for the scan)
+   4 [ ] Users + sudo                    
+   5 [ ] System config                   
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+   8 [ ] Critical services               
+   9 [ ] Upgrades (install downloaded)   
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (0 open)
+  Enter = 1 README intake | 1-11 = that step | t = TODO (0) | a = auto on/off | q = quit
+
+
+  [*] Quit. Background: apt: apt-get update running 1s | baseline scan: running 1s
+  [*] Background jobs keep running. Run 'sudo bash start.sh' again to continue where you left off.
+[exit 0]

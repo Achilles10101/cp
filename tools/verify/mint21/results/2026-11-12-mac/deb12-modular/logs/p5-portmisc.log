@@ -1,0 +1,30 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Listening ports (process, package, unit) ===[0m
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:22             sshd (10495)                 openssh-server         ssh.service  -> service
+  tcp   127.0.0.1:25           exim4 (539)                  exim4-daemon-light     exim4.service  -> backdoor
+          cmd: /usr/sbin/exim4 -bd -q30m    unit file: /run/systemd/generator.late/exim4.service (no package)
+  tcp   0.0.0.0:4444           nc.traditional (7584)        (no package)           cron.service  -> backdoor
+          cmd: /bin/nc.traditional -l -p 4444 -e /bin/bash    unit file: /lib/systemd/system/cron.service
+
+  [*] 0 listener(s) are stock system daemons or the scoring engine
+  ? Stop + disable these backdoor-looking listeners: tcp/25(exim4.service) tcp/4444(cron.service) ? [Y/n/e]: y
+  [1;32m[+][0m exim4.service stopped and disabled (tcp/25)
+  [1;33m[act][0m Delete unit file /run/systemd/generator.late/exim4.service (no package installed it; runs: /usr/sbin/exim4 -bd -q30m ) and what it starts, then: systemctl daemon-reload
+  [1;32m[+][0m killed pid 7584 (tcp/4444: /bin/nc.traditional -l -p 4444 -e /bin/bash )
+  [1;33m[act][0m Find what started '/bin/nc.traditional -l -p 4444 -e /bin/bash ' (tcp/4444, was in cron.service) - cron job, rc.local, user crontab, profile? - and remove it
+  ? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]: n
+  [1;31m[x][0m tcp/25 is still listening
+  [1;33m[act][0m tcp/25 still listening after stop - check: ss -tulpn | grep ':25 '
+  [1;32m[+][0m tcp/4444 closed
+  ? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip: 
+
+  [1;32m[+][0m portandmisc done in 11s. Listener table: /root/cp-state/listeners.tsv
+
+[1;33m=== portandmisc.sh finished - listed for you (3): ===[0m
+   1. Delete unit file /run/systemd/generator.late/exim4.service (no package installed it; runs: /usr/sbin/exim4 -bd -q30m ) and what it starts, then: systemctl daemon-reload
+   2. Find what started '/bin/nc.traditional -l -p 4444 -e /bin/bash ' (tcp/4444, was in cron.service) - cron job, rc.local, user crontab, profile? - and remove it
+   3. tcp/25 still listening after stop - check: ss -tulpn | grep ':25 '
+
+[drive2] EXIT 0

@@ -1,0 +1,48 @@
+{
+ "image": "cp-mint-planted",
+ "competition": "/Users/max/Documents/cp stuff/competition",
+ "rules": "/Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-speedrun-planted.txt",
+ "steps": [
+  {
+   "step": "wait65",
+   "wall_s": "65.1",
+   "script_elapsed_s": "65.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "1.13",
+   "load_end": "8.65",
+   "findings_detail": "-"
+  },
+  {
+   "step": "speedrun",
+   "wall_s": "223.1",
+   "script_elapsed_s": "223.0",
+   "harness_wait_s": "191.8",
+   "prompts": "76",
+   "rule": "53",
+   "default": "23",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "8.65",
+   "load_end": "0.95",
+   "findings_detail": "-"
+  }
+ ],
+ "total_wall_s": 288.6,
+ "total_prompts": 76,
+ "total_harness_wait_s": 191.8,
+ "checks_pass": 111,
+ "checks_total": 145,
+ "planted_pass": 44,
+ "planted_total": 45,
+ "services_ok": [
+  "ssh"
+ ],
+ "services_fail": []
+}

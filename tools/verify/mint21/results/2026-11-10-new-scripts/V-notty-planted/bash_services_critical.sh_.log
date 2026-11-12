@@ -1,0 +1,8 @@
+
+=== Critical services ===
+  [x] No README text on stdin and no CP_ADMINS - nothing saved
+  [!] readme.sh did not finish
+  Names: ssh vsftpd mysql postgresql apache2 nginx php wordpress samba bind9 mail openvpn squid (or none)
+  [+] README lists no critical services - nothing to harden here.
+  (Unneeded services are removed by fileandpackage.sh. Wrong? sudo bash services/critical.sh ssh ...)
+[exit 0]

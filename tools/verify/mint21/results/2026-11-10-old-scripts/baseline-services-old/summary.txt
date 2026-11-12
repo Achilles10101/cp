@@ -1,0 +1,12 @@
+image cp-mint-services
+competition /home/claude/orig/competition
+rules /home/claude/work/tools/verify/mint21/rules-baseline-only.txt
+
+step              wall s  script s  wait s  prompts  rule  dflt stall  exit findings
+baseline            82.2      81.8     0.0        0     0     0     0     0        2
+TOTAL               82.5               0.0        0
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall) - a human's reading/typing time is extra, not included.
+
+baseline findings ('!!' lines): 2

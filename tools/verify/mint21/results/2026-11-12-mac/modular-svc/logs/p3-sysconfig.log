@@ -1,0 +1,116 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+Starting system hardening...
+
+[1;36m=== SYS10 /etc/ld.so.preload ===[0m
+  [*] baseline --review already quarantined ld.so.preload (/root/cp-quarantine/etc/ld.so.preload) - checking the libraries it listed
+
+[1;36m=== Firewall (UFW) ===[0m
+  Server daemons found (SSH first) - [Y] = listening now. Allow only what the README needs:
+    [Y] OpenSSH                (22/tcp)                 openssh-server installed, sshd listening on :22
+    [Y] Apache Full            (80/tcp 443/tcp)         apache2 installed, listening on :80
+    [N] Nginx Full             (80/tcp 443/tcp)         nginx installed
+    [Y] vsftpd                 (21/tcp)                 vsftpd installed, listening on :21
+    [Y] Samba                  (137,138/udp 139,445/tcp) samba installed, listening on :137 :138 :139 :445
+    [Y] Bind9                  (53)                     bind9 installed, named listening on :53 :953
+    [Y] Postfix                (25/tcp)                 postfix installed, listening on :25
+    [Y] Postfix Submission     (587/tcp)                postfix submission port
+    [Y] Dovecot IMAP           (143/tcp)                dovecot installed, listening on :110 :143 :993 :995
+    [Y] Dovecot Secure IMAP    (993/tcp)                IMAPS
+    [Y] Dovecot POP3           (110/tcp)                POP3 - only if the README needs POP3
+    [Y] Dovecot Secure POP3    (995/tcp)                POP3S - only if the README needs POP3
+    [N] OpenVPN                (1194/udp)               openvpn installed
+    [Y] Squid                  (3128/tcp)               squid installed, listening on :3128 :36484 :54324
+    [N] MySQL (remote)         (3306/tcp)               MySQL/MariaDB installed - only if the README needs REMOTE database access
+    [N] PostgreSQL (remote)    (5432/tcp)               PostgreSQL installed - only if the README needs REMOTE database access
+  ? Allow the 12 [Y] rule(s)? (y = all [Y], e = decide each - usually e: only what the README needs) [y/N/e]: 
+  ? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none: 
+  [1;32m[+][0m UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+  [*] firewall done (6s)
+
+[1;36m=== LightDM (guest / autologin) ===[0m
+  [*] /etc/lightdm/lightdm.conf not found - creating it
+  [1;32m[+][0m LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+[1;36m=== GDM (/etc/gdm3/custom.conf) ===[0m
+  [*] Removed 'AutomaticLogin' from /etc/gdm3/custom.conf
+  [*] Removed 'User' from /etc/gdm3/custom.conf
+  [*] Removed 'Group' from /etc/gdm3/custom.conf
+  [1;32m[+][0m GDM: no automatic login, no custom User/Group, DisallowTCP=true, AllowRoot=false
+
+[1;36m=== UMASK, login.defs ===[0m
+  [1;32m[+][0m login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [1;32m[+][0m /etc/profile: umask 027
+
+[1;36m=== Kernel parameters (sysctl) ===[0m
+  [1;32m[+][0m 44 parameters set in place in /etc/sysctl.conf
+  ? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]: 
+  [1;32m[+][0m IPv6 disabled
+  [1;32m[+][0m Applied (sysctl --system: same order as at boot)
+
+[1;36m=== SYS3 PAM backdoors ===[0m
+  [1;33m[!][0m common-auth has no 'auth requisite pam_deny.so' - failed passwords may be accepted:
+        auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+        auth	[success=1 default=ignore]	pam_unix.so nullok
+        auth	requisite			pam_permit.so
+        auth	required			pam_permit.so
+  ? Replace 'requisite pam_permit.so' with 'requisite pam_deny.so' (stock line)? [Y/n]: 
+  [1;32m[+][0m pam_deny restored
+        /etc/pam.d/common-auth:1:auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+  ? Remove these pam_exec lines (stock Ubuntu/Mint has none)? [Y/n]: 
+  [1;32m[+][0m Removed pam_exec from /etc/pam.d/common-auth
+
+[1;36m=== SYS4 sudo.conf / sudoers defaults ===[0m
+  [1;32m[+][0m sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [1;32m[+][0m Removed insecure Defaults (!env_reset / env_keep PATH) from /etc/sudoers
+  [1;32m[+][0m sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [1;32m[+][0m limits.conf: * hard core 0, * hard nproc 2500
+
+[1;36m=== SYS9 permissions, root, system accounts ===[0m
+  [1;32m[+][0m /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  ? Lock the root account (passwd -l root)? You keep using sudo [Y/n]: 
+  [1;32m[+][0m root locked
+  [1;32m[+][0m /home -> 755 root:root
+  [1;32m[+][0m /swapfile -> 600
+  [1;33m[!][0m Groups with a group password in /etc/gshadow: root 
+  ? Remove these group passwords? [Y/n]: 
+  [1;32m[+][0m Group passwords removed
+  [1;33m[!][0m System accounts with a login shell: syslog(/bin/bash) 
+  ? Set their shell to /usr/sbin/nologin (e = each; a README user with a low UID keeps it)? [Y/n/e]: 
+  [1;32m[+][0m syslog -> nologin
+  [1;33m[!][0m System accounts with a password hash: bin
+  ? Remove their passwords (set to '*'; e = each)? [Y/n/e]: 
+  [1;32m[+][0m bin password removed
+  [1;33m[!][0m SUID/SGID on: /usr/bin/cp(-rwsr-xr-x) /usr/bin/wget(-rwsr-xr-x) 
+  ? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]: 
+  [1;32m[+][0m Fixed /usr/bin/cp
+  [1;32m[+][0m Fixed /usr/bin/wget
+
+[1;36m=== SYS10 persistence spots ===[0m
+        /etc/bash.bashrc:72:alias GOODBYE='rm -rf ~'
+  ? Remove these system-wide aliases (stock files have none)? [Y/n]: 
+  [1;32m[+][0m Removed aliases from /etc/bash.bashrc
+  [1;33m[act][0m Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+[1;36m=== Packages + automatic updates ===[0m
+  ? Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? [Y/n]: 
+  [*] apt-get install libpam-pwquality auditd - waits for any background apt job (log: /root/cp-state/apt-systemconfig.log)
+  [1;32m[+][0m apt done (2s): libpam-pwquality auditd installed
+  [1;32m[+][0m Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  ? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]: 
+  [1;32m[+][0m Mint automatic updates enabled
+  [1;32m[+][0m Update Manager: refresh the list of updates automatically (for cpuser)
+  [1;32m[+][0m common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [1;32m[+][0m pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [1;33m[!][0m could not enable apparmor
+  [1;33m[!][0m could not enable auditd
+  [1;32m[+][0m ufw enabled and running
+  [1;32m[+][0m unattended-upgrades enabled and running
+
+  [1;32m[+][0m System hardening complete in 41s. Backups: /root/cp-backups/20261112_055746/
+
+[1;33m=== systemconfig.sh finished - listed for you (1): ===[0m
+   1. Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+
+[drive2] EXIT 0

@@ -1,0 +1,49 @@
+[21:54:28] container T-new-mod from cp-mint-planted: systemd running
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:54:28] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:54:28] step wait65: sleep 65
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:55:34]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[21:55:34] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:56:56]   done in 82s  STATS prompts=30 rule=14 default=16 stall=0 wait=75.2s elapsed=82.0s  exit=0  findings=5 (fix=2 review=3 info=3 bang=26)
+[21:56:56] step p2-users: bash usersandsudo.sh
+[21:57:27]   done in 31s  STATS prompts=12 rule=12 default=0 stall=0 wait=30.1s elapsed=31.1s  exit=0  findings=- (-)
+[21:57:27] step p3-sysconfig: bash systemconfig.sh
+[21:58:13]   done in 45s  STATS prompts=15 rule=7 default=8 stall=0 wait=37.6s elapsed=45.1s  exit=0  findings=- (-)
+[21:58:13] step p4-filepkg: bash fileandpackage.sh
+[21:59:00]   done in 47s  STATS prompts=13 rule=11 default=2 stall=0 wait=33.0s elapsed=47.4s  exit=0  findings=- (-)
+[21:59:00] step p5-portmisc: bash portandmisc.sh
+[21:59:13]   done in 12s  STATS prompts=4 rule=4 default=0 stall=0 wait=10.0s elapsed=12.4s  exit=0  findings=- (-)
+[21:59:13] step p6-critical: bash services/critical.sh
+[21:59:30]   done in 16s  STATS prompts=5 rule=3 default=2 stall=0 wait=12.6s elapsed=16.2s  exit=0  findings=- (-)
+[21:59:30] step p7-upgrades: bash upgrades.sh
+[21:59:38]   done in 8s  STATS prompts=1 rule=1 default=0 stall=0 wait=2.5s elapsed=8.4s  exit=0  findings=- (-)
+image cp-mint-planted
+competition /Users/max/Documents/cp stuff/competition
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-modular-planted.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   3.75>4.86
+p1-baseline         82.1      82.0    75.2     6.8       30    14    16     0     0        5   4.86>3.71
+p2-users            31.1      31.1    30.1     1.0       12    12     0     0     0        -   3.71>2.63
+p3-sysconfig        45.2      45.1    37.6     7.5       15     7     8     0     0        -   2.63>2.16
+p4-filepkg          47.5      47.4    33.0    14.4       13    11     2     0     0        -   2.16>2.21
+p5-portmisc         12.5      12.4    10.0     2.4        4     4     0     0     0        -   2.21>1.80
+p6-critical         16.3      16.2    12.6     3.6        5     3     2     0     0        -   1.80>1.48
+p7-upgrades          8.4       8.4     2.5     5.9        1     1     0     0     0        -   1.48>1.48
+TOTAL              310.0             201.0   109.0       80
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 111/145 PASS   planted: 44/45 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 5  (fix=2 review=3 info=3 bang=26; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+

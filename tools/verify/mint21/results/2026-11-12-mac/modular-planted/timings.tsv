@@ -1,0 +1,9 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+wait65	65.1	65.0	0.0	0	0	0	0	0	-	3.75	4.86	-
+p1-baseline	82.1	82.0	75.2	30	14	16	0	0	5	4.86	3.71	fix=2 review=3 info=3 bang=26
+p2-users	31.1	31.1	30.1	12	12	0	0	0	-	3.71	2.63	-
+p3-sysconfig	45.2	45.1	37.6	15	7	8	0	0	-	2.63	2.16	-
+p4-filepkg	47.5	47.4	33.0	13	11	2	0	0	-	2.16	2.21	-
+p5-portmisc	12.5	12.4	10.0	4	4	0	0	0	-	2.21	1.80	-
+p6-critical	16.3	16.2	12.6	5	3	2	0	0	-	1.80	1.48	-
+p7-upgrades	8.4	8.4	2.5	1	1	0	0	0	-	1.48	1.48	-

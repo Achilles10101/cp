@@ -1,0 +1,426 @@
+{
+ "steps": [
+  {
+   "name": "s1-baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": []
+  },
+  {
+   "name": "s3-sysconfig",
+   "cmd": [
+    "bash",
+    "systemconfig.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Proceed with operation",
+     "y"
+    ],
+    [
+     "Open or Close a port",
+     "n"
+    ],
+    [
+     "Enable IPv6",
+     "n"
+    ],
+    [
+     "install stable updates",
+     "yes"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Lock the root account",
+     "y"
+    ],
+    [
+     "Linux Mint: turn on Update Manager",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-ssh",
+   "cmd": [
+    "bash",
+    "services/ssh.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-vsftpd",
+   "cmd": [
+    "bash",
+    "services/vsftpd.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-apache2",
+   "cmd": [
+    "bash",
+    "services/apache2.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-php",
+   "cmd": [
+    "bash",
+    "services/php.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-mysql",
+   "cmd": [
+    "bash",
+    "services/mysql.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-postgresql",
+   "cmd": [
+    "bash",
+    "services/postgresql.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-samba",
+   "cmd": [
+    "bash",
+    "services/samba.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-bind9",
+   "cmd": [
+    "bash",
+    "services/bind9.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-mail",
+   "cmd": [
+    "bash",
+    "services/mail.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  },
+  {
+   "name": "s-squid",
+   "cmd": [
+    "bash",
+    "services/squid.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ],
+    [
+     "Do you want to continue",
+     "y"
+    ]
+   ]
+  }
+ ],
+ "global": {
+  "HARD": "900"
+ }
+}

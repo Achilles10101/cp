@@ -1,0 +1,41 @@
+
+[1;36m=== Critical services ===[0m
+  Detected services below are suggestions only - the README decides which ones are critical.
+  ssh: openssh-server installed, active, listening on :22
+  ? Run ssh.sh (the README must list it as critical)? [y/N]: y
+  Plan: ssh
+
+[1;36m################ ssh ################[0m
+
+[1;36m=== SSH hardening ===[0m
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+  [1;32m[+][0m Baseline 'ssh': no open findings
+  [*] Backup: /root/cp-backups/20261112_021444/etc/ssh/sshd_config
+  [*] Backup: /root/cp-backups/20261112_021444/etc/ssh/sshd_config.d
+  [*] Backup: /root/cp-backups/20261112_021444/etc/issue.net
+  README-dependent SSH settings (current values) - Enter keeps all of them:
+      Port 22 | password login allowed | AllowUsers none | DenyUsers none | DenyGroups none | SFTP-only no
+  ? Does the README change any of these (port, key-only login, allowed/denied users or groups, SFTP-only)? [y/N]: n
+  [1;32m[+][0m Perms: sshd_config + drop-ins 600 root, host keys 600/644, ~/.ssh 700 + keys 600 for 7 accounts
+  ? Remove /root/.ssh/authorized_keys (1 key(s): eve@kali )? root never needs SSH keys on a CP image (backed up) [Y/n]: 
+  [*] Backup: /root/cp-backups/20261112_021444/root/.ssh/authorized_keys
+  [1;32m[+][0m Removed /root/.ssh/authorized_keys
+  [1;32m[+][0m sshd -t: config valid
+  [1;32m[+][0m UFW: allowed application profile 'OpenSSH'
+  ? Install fail2ban (bans SSH brute force; installs in the background, needs network)? [Y/n]: 
+  [*] fail2ban is installing in the background (log: /root/cp-state/fail2ban-install.log)
+  [1;32m[+][0m SSH restarted and active
+  [1;32m[+][0m Effective sshd settings (sshd -T) match
+  [1;32m[+][0m SSH answers on localhost:22
+  Changed (effective): Banner:none->/etc/issue.net Compression:yes->no MaxAuthTries:6->3 
+      PermitRootLogin:without-password->no ClientAliveCountMax:3->2 X11Forwarding:yes->no 
+      AllowTcpForwarding:yes->no LoginGraceTime:120->30 MaxSessions:10->4 MaxStartups:10:30:100->10:30:60 
+      ClientAliveInterval:0->300 AllowAgentForwarding:yes->no LogLevel:info->verbose DisableForwarding:no->yes
+      (no config file changed - already hardened)
+  [1;32m[+][0m SSH hardening complete (11s)
+
+[1;36m=== Critical services summary (11s) ===[0m
+  ssh        active hardened ok                                      11s
+  Open TODOs (all scripts): 4  ->  cat /root/cp-state/TODO.txt
+
+[drive2] EXIT 0

@@ -1,0 +1,6 @@
+
+=== Users and sudo ===
+  [*] README answers are not saved yet -> readme.sh
+  [x] No README text on stdin and no CP_ADMINS - nothing saved
+  [x] readme.sh did not finish - nothing changed
+[exit 1]

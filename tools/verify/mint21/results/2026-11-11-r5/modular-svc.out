@@ -1,0 +1,53 @@
+[18:20:16] container V5-modular-svc from cp-mint-svcplanted: systemd degraded
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:20:17] step wait65: sleep 65
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:21:22]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[18:21:22] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:21:27]   done in 5s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=4.9s  exit=0  findings=23 (fix=8 review=15 info=3 bang=24)
+[18:21:27] step p1b-review: bash services/baseline.sh --review
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:21:52]   done in 24s  STATS prompts=9 rule=2 default=7 stall=0 wait=22.5s elapsed=24.1s  exit=0  findings=19 (fix=4 review=15 info=3 bang=24)
+[18:21:52] step p2-users: bash usersandsudo.sh
+[18:22:07]   done in 15s  STATS prompts=6 rule=6 default=0 stall=0 wait=15.0s elapsed=15.3s  exit=0  findings=- (-)
+[18:22:07] step p3-sysconfig: bash systemconfig.sh
+[18:22:55]   done in 47s  STATS prompts=14 rule=3 default=11 stall=0 wait=35.0s elapsed=47.9s  exit=0  findings=- (-)
+[18:22:55] step p4-filepkg: bash fileandpackage.sh
+[18:23:31]   done in 36s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.0s elapsed=35.9s  exit=0  findings=- (-)
+[18:23:31] step p5-portmisc: bash portandmisc.sh
+[18:23:43]   done in 11s  STATS prompts=4 rule=4 default=0 stall=0 wait=10.0s elapsed=11.3s  exit=0  findings=- (-)
+[18:23:43] step p6-critical: bash services/critical.sh
+[18:26:14]   done in 151s  STATS prompts=45 rule=35 default=10 stall=0 wait=112.7s elapsed=151.2s  exit=1  findings=- (-)
+[18:26:14] step p7-upgrades: bash upgrades.sh
+[18:26:45]   done in 30s  STATS prompts=2 rule=2 default=0 stall=0 wait=5.0s elapsed=30.7s  exit=0  findings=- (-)
+image cp-mint-svcplanted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-11-V5-modular-svc.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   0.59>0.20
+p1-baseline          5.0       4.9     0.0     4.9        0     0     0     0     0       23   0.20>0.50
+p1b-review          24.2      24.1    22.5     1.6        9     2     7     0     0       19   0.50>0.33
+p2-users            15.4      15.3    15.0     0.3        6     6     0     0     0        -   0.33>0.26
+p3-sysconfig        47.9      47.9    35.0    12.9       14     3    11     0     0        -   0.26>0.19
+p4-filepkg          36.0      35.9    25.0    10.9       10     9     1     0     0        -   0.19>0.36
+p5-portmisc         11.4      11.3    10.0     1.3        4     4     0     0     0        -   0.36>0.30
+p6-critical        151.3     151.2   112.7    38.5       45    35    10     0     1        -   0.30>0.24
+p7-upgrades         30.8      30.7     5.0    25.7        2     2     0     0     0        -   0.24>0.32
+TOTAL              388.5             225.2   163.3       90
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 132/144 PASS   planted: 40/44 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx
+baseline findings: 19  (fix=4 review=15 info=3 bang=24; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+
+[18:26:46] container kept: V5-modular-svc

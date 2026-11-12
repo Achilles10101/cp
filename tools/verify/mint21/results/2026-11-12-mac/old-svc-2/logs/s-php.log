@@ -1,0 +1,47 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'php' exists (/root/baseline/php)
+
+----- Baseline findings for php (full report: /root/baseline/php/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 differs from pristine default: /etc/php/8.1/apache2/php.ini
+!! B2 differs from clean-VM pack: /etc/php/8.1/apache2/php.ini
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B9 snapshot of live state saved to /root/baseline/php/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+=========================================
+PHP Security Hardening
+=========================================
+  /etc/php/8.1/apache2/php.ini
+  /etc/php/8.1/cli/php.ini
+  /etc/php/8.1/fpm/php.ini
+
+  ? Disable allow_url_fopen (remote file reads; most apps use curl instead)? [Y/n]: 
+  ? Disable dangerous functions (exec, system, shell_exec, passthru, proc_open, popen, pcntl_exec)? [Y/n]: 
+  ? Restrict PHP to /var/www and /tmp with open_basedir (can break apps that read elsewhere)? [y/N]: 
+  ? Does the README require FILE UPLOADS through the web app? [Y/n]: 
+  ? Is the site served over HTTPS (sets session.cookie_secure)? [y/N]: 
+Hardening /etc/php/8.1/apache2/php.ini
+  [*] Backup: /root/cp-backups/20261112_061653/etc/php/8.1/apache2/php.ini
+  [*] Backup: /root/cp-backups/20261112_061653/etc/php/8.1/apache2/conf.d
+Hardening /etc/php/8.1/cli/php.ini
+  [*] Backup: /root/cp-backups/20261112_061653/etc/php/8.1/cli/php.ini
+  [*] Backup: /root/cp-backups/20261112_061653/etc/php/8.1/cli/conf.d
+Hardening /etc/php/8.1/fpm/php.ini
+  [*] Backup: /root/cp-backups/20261112_061653/etc/php/8.1/fpm/php.ini
+  [*] Backup: /root/cp-backups/20261112_061653/etc/php/8.1/fpm/conf.d
+
+  [+] apache2 restarted and active
+  [+] php8.1-fpm restarted and active
+  [+] No X-Powered-By header
+
+PHP hardening complete. Effective values (apache2/fpm):
+  /etc/php/8.1/apache2/php.ini: expose_php=Off display_errors=Off allow_url_include=Off allow_url_fopen=Off
+  /etc/php/8.1/cli/php.ini: expose_php=Off display_errors=Off allow_url_include=Off allow_url_fopen=On
+  /etc/php/8.1/fpm/php.ini: expose_php=Off display_errors=Off allow_url_include=Off allow_url_fopen=Off
+
+[drive2] EXIT 0

@@ -1,0 +1,67 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Users and sudo ===[0m
+  [*] README users from the environment (test harness): admins: cpuser alice | users: bob carol dave frank | you: cpuser
+  [*] README: admins: cpuser alice | users: bob carol dave frank | you: cpuser
+
+[1;36m=== UID 0 accounts ===[0m
+  [1;33m[!][0m CRITICAL: toor has UID 0 (a second root account)
+  ? Delete account toor (recommended unless the README names it)? [Y/n]: y
+  [*] Backup: /root/cp-backups/20261112_043738/etc/passwd
+  [*] Backup: /root/cp-backups/20261112_043738/etc/shadow
+  [*] Backup: /root/cp-backups/20261112_043738/etc/group
+  [*] Backup: /root/cp-backups/20261112_043738/etc/gshadow
+  [1;32m[+][0m Deleted toor (backup: /root/cp-backups/20261112_043738)
+
+[1;36m=== Accounts not in the README ===[0m
+  [1;33m[!][0m Not in the README (3):
+        eve          UID 1006   
+        mallory      UID 1007   [in sudo] 
+        sysbackup    UID 998    hidden: system-range UID, home /home/sysbackup
+  ? Delete these 3 accounts (homes are backed up)? y = all, n = none, e = ask each [y]: y
+  [1;32m[+][0m Deleted eve (home backed up to /root/cp-backups/20261112_043738/homes/eve.tgz)
+  [1;32m[+][0m Deleted mallory (home backed up to /root/cp-backups/20261112_043738/homes/mallory.tgz)
+  [1;32m[+][0m Deleted sysbackup (home backed up to /root/cp-backups/20261112_043738/homes/sysbackup.tgz)
+  [*] System accounts with a login shell: syslog (systemconfig.sh sets nologin; postgres is left alone)
+
+[1;36m=== Admin rights (exact groups sudo/admin/wheel/adm - lpadmin is not one) ===[0m
+        + alice        add to sudo        (README admin; groups now: alice lpadmin)
+        - bob          remove from adm sudo (README standard user)
+  ? Apply these 2 admin-group fixes? y = all, n = none, e = ask each [y]: y
+  [1;32m[+][0m alice added to sudo
+  [1;32m[+][0m bob removed from adm sudo
+
+[1;36m=== Passwords ===[0m
+  ? carol has an EMPTY password (anyone can log in). Set one now? [Y/n]: y
+  ? New password for carol: 
+  ? Retype new password: 
+  [1;32m[+][0m New password set for carol
+  ? Extra: also set ONE new password for the 4 other README users (alice bob dave frank)? [y/N]: n
+  [1;31m[TODO][0m WRITE DOWN the new password(s) you set for: carol
+  [1;32m[+][0m No empty passwords left
+
+[1;36m=== Password aging and home folders ===[0m
+  ? Password aging 30/7/14 for 5 users (not you)? [Y/n]: y
+  [*] Installed: vsftpd - if the README needs it, an EXPIRED password blocks those users' logins there (PAM)
+  ? Also force a password change at next login (passwd -e)? [y/N]: y
+  [1;32m[+][0m Aging set for: alice bob carol dave frank
+  ? Home folders: mode 750, owned by their user (6 folders)? [Y/n]: y
+  [1;32m[+][0m 750 + owner set on 6 home folders
+
+[1;36m=== Groups the README asks for ===[0m
+  ? README groups, as "group: member member" ("; " between groups, Enter = none): 
+  [*] None
+
+[1;36m=== sudoers: NOPASSWD / !authenticate, sudo rights for non-admins ===[0m
+  [*] Stock Linux Mint NOPASSWD lines in /etc/sudoers.d/mintupdate - leave them
+  [1;32m[+][0m No NOPASSWD / !authenticate (other than Mint stock) and only admins have sudo rights
+
+[1;36m=== Re-check ===[0m
+  [1;32m[+][0m Accounts, admin groups and UID 0 match the README
+
+=== usersandsudo.sh done ===
+
+[1;31m=== usersandsudo.sh finished - 1 item(s) NOT done, do these by hand: ===[0m
+   1. WRITE DOWN the new password(s) you set for: carol
+
+[drive2] EXIT 0

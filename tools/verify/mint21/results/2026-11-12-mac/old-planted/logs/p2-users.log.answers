@@ -1,0 +1,12 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.1s] 'Remove these users? (y/n):' -> 'y' (rule)
+[    7.7s] 'Review these users manually (press Enter to continue):' -> '' (DEFAULT(Enter))
+[   10.2s] 'Add alice to sudo group? (y/n):' -> 'y' (rule)
+[   12.8s] 'Remove from admin groups? (y/n):' -> 'y' (rule)
+[   15.4s] 'Delete account toor (recommended unless the README names it)? (y/n):' -> 'y' (rule)
+[   17.9s] 'Open /etc/sudoers.d/90-cloud-init-users in visudo to remove them? (y/n):' -> 'y' (rule)
+[   20.5s] 'Set a password for carol now (you type it; write it down)? (y/n):' -> 'y' (rule)
+[   23.0s] 'New password:' -> 'Car0l-Str0ng!pw' (rule)
+[   25.6s] 'Retype new password:' -> 'Car0l-Str0ng!pw' (rule)
+STATS prompts=10 rule=9 default=1 stall=0 wait=25.3s elapsed=26.5s
+EXIT 0

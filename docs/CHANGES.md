@@ -1,3 +1,135 @@
+## 2026-11-12 (evening) - container test run on the Mac, fixes
+
+Tested on Mint 21.3-like and Debian 12 systemd containers (colima on this Mac, `tools/verify/mint21/`, results in
+`results/2026-11-12-mac/SUMMARY.md`), old scripts (`old/2026-11-10/`) vs current, scored checks + a full state diff.
+No scored item is lost; the fixes below are for things that failed silently or did not complete.
+
+- **mail.sh**: `if exec 3<>/dev/tcp/127.0.0.1/25 2>/dev/null` sent the REST of the script's stderr to /dev/null (a bare
+  `exec` keeps its redirections): every later error (dovecot config invalid / did not start) was invisible. Now
+  `{ exec 3<>...; } 2>/dev/null`. (The old script had the same line; its later prompts were invisible too.)
+- **mail.sh**: Dovecot is rolled back only when it does not start (as the old script); no IMAP greeting on 127.0.0.1 is a
+  warning, and POP3 is removed whenever dovecot runs.
+- **systemconfig.sh**: GDM hardening also edits `/etc/gdm3/daemon.conf` (Debian 12's GDM file; only Ubuntu's custom.conf
+  was checked, so a Debian autologin stayed on). Checks that pam_unix really got remember=5 (TODO if not); also sets
+  APT::Periodic in Ubuntu's 10periodic when it exists.
+- **samba.sh**: shares are hardened (guest ok, masks, preexec/root backdoors) also when [homes] is the only share.
+- **ssh.sh**: works when ssh.service is stopped (creates /run/sshd, which `sshd -T/-t` need - it used to roll back);
+  answers from a failed `sshd -T` are not remembered; the "Changed" list includes sshd_config.
+- **wordpress.sh**: after disabling its uploads rule, Apache is restarted only with a config that tests OK.
+- **service scripts**: the "config unchanged - no restart" check also sees a2enmod/a2ensite (symlink) changes.
+- **fileandpackage.sh**: firewall rules of a service family are deleted only when the whole family is gone (removing
+  exim4 no longer deletes a kept Dovecot's rules).
+- **upgrades.sh**: a failed `apt-get -s full-upgrade` is an error + TODO, not "Nothing to upgrade"; held packages listed.
+- **speedrun.sh**: a step that exits non-zero is not marked done (a re-run repeats it).
+
+## 2026-11-12
+
+- No TODO.txt: each script lists what it found for you to act on (`[act]` lines), and repeats them in one list at its
+  end ("finished - listed for you (N)"). Nothing is kept in a file.
+- `services/baseline.sh` needs no arguments: scans, prints FINDINGS, then one "Go through the findings now? [y/N]".
+- Dropped the chromium/ufw/lightdm purge protections (redundant: every purge shows apt's preview and asks).
+- Firewall question defaults to N; fileandpackage removes firewall rules of services it purges.
+- speedrun.sh refuses to run without a terminal; upgrades.sh trusts only official repo hosts.
+- Audit vs the pre-refactor scripts (fix by fix, state diff after old vs new runs): nothing scored is lost. Two fixes:
+  password aging max-age 30 is applied again to accounts with old passwords (age restarted today instead of skipped),
+  and fail2ban installs in the foreground again so a failure is shown.
+- Previous versions: `old/2026-11-12/`.
+
+## Redesign 2026-11-11 evening (Max's 9 points)
+
+- `start.sh` is replaced by **`speedrun.sh`** (intro rounds only). It starts only the read-only baseline scan, then
+  asks you to do the Forensics Questions first (nothing has changed yet). After that it starts apt update + upgrade
+  download and runs usersandsudo → baseline --review → systemconfig → fileandpackage → portandmisc → critical.sh →
+  upgrades.sh. It ends with the lockout reminder and the TODO list. It prints no checklist text, passes nothing to the
+  scripts, and needs a terminal.
+- **Modular flow is the main path** (checklist order: README → forensics → manual → baseline scan + review → category
+  scripts one at a time, checking the score after each → critical services → upgrades → lockout policy LAST).
+- **No shared README state, no auto mode.** Every script asks for the README facts it needs itself; every former
+  automatic step is a normal question with the same default. Detection (listening ports, installed services, weak
+  passwords) is shown as a hint above the y/n, never used to decide silently. Removing/stopping a service defaults to N;
+  the firewall question defaults to N; hacking tools / games / media keep their defaults.
+- **README intake** (inside usersandsudo.sh): admins/users/you only, no critical-service detection; one
+  "Change it now? [Y/n]" per insecure README password (your own auto-login account defaults to n).
+- **critical.sh** lists the installed services with their state and asks per service whether to run its script.
+- **New `upgrades.sh`**: repository check (official hosts only), preview, y/N, install keeping hardened configs.
+- fileandpackage removes the UFW rules of services it purges.
+- Previous versions: `old/2026-11-11/`.
+
+# Speed refactor 2026-11-10 (after Round 1: the scripts and above all the baseline process were too slow to operate)
+
+Pre-change copies: `old/2026-11-10/` (the files as they were on the Mac before this was applied). Verified by an independent
+agent on rebuilt Mint 21.3 containers (`tools/verify/mint21/`, results in `results/2026-11-10-*`); three rounds, the last one
+on the final scripts.
+
+## Follow-up 2026-11-11 (after testing with the real Debian 12 Round 2 README)
+
+- `start.sh` runs straight through: no menu and no keys. One pause after the forensics / EARLY MANUAL list, then every
+  step in order (only the scripts' own questions), LATE MANUAL + TODO list at the end. A re-run skips finished steps;
+  `--reset` forgets them. Same score on the planted image (110/144), 46 prompts instead of 59.
+- README check with the real Debian 12 README: 7 admins (pparker = you), 13 users, SERVICES=ssh, as a saved page and as
+  a Ctrl-A paste. Weak-password flags now also catch "word + digits" (security1) and "no symbol". A weak password on
+  your own (auto-login) account is only a warning, as the README says not to change it.
+- fileandpackage never purges chromium, ufw/gufw, lightdm or its greeters without a [y/N].
+- Debian sources rewrite matches stock Debian 12: `main non-free-firmware` on all three lines.
+
+## Results (same host, old vs new)
+
+| | old | new |
+|---|---|---|
+| Intro image (planted Mint 21.3): checks / planted items | 104/144, 37/44 | **110/144, 43/44** |
+| Intro image: round wall-clock (2.5 s per prompt stands in for a person) / script run time | 313 s / 161 s | **172-191 s / 43-44 s** |
+| All-services image (13 critical): checks / wall-clock / prompts | 132/144, 392 s, 79 | **132/144, 209 s, 57** (critical.sh path: 24 prompts, 129 s) |
+| `services/baseline.sh` alone (clean / services / planted) | 19 / 82 / 35 s | **0.9 / 4.6 / 2 s**, same findings (0 / 2 test-only overrides / every plant) |
+
+Every new run: ssh (and on the services image all 12 runnable services, FTP and IMAP logins) answered, the Cinnamon desktop
+survived, cpuser kept sudo. A run with no terminal changed nothing destructive. Newly passing on the intro image: 4 media files,
+root's authorized_keys, the http.server backdoor on :31337 (and the LD_PRELOAD rootkit is still removed).
+
+## What changed
+
+- **`start.sh` (new): one entry point.** Starts `apt-get update` + a download-only upgrade and the baseline scan in the
+  background before the first question, then README intake, then an 11-step menu (Enter = next step, ticks + durations,
+  resumable, logs per step in /root/cp-state/logs/, `t` = one combined TODO list). Auto mode (CP_AUTO=1, default on) takes
+  the default of every always-right step without asking. Before each script it snapshots the CyberPatriot scoring report
+  (/opt/CyberPatriot/ScoringReport.html, inferred path) and prints the score change; without a report one Enter = yes reminder.
+- **`readme.sh` (new): README facts asked once.** Ctrl-A / Ctrl-C the README page and paste: admins, users, you, critical
+  services, weak README passwords (never written to disk). Every script reads them from /root/cp-state/readme.conf.
+  Critical services have no default; "none" while service packages are installed needs a y/N.
+- **Baseline (`services/baseline.sh`): 15-40x faster, one list, a separate triage step.** dpkg ownership from one index
+  instead of `dpkg-query -S` per file; no network when the pack covers the service (old: downloaded every package, 311 MB);
+  services scanned in parallel. One `/root/baseline/FINDINGS.txt` (FIX NOW / REVIEW / INFO, changed config lines inline,
+  a "do this" hint per line). `--review`: FIX NOW items first, then an optional REVIEW pass; key + Enter per finding;
+  restore / quarantine / kill / reinstall / edit are backed up, validated, the service restarted and rolled back if it fails.
+  The scan itself stays detection-only. The gate no longer asks, and pauses only on FIX NOW findings.
+- **usersandsudo.sh:** no nano template; one list + one answer per step (y / n / e = each); creates missing README
+  accounts; offers one strong password (12+) for every README user except you; README groups; anything skipped -> TODO.
+  Fixed an old bug: an account sharing another user's UID and home made `userdel -r` delete that user's home.
+- **systemconfig.sh:** UFW rules come from the README's critical services (+ one extra-ports question); 14 always-right
+  prompts are automatic; apt work batched at the end; IPv6 disabled by default (binding `::` still works with IPv6 disabled
+  by sysctl, tested on a real kernel). Merged from the Mac edits of the same day: Debian-only sources.list rewrite,
+  password policy minlen 12 + pwquality retry=3.
+- **fileandpackage.sh:** two lists (remove = Enter yes, review = Enter no); README critical services kept without asking;
+  the OpenSSH server only ever with its own [y/N]; one filesystem pass instead of four; media moved to /root/cp-quarantine
+  (Enter = yes, restorable); password files -> TODO. Merged: pyrdp (apt family + pip/pipx/git copies), AisleRiot.
+- **portandmisc.sh:** no menu; every listener with process / package / unit and a verdict; backdoors offered for stop +
+  disable; lynis optional in the background; nmap always purged.
+- **Service scripts + `services/critical.sh` (new):** critical.sh runs the README's critical services in a safe order. Each
+  script asks one "Does the README change any of these?" (Enter = no) and remembers the answers (`--reask`); restarts only
+  when the config changed; rollbacks no longer restart a service that was already broken. Merged: mail.sh POP3 question
+  (default no: dovecot-pop3d purged, pop3 off, 110/995 closed).
+- **Everywhere:** the scoring engine (/opt/CyberPatriot, /opt/aeacus, CCSClient) is never scanned, quarantined or killed;
+  apt runs by full path (`/usr/bin/apt-get`) and waits for a running `apt-get update`; manual follow-ups go to one TODO list.
+- **Checklist + tracker:** FAST PATH (= start.sh steps), EARLY MANUAL (faillock and nullok as copy-paste blocks), LATE
+  MANUAL, OPTIONAL (rootkits, ClamAV), SCRIPTS. Every old line is still covered. Tracker = your redesign, re-embedded.
+
+## Decisions for you
+
+- `EXPIRE=30` in /etc/default/useradd makes every account created afterwards already expired (EXPIRE is a date; tested:
+  "Account expires: Jan 31, 1970"). Kept, moved after user creation, with a warning. Recommended: delete it, keep INACTIVE=30.
+- Debian images: Enter rewrites sources.list to main/-updates/-security and moves every sources.list.d file aside (both
+  backed up). A vendor repository a critical service needs would be dropped - answer n there if the README needs one.
+- The scoring report path is inferred from community tools; without it you get the screenshot reminder as before.
+
 # Changes applied 2026-10-20 (fixes from the live-image test run)
 
 Pre-change copies: `old/2026-10-20/fileandpackage.sh`, `old/2026-10-20/CP Linux Checklist.txt`. Tested on Ubuntu 24.04 with wireshark, samba, john, hydra, nmap, netcat, telnet, a held package and a fake desktop metapackage installed.

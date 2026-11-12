@@ -1,0 +1,83 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'apache2' exists (/root/baseline/apache2)
+
+----- Baseline findings for apache2 (full report: /root/baseline/apache2/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 conffile modified since install: /etc/apache2/conf-available/security.conf (apache2)
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B8 web / FTP content vs default (full list: /root/baseline/apache2/content.txt)
+!! B8 phpinfo() file: /var/www/html/info.php
+## B9 snapshot of live state saved to /root/baseline/apache2/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+
+==========================================
+  Apache Security Hardening Script
+==========================================
+
+Apache2 detected
+  [*] Backup: /root/cp-backups/20261110_235158/etc/apache2
+
+  ? Does a web app on this server use .htaccess rewrites (WordPress permalinks, Joomla, etc.)? [y/N]: 
+  ? Enable HTTPS (mod_ssl + default-ssl site, TLS 1.2/1.3 only)? [Y/n]: 
+  ? Add a strict Content-Security-Policy header (can break sites that load CDN assets)? [Y/n]: 
+  ? Review and disable unneeded Apache modules (status, info, autoindex, cgi, userdir, dav...)? [y/N]: 
+
+Configuring /etc/apache2/conf-available/security.conf (in place)
+  + Security configuration updated
+
+Configuring /etc/apache2/apache2.conf
+  + Security headers configured
+
+Adding directory restrictions
+  + Directory restrictions configured
+
+Reviewing .htaccess files in /var/www (NOT deleting - they can be required or protective)
+  (AllowOverride None: .htaccess files under /var/www/html are ignored anyway)
+
+Checking the Apache run user
+  [+] Apache runs as www-data
+
+Enabling HTTPS
+  + Enabled site default-ssl
+  + mod_ssl: TLS 1.2/1.3 only, HSTS on :443 vhosts
+  ? Install optional mod_security2 (+CRS) and mod_evasive? (no scoring evidence; needs network) [y/N]: 
+
+
+Setting proper permissions
+  ? Reset /var/www to root ownership, dirs 755 / files 644 (except the folders above)? [Y/n]: 
+  + /var/www permissions configured
+  + /etc/apache2 root 755/644, /var/log/apache2 750 root:adm, /etc/ssl/private keys 640
+
+=== Web content scan (phpinfo / webshell indicators) ===
+  [!] phpinfo() file: /var/www/html/info.php
+  [+] Deleted /var/www/html/info.php
+
+  ? HTTPS ONLY (UFW profile 'Apache Secure', port 80 closed)? No = 'Apache Full' (80+443) [y/N]: 
+  [+] UFW: allowed application profile 'Apache Full'
+
+Testing Apache configuration
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.4. Set the 'ServerName' directive globally to suppress this message
+Syntax OK
+  + Apache configuration test passed
+
+Restarting Apache2 service
+  [+] apache2 restarted and active
+
+  [+] HTTP answers: HTTP/1.1 200 OK
+  [+] Server header hides the version
+  [+] TRACE disabled (405)
+  [+] HTTPS answers
+
+==========================================
+Apache hardening completed successfully!
+==========================================
+
+Backups: /root/cp-backups/20261110_235158/etc/apache2  /etc/apache2/conf-available/security.conf.backup  /etc/apache2/apache2.conf.backup
+
+
+[drive2] EXIT 0

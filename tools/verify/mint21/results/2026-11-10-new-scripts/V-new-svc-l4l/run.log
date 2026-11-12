@@ -1,0 +1,10 @@
+[16:42:59] container V-svc from cp-mint-svcplanted: systemd degraded
+[16:43:00] step s0-readme: bash readme.sh
+[16:43:00]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.1s  exit=0  findings=- (-)
+[16:43:00] step s1-baseline: bash services/baseline.sh
+[16:43:05]   done in 4s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=4.5s  exit=0  findings=23 (fix=8 review=15 info=3 bang=24)
+[16:43:05] step s3-sysconfig: bash systemconfig.sh
+[16:43:29]   done in 24s  STATS prompts=5 rule=4 default=1 stall=0 wait=12.5s elapsed=23.9s  exit=0  findings=- (-)
+[16:43:29] step s-critical: bash services/critical.sh
+[16:44:50]   done in 80s  STATS prompts=20 rule=17 default=3 stall=0 wait=50.1s elapsed=80.9s  exit=1  findings=- (-)
+[16:44:51] container kept: V-svc

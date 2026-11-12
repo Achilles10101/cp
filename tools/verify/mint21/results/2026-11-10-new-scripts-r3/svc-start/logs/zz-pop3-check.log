@@ -1,0 +1,15 @@
+listeners:
+0.0.0.0:143
+0.0.0.0:993
+ii  dovecot-imapd
+un  dovecot-pop3d
+protocols:  imap
+Dovecot IMAP               ALLOW       Anywhere                  
+Dovecot Secure IMAP        ALLOW       Anywhere                  
+* OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ STARTTLS AUTH=PLAIN] Dovecot (Ubuntu) ready.
+bash: connect: Connection refused
+bash: line 1: /dev/tcp/127.0.0.1/110: Connection refused
+110 closed
+MAIL_POP3=no
+
+[drive2] EXIT 0

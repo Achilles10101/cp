@@ -1,0 +1,74 @@
+# 2026-11-12 (Mac, arm64 colima): speedrun.sh on the current scripts; same answers as V5 planted.
+set HARD=3000
+# --- usersandsudo.sh (README users via the test-only CP_ADMINS hook)
+rule Delete account toor                              => y
+rule Delete these \d+ accounts                        => y
+rule Create these \d+ accounts                        => y
+rule Apply these \d+ admin-group fixes                => y
+rule README password is insecure .* Change it now     => y
+rule Change your own password anyway                  => n
+rule has an EMPTY password .* Set one now             => y
+rule Set a password for the new account               => y
+rule Extra: also set ONE new password                 => n
+rule Retype new password:                             => Car0l-Str0ng!pw
+rule New password for .*Enter = same as before        =>
+rule New password for                                 => Car0l-Str0ng!pw
+rule Lock the \d+ account\(s\)                        => y
+rule Password aging 30/7/14                           => y
+rule Also force a password change at next login       => y
+rule Home folders: mode 750                           => y
+rule README groups, as                                =>
+rule Open /etc/sudoers.* in visudo                    => y
+# --- baseline --review (typed keys as in rounds 2-3)
+rule cptest-noipv6\.conf: d=show                      => s
+rule pid \d+: d=show  k=kill                          => k
+rule kill pid \d+ .*\[y/N\]                           => y
+rule stop \+ disable .*\(pid \d+.*\[y/N\]             => y
+rule Also go through the \d+ REVIEW item              => y
+rule sshd_config: d=diff                              => r
+rule Restore the default anyway\? \[y/N\]             => y
+rule sshd_config: d=show  f=fix                       => f
+rule (sudoers|sysctl\.conf|bash\.bashrc|common-auth): d=diff  r=restore => r
+# --- systemconfig.sh (firewall: only OpenSSH is in the README)
+rule Allow the \d+ \[Y\] rule                         => e
+rule Allow OpenSSH \(                                 => y
+rule Allow (?!OpenSSH).* \(                           => n
+rule Extra ports the README needs                     =>
+rule Delete these \d+ rule\(s\)\?                     => n
+rule Disable IPv6                                     => y
+rule Remove ALL superuser                             => n
+# --- fileandpackage.sh
+rule Remove all of these \(e = choose per family\)    => y
+rule Remove these service packages                    => e
+rule Remove apache2 \(                                => y
+rule Remove FTP servers \(                            => y
+rule Remove these too\?                               => n
+rule Remove the OpenSSH server                        => n
+rule Other packages to remove                         =>
+rule Purge \(including the metapackage\)              => y
+rule Purge anyway                                     => n
+rule remote-access service                            => y
+rule desktop service                                  => y
+rule server service                                   => y
+rule Stop \+ disable the SSH server                   => n
+rule Delete these \d+ media file                      => y
+rule Remove the SUID/SGID bit                         => y
+rule Uninstall pyrdp                                  => y
+# --- portandmisc.sh
+rule Stop \+ disable these backdoor-looking listeners => y
+rule services the README does NOT need                => y
+rule Stop these unknown listeners                     => n
+rule Optional: l = lynis                              =>
+# --- critical.sh + ssh.sh
+rule Run ssh\.sh \(the README must list it as critical\) => y
+rule Run \w+\.sh \(the README must list it as critical\) => n
+rule Does the README change any of these              => n
+rule Triage the \d+ FIX NOW finding                   => n
+# --- upgrades.sh / speedrun.sh
+rule Install them now                                 => y
+rule Do the Forensics Questions now                   =>
+
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+step wait65 sleep 65
+step speedrun bash speedrun.sh

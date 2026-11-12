@@ -1,0 +1,5 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+wait65	65.1	65.0	0.0	0	0	0	0	0	-	0.87	1.53	-
+speedrun	215.9	215.8	188.6	75	52	23	0	0	-	1.53	0.95	-
+r2-sysconfig	18.4	18.3	12.6	5	5	0	0	0	-	0.95	0.76	-
+r2-critical	5.7	5.6	5.0	2	2	0	0	0	-	0.76	0.70	-

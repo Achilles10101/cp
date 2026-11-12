@@ -1,0 +1,12 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.6s] '? Does the README require ANONYMOUS FTP? [y/N]:' -> '' (DEFAULT(Enter))
+[   10.1s] '? Do FTP users need to UPLOAD / write files (README)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   12.6s] '? Force SSL/TLS for logins and data (plain-FTP clients will stop working)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   15.1s] '? Choose a or b [b]:' -> '' (DEFAULT(Enter))
+[   17.6s] '? Passive port range (README may specify one) [40000-50000]:' -> '' (DEFAULT(Enter))
+[   20.8s] '? Empty /etc/vsftpd.chroot_list so every user is chrooted? [Y/n]:' -> '' (DEFAULT(Enter))
+[   31.6s] '? Test login - FTP username (Enter to skip):' -> 'ftpuser' (rule)
+[   34.1s] 'Password for ftpuser:' -> 'Ftp-Us3r!pass' (rule)
+STATS prompts=10 rule=3 default=7 stall=0 wait=25.1s elapsed=34.1s
+EXIT 0

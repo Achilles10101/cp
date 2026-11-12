@@ -1,0 +1,9 @@
+[    2.5s] 'Select option [1-4]:' -> '2' (rule)
+[    5.2s] 'Press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.7s] 'Select option [1-4]:' -> '3' (rule)
+[   10.2s] 'Install it now? (y/n):' -> 'y' (rule)
+[   49.9s] 'Remove nmap again now (recommended - prohibited software on CP images)? (y/n):' -> 'y' (rule)
+[   56.3s] 'Press Enter to continue...' -> '' (DEFAULT(Enter))
+[   58.8s] 'Select option [1-4]:' -> '4' (rule)
+STATS prompts=7 rule=5 default=2 stall=0 wait=17.5s elapsed=58.8s
+EXIT 0

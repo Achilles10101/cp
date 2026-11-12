@@ -1,0 +1,18 @@
+BASELINE FINDINGS   FIX NOW: 2   REVIEW: 0   info: 2      (2026-11-11 02:02, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[dovecot] file no package owns: 644 root:root /etc/dovecot/local.conf
+      listen = *
+      -> quarantine (q) unless the README needs it
+
+=== INFO - no action needed ===
+[nginx] nginx is not listening - is it running? (a critical service must stay up)
+[openvpn] openvpn is not listening - is it running? (a critical service must stay up)
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

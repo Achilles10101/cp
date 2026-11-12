@@ -1,0 +1,49 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Users and sudo ===[0m
+  [*] README users from the environment (test harness): admins: cpuser | users: ftpuser | you: cpuser
+  [*] README: admins: cpuser | users: ftpuser | you: cpuser
+
+[1;36m=== UID 0 accounts ===[0m
+  [1;32m[+][0m Only root has UID 0
+
+[1;36m=== Accounts not in the README ===[0m
+  [1;32m[+][0m Every human account is in the README
+  [*] System accounts with a login shell: syslog postgres (systemconfig.sh sets nologin; postgres is left alone)
+
+[1;36m=== Admin rights (exact groups sudo/admin/wheel/adm - lpadmin is not one) ===[0m
+  [1;32m[+][0m Admin groups match the README
+
+[1;36m=== Passwords ===[0m
+  ? Extra: also set ONE new password for the 1 other README users (ftpuser)? [y/N]: n
+
+[1;36m=== Password aging and home folders ===[0m
+  ? Password aging 30/7/14 for 1 users (not you)? [Y/n]: y
+  [*] Installed: vsftpd dovecot samba - if the README needs it, an EXPIRED password blocks those users' logins there (PAM)
+  ? Also force a password change at next login (passwd -e)? [y/N]: n
+  [*] Backup: /root/cp-backups/20261112_061508/etc/passwd
+  [*] Backup: /root/cp-backups/20261112_061508/etc/shadow
+  [*] Backup: /root/cp-backups/20261112_061508/etc/group
+  [*] Backup: /root/cp-backups/20261112_061508/etc/gshadow
+  [1;32m[+][0m Aging set for: ftpuser
+  [1;33m[act][0m No forced password change at next login (vsftpd dovecot samba installed - an expired password blocks those logins). If the README does not need vsftpd dovecot samba: sudo passwd -e NAME
+  ? Home folders: mode 750, owned by their user (2 folders)? [Y/n]: y
+  [1;32m[+][0m 750 + owner set on 2 home folders
+
+[1;36m=== Groups the README asks for ===[0m
+  ? README groups, as "group: member member" ("; " between groups, Enter = none): 
+  [*] None
+
+[1;36m=== sudoers: NOPASSWD / !authenticate, sudo rights for non-admins ===[0m
+  [*] Stock Linux Mint NOPASSWD lines in /etc/sudoers.d/mintupdate - leave them
+  [1;32m[+][0m No NOPASSWD / !authenticate (other than Mint stock) and only admins have sudo rights
+
+[1;36m=== Re-check ===[0m
+  [1;32m[+][0m Accounts, admin groups and UID 0 match the README
+
+=== usersandsudo.sh done ===
+
+[1;33m=== usersandsudo.sh finished - listed for you (1): ===[0m
+   1. No forced password change at next login (vsftpd dovecot samba installed - an expired password blocks those logins). If the README does not need vsftpd dovecot samba: sudo passwd -e NAME
+
+[drive2] EXIT 0

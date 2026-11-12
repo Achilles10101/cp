@@ -1,0 +1,7 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    7.4s] '? Allow the 1 [Y] rule(s)? (y = all [Y], e = decide each - usually e: only what the README needs) [y/N/e]:' -> 'e' (rule)
+[    9.9s] '? Allow OpenSSH (22/tcp)? [Y/n]:' -> 'y' (rule)
+[   12.5s] '? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none:' -> '' (rule)
+[   16.3s] '? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]:' -> 'y' (rule)
+STATS prompts=5 rule=5 default=0 stall=0 wait=12.6s elapsed=18.3s
+EXIT 0

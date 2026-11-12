@@ -1,0 +1,219 @@
+{
+ "steps": [
+  {
+   "name": "wait65",
+   "cmd": [
+    "sleep",
+    "65"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid"
+   },
+   "rules": []
+  },
+  {
+   "name": "start",
+   "cmd": [
+    "bash",
+    "start.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid"
+   },
+   "rules": [
+    [
+     "All steps done",
+     "q"
+    ],
+    [
+     "Forensics answered and EARLY MANUAL",
+     ""
+    ],
+    [
+     "LATE MANUAL items done",
+     ""
+    ],
+    [
+     "All TODO items handled",
+     ""
+    ],
+    [
+     "Install them now in the background",
+     "y"
+    ],
+    [
+     "cptest-noipv6\\.conf: d=show",
+     "s"
+    ],
+    [
+     "local\\.conf: d=show",
+     "s"
+    ],
+    [
+     "Delete account toor",
+     "y"
+    ],
+    [
+     "Delete these \\d+ accounts",
+     "y"
+    ],
+    [
+     "Apply these \\d+ admin-group fixes",
+     "y"
+    ],
+    [
+     "Set ONE new strong password",
+     "y"
+    ],
+    [
+     "Retype new password:",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "New password:",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "README groups, as",
+     ""
+    ],
+    [
+     "Open /etc/sudoers.* in visudo",
+     "y"
+    ],
+    [
+     "Extra ports the README needs",
+     ""
+    ],
+    [
+     "REMOTE access to",
+     "n"
+    ],
+    [
+     "Delete these \\d+ rule\\(s\\)\\?",
+     "n"
+    ],
+    [
+     "Remove ALL superuser",
+     "n"
+    ],
+    [
+     "Remove all of these \\(e = choose per family\\)",
+     "y"
+    ],
+    [
+     "Remove these too\\?",
+     "n"
+    ],
+    [
+     "Other packages to remove",
+     ""
+    ],
+    [
+     "Delete these \\d+ media file",
+     "y"
+    ],
+    [
+     "Remove the SUID/SGID bit",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these backdoor-looking listeners",
+     "y"
+    ],
+    [
+     "Stop \\+ disable these services the README does not list",
+     "y"
+    ],
+    [
+     "Stop these unknown listeners",
+     "n"
+    ],
+    [
+     "Optional: l = lynis",
+     ""
+    ],
+    [
+     "Does the README change any of these",
+     "n"
+    ],
+    [
+     "Does the README or the",
+     "n"
+    ],
+    [
+     "Does the README require",
+     "n"
+    ],
+    [
+     "Test login - FTP username",
+     "ftpuser"
+    ],
+    [
+     "Password for ftpuser",
+     "Ftp-Us3r!pass"
+    ],
+    [
+     "Quarantine these phpinfo",
+     "y"
+    ],
+    [
+     "Triage the \\d+ FIX NOW finding",
+     "n"
+    ],
+    [
+     "\\(END\\)",
+     "q"
+    ]
+   ]
+  },
+  {
+   "name": "zz-wait-bg",
+   "cmd": [
+    "bash",
+    "-c",
+    "for i in $(seq 1 360); do pgrep -f \"[s]tart.sh --job\" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo \"$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)\"; done"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "ftpuser",
+    "CP_SERVICES": "ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid"
+   },
+   "rules": []
+  }
+ ],
+ "global": {
+  "HARD": "3600"
+ }
+}

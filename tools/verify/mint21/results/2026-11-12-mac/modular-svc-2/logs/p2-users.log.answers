@@ -1,0 +1,8 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.1s] '? Extra: also set ONE new password for the 1 other README users (ftpuser)? [y/N]:' -> 'n' (rule)
+[    7.6s] '? Password aging 30/7/14 for 1 users (not you)? [Y/n]:' -> 'y' (rule)
+[   10.1s] '? Also force a password change at next login (passwd -e)? [y/N]:' -> 'n' (rule)
+[   12.6s] '? Home folders: mode 750, owned by their user (2 folders)? [Y/n]:' -> 'y' (rule)
+[   15.2s] '? README groups, as "group: member member" ("; " between groups, Enter = none):' -> '' (rule)
+STATS prompts=6 rule=6 default=0 stall=0 wait=15.1s elapsed=15.3s
+EXIT 0

@@ -1,0 +1,48 @@
+[22:13:33] container T-new-svc2 from cp-mint-svcplanted: systemd degraded
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:13:34] step wait65: sleep 65
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:14:39]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[22:14:39] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:15:08]   done in 29s  STATS prompts=10 rule=3 default=7 stall=0 wait=25.1s elapsed=28.9s  exit=0  findings=22 (fix=4 review=18 info=4 bang=27)
+[22:15:08] step p2-users: bash usersandsudo.sh
+[22:15:24]   done in 15s  STATS prompts=6 rule=6 default=0 stall=0 wait=15.1s elapsed=15.3s  exit=0  findings=- (-)
+[22:15:24] step p3-sysconfig: bash systemconfig.sh
+[22:16:07]   done in 43s  STATS prompts=14 rule=3 default=11 stall=0 wait=35.2s elapsed=42.9s  exit=0  findings=- (-)
+[22:16:07] step p4-filepkg: bash fileandpackage.sh
+[22:16:38]   done in 31s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.2s elapsed=31.1s  exit=0  findings=- (-)
+[22:16:38] step p5-portmisc: bash portandmisc.sh
+[22:16:49]   done in 10s  STATS prompts=4 rule=4 default=0 stall=0 wait=10.1s elapsed=10.6s  exit=0  findings=- (-)
+[22:16:49] step p6-critical: bash services/critical.sh
+[22:19:32]   done in 163s  STATS prompts=46 rule=35 default=11 stall=0 wait=115.7s elapsed=163.0s  exit=1  findings=- (-)
+[22:19:32] step p7-upgrades: bash upgrades.sh
+[22:19:41]   done in 8s  STATS prompts=1 rule=1 default=0 stall=0 wait=2.5s elapsed=8.7s  exit=0  findings=- (-)
+image cp-mint-svcplanted
+competition /Users/max/Documents/cp stuff/competition
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-modular-svc.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   1.03>1.28
+p1-baseline         29.0      28.9    25.1     3.8       10     3     7     0     0       22   1.28>1.80
+p2-users            15.3      15.3    15.1     0.2        6     6     0     0     0        -   1.80>1.98
+p3-sysconfig        43.0      42.9    35.2     7.7       14     3    11     0     0        -   1.98>1.08
+p4-filepkg          31.2      31.1    25.2     5.9       10     9     1     0     0        -   1.08>1.08
+p5-portmisc         10.7      10.6    10.1     0.5        4     4     0     0     0        -   1.08>0.92
+p6-critical        163.1     163.0   115.7    47.3       46    35    11     0     1        -   0.92>0.65
+p7-upgrades          8.8       8.7     2.5     6.2        1     1     0     0     0        -   0.65>0.63
+TOTAL              367.8             228.9   138.9       91
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 133/145 PASS   planted: 41/45 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx
+baseline findings: 22  (fix=4 review=18 info=4 bang=27; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+

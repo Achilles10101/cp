@@ -1,0 +1,13 @@
+image cp-mint-services
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-baseline-only.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+baseline             5.0       4.9     0.0     4.9        0     0     0     0     0        2   1.28>1.50
+TOTAL                5.3               0.0     5.3        0
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+baseline findings: 2  (fix=2 review=0 info=2 bang=2; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)

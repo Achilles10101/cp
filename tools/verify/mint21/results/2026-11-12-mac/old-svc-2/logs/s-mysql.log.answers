@@ -1,0 +1,9 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    8.0s] '? Does the README require REMOTE database access? [y/N]:' -> '' (DEFAULT(Enter))
+[   10.5s] '? Require TLS for every TCP connection (require_secure_transport)? Breaks apps that use 127.0.0.1 without TLS [y/N]:' -> '' (DEFAULT(Enter))
+[   13.0s] '? Enable general_log (logs EVERY query, including passwords in CREATE/ALTER USER)? [y/N]:' -> '' (DEFAULT(Enter))
+[   18.3s] '? Accounts to DROP (user@host, comma separated; Enter = none):' -> '' (DEFAULT(Enter))
+[   20.9s] '? Accounts to strip SUPER/FILE/PROCESS/GRANT OPTION from (user@host, comma separated; Enter = none):' -> '' (DEFAULT(Enter))
+STATS prompts=7 rule=1 default=6 stall=0 wait=17.6s elapsed=20.9s
+EXIT 0

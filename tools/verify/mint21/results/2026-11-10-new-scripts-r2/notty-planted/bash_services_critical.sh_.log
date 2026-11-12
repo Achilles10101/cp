@@ -1,0 +1,5 @@
+
+=== Critical services ===
+  [!] The README's critical services are not recorded and there is no terminal to ask - nothing saved, nothing hardened.
+  [TODO] critical.sh: the README's critical services are not recorded - run sudo bash readme.sh (or critical.sh in a terminal), then sudo bash services/critical.sh
+[exit 1]

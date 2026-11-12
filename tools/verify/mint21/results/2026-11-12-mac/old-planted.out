@@ -1,0 +1,47 @@
+[21:54:28] container T-old-pl from cp-mint-planted: systemd running
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:54:28] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:54:28] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:55:08]   done in 39s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=39.5s  exit=0  findings=36 (bang=36)
+[21:55:08] step p2-users: bash usersandsudo.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:55:35]   done in 26s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.3s elapsed=26.5s  exit=0  findings=- (-)
+[21:55:35] step p3-sysconfig: bash systemconfig.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[21:56:43]   done in 67s  STATS prompts=16 rule=6 default=10 stall=0 wait=40.2s elapsed=67.5s  exit=0  findings=- (-)
+[21:56:43] step p4-filepkg: bash fileandpackage.sh
+[21:57:56]   done in 72s  STATS prompts=20 rule=19 default=1 stall=0 wait=50.2s elapsed=72.7s  exit=0  findings=- (-)
+[21:57:56] step p5-portmisc: bash portandmisc.sh
+[21:59:04]   done in 67s  STATS prompts=7 rule=5 default=2 stall=0 wait=17.6s elapsed=67.1s  exit=0  findings=- (-)
+[21:59:04] step p6-ssh: bash services/ssh.sh
+[21:59:33]   done in 29s  STATS prompts=8 rule=1 default=7 stall=0 wait=20.1s elapsed=29.2s  exit=0  findings=- (-)
+image cp-mint-planted
+competition /Users/max/Documents/cp stuff/old/2026-11-10
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-10-21.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+p1-baseline         39.6      39.5     0.0    39.5        0     0     0     0     0       36   3.75>8.02
+p2-users            26.6      26.5    25.3     1.2       10     9     1     0     0        -   7.38>4.86
+p3-sysconfig        67.7      67.5    40.2    27.3       16     6    10     0     0        -   4.86>3.69
+p4-filepkg          72.8      72.7    50.2    22.5       20    19     1     0     0        -   3.69>2.28
+p5-portmisc         67.1      67.1    17.6    49.5        7     5     2     0     0        -   2.28>2.03
+p6-ssh              29.3      29.2    20.1     9.1        8     1     7     0     0        -   2.03>1.52
+TOTAL              304.8             153.4   151.4       61
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 105/145 PASS   planted: 38/45 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 36  (bang=36; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+

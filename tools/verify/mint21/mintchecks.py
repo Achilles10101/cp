@@ -17,6 +17,7 @@ add(P, "cpuser still an administrator", [CMD("id -nG cpuser | tr ' ' '\\n' | gre
 add(P, "carol has a password", [CMD("[ -n \"$(getent shadow carol | cut -d: -f2)\" ]")])
 add(P, "No NOPASSWD sudo for bob", [CMD("! grep -rqsE '^[^#]*bob.*NOPASSWD' /etc/sudoers /etc/sudoers.d")])
 add(P, "LightDM autologin disabled (all files)", [CMD("! grep -rhsE '^\\s*autologin-user\\s*=\\s*[A-Za-z]' /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.d /usr/share/lightdm/lightdm.conf.d | grep -vq 'NONE' && ! grep -rhsE '^\\s*autologin-user\\s*=\\s*(bob|nancy)' /etc/lightdm /usr/share/lightdm")])
+add(P, "GDM autologin disabled (Debian: daemon.conf)", [CMD("! grep -rqsiE '^\\s*AutomaticLoginEnable\\s*=\\s*(true|1)' /etc/gdm3 /etc/gdm")])
 add(P, "LightDM guest disabled", [CMD("! grep -rhsE '^\\s*allow-guest\\s*=\\s*true' /etc/lightdm /usr/share/lightdm")])
 for pkg in ["nmap", "john", "hydra", "wireshark", "wireshark-common", "tshark", "aircrack-ng", "ophcrack", "minetest", "netcat-traditional", "telnetd"]:
     add(P, f"Prohibited package {pkg} removed", [CMD(f"! dpkg-query -W -f='${{Status}}' {pkg} 2>/dev/null | grep -q 'ok installed'")])

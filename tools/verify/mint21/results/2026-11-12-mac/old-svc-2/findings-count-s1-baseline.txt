@@ -1,0 +1,14 @@
+2 apache2
+0 bind9
+3 dovecot
+0 mysql
+1 nginx
+0 openvpn
+2 php
+2 postfix
+5 postgresql
+2 samba
+1 squid
+3 ssh
+10 system
+5 vsftpd

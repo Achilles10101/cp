@@ -1,0 +1,6 @@
+0 apache2
+0 mysql
+3 ssh
+17 system
+1 vsftpd
+HEADER BASELINE FINDINGS   FIX NOW: 2   REVIEW: 2   info: 0      (2026-11-12 05:49, debian-12, pack: none)

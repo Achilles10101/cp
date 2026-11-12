@@ -1,0 +1,5 @@
+
+=== Users and sudo ===
+  [x] No README text on stdin
+  [x] No README users given - nothing changed
+[exit 1]

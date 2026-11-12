@@ -1,0 +1,6 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.5s] "? Secondary DNS servers allowed to transfer zones (IPs separated by ';', Enter = none):" -> '' (DEFAULT(Enter))
+[   10.1s] '? Is this an AUTHORITATIVE-only server (no recursive lookups for clients - check the README)? [y/N]:' -> '' (DEFAULT(Enter))
+STATS prompts=4 rule=1 default=3 stall=0 wait=10.0s elapsed=11.4s
+EXIT 0

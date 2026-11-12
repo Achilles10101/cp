@@ -1,0 +1,69 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+Starting system hardening...
+
+[1;36m=== SYS10 /etc/ld.so.preload ===[0m
+  [*] baseline --review already quarantined ld.so.preload (/root/cp-quarantine/etc/ld.so.preload) - checking the libraries it listed
+
+[1;36m=== Firewall (UFW) ===[0m
+  Server daemons found (SSH first) - [Y] = listening now. Allow only what the README needs:
+    [Y] OpenSSH                (22/tcp)                 openssh-server installed, sshd listening on :22
+  ? Allow the 1 [Y] rule(s)? (y = all [Y], e = decide each - usually e: only what the README needs) [y/N/e]: e
+  ? Allow OpenSSH (22/tcp)? [Y/n]: y
+  [1;32m[+][0m UFW: allowed profile 'OpenSSH'
+  ? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none: 
+  [1;32m[+][0m UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+        OpenSSH                    ALLOW       Anywhere                  
+        OpenSSH (v6)               ALLOW       Anywhere (v6)             
+  [*] firewall done (11s)
+
+[1;36m=== GDM (/etc/gdm3/daemon.conf) ===[0m
+  [1;32m[+][0m GDM: no automatic login, no custom User/Group, DisallowTCP=true, AllowRoot=false
+
+[1;36m=== UMASK, login.defs ===[0m
+  [1;32m[+][0m login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [1;32m[+][0m /etc/profile: umask 027
+
+[1;36m=== Kernel parameters (sysctl) ===[0m
+  [1;32m[+][0m 44 parameters set in place in /etc/sysctl.conf
+  ? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]: y
+  [1;32m[+][0m IPv6 disabled
+  [1;32m[+][0m Applied (sysctl --system: same order as at boot)
+
+[1;36m=== SYS3 PAM backdoors ===[0m
+  [1;32m[+][0m pam_deny present, no pam_exec lines
+
+[1;36m=== SYS4 sudo.conf / sudoers defaults ===[0m
+  [1;32m[+][0m sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [1;32m[+][0m sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [1;32m[+][0m limits.conf: * hard core 0, * hard nproc 2500
+
+[1;36m=== SYS9 permissions, root, system accounts ===[0m
+  [1;32m[+][0m /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  [1;32m[+][0m root account already locked (root:! in /etc/shadow)
+  [1;32m[+][0m /home -> 755 root:root
+  [1;32m[+][0m /swapfile -> 600
+
+[1;36m=== SYS10 persistence spots ===[0m
+  [1;33m[act][0m Review /etc/hosts entries (hijack?): 172.17.0.4 mint-cptest;
+
+[1;36m=== APT sources.list (Debian) ===[0m
+  [1;32m[+][0m /etc/apt/sources.list rewritten: bookworm, bookworm-updates, bookworm-security (main non-free-firmware, as stock Debian 12)
+  [*] apt-get update (log: /root/cp-state/apt-update.log)
+  [1;32m[+][0m apt-get update OK (1s)
+
+[1;36m=== Packages + automatic updates ===[0m
+  [1;32m[+][0m Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  [1;32m[+][0m common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [1;32m[+][0m pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [1;33m[!][0m could not enable apparmor
+  [1;33m[!][0m could not enable auditd
+  [1;32m[+][0m ufw enabled and running
+  [1;32m[+][0m unattended-upgrades enabled and running
+
+  [1;32m[+][0m System hardening complete in 16s. Backups: /root/cp-backups/20261112_061826/
+
+[1;33m=== systemconfig.sh finished - listed for you (1): ===[0m
+   1. Review /etc/hosts entries (hijack?): 172.17.0.4 mint-cptest;
+
+[drive2] EXIT 0

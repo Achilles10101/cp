@@ -1,0 +1,6 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.3s] '? Stop + disable these backdoor-looking listeners: tcp/4444(cron.service) ? [Y/n/e]:' -> 'y' (rule)
+[    8.9s] '? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]:' -> 'n' (rule)
+[   12.4s] '? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip:' -> '' (rule)
+STATS prompts=4 rule=4 default=0 stall=0 wait=10.0s elapsed=12.4s
+EXIT 0

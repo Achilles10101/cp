@@ -1,0 +1,41 @@
+BASELINE FINDINGS   FIX NOW: 5   REVIEW: 2   info: 1      (2026-11-12 05:56, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[system] file no package owns: 644 root:root /etc/apt/apt.conf.d/docker-autoremove-suggests
+      Apt::AutoRemove::SuggestsImportant "false";
+      -> quarantine (q) unless the README needs it
+[system] file no package owns: 644 root:root /etc/apt/apt.conf.d/docker-disable-periodic-update
+      APT::Periodic::Enable "0";
+      -> quarantine (q) unless the README needs it
+[system] file no package owns: 644 root:root /etc/apt/apt.conf.d/docker-no-languages
+      Acquire::Languages "none";
+      -> quarantine (q) unless the README needs it
+[system] file no package owns: 644 root:root /etc/apt/apt.conf.d/docker-clean
+      DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/
+      APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cac
+      Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";
+      -> quarantine (q) unless the README needs it
+[system] file no package owns: 644 root:root /etc/apt/apt.conf.d/docker-gzip-indexes
+      Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";
+      -> quarantine (q) unless the README needs it
+
+=== REVIEW - differs from the default; keep only what the README needs ===
+[system] /etc/apt/sources.list.d/official-package-repositories.list differs from pristine (8 line(s))
+      - deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+      - deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
+      - deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse
+      + deb http://ports.ubuntu.com/ubuntu-ports jammy main restricted universe multiverse
+      + deb http://ports.ubuntu.com/ubuntu-ports jammy-updates main restricted universe multiverse
+      + deb http://ports.ubuntu.com/ubuntu-ports jammy-backports main restricted universe multiverse
+      ... 2 more (full diff: --review d, or diff.patch)
+      -> restore (r) or edit (e); fix APT sources before updating
+[system] /etc/cron.d/e2scrub_all differs from pristine (2 line(s))
+      - 30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_
+      + 30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/aarch64-linux-gnu/e2fsprogs/e2scrub_all
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+
+=== INFO - no action needed ===
+[system] 1 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

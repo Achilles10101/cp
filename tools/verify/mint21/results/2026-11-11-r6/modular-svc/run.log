@@ -1,0 +1,20 @@
+[20:42:07] container V6-modular-svc from cp-mint-svcplanted: systemd degraded
+[20:42:07] step wait65: sleep 65
+[20:43:13]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[20:43:13] step p1-baseline: bash services/baseline.sh
+[20:43:24]   done in 11s  STATS prompts=1 rule=0 default=1 stall=0 wait=2.5s elapsed=11.2s  exit=0  findings=23 (fix=8 review=15 info=3 bang=24)
+[20:43:24] step p1b-review: bash services/baseline.sh --review
+[20:43:49]   done in 24s  STATS prompts=9 rule=2 default=7 stall=0 wait=22.5s elapsed=24.1s  exit=0  findings=19 (fix=4 review=15 info=3 bang=24)
+[20:43:49] step p2-users: bash usersandsudo.sh
+[20:44:04]   done in 15s  STATS prompts=6 rule=6 default=0 stall=0 wait=15.0s elapsed=15.3s  exit=0  findings=- (-)
+[20:44:04] step p3-sysconfig: bash systemconfig.sh
+[20:45:03]   done in 58s  STATS prompts=14 rule=3 default=11 stall=0 wait=35.0s elapsed=58.3s  exit=0  findings=- (-)
+[20:45:03] step p4-filepkg: bash fileandpackage.sh
+[20:45:39]   done in 36s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.0s elapsed=36.4s  exit=0  findings=- (-)
+[20:45:40] step p5-portmisc: bash portandmisc.sh
+[20:45:51]   done in 11s  STATS prompts=4 rule=4 default=0 stall=0 wait=10.0s elapsed=11.2s  exit=0  findings=- (-)
+[20:45:51] step p6-critical: bash services/critical.sh
+[20:48:22]   done in 151s  STATS prompts=45 rule=35 default=10 stall=0 wait=112.7s elapsed=151.3s  exit=1  findings=- (-)
+[20:48:23] step p7-upgrades: bash upgrades.sh
+[20:48:53]   done in 30s  STATS prompts=2 rule=2 default=0 stall=0 wait=5.0s elapsed=30.1s  exit=0  findings=- (-)
+[20:48:54] container kept: V6-modular-svc

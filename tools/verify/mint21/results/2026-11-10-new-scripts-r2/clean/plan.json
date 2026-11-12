@@ -1,0 +1,57 @@
+{
+ "steps": [
+  {
+   "name": "start",
+   "cmd": [
+    "bash",
+    "start.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "",
+    "CP_SERVICES": "none"
+   },
+   "rules": [
+    [
+     "All steps done",
+     "q"
+    ]
+   ]
+  },
+  {
+   "name": "zz-wait-bg",
+   "cmd": [
+    "bash",
+    "-c",
+    "for i in $(seq 1 360); do pgrep -f \"[s]tart.sh --job\" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo \"$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)\"; done"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "3600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser",
+    "CP_USERS": "",
+    "CP_SERVICES": "none"
+   },
+   "rules": []
+  }
+ ],
+ "global": {
+  "HARD": "3600"
+ }
+}

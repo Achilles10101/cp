@@ -1,0 +1,13 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Package lists ===[0m
+  [1;32m[+][0m apt-get update done
+
+[1;36m=== Repositories ===[0m
+      http://archive.ubuntu.com/ubuntu
+      http://security.ubuntu.com/ubuntu
+
+[1;36m=== Upgrades ===[0m
+  [1;32m[+][0m Nothing to upgrade.
+
+[drive2] EXIT 0

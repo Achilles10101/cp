@@ -1,0 +1,54 @@
+{
+ "steps": [
+  {
+   "name": "pre-stop",
+   "cmd": [
+    "bash",
+    "-c",
+    "systemctl stop ssh ssh.socket 2>/dev/null; rm -rf /run/sshd; systemctl is-active ssh; ls -d /run/sshd 2>&1"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Does the README change any of these",
+     "n"
+    ]
+   ]
+  },
+  {
+   "name": "ssh-stopped",
+   "cmd": [
+    "bash",
+    "services/ssh.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "600",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {},
+   "rules": [
+    [
+     "Does the README change any of these",
+     "n"
+    ]
+   ]
+  }
+ ],
+ "global": {
+  "HARD": "600"
+ }
+}

@@ -1,0 +1,96 @@
+=========================================
+SSH Security Hardening Script
+=========================================
+
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'ssh' exists (/root/baseline/ssh)
+
+----- Baseline findings for ssh (full report: /root/baseline/ssh/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 differs from pristine default: /etc/ssh/sshd_config
+!! B2 differs from clean-VM pack: /etc/ssh/sshd_config
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+!! B3 not owned by any package: -rw-r--r-- root:root 2026-11-12 05:52:42.0000 /etc/ssh/sshd_config.d/60-evil.conf
+## B4 permissions / ownership vs default
+!! B4 config file not owned by root: 644 bob:root /etc/ssh/sshd_config
+!! B4 differs from clean VM: /etc/ssh/sshd_config clean[644 root:root] live[644 bob:root]
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B9 snapshot of live state saved to /root/baseline/ssh/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+
+Step 1: Backing up SSH configuration
+  [*] Backup: /root/cp-backups/20261112_055904/etc/ssh/sshd_config
+  [*] Backup: /root/cp-backups/20261112_055904/etc/ssh/sshd_config.d
+
+Step 2: Setting SSH config permissions
+
+Step 3: Setting host key permissions
+
+Step 4: Configuring user SSH directories
+Processing user: root
+  - Set .ssh directory permissions (700)
+  - Set authorized_keys permissions (600)
+
+Processing user: cpuser
+  - Created .ssh directory
+  - Set .ssh directory permissions (700)
+
+Processing user: alice
+  - Created .ssh directory
+  - Set .ssh directory permissions (700)
+
+Processing user: bob
+  - Created .ssh directory
+  - Set .ssh directory permissions (700)
+
+Processing user: carol
+  - Created .ssh directory
+  - Set .ssh directory permissions (700)
+
+Processing user: dave
+  - Created .ssh directory
+  - Set .ssh directory permissions (700)
+
+Processing user: frank
+  - Created .ssh directory
+  - Set .ssh directory permissions (700)
+
+Step 4b: Auditing keys and SSH backdoor mechanisms (SSH9) - review with the README
+  [!] /root/.ssh/authorized_keys contains 1 key(s):
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvi... eve@kali
+
+Step 5: Updating SSH security settings
+  ? Does the README require SSH KEY-ONLY login (disable password authentication)? [y/N]: 
+  PasswordAuthentication -> yes (was: yes)
+  ? SSH port (README may require a specific one) [22]: 
+  ? AllowUsers (space separated, Enter = no restriction): 
+  ? DenyUsers (Enter = none): 
+  ? DenyGroups (Enter = none): 
+  ? Does the README require SFTP-only access (ForceCommand internal-sftp + chroot)? [y/N]: 
+  [*] Backup: /root/cp-backups/20261112_055904/etc/issue.net
+  [!] Drop-in /etc/ssh/sshd_config.d/60-evil.conf overrides PermitRootLogin (yes) - removing it
+  [*] Removed 'PermitRootLogin' from /etc/ssh/sshd_config.d/60-evil.conf
+
+Step 6: Testing SSH configuration
+SSH configuration test: PASSED
+
+Step 7: Configuring firewall
+  [+] UFW: allowed application profile 'OpenSSH'
+
+Step 8: Installing fail2ban
+fail2ban installed and started
+
+Step 9: Restarting SSH service
+SSH service restarted
+
+Step 10: Verifying the EFFECTIVE configuration (sshd -T) - SSH13 / G2
+  [+] Effective sshd settings match
+  [+] Port 22 is listening
+  [+] SSH answers on localhost:22
+
+SSH hardening complete
+
+[drive2] EXIT 0

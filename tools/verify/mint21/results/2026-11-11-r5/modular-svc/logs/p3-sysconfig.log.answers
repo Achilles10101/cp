@@ -1,0 +1,16 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.3s] '? Allow the 12 [Y] rule(s) (n = none, e = decide each)? [Y/n/e]:' -> '' (rule)
+[    9.5s] '? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none:' -> '' (rule)
+[   14.1s] '? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   16.6s] "? Replace 'requisite pam_permit.so' with 'requisite pam_deny.so' (stock line)? [Y/n]:" -> '' (DEFAULT(Enter))
+[   19.2s] '? Remove these pam_exec lines (stock Ubuntu/Mint has none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   21.8s] '? Lock the root account (passwd -l root)? You keep using sudo [Y/n]:' -> '' (DEFAULT(Enter))
+[   24.3s] '? Remove these group passwords? [Y/n]:' -> '' (DEFAULT(Enter))
+[   26.9s] '? Set their shell to /usr/sbin/nologin (e = each; a README user with a low UID keeps it)? [Y/n/e]:' -> '' (DEFAULT(Enter))
+[   29.4s] "? Remove their passwords (set to '*'; e = each)? [Y/n/e]:" -> '' (DEFAULT(Enter))
+[   32.0s] '? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   34.6s] '? Remove these system-wide aliases (stock files have none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   37.4s] '? Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   45.3s] '? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=14 rule=3 default=11 stall=0 wait=35.0s elapsed=47.9s
+EXIT 0

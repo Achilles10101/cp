@@ -1,0 +1,3 @@
+# Only the detection-only baseline scan (timing + findings count). No prompts expected.
+set HARD=900
+step baseline bash services/baseline.sh

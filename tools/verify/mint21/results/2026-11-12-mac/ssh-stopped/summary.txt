@@ -1,0 +1,15 @@
+image cp-mint-svcplanted
+competition /Users/max/Documents/cp stuff/competition
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-ssh-stopped.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+pre-stop             0.1       0.0     0.0     0.0        0     0     0     0     2        -   1.22>1.22
+ssh-stopped         15.7      15.7    10.1     5.6        4     2     2     0     0        -   1.22>1.44
+TOTAL               16.2              10.1     6.1        4
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 53/145 PASS   planted: 37/45 PASS
+services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx

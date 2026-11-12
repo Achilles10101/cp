@@ -1,0 +1,39 @@
+Baseline scan - detection only, nothing is changed.  OS: linuxmint-21.3   services: ssh vsftpd apache2 nginx php mysql postgresql samba bind9 postfix dovecot openvpn squid system
+  known good: baseline pack linuxmint-21.3 (no network needed)
+  [  1s] system     FIX NOW 0   REVIEW 0   info 0
+  [  1s] vsftpd     FIX NOW 1   REVIEW 0   info 0
+  [  1s] ssh        FIX NOW 0   REVIEW 0   info 0
+  [  2s] nginx      FIX NOW 0   REVIEW 0   info 1
+  [  2s] php        FIX NOW 0   REVIEW 0   info 0
+  [  2s] apache2    FIX NOW 0   REVIEW 0   info 0
+  [  3s] mysql      FIX NOW 0   REVIEW 0   info 0
+  [  3s] postgresql FIX NOW 0   REVIEW 0   info 0
+  [  3s] samba      FIX NOW 0   REVIEW 0   info 0
+  [  4s] dovecot    FIX NOW 1   REVIEW 0   info 0
+  [  4s] bind9      FIX NOW 0   REVIEW 0   info 0
+  [  4s] postfix    FIX NOW 0   REVIEW 0   info 0
+  [  4s] openvpn    FIX NOW 0   REVIEW 0   info 1
+  [  4s] squid      FIX NOW 0   REVIEW 0   info 0
+
+BASELINE FINDINGS   FIX NOW: 2   REVIEW: 0   info: 2      (2026-11-11 00:27, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+[1;31m=== FIX NOW - likely planted, act on these first ===[0m
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[dovecot] file no package owns: 644 root:root /etc/dovecot/local.conf
+      listen = *
+      -> quarantine (q) unless the README needs it
+
+[1;36m=== INFO - no action needed ===[0m
+[nginx] nginx is not listening - is it running? (a critical service must stay up)
+[openvpn] openvpn is not listening - is it running? (a critical service must stay up)
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch
+  [1;31m[TODO][0m Triage the baseline findings: sudo bash services/baseline.sh --review   (list: /root/baseline/FINDINGS.txt)
+Scan finished in 4s.  Saved: /root/baseline/FINDINGS.txt
+
+[drive2] EXIT 0

@@ -1,0 +1,17 @@
+[    6.6s] '? Go through the findings now (review: fix / quarantine / skip each)? [y/N]:' -> 'y' (rule)
+[    9.2s] '60-evil.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   12.7s] 'vsftpd.chroot_list: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   15.2s] 'ftp: d=show  f=fix -> 755 root:ftp  s=skip  x=exit  [Enter=fix] >' -> '' (DEFAULT(Enter))
+[   17.7s] 'cptest-noipv6.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> 's' (rule)
+[   20.3s] 'info.php: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   22.8s] 'local.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> 's' (rule)
+[   25.3s] 'custom.conf: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=skip] >' -> '' (DEFAULT(Enter))
+[   27.8s] 'docker-autoremove-suggests: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   30.3s] 'docker-disable-periodic-update: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   32.9s] 'docker-no-languages: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   35.4s] 'docker-clean: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   37.9s] 'docker-gzip-indexes: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   40.4s] 'ld.so.preload: d=show  q=quarantine  e=edit  s=skip  x=exit  [Enter=quarantine] >' -> '' (DEFAULT(Enter))
+[   43.1s] 'Also go through the 18 REVIEW item(s)? [y/N]' -> '' (DEFAULT(Enter))
+STATS prompts=15 rule=3 default=12 stall=0 wait=37.7s elapsed=43.1s
+EXIT 0

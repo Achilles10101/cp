@@ -1,0 +1,2 @@
+STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=4.5s
+EXIT 0

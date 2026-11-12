@@ -1,0 +1,61 @@
+{
+ "image": "cp-mint-svcplanted",
+ "competition": "/Users/max/Documents/cp stuff/competition",
+ "rules": "/Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-ssh-stopped.txt",
+ "steps": [
+  {
+   "step": "pre-stop",
+   "wall_s": "0.1",
+   "script_elapsed_s": "0.0",
+   "harness_wait_s": "0.0",
+   "prompts": "0",
+   "rule": "0",
+   "default": "0",
+   "stall": "0",
+   "exit": "2",
+   "findings": "-",
+   "load_start": "1.22",
+   "load_end": "1.22",
+   "findings_detail": "-"
+  },
+  {
+   "step": "ssh-stopped",
+   "wall_s": "15.7",
+   "script_elapsed_s": "15.7",
+   "harness_wait_s": "10.1",
+   "prompts": "4",
+   "rule": "2",
+   "default": "2",
+   "stall": "0",
+   "exit": "0",
+   "findings": "-",
+   "load_start": "1.22",
+   "load_end": "1.44",
+   "findings_detail": "-"
+  }
+ ],
+ "total_wall_s": 16.2,
+ "total_prompts": 4,
+ "total_harness_wait_s": 10.1,
+ "checks_pass": 53,
+ "checks_total": 145,
+ "planted_pass": 37,
+ "planted_total": 45,
+ "services_ok": [
+  "ssh",
+  "vsftpd",
+  "apache2",
+  "php-fpm",
+  "mysql",
+  "postgres",
+  "samba",
+  "bind9",
+  "postfix",
+  "dovecot",
+  "openvpn",
+  "squid"
+ ],
+ "services_fail": [
+  "nginx"
+ ]
+}

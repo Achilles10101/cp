@@ -1,0 +1,50 @@
+[22:01:05] container T-new-mod2 from cp-mint-planted: systemd running
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:01:05] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:01:05] step wait65: sleep 65
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:02:10]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=64.9s  exit=0  findings=- (-)
+[22:02:10] step p1-baseline: bash services/baseline.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[22:03:18]   done in 67s  STATS prompts=25 rule=14 default=11 stall=0 wait=63.0s elapsed=67.3s  exit=0  findings=5 (fix=2 review=3 info=3 bang=21)
+[22:03:18] step p2-users: bash usersandsudo.sh
+[22:03:49]   done in 31s  STATS prompts=12 rule=12 default=0 stall=0 wait=30.3s elapsed=31.3s  exit=0  findings=- (-)
+[22:03:49] step p3-sysconfig: bash systemconfig.sh
+[22:04:34]   done in 44s  STATS prompts=15 rule=7 default=8 stall=0 wait=37.8s elapsed=44.3s  exit=0  findings=- (-)
+[22:04:34] step p4-filepkg: bash fileandpackage.sh
+[22:05:19]   done in 45s  STATS prompts=13 rule=11 default=2 stall=0 wait=33.2s elapsed=45.2s  exit=0  findings=- (-)
+[22:05:19] step p5-portmisc: bash portandmisc.sh
+[22:05:28]   done in 8s  STATS prompts=3 rule=3 default=0 stall=0 wait=7.5s elapsed=7.9s  exit=0  findings=- (-)
+[22:05:28] step p6-critical: bash services/critical.sh
+[22:05:44]   done in 16s  STATS prompts=5 rule=3 default=2 stall=0 wait=12.6s elapsed=16.3s  exit=0  findings=- (-)
+[22:05:44] step p7-upgrades: bash upgrades.sh
+[22:05:53]   done in 8s  STATS prompts=1 rule=1 default=0 stall=0 wait=2.5s elapsed=8.7s  exit=0  findings=- (-)
+image cp-mint-planted
+competition /Users/max/Documents/cp stuff/competition
+rules /Users/max/Documents/cp stuff/tools/verify/mint21/rules-2026-11-12-modular-planted.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.0      64.9     0.0    64.9        0     0     0     0     0        -   8.97>3.69
+p1-baseline         67.4      67.3    63.0     4.3       25    14    11     0     0        5   3.69>1.63
+p2-users            31.4      31.3    30.3     1.0       12    12     0     0     0        -   1.63>1.03
+p3-sysconfig        44.4      44.3    37.8     6.5       15     7     8     0     0        -   1.03>0.93
+p4-filepkg          45.3      45.2    33.2    12.0       13    11     2     0     0        -   0.93>0.79
+p5-portmisc          8.0       7.9     7.5     0.4        3     3     0     0     0        -   0.79>0.73
+p6-critical         16.3      16.3    12.6     3.7        5     3     2     0     0        -   0.73>0.87
+p7-upgrades          8.8       8.7     2.5     6.2        1     1     0     0     0        -   0.87>0.89
+TOTAL              288.2             186.9   101.3       74
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 111/145 PASS   planted: 44/45 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 5  (fix=2 review=3 info=3 bang=21; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)
+

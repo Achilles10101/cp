@@ -1,0 +1,101 @@
+BASELINE FINDINGS   FIX NOW: 8   REVIEW: 15   info: 3      (2026-11-12 02:21, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[ssh] file no package owns: 644 root:root /etc/ssh/sshd_config.d/60-evil.conf
+      PermitRootLogin yes
+      -> quarantine (q) unless the README needs it
+[vsftpd] file no package owns: 644 root:root /etc/vsftpd.chroot_list
+      turret
+      -> quarantine (q) unless the README needs it
+[vsftpd] world-writable: 777 root:ftp /srv/ftp  (clean VM: 755 root:ftp)
+      -> fix (f) -> 755 root:ftp; vsftpd.sh hardens it
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[apache2] phpinfo() file: /var/www/html/info.php
+      <?php phpinfo(); ?>
+      -> quarantine (q)
+[dovecot] file no package owns: 644 root:root /etc/dovecot/local.conf
+      listen = *
+      -> quarantine (q) unless the README needs it
+[system] file no package owns: 644 root:root /etc/gdm3/custom.conf
+      [daemon]
+      AutomaticLoginEnable = true
+      AutomaticLogin = ratman
+      -> quarantine (q) unless the README needs it
+[system] file no package owns: 644 root:root /etc/ld.so.preload - preloads: /usr/src/evil_rabbit.so
+      preloads /usr/src/evil_rabbit.so  (no package owns it - quarantined together with this file)
+      -> quarantine (q) = this file + the unowned libraries it lists
+
+=== REVIEW - differs from the default; keep only what the README needs ===
+[ssh] /etc/ssh/sshd_config differs from pristine (2 line(s))
+      + PermitRootLogin yes
+      + PermitEmptyPasswords yes
+      -> restore (r) or edit (e); ssh.sh hardens it
+[vsftpd] /etc/vsftpd.conf differs from pristine (6 line(s))
+      - anonymous_enable=NO
+      + anonymous_enable=YES
+      + chroot_list_enable=YES
+      + chroot_list_file=/etc/vsftpd.chroot_list
+      + ssl_sslv3=YES
+      + allow_anon_ssl=YES
+      -> restore (r) or edit (e); vsftpd.sh hardens it
+[apache2] /etc/apache2/conf-available/security.conf differs from pristine (2 line(s))
+      - ServerTokens OS
+      + ServerTokens Full
+      -> restore (r) or edit (e); apache2.sh hardens it
+[php] /etc/php/8.1/apache2/php.ini differs from pristine (2 line(s))
+      - display_errors = Off
+      + display_errors = On
+      -> restore (r) or edit (e); php.sh hardens it
+[postgresql] /etc/postgresql/14/main/pg_hba.conf differs from pristine (1 line(s))
+      + host all all 0.0.0.0/0 trust
+      -> restore (r) or edit (e); postgresql.sh hardens it
+[postgresql] /etc/postgresql/14/main/postgresql.conf differs from pristine (2 line(s))
+      - ssl = on
+      + ssl = off
+      -> restore (r) or edit (e); postgresql.sh hardens it
+[postgresql] perms differ from the clean VM: /etc/postgresql/14/main/pg_hba.conf  clean[640 postgres:postgres] live[644 postgres:postgres]
+      -> fix (f) -> 640 postgres:postgres; postgresql.sh hardens it
+[samba] /etc/samba/smb.conf differs from pristine (1 line(s))
+      + server min protocol = NT1
+      -> restore (r) or edit (e); samba.sh hardens it
+[dovecot] /etc/dovecot/conf.d/10-auth.conf differs from pristine (1 line(s))
+      + auth_debug_passwords = yes
+      -> restore (r) or edit (e); mail.sh hardens it
+[squid] /etc/squid/squid.conf differs from pristine (1 line(s))
+      + http_access allow all
+      -> restore (r) or edit (e); squid.sh hardens it
+[system] /etc/sudoers differs from pristine (2 line(s))
+      + Defaults !env_reset
+      + Defaults env_keep += "PATH"
+      -> restore (r) or edit (e); usersandsudo.sh checks sudoers
+[system] /etc/sysctl.conf differs from pristine (7 line(s))
+      + net.ipv4.tcp_syncookies=0
+      + net.ipv4.ip_forward=1
+      + net.ipv4.conf.all.accept_source_route = 1
+      + net.ipv4.conf.all.send_redirects=1
+      + net.ipv4.conf.all.accept_redirects = 1
+      + kernel.randomize_va_space=0
+      ... 1 more (full diff: --review d, or diff.patch)
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+[system] /etc/login.defs changed since install (login) - no pristine copy to compare
+      -> open it (e) and check every setting; systemconfig.sh also hardens this
+[system] /etc/bash.bashrc differs from pristine (1 line(s))
+      + alias GOODBYE='rm -rf ~'
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+[system] /etc/pam.d/common-auth differs from pristine (3 line(s))
+      + auth sufficient pam_exec.so expose_authtok quiet /lib/x86_64-linux-gnu/security/pam-bd
+      - auth requisite   pam_deny.so
+      + auth requisite   pam_permit.so
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+
+=== INFO - no action needed ===
+[apache2] 1 non-default file(s) in /var/www (list: /root/baseline/apache2/content.txt)
+[nginx] nginx is not listening - is it running? (a critical service must stay up)
+[openvpn] openvpn is not listening - is it running? (a critical service must stay up)
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

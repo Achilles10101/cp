@@ -1,0 +1,14 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.1s] '? Delete account toor (recommended unless the README names it)? [Y/n]:' -> 'y' (rule)
+[    7.6s] '? Delete these 3 accounts (homes are backed up)? y = all, n = none, e = ask each [y]:' -> 'y' (rule)
+[   10.9s] '? Apply these 2 admin-group fixes? y = all, n = none, e = ask each [y]:' -> 'y' (rule)
+[   13.4s] '? carol has an EMPTY password (anyone can log in). Set one now? [Y/n]:' -> 'y' (rule)
+[   15.9s] '? New password for carol:' -> 'Car0l-Str0ng!pw' (rule)
+[   18.5s] '? Retype new password:' -> 'Car0l-Str0ng!pw' (rule)
+[   21.0s] '? Extra: also set ONE new password for the 4 other README users (alice bob dave frank)? [y/N]:' -> 'n' (rule)
+[   23.6s] '? Password aging 30/7/14 for 5 users (not you)? [Y/n]:' -> 'y' (rule)
+[   26.1s] '? Also force a password change at next login (passwd -e)? [y/N]:' -> 'y' (rule)
+[   28.7s] '? Home folders: mode 750, owned by their user (6 folders)? [Y/n]:' -> 'y' (rule)
+[   31.2s] '? README groups, as "group: member member" ("; " between groups, Enter = none):' -> '' (rule)
+STATS prompts=12 rule=12 default=0 stall=0 wait=30.3s elapsed=31.3s
+EXIT 0

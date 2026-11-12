@@ -1,0 +1,11 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.5s] '? Does a web app on this server use .htaccess rewrites (WordPress permalinks, Joomla, etc.)? [y/N]:' -> '' (DEFAULT(Enter))
+[   10.0s] '? Enable HTTPS (mod_ssl + default-ssl site, TLS 1.2/1.3 only)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   12.5s] '? Add a strict Content-Security-Policy header (can break sites that load CDN assets)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   15.0s] '? Review and disable unneeded Apache modules (status, info, autoindex, cgi, userdir, dav...)? [y/N]:' -> '' (DEFAULT(Enter))
+[   17.7s] '? Install optional mod_security2 (+CRS) and mod_evasive? (no scoring evidence; needs network) [y/N]:' -> '' (DEFAULT(Enter))
+[   20.3s] '? Reset /var/www to root ownership, dirs 755 / files 644 (except the folders above)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   23.1s] "? HTTPS ONLY (UFW profile 'Apache Secure', port 80 closed)? No = 'Apache Full' (80+443) [y/N]:" -> '' (DEFAULT(Enter))
+STATS prompts=9 rule=1 default=8 stall=0 wait=22.5s elapsed=24.5s
+EXIT 0

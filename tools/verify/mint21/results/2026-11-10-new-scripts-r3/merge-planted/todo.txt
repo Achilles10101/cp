@@ -1,0 +1,4 @@
+[usersandsudo.sh] WRITE DOWN the new password you set for: alice bob carol dave frank
+[systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+[fileandpackage.sh] Plaintext password file? /home/bob/passwords.txt - delete it if the README doesn't need it
+[fileandpackage.sh] Glance over 7 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)

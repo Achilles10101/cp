@@ -1,0 +1,59 @@
+# V (verifier) 2026-11-10: NEW scripts, whole intro round through the single entry point start.sh on cp-mint-planted.
+# Answers = a competitor who read the planted README (admins cpuser (you) alice; users bob carol dave frank;
+# critical service OpenSSH): Enter where the default is right, typed answers where it is not.
+# README facts via readme.sh env mode (the paste is tested separately). Prompt texts from notes/A..E.md + the code.
+set HARD=3600
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+env CP_SERVICES=ssh
+
+# image booted a minute before the competitor starts (the planted cron nc listener on 4444 exists, as in the OLD run)
+step wait65 sleep 65
+
+step start bash start.sh
+# --- start.sh menu / manual steps
+rule All steps done                               => q
+rule Forensics answered and EARLY MANUAL          =>
+rule LATE MANUAL items done                       =>
+rule All TODO items handled                       =>
+rule Install them now in the background           => y
+# --- baseline --review (single keys). Right answers for the planted image (A.md table, judged against plant-mint.sh)
+rule cptest-noipv6\.conf: d=show                  => s
+rule pid \d+: d=show  k=kill                      => k
+rule kill pid \d+ .*\[y/N\]                       => y
+rule stop \+ disable .*\(pid \d+.*\[y/N\]         => y
+rule sshd_config: d=diff                          => r
+rule Restore the default anyway\? \[y/N\]         => y
+rule sshd_config: d=show  f=fix                   => f
+rule (sudoers|sysctl\.conf|bash\.bashrc|common-auth): d=diff  r=restore => r
+# --- usersandsudo.sh
+rule Delete account toor                          => y
+rule Delete these \d+ accounts                    => y
+rule Apply these \d+ admin-group fixes            => y
+rule Set ONE new strong password                  => y
+rule Retype new password:                         => Car0l-Str0ng!pw
+rule New password:                                => Car0l-Str0ng!pw
+rule README groups, as                            =>
+rule Open /etc/sudoers.* in visudo                => y
+# --- systemconfig.sh
+rule Extra ports the README needs                 =>
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Disable IPv6                                 => y
+rule Remove ALL superuser                         => n
+# --- fileandpackage.sh
+rule Remove all of these \(e = choose per family\) => y
+rule Remove these too\?                           => n
+rule Other packages to remove                     =>
+rule Delete these \d+ media file                  => y
+rule Remove the SUID/SGID bit                     => y
+# --- portandmisc.sh
+rule Stop \+ disable these backdoor-looking listeners => y
+rule Stop \+ disable these services the README does not list => y
+rule Stop these unknown listeners                 => n
+rule Optional: l = lynis                          =>
+# --- critical.sh / ssh.sh
+rule Does the README change any of these          => n
+rule Triage the \d+ FIX NOW finding               => n
+
+# wait for the background upgrade install (start.sh step 9) before scoring; timed separately, not part of the round
+step zz-wait-bg bash -c 'for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; ls /root/cp-state/start/jobs/; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null) secs=$(( $(cat /root/cp-state/start/jobs/$j.end 2>/dev/null || echo 0) - $(cat /root/cp-state/start/jobs/$j.start 2>/dev/null || echo 0) ))"; done'

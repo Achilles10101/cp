@@ -1,0 +1,233 @@
+===========================================
+  Linux Port Analyzer
+===========================================
+
+
+MAIN MENU:
+  1) Run Lynis Security Audit
+  2) Analyze Listening Ports
+  3) Run Nmap Scan on Localhost
+  4) Exit
+
+Select option [1-4]: 2
+
+=== LISTENING PORTS ANALYSIS ===
+
+--- NORMAL PORTS (<=1024) ---
+
+[1] Port: 53 | Protocol: udp | State: UNCONN
+    Address: 127.0.0.53%lo:53
+    PID: 93 | User: systemd-resolve
+    Executable: /usr/lib/systemd/systemd-resolved
+    Command: /lib/systemd/systemd-resolved 
+    Service: domain
+
+[2] Port: 5353 | Protocol: udp | State: UNCONN
+    Address: 0.0.0.0:5353
+    PID: 98 | User: avahi
+    Executable: /usr/sbin/avahi-daemon
+    Command: avahi-daemon: running [mint-cptest-4.local] 
+    Service: mdns
+
+[3] Port: 5353 | Protocol: udp | State: UNCONN
+    Address: [::]:5353
+    PID: 98 | User: avahi
+    Executable: /usr/sbin/avahi-daemon
+    Command: avahi-daemon: running [mint-cptest-4.local] 
+    Service: mdns
+
+[4] Port: 631 | Protocol: tcp | State: LISTEN
+    Address: 127.0.0.1:631
+    PID: 132 | User: root
+    Executable: /usr/sbin/cupsd
+    Command: /usr/sbin/cupsd -l 
+    Service: ipp
+
+[5] Port: 22 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:22
+    PID: 229 | User: root
+    Executable: /usr/sbin/sshd
+    Command: sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups 
+    Service: ssh
+
+[6] Port: 53 | Protocol: tcp | State: LISTEN
+    Address: 127.0.0.53%lo:53
+    PID: 93 | User: systemd-resolve
+    Executable: /usr/lib/systemd/systemd-resolved
+    Command: /lib/systemd/systemd-resolved 
+    Service: domain
+
+[7] Port: 22 | Protocol: tcp | State: LISTEN
+    Address: [::]:22
+    PID: 229 | User: root
+    Executable: /usr/sbin/sshd
+    Command: sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups 
+    Service: ssh
+
+[8] Port: 631 | Protocol: tcp | State: LISTEN
+    Address: [::1]:631
+    PID: 132 | User: root
+    Executable: /usr/sbin/cupsd
+    Command: /usr/sbin/cupsd -l 
+    Service: ipp
+
+
+Total normal ports: 8
+
+--- SUSPICIOUS PORTS (>1024) ---
+
+[1] Port: 52582 | Protocol: udp | State: UNCONN
+    Address: 0.0.0.0:52582
+    PID: 98 | User: avahi
+    Executable: /usr/sbin/avahi-daemon
+    Command: avahi-daemon: running [mint-cptest-4.local] 
+
+[2] Port: 36550 | Protocol: udp | State: UNCONN
+    Address: [::]:36550
+    PID: 98 | User: avahi
+    Executable: /usr/sbin/avahi-daemon
+    Command: avahi-daemon: running [mint-cptest-4.local] 
+
+[3] Port: 31337 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:31337
+    PID: 111 | User: root
+    Executable: /usr/bin/python3.10
+    Command: /usr/bin/python3 -m http.server 31337 --directory / 
+
+[4] Port: 4444 | Protocol: tcp | State: LISTEN
+    Address: 0.0.0.0:4444
+    PID: 5226 | User: root
+    Executable: /usr/bin/nc.traditional (deleted)
+    Command: /bin/nc.traditional -l -p 4444 -e /bin/bash 
+
+
+Total suspicious ports: 4
+
+Press Enter to continue...
+
+MAIN MENU:
+  1) Run Lynis Security Audit
+  2) Analyze Listening Ports
+  3) Run Nmap Scan on Localhost
+  4) Exit
+
+Select option [1-4]: 3
+
+=== NMAP LOCALHOST SCAN ===
+
+Nmap is not installed (it is a scored 'hacking tool' on most images - this menu removes it again after the scan).
+Install it now? (y/n): y
+Installing Nmap...
+[33m0% [Working][0m            Hit:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+[33m0% [Working][0m[33m0% [Waiting for headers][0m                        Hit:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+[33m                        0% [Working][0m[33m0% [Waiting for headers][0m                        Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease
+[33m                        0% [Working][0m[33m0% [Waiting for headers][0m                        Hit:4 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+[33m                        0% [Working][0m[33m18% [Waiting for headers][0m                         Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/main Translation-en [510 kB]
+[33m18% [5 Translation-en 8,449 B/510 kB 2%][0m[33m                                        22% [Waiting for headers][0m                         Get:6 http://ports.ubuntu.com/ubuntu-ports jammy/restricted Translation-en [18.6 kB]
+[33m22% [6 Translation-en 11.9 kB/18.6 kB 64%][0m[33m22% [5 Translation-en store 0 B] [6 Translation-en 11.9 kB/18.6 kB 64%][0m[33m                                                                       22% [5 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:7 http://ports.ubuntu.com/ubuntu-ports jammy/universe Translation-en [5,652 kB]
+[33m22% [5 Translation-en store 0 B] [7 Translation-en 1,751 B/5,652 kB 0%][0m[33m                                                                       23% [7 Translation-en 117 kB/5,652 kB 2%][0m[33m23% [6 Translation-en store 0 B] [7 Translation-en 117 kB/5,652 kB 2%][0m[33m                                                                      23% [7 Translation-en 121 kB/5,652 kB 2%][0m[33m                                         65% [Working][0m             Get:8 http://ports.ubuntu.com/ubuntu-ports jammy/multiverse Translation-en [112 kB]
+[33m66% [8 Translation-en 109 kB/112 kB 98%][0m[33m66% [7 Translation-en store 0 B] [8 Translation-en 112 kB/112 kB 100%][0m[33m                                                                      66% [7 Translation-en store 0 B][0m                                Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main Translation-en [584 kB]
+[33m66% [7 Translation-en store 0 B] [9 Translation-en 43.2 kB/584 kB 7%][0m[33m                                                                     70% [7 Translation-en store 0 B][0m                                Get:10 http://ports.ubuntu.com/ubuntu-ports jammy-updates/restricted Translation-en [1,316 kB]
+[33m71% [7 Translation-en store 0 B] [10 Translation-en 18.6 kB/1,316 kB 1%][0m[33m                                                                        80% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:11 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe Translation-en [327 kB]
+[33m81% [7 Translation-en store 0 B] [11 Translation-en 34.8 kB/327 kB 11%][0m[33m                                                                       83% [7 Translation-en store 0 B][0m                                Get:12 http://ports.ubuntu.com/ubuntu-ports jammy-updates/multiverse Translation-en [16.5 kB]
+[33m83% [7 Translation-en store 0 B] [12 Translation-en 14.7 kB/16.5 kB 89%][0m[33m                                                                        83% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:13 http://ports.ubuntu.com/ubuntu-ports jammy-backports/main Translation-en [11.4 kB]
+[33m83% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:14 http://ports.ubuntu.com/ubuntu-ports jammy-backports/universe Translation-en [16.9 kB]
+[33m83% [7 Translation-en store 0 B] [14 Translation-en 2,659 B/16.9 kB 16%][0m[33m                                                                        83% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:15 http://ports.ubuntu.com/ubuntu-ports jammy-security/main Translation-en [519 kB]
+[33m83% [7 Translation-en store 0 B] [15 Translation-en 24.6 kB/519 kB 5%][0m[33m                                                                      87% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:16 http://ports.ubuntu.com/ubuntu-ports jammy-security/restricted Translation-en [1,272 kB]
+[33m87% [7 Translation-en store 0 B] [16 Translation-en 21.7 kB/1,272 kB 2%][0m[33m                                                                        97% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:17 http://ports.ubuntu.com/ubuntu-ports jammy-security/universe Translation-en [238 kB]
+[33m97% [7 Translation-en store 0 B] [17 Translation-en 36.9 kB/238 kB 15%][0m[33m                                                                       98% [7 Translation-en store 0 B] [Waiting for headers][0m                                                      Get:18 http://ports.ubuntu.com/ubuntu-ports jammy-security/multiverse Translation-en [13.6 kB]
+[33m99% [7 Translation-en store 0 B] [18 Translation-en 13.6 kB/13.6 kB 100%][0m[33m                                                                         99% [7 Translation-en store 0 B][0m[33m                                99% [Working][0m[33m99% [8 Translation-en store 0 B][0m[33m                                99% [Working][0m[33m99% [9 Translation-en store 0 B][0m[33m                                99% [Working][0m[33m99% [10 Translation-en store 0 B][0m[33m                                 99% [Working][0m[33m99% [11 Translation-en store 0 B][0m[33m                                 99% [Working][0m[33m99% [12 Translation-en store 0 B][0m[33m                                 99% [Working][0m[33m99% [13 Translation-en store 0 B][0m[33m                                 99% [Working][0m[33m99% [14 Translation-en store 0 B][0m[33m                                 100% [Working][0m[33m100% [15 Translation-en store 0 B][0m[33m                                  100% [Working][0m[33m100% [16 Translation-en store 0 B][0m[33m                                  100% [Working][0m[33m100% [17 Translation-en store 0 B][0m[33m                                  100% [Working][0m[33m100% [18 Translation-en store 0 B][0m[33m                                  100% [Working][0m              Fetched 10.6 MB in 2s (4,585 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 1%Reading package lists... 2%Reading package lists... 2%Reading package lists... 2%Reading package lists... 2%Reading package lists... 3%Reading package lists... 3%Reading package lists... 21%Reading package lists... 21%Reading package lists... 30%Reading package lists... 30%Reading package lists... 30%Reading package lists... 30%Reading package lists... 31%Reading package lists... 31%Reading package lists... 37%Reading package lists... 37%Reading package lists... 42%Reading package lists... 42%Reading package lists... 54%Reading package lists... 54%Reading package lists... 62%Reading package lists... 62%Reading package lists... 65%Reading package lists... 65%Reading package lists... 65%Reading package lists... 65%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 66%Reading package lists... 72%Reading package lists... 72%Reading package lists... 77%Reading package lists... 77%Reading package lists... 89%Reading package lists... 89%Reading package lists... 96%Reading package lists... 96%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 6%Reading state information... Done
+All packages are up to date.
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 6%Reading state information... Done
+The following additional packages will be installed:
+  liblinear4 liblua5.3-0 lua-lpeg nmap-common
+Suggested packages:
+  liblinear-tools liblinear-dev ncat ndiff zenmap
+The following NEW packages will be installed:
+  liblinear4 liblua5.3-0 lua-lpeg nmap nmap-common
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,852 kB of archives.
+After this operation, 26.0 MB of additional disk space will be used.
+[33m0% [Working][0m            Get:1 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 liblinear4 arm64 2.3.0+dfsg-5 [37.0 kB]
+[33m0% [1 liblinear4 13.9 kB/37.0 kB 38%][0m[33m                                     5% [Working][0m            Get:2 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 liblua5.3-0 arm64 5.3.6-1build1 [135 kB]
+[33m5% [2 liblua5.3-0 2,604 B/135 kB 2%][0m[33m                                    10% [Waiting for headers][0m                         Get:3 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 lua-lpeg arm64 1.0.2-1 [30.0 kB]
+[33m10% [3 lua-lpeg 0 B/30.0 kB 0%][0m[33m                               15% [Waiting for headers][0m                         Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 nmap-common all 7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1 [3,940 kB]
+[33m15% [4 nmap-common 1,542 B/3,940 kB 0%][0m[33m28% [4 nmap-common 936 kB/3,940 kB 24%][0m[33m                                       73% [Waiting for headers][0m                         Get:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 nmap arm64 7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1 [1,709 kB]
+[33m73% [5 nmap 25.6 kB/1,709 kB 2%][0m[33m                                100% [Working][0m              Fetched 5,852 kB in 2s (2,619 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 78, <> line 5.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package liblinear4:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 60809 files and directories currently installed.)
+Preparing to unpack .../liblinear4_2.3.0+dfsg-5_arm64.deb ...
+Unpacking liblinear4:arm64 (2.3.0+dfsg-5) ...
+Selecting previously unselected package liblua5.3-0:arm64.
+Preparing to unpack .../liblua5.3-0_5.3.6-1build1_arm64.deb ...
+Unpacking liblua5.3-0:arm64 (5.3.6-1build1) ...
+Selecting previously unselected package lua-lpeg:arm64.
+Preparing to unpack .../lua-lpeg_1.0.2-1_arm64.deb ...
+Unpacking lua-lpeg:arm64 (1.0.2-1) ...
+Selecting previously unselected package nmap-common.
+Preparing to unpack .../nmap-common_7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1_all.deb ...
+Unpacking nmap-common (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Selecting previously unselected package nmap.
+Preparing to unpack .../nmap_7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1_arm64.deb ...
+Unpacking nmap (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Setting up lua-lpeg:arm64 (1.0.2-1) ...
+Setting up liblinear4:arm64 (2.3.0+dfsg-5) ...
+Setting up nmap-common (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Setting up liblua5.3-0:arm64 (5.3.6-1build1) ...
+Setting up nmap (7.91+dfsg1+really7.80+dfsg1-2ubuntu0.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.15) ...
+Running Nmap scan on localhost...
+Scan type: TCP SYN scan with version detection
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2026-11-12 06:04 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00015s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 65531 closed ports
+PORT      STATE SERVICE VERSION
+22/tcp    open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.18 (Ubuntu Linux; protocol 2.0)
+631/tcp   open  ipp     CUPS 2.4
+4444/tcp  open  krb524?
+31337/tcp open  http    SimpleHTTPServer 0.6 (Python 3.10.12)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=11/12%OT=22%CT=1%CU=43370%PV=N%DS=0%DC=L%G=Y%TM=6AF556
+OS:FC%P=aarch64-unknown-linux-gnu)SEQ(SP=102%GCD=1%ISR=10F%TI=Z%CI=Z%TS=A)O
+OS:PS(O1=MFFD7ST11NW8%O2=MFFD7ST11NW8%O3=MFFD7NNT11NW8%O4=MFFD7ST11NW8%O5=M
+OS:FFD7ST11NW8%O6=MFFD7ST11)WIN(W1=FFCB%W2=FFCB%W3=FFCB%W4=FFCB%W5=FFCB%W6=
+OS:FFCB)ECN(R=Y%DF=Y%T=40%W=FFD7%O=MFFD7NNSNW8%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O
+OS:%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=
+OS:0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%
+OS:S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(
+OS:R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=N)
+
+Network Distance: 0 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 23.45 seconds
+
+Scan complete.
+Remove nmap again now (recommended - prohibited software on CP images)? (y/n): y
+nmap removed
+Press Enter to continue...
+
+MAIN MENU:
+  1) Run Lynis Security Audit
+  2) Analyze Listening Ports
+  3) Run Nmap Scan on Localhost
+  4) Exit
+
+Select option [1-4]: 4
+Exiting...
+
+[drive2] EXIT 0

@@ -1,0 +1,21 @@
+[17:41:55] start start-planted
+[17:47:01] done  start-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[17:47:01] start start-enterreview
+[17:51:09] done  start-enterreview: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[17:51:09] start standalone-planted
+[17:55:28] done  standalone-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[17:55:28] start svc-l4l
+[17:57:56] done  svc-l4l: checks: 132/144 PASS   planted: 40/44 PASS services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx 
+[17:57:56] start svc-start
+[18:02:44] done  svc-start: checks: 132/144 PASS   planted: 40/44 PASS services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx 
+[18:02:44] start baseline-clean
+[18:02:48] done  baseline-clean: 
+[18:02:48] start baseline-services
+[18:02:59] done  baseline-services: 
+[18:02:59] start baseline-planted
+[18:03:05] done  baseline-planted: 
+[18:03:05] start review-enter-planted
+[18:05:01] done  review-enter-planted: checks: 22/144 PASS   planted: 10/44 PASS services answering: 2 OK ssh apache2 | FAIL: vsftpd 
+[18:05:01] start clean
+[18:06:49] done  clean: checks: 98/144 PASS   planted: 39/44 PASS services answering: 0 OK  | FAIL: - 
+[18:06:49] ALL DONE

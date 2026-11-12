@@ -1,0 +1,20 @@
+image cp-mint-planted
+competition /home/claude/orig/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-10-21.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+p1-baseline         35.2      35.1     0.0    35.1        0     0     0     0     0       28   0.53>0.69
+p2-users            25.4      25.3    25.0     0.3       10     9     1     0     0        -   0.69>0.45
+p3-sysconfig        66.1      66.1    40.1    26.0       16     6    10     0     0        -   0.45>0.53
+p4-filepkg          65.8      65.7    50.1    15.6       20    19     1     0     0        -   0.53>0.56
+p5-portmisc         58.9      58.8    17.5    41.3        7     5     2     0     0        -   0.56>0.32
+p6-ssh              28.4      28.4    20.0     8.4        8     1     7     0     0        -   0.32>0.26
+TOTAL              280.5             152.7   127.8       61
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 104/144 PASS   planted: 37/44 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 28  (bang=28; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)

@@ -1,0 +1,5 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.5s] '? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]:' -> 'n' (rule)
+[    8.0s] '? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip:' -> '' (rule)
+STATS prompts=3 rule=3 default=0 stall=0 wait=7.5s elapsed=8.1s
+EXIT 0

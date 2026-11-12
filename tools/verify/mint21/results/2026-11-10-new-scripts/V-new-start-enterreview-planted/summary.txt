@@ -1,0 +1,16 @@
+image cp-mint-planted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-start-enterreview.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   0.36>0.21
+start              179.2     179.1   140.2    38.9       56    26    30     0     0        -   0.21>0.11
+zz-wait-bg           0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.11>0.11
+TOTAL              244.7             140.2   104.5       56
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 109/144 PASS   planted: 43/44 PASS
+services answering: 1 OK ssh | FAIL: -

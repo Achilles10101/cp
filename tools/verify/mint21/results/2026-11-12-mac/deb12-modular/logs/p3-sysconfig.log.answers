@@ -1,0 +1,18 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.4s] '? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]:' -> 'y' (rule)
+[    8.0s] "? Replace 'requisite pam_permit.so' with 'requisite pam_deny.so' (stock line)? [Y/n]:" -> '' (DEFAULT(Enter))
+[   10.5s] '? Remove these pam_exec lines (stock Ubuntu/Mint has none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   13.2s] '? Lock the root account (passwd -l root)? You keep using sudo [Y/n]:' -> '' (DEFAULT(Enter))
+[   15.7s] '? Remove these group passwords? [Y/n]:' -> '' (DEFAULT(Enter))
+[   18.2s] "? Remove their passwords (set to '*'; e = each)? [Y/n/e]:" -> '' (DEFAULT(Enter))
+[   20.7s] '? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   23.3s] '? Strip these ACLs (setfacl -b; stock has none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   25.8s] '? Remove these system-wide aliases (stock files have none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   30.3s] '? Install unattended-upgrades libpam-pwquality auditd ufw (needed for automatic updates, the password rules, auditd)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   41.1s] '? Allow the 3 [Y] rule(s)? (y = all [Y], e = decide each - usually e: only what the README needs) [y/N/e]:' -> 'e' (rule)
+[   43.6s] '? Allow OpenSSH (22/tcp)? [Y/n]:' -> 'y' (rule)
+[   46.2s] '? Allow Apache Full (80/tcp 443/tcp)? [Y/n]:' -> 'n' (rule)
+[   48.7s] '? Allow vsftpd (21/tcp)? [Y/n]:' -> 'n' (rule)
+[   51.3s] '? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none:' -> '' (rule)
+STATS prompts=16 rule=7 default=9 stall=0 wait=40.2s elapsed=52.8s
+EXIT 0

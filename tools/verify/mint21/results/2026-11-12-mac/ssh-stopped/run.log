@@ -1,0 +1,5 @@
+[22:20:27] container T-ssh-stop from cp-mint-svcplanted: systemd degraded
+[22:20:27] step pre-stop: bash -c systemctl stop ssh ssh.socket 2>/dev/null; rm -rf /run/sshd; systemctl is-active ssh; ls -d /run/sshd 2>&1
+[22:20:27]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=2  findings=- (-)
+[22:20:27] step ssh-stopped: bash services/ssh.sh
+[22:20:43]   done in 15s  STATS prompts=4 rule=2 default=2 stall=0 wait=10.1s elapsed=15.7s  exit=0  findings=- (-)

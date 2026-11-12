@@ -1,0 +1,96 @@
+{
+ "steps": [
+  {
+   "name": "wait65",
+   "cmd": [
+    "sleep",
+    "65"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank",
+    "CP_SERVICES": "ssh"
+   },
+   "rules": []
+  },
+  {
+   "name": "readme",
+   "cmd": [
+    "bash",
+    "readme.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "0"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank",
+    "CP_SERVICES": "ssh"
+   },
+   "rules": []
+  },
+  {
+   "name": "baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank",
+    "CP_SERVICES": "ssh"
+   },
+   "rules": []
+  },
+  {
+   "name": "review",
+   "cmd": [
+    "bash",
+    "services/baseline.sh",
+    "--review"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {
+    "CP_ADMINS": "cpuser alice",
+    "CP_USERS": "bob carol dave frank",
+    "CP_SERVICES": "ssh"
+   },
+   "rules": []
+  }
+ ],
+ "global": {
+  "HARD": "900"
+ }
+}

@@ -1,0 +1,38 @@
+BASELINE FINDINGS   FIX NOW: 2   REVIEW: 3   info: 3      (2026-11-12 05:56, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[system] file no package owns: 644 root:root /etc/lightdm/lightdm.conf
+      [Seat:*]
+      autologin-user=bob
+      autologin-user-timeout=0
+      -> quarantine (q) unless the README needs it
+
+=== REVIEW - differs from the default; keep only what the README needs ===
+[system] /etc/login.defs changed since install (login) - no pristine copy to compare
+      -> open it (e) and check every setting; systemconfig.sh also hardens this
+[system] /etc/apt/sources.list.d/official-package-repositories.list differs from pristine (8 line(s))
+      - deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+      - deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
+      - deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse
+      + deb http://ports.ubuntu.com/ubuntu-ports jammy main restricted universe multiverse
+      + deb http://ports.ubuntu.com/ubuntu-ports jammy-updates main restricted universe multiverse
+      + deb http://ports.ubuntu.com/ubuntu-ports jammy-backports main restricted universe multiverse
+      ... 2 more (full diff: --review d, or diff.patch)
+      -> restore (r) or edit (e); fix APT sources before updating
+[system] /etc/cron.d/e2scrub_all differs from pristine (2 line(s))
+      - 30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_
+      + 30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/aarch64-linux-gnu/e2fsprogs/e2scrub_all
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+
+=== INFO - no action needed ===
+[apache2] 3 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/apache2/conf-available/php8.1-fpm.conf /etc/apache2/mods-available/php8.1.conf /etc/apache2/mods-available/php8.1.load
+[mysql] 4 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/mysql/debian-start /etc/mysql/mysql.cnf /etc/mysql/mysql.conf.d/mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+[system] 1 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/ld.so.conf.d/x86_64-linux-gnu.conf
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

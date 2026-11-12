@@ -1,0 +1,30 @@
+# ROUND 2 (2026-11-10, after the fix round): same answers as the round-1 file of the same name, plus the new
+# review question 'Also go through the N REVIEW item(s)? [y/N]' where noted.
+# (no change needed: the REVIEW question gets Enter = no)
+# V (verifier) 2026-11-10: NEW scripts, services round on cp-mint-svcplanted, like-for-like with rules-2026-10-21-svc.txt
+# (baseline, systemconfig, then the service scripts) - here: readme.sh (env), baseline.sh, systemconfig.sh, critical.sh,
+# with CP_AUTO=1 as start.sh runs them. README: admin cpuser (you), user ftpuser, ALL 13 services critical.
+set HARD=1500
+env CP_ADMINS=cpuser
+env CP_USERS=ftpuser
+env CP_SERVICES=ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid
+env CP_AUTO=1
+# systemconfig
+rule Extra ports the README needs                 =>
+rule REMOTE access to                             => n
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Remove ALL superuser                         => n
+# service scripts (README gives no special SSH/FTP/DB/web settings here)
+rule Does the README change any of these          => n
+rule Does the README or the                       => n
+rule Does the README require                      => n
+rule Test login - FTP username                    => ftpuser
+rule Password for ftpuser                         => Ftp-Us3r!pass
+rule Quarantine these phpinfo                     => y
+rule Triage the \d+ FIX NOW finding               => n
+rule \(END\)                                      => q
+
+step s0-readme bash readme.sh
+step s1-baseline bash services/baseline.sh
+step s3-sysconfig bash systemconfig.sh
+step s-critical bash services/critical.sh

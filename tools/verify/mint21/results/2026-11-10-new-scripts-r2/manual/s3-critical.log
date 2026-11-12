@@ -1,0 +1,17 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+
+[1;36m=== Critical services ===[0m
+  ? README answers not recorded yet. Run readme.sh now? [Y/n]: n
+  Names: ssh vsftpd mysql postgresql apache2 nginx php wordpress samba bind9 mail openvpn squid (or none)
+  Installed here: ssh vsftpd apache2
+  ? Critical services listed in the README (names, or none): 
+  [1;33m[!][0m No answer - type the README's critical services (e.g. OpenSSH), or: none
+  ? Critical services listed in the README (names, or none): 
+  [1;33m[!][0m No answer - type the README's critical services (e.g. OpenSSH), or: none
+  ? Critical services listed in the README (names, or none): 
+  [1;33m[!][0m No answer - type the README's critical services (e.g. OpenSSH), or: none
+  [1;33m[!][0m No critical services entered - nothing saved, nothing hardened.
+  [1;31m[TODO][0m critical.sh: the README's critical services were not entered - re-run sudo bash services/critical.sh (or readme.sh)
+
+[drive2] EXIT 1

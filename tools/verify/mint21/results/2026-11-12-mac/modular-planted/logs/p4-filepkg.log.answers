@@ -1,0 +1,15 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    7.3s] '? Remove all of these (e = choose per family)? [Y/n/e]:' -> 'y' (rule)
+[    9.9s] '? Remove these service packages (e = choose per family)? [y/N/e]:' -> 'e' (rule)
+[   12.4s] '? Remove apache2 (apache2 apache2-bin apache2-data apache2-utils)? [y/N/e]:' -> 'y' (rule)
+[   15.0s] '? Remove FTP servers (vsftpd)? [y/N/e]:' -> 'y' (rule)
+[   17.5s] '? Remove these too? [y/N/e]:' -> 'n' (rule)
+[   20.1s] '? Remove the OpenSSH server? Only if the README does not need SSH! [y/N]:' -> 'n' (rule)
+[   22.6s] '? Other packages to remove (names/globs, ?word = search), Enter = none:' -> '' (rule)
+[   25.9s] '? Purge these 29 package(s) (no desktop/critical package among them)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   34.6s] '? Run autoremove (67 unused dependencies, no desktop/critical package)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   39.4s] '? Stop + disable these 3 desktop service(s)? [y/N/e]:' -> 'y' (rule)
+[   43.8s] '? Stop + disable the SSH server? Only if the README does not need SSH! [y/N]:' -> 'n' (rule)
+[   47.3s] '? Delete these 4 media file(s) (moved to /root/cp-quarantine, restorable)? [Y/n/e]:' -> 'y' (rule)
+STATS prompts=13 rule=11 default=2 stall=0 wait=33.0s elapsed=47.4s
+EXIT 0

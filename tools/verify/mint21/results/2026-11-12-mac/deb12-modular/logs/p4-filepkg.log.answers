@@ -1,0 +1,17 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.9s] '? Remove all of these (e = choose per family)? [Y/n/e]:' -> 'y' (rule)
+[    8.6s] '? Remove these service packages (e = choose per family)? [y/N/e]:' -> 'e' (rule)
+[   11.1s] '? Remove apache2 (apache2 apache2-bin apache2-data apache2-utils libapache2-mod-dnssd)? [y/N/e]:' -> 'y' (rule)
+[   13.6s] '? Remove FTP servers (vsftpd)? [y/N/e]:' -> 'y' (rule)
+[   16.2s] '? Remove mail (exim4-base exim4-config exim4-daemon-light)? [y/N/e]:' -> '' (DEFAULT(Enter))
+[   18.7s] '? Remove these too? [y/N/e]:' -> 'n' (rule)
+[   21.2s] '? Remove the OpenSSH server? Only if the README does not need SSH! [y/N]:' -> 'n' (rule)
+[   23.8s] '? Other packages to remove (names/globs, ?word = search), Enter = none:' -> '' (rule)
+[   26.8s] '? Purge these 28 package(s) (no desktop/critical package among them)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   33.8s] '? Run autoremove (74 unused dependencies, no desktop/critical package)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   38.5s] '? Stop + disable these 1 server service(s) (e = each)? [y/N/e]:' -> 'y' (rule)
+[   41.2s] '? Stop + disable these 1 desktop service(s)? [y/N/e]:' -> 'y' (rule)
+[   43.9s] '? Stop + disable the SSH server? Only if the README does not need SSH! [y/N]:' -> 'n' (rule)
+[   47.5s] '? Delete these 4 media file(s) (moved to /root/cp-quarantine, restorable)? [Y/n/e]:' -> 'y' (rule)
+STATS prompts=15 rule=12 default=3 stall=0 wait=37.8s elapsed=47.7s
+EXIT 0

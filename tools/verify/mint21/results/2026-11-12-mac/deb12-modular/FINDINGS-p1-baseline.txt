@@ -1,0 +1,21 @@
+BASELINE FINDINGS   FIX NOW: 2   REVIEW: 2   info: 0      (2026-11-12 05:49, debian-12, pack: none)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[system] symlink no package owns: /etc/pam.d/gdm-smartcard -> /etc/alternatives/gdm-smartcard
+      -> check where it points; quarantine (q) if planted
+
+=== REVIEW - differs from the default; keep only what the README needs ===
+[system] /etc/login.defs differs from pristine (2 line(s))
+      - ENCRYPT_METHOD SHA512
+      + ENCRYPT_METHOD MD5
+      -> restore (r) or edit (e); systemconfig.sh also hardens this
+[system] config file not owned by root: 700 polkitd:root /etc/polkit-1/rules.d
+      -> fix (f) -> root
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

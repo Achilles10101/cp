@@ -1,0 +1,64 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'vsftpd' exists (/root/baseline/vsftpd)
+
+----- Baseline findings for vsftpd (full report: /root/baseline/vsftpd/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 conffile modified since install: /etc/vsftpd.conf (vsftpd)
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+!! B3 not owned by any package: -rw-r--r-- root:root 2026-11-12 05:54:56.0000 /etc/vsftpd.chroot_list
+## B4 permissions / ownership vs default
+!! B4 world-writable: 777 root:ftp /srv/ftp
+!! B4 differs from clean VM: /srv/ftp clean[755 root:ftp] live[777 root:ftp]
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+!! B5 vsftpd.service has drop-in(s): /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf  (check for ExecStart/User changes)
+## B6 listening sockets vs expected
+## B8 web / FTP content vs default (full list: /root/baseline/vsftpd/content.txt)
+## B9 snapshot of live state saved to /root/baseline/vsftpd/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+=== Starting vsftpd configuration ===
+
+[1/9] README-driven choices
+  ? Does the README require ANONYMOUS FTP? [y/N]: 
+  ? Do FTP users need to UPLOAD / write files (README)? [Y/n]: 
+  ? Force SSL/TLS for logins and data (plain-FTP clients will stop working)? [Y/n]: 
+  Chroot mode for local users (FTP1). vsftpd REFUSES logins when the chroot root is writable
+  by the user ('500 OOPS: refusing to run with writable root inside chroot()').
+    a) jail each user in /home/<user>/ftp (root-owned, 755) with a writable 'files' subfolder
+    b) jail users in their home and set allow_writeable_chroot=YES (keeps files where they are)
+  ? Choose a or b [b]: 
+  ? Passive port range (README may specify one) [40000-50000]: 
+
+[2/9] Setting permissions on /etc/vsftpd.conf...
+  [*] Backup: /root/cp-backups/20261112_061554/etc/vsftpd.conf
+[3/9] Creating self-signed SSL certificate...
+  + Certificate created
+[4/9] Updating /etc/vsftpd.conf with secure settings (in place)...
+  + Configuration updated with secure settings
+
+[5/9] Chroot in home with allow_writeable_chroot=YES (logins keep working)
+[6/9] Fixing FTP root directory permissions...
+  + /srv/ftp -> 755 root:ftp (contents: no world-write)
+
+[7/9] Auditing chroot_list / userlist / ftpusers...
+  [!] Users in /etc/vsftpd.chroot_list are NOT chrooted (chroot_local_user=YES inverts the list):
+        turret
+  ? Empty /etc/vsftpd.chroot_list so every user is chrooted? [Y/n]: 
+  [*] Backup: /root/cp-backups/20261112_061554/etc/vsftpd.chroot_list
+  [+] Emptied /etc/vsftpd.chroot_list
+[8/9] Configuring UFW firewall rules...
+  [+] UFW: allowed 21/tcp (no 'vsftpd' profile found)
+  + Allowed ports 40000:50000/tcp (passive mode)
+
+[9/9] Validating and restarting vsftpd service...
+  [+] Config test passed (test instance started cleanly)
+  [+] vsftpd restarted and active
+  [+] Anonymous login refused
+  ? Test login - FTP username (Enter to skip): ftpuser
+  Password for ftpuser: 
+  [+] FTPS login for ftpuser works
+
+=== vsftpd configuration complete! ===
+
+[drive2] EXIT 0

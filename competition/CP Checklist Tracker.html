@@ -6,121 +6,209 @@
 <title>CP Checklist</title>
 <style>
 :root{
-  --bg:#f6f4ee;--ink:#1c1e22;--muted:#7a7d83;--line:#e3dfd3;--chip:#ece8dc;
-  --accent:#b4540a;--accent-ink:#fff;--ok:#2c7a4b;
-  --code-bg:#1d2127;--code-ink:#ece9e1;
+  --bg:#fafafa;--ink:#141414;--dim:#8a8a8a;--rule:#d9d9d9;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono","Ubuntu Mono",monospace;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
-  :root{
-    --bg:#14161a;--ink:#e9e7e1;--muted:#8e949c;--line:#2b2f36;--chip:#242830;
-    --accent:#f0a64b;--accent-ink:#1a1203;--ok:#5cc58a;--code-bg:#0c0e11;
-    color-scheme:dark;
-  }
+  :root{--bg:#121212;--ink:#ececec;--dim:#7a7a7a;--rule:#2c2c2c;color-scheme:dark}
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:14.5px/1.7 var(--mono);-webkit-font-smoothing:antialiased}
 button,textarea{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button{all:unset;cursor:pointer;color:inherit;padding:0 4px}
+button:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:1px solid var(--ink);outline-offset:2px}
 
-.top{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 20px 0}
-.top-in{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:14px}
-.bar{position:relative;flex:1;height:6px;border-radius:9px;background:var(--line);overflow:hidden}
-.bar i{position:absolute;top:0;bottom:0}
-.b-done{background:var(--ok)} .b-later{background:var(--accent)}
-.count{font:13px var(--mono);color:var(--muted);white-space:nowrap}
-.tbtn{border:0;background:none;color:var(--muted);font-size:14px;padding:6px 8px;border-radius:8px;cursor:pointer}
-.tbtn:hover{color:var(--ink);background:var(--chip)}
+/* ---- document ---- */
+#doc{max-width:118ch;margin:0 auto;padding:18vh 18px 80vh 26px}
+body.nopen #doc{padding-bottom:calc(80vh + 36vh)}
 
-main{max-width:680px;margin:0 auto;padding:44px 20px 80px}
-.title{font-size:32px;line-height:1.2;font-weight:700;margin:0 0 26px;word-break:break-word}
-.title .cmd{font-size:.62em}
-.title .rest{display:block;margin-top:10px;font-size:15px;font-weight:400;color:var(--muted);line-height:1.45}
-.ctx{font:12px var(--mono);color:var(--muted);margin-bottom:12px}
-.later-tag{display:inline-block;font:12px var(--mono);color:var(--accent);margin-bottom:10px}
+.ln{display:grid;grid-template-columns:4ch 3ch minmax(0,1fr);column-gap:1.6ch}
+.n{text-align:right;color:var(--dim);opacity:.65;user-select:none}
+.st{color:var(--dim);user-select:none;white-space:pre}
+.st[data-st]{cursor:pointer}
+.st[data-st]:hover{color:var(--ink)}
+.tx{white-space:pre-wrap;overflow-wrap:anywhere;
+    padding-left:calc((var(--i,0) + var(--h,0)) * 1ch);text-indent:calc(var(--h,0) * -1ch)}
+.bl{min-height:1.7em}
 
-ul{list-style:none;margin:0;padding:0}
-ul ul{margin:2px 0 6px 18px;padding-left:16px;border-left:2px solid var(--line)}
-.step>label{display:flex;gap:14px;align-items:flex-start;padding:10px 6px;cursor:pointer;border-radius:10px}
-.step>label:hover{background:var(--chip)}
-.step input{flex:none;width:22px;height:22px;margin:3px 0 0;accent-color:var(--ok)}
-.step.on .txt{opacity:.45}
-.glabel{padding:14px 6px 4px;font-weight:650}
-.empty{color:var(--muted);margin:0}
+/* static rows: title + section dividers */
+.pre{opacity:.5}
+.pre .tx{white-space:nowrap;overflow:hidden}
 
-code.cmd{font:.88em/1.4 var(--mono);background:var(--code-bg);color:var(--code-ink);padding:3px 10px;border-radius:7px;white-space:pre-wrap;word-break:break-word;cursor:copy}
-code.cmd:hover{filter:brightness(1.25)}
-.rest{color:var(--muted);font-size:.9em}
-code.p{font:.88em var(--mono);background:var(--chip);padding:1px 6px;border-radius:5px;word-break:break-all}
-.blk{position:relative;margin:4px 6px 12px 42px;cursor:copy}
-.blk pre{margin:0;padding:14px 16px;background:var(--code-bg);color:var(--code-ink);border-radius:10px;overflow:auto;font:13.5px/1.55 var(--mono)}
-.blk:hover pre{filter:brightness(1.25)}
-.blk .cp{position:absolute;top:8px;right:10px;font:11px var(--mono);color:#9aa1ab}
-.title+.blk{margin-left:0}
+/* items: everything is muted unless it is the active one */
+.item{--o:.34;--bl:1.2px;position:relative;padding:4px 0;
+      opacity:var(--o);filter:blur(var(--bl));transition:opacity .15s,filter .15s}
+.item.fin{--o:.15}
+.item:hover{--o:.85;--bl:0px}
+.item.on{--o:1;--bl:0px}
+.item.on::before{content:"";position:absolute;left:-14px;top:0;bottom:0;width:2px;background:var(--ink)}
+.item.on .st{color:var(--ink)}
+body.noblur .item{--bl:0px}
 
-details{margin-top:22px;color:var(--muted);font-size:15px}
-details summary{cursor:pointer;width:max-content}
-details li{padding:4px 0}
+/* sub-lines you can tick, commands you can copy */
+.bm.t{cursor:pointer;padding:0 .5ch;margin:0 -.5ch}
+.bm.t:hover{background:rgba(127,127,127,.25)}
+.ln.tick .tx{opacity:.4}
+.c{cursor:copy}
+.c:hover,.c.hl{background:rgba(127,127,127,.25)}
+.blk{background:rgba(127,127,127,.07)}
+.blk.hl{background:rgba(127,127,127,.2)}
 
-.act{margin-top:40px}
-.done{display:block;width:100%;padding:16px;border:0;border-radius:14px;background:var(--accent);color:var(--accent-ink);font-size:18px;font-weight:650;cursor:pointer}
-.done:hover{filter:brightness(1.07)}
-.links{display:flex;justify-content:center;gap:6px;margin-top:14px}
-.link{border:0;background:none;color:var(--muted);font-size:15px;padding:8px 14px;border-radius:8px;cursor:pointer}
-.link:hover{color:var(--ink);background:var(--chip)}
-.link:disabled{opacity:.3;cursor:default}
-.big{font-size:32px;font-weight:700;margin:0 0 26px}
+/* status bar */
+#bar{position:fixed;left:0;right:0;bottom:0;height:30px;z-index:10;display:flex;align-items:center;gap:18px;
+     padding:0 16px;background:var(--bg);border-top:1px solid var(--rule);font-size:12px;color:var(--dim);white-space:nowrap;overflow:hidden}
+#msg{flex:1;color:var(--ink);overflow:hidden;text-overflow:ellipsis}
+#bar button{padding:0 2px}
 
-.ov{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.45);display:grid;place-items:center;padding:16px}
-.sheet{position:relative;width:100%;max-width:560px;max-height:88vh;overflow:auto;background:var(--bg);border-radius:16px;padding:46px 20px 20px}
-.x{position:absolute;top:10px;right:10px;border:0;background:none;color:var(--muted);font-size:18px;padding:6px 10px;border-radius:8px;cursor:pointer}
-.x:hover{background:var(--chip)}
-.ni{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;border:0;background:none;padding:8px 8px;border-radius:10px;cursor:pointer;font-size:15px;line-height:1.35}
-.ni:hover{background:var(--chip)}
-.ni.cur{background:var(--chip)}
-.ni .dot{flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font-size:11px;line-height:1;color:var(--bg)}
-.ni.done .dot{background:var(--ok);border-color:var(--ok)}
-.ni.skip .dot{border-style:dashed;color:var(--muted)}
-.ni.later .dot{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.ni.done .nt,.ni.skip .nt{opacity:.5}
-.ni .nt{flex:1;word-break:break-word}
-.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.sbtn{border:1px solid var(--line);background:none;border-radius:9px;padding:8px 14px;font-size:14.5px;cursor:pointer}
-.sbtn:hover{background:var(--chip)}
-#pad{width:100%;min-height:300px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:transparent;padding:12px 14px;font:14px/1.5 var(--mono)}
-.lbl{font:12px var(--mono);color:var(--muted);margin:18px 0 0}
+/* notes */
+#notes{position:fixed;left:0;right:0;bottom:30px;height:36vh;z-index:9;display:flex;flex-direction:column;
+       background:var(--bg);border-top:1px solid var(--ink)}
+.nh{display:flex;justify-content:space-between;padding:6px 16px 0;font-size:12px;color:var(--dim)}
+.nh span button{margin-left:10px}
+#pad{flex:1;resize:none;border:0;outline:0;background:transparent;font:14px/1.6 var(--mono);padding:6px 16px 12px}
 
-#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--code-bg);color:var(--code-ink);padding:8px 16px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:40}
-#toast.on{opacity:1}
-@media (max-width:600px){.title{font-size:26px}main{padding-top:28px}}
+@media (max-width:760px){.keys{display:none}#doc{padding-left:22px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-in">
-  <div class="bar"><i class="b-done" id="bDone"></i><i class="b-later" id="bLater"></i></div>
-  <span class="count" id="count"></span>
-  <button class="tbtn" data-act="list">List</button>
-  <button class="tbtn" data-act="notes">Notes</button>
-</div></header>
-<main id="main"></main>
-<div class="ov" id="ov" hidden><div class="sheet"><button class="x" data-act="close" aria-label="Close">✕</button><div id="ovBody"></div></div></div>
-<div id="toast" role="status"></div>
+<main id="doc"></main>
+<div id="notes" hidden>
+  <div class="nh"><span>notes</span><span><button data-act="copyPad">copy</button><button data-act="savePad">save</button><button data-act="notes">close</button></span></div>
+  <textarea id="pad" spellcheck="false" aria-label="Notes"></textarea>
+</div>
+<footer id="bar">
+  <span id="pos"></span>
+  <span id="msg" role="status"></span>
+  <span class="keys">j/k move · x done · s skip · n notes · b blur · click a command to copy</span>
+  <span><button data-act="notes">notes</button><button data-act="load">load</button><button data-act="reset">reset</button></span>
+</footer>
 <input type="file" id="file" accept=".txt,text/plain" hidden>
 
 <script type="text/plain" id="src">CP Linux Checklist
-* DO README!!!!
-* Forensics, DELETE FILES AFTER
-* Do README user/group modification
-   * Add users, create groups, set passwords the README asks for (usersandsudo.sh only removes unauthorized users and fixes admin rights)
-* Check the authorized administrator passwords given in the README
+==================== MAIN FLOW (modular: one script at a time, check the score after each) ====================
+* DO README!!!! Read the whole README: authorized admins/users (and their passwords), critical services, required software, users/groups to add, anything it says NOT to change
+   * Doing ClamAV from source (OPTIONAL at the end)? Start its download now so it is ready later
+* Forensics, DELETE FILES AFTER - answer every Forensics Question on the Desktop BEFORE anything is changed
+* Manual items - the MANUAL section below
+* Baseline: sudo bash services/baseline.sh (or cd services; sudo ./baseline.sh) - read-only scan, prints the findings (/root/baseline/FINDINGS.txt), then asks once "Go through the findings now? [y/N]" (SCRIPTS 1)
+* Category scripts, one at a time - each takes a score snapshot (or asks for a screenshot) first, so check the score after each:
+   1. sudo bash usersandsudo.sh - SCRIPTS 2
+   2. sudo bash systemconfig.sh - SCRIPTS 3
+   3. sudo bash fileandpackage.sh - SCRIPTS 4
+   4. sudo bash portandmisc.sh - SCRIPTS 5
+* Critical services: sudo bash services/critical.sh - SCRIPTS 6
+* Upgrades: sudo bash upgrades.sh - SCRIPTS 7
+* LAST - account expiry defaults, then the LOCKOUT POLICY (faillock, then nullok) - the LAST section below
+* Every script ends with "=== <script> finished - listed for you (N): ===" and a numbered list of what it found for you to act on (forbidden files, README decisions, fixes you declined)
+
+==================== SPEEDRUN (intro rounds: the same scripts in one go) ====================
+* sudo bash speedrun.sh - from inside the competition folder
+   * Starts the read-only baseline scan in the background, then stops once: do the Forensics Questions now (nothing has been changed yet), Enter
+   * Then starts apt-get update + the upgrade download in the background and runs usersandsudo.sh, baseline.sh --review, systemconfig.sh, fileandpackage.sh, portandmisc.sh, services/critical.sh, upgrades.sh - each asks its own questions
+   * Ends with the reminder that the lockout policy comes last (LAST section) and the time per step; each script ends with a list of what it found for you to act on
+   * Output of each step: /root/cp-state/logs/<step>.log; Ctrl-C stops it - run it again and finished steps are skipped (sudo bash speedrun.sh --reset forgets them)
+
+==================== MANUAL (after forensics, before the scripts) ====================
+* Do README user/group modification (usersandsudo.sh does most of it - do by hand only what it cannot)
+   * Add users, create groups, set passwords the README asks for (usersandsudo.sh creates missing README accounts, asks for the README's groups and removes unauthorized users / fixes admin rights - do by hand only what it could not)
+* Check the authorized administrator passwords given in the README (usersandsudo.sh warns about insecure ones and offers to change them)
    * Read every admin password the README lists
-   * Change any that stand out as insecure: blank, "password"/"123456"-style, same as the username, a plain dictionary word, short (under 10 characters), or the same as another user's
+   * Change any that stand out as insecure: blank, "password"/"123456"-style, same as the username, a plain dictionary word, short (under 12 characters), or the same as another user's
       * sudo passwd <user>
-      * New password must pass the policy systemconfig.sh sets: 10+ characters with upper, lower, digit and symbol
+      * New password must pass the policy systemconfig.sh sets: 12+ characters with upper, lower, digit and symbol
    * WRITE DOWN every password you change, including your own account's (sudo needs it)
+* Ensure services are legit (fileandpackage.sh asks about unwanted service packages, baseline B5/B6 lists unknown units/listeners)
+   * systemctl list-units --type=service --all
+* Disable CUPS - unless the README needs printing (fileandpackage.sh offers to remove it, default keep)
+   * sudo systemctl disable --now cups cups-browsed
+* Check cron (systemconfig.sh SYS10 lists cron files no package installed + all user crontabs, deletes obvious reverse shells - verify)
+   * sudo crontab -l
+   * crontab -l
+   * sudo ls /etc/cron.*
+   * cat /etc/crontab
+   * check /etc/init/ and /etc/init.d/
+* Verify package integrity
+   * Apt
+      * Check /etc/apt/sources.list (and /etc/apt/sources.list.d/) for suspicious repositories and make sure that is secure
+      * Check apt repository policy
+         * apt-cache policy
+      * Check apt trusted keys
+         * apt-key list
+* Secure session timeout - writes /etc/profile.d/timeout.sh (TMOUT=600, readonly TMOUT, export TMOUT) and makes it executable; new login shells pick it up
+printf 'TMOUT=600\nreadonly TMOUT\nexport TMOUT\n' | sudo tee /etc/profile.d/timeout.sh >/dev/null && sudo chmod +x /etc/profile.d/timeout.sh && sudo bash /etc/profile.d/timeout.sh && cat /etc/profile.d/timeout.sh
+* Secure grub - GRUB_TIMEOUT_STYLE=hidden and GRUB_TIMEOUT=5 in /etc/default/grub (replaces existing lines), then update-grub applies it
+sudo sed -i -E '/^#?[[:space:]]*GRUB_TIMEOUT(_STYLE)?=/d' /etc/default/grub && printf 'GRUB_TIMEOUT_STYLE=hidden\nGRUB_TIMEOUT=5\n' | sudo tee -a /etc/default/grub >/dev/null && sudo update-grub
+* Monitor processes (top)
+* Install updates for bash, kernel, LibreOffice, and service specified in the readme (upgrades.sh does this, or by hand:)
+   * Upgrades
+      * sudo apt update
+      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
+      * sudo apt upgrade $service
+      * sudo apt dist-upgrade -y
+* Enable automatic updates (systemconfig.sh now does Mint's Automation tab too - just verify here)
+   * Mint - Update Manager -> Edit -> Preferences ->
+      * Automation -> Select All
+      * Options -> Refresh the list of updates automatically
+      * Fix mirror -> restore default settings -> refresh (also the fix when apt-get update fails)
+* Disable root login (systemconfig.sh asks; verify: sudo grep '^root:!' /etc/shadow)
+   * sudo passwd -l root
+* Enforce permissions (automated in systemconfig.sh SYS9 - verify)
+   * chmod 640 /etc/shadow
+   * chown root:shadow /etc/shadow
+   * chmod 644 /etc/passwd
+   * chmod 644 /etc/group
+if you still have sudo:
+* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+
+==================== LAST (after every script - accounts all exist, PAM edits are done) ====================
+* Change account expiry defaults - EXPIRE=30 and INACTIVE=30 in /etc/default/useradd - AFTER every README user has been added
+   * Careful: EXPIRE is a date - a plain number means days since 1970, so accounts created AFTER this are already expired (users that exist are not affected)
+sudo sed -i -E '/^#?[[:space:]]*(EXPIRE|INACTIVE)=/d' /etc/default/useradd && printf 'EXPIRE=30\nINACTIVE=30\n' | sudo tee -a /etc/default/useradd >/dev/null && grep -E '^(EXPIRE|INACTIVE)=' /etc/default/useradd
+* LOCKOUT POLICY: implement an account lockout policy (faillock) - paste the whole block into a root-capable terminal (creates the 3 pam-configs files)
+sudo tee /usr/share/pam-configs/faillock >/dev/null <<'EOF'
+Name: Lockout on failed logins
+Default: no
+Priority: 0
+Auth-Type: Primary
+Auth:
+    [default=die] pam_faillock.so authfail
+EOF
+sudo tee /usr/share/pam-configs/faillock_reset >/dev/null <<'EOF'
+Name: Reset lockout on success
+Default: no
+Priority: 0
+Auth-Type: Additional
+Auth:
+    sufficient pam_faillock.so authsucc
+EOF
+sudo tee /usr/share/pam-configs/faillock_notify >/dev/null <<'EOF'
+Name: Notify on account lockout
+Default: no
+Priority: 1024
+Auth-Type: Primary
+Auth:
+    requisite pam_faillock.so preauth
+EOF
+   * Enable all three at once (same as running sudo pam-auth-update twice and selecting what we just added; keeps your other PAM edits)
+sudo pam-auth-update --enable faillock faillock_reset faillock_notify
+   * Set deny = 5, fail_interval = 900, unlock_time = 600 in /etc/security/faillock.conf (edits the lines in place, adds missing ones)
+for kv in "deny = 5" "fail_interval = 900" "unlock_time = 600"; do k=${kv%% *}; sudo sed -i -E "s/^[#[:space:]]*$k[[:space:]]*=.*/$kv/" /etc/security/faillock.conf; grep -qE "^$k[[:space:]]*=" /etc/security/faillock.conf || echo "$kv" | sudo tee -a /etc/security/faillock.conf >/dev/null; done; grep -E '^(deny|fail_interval|unlock_time)' /etc/security/faillock.conf
+   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
+      1. pam_faillock.so preauth is before pam_unix.so
+      2. pam_faillock.so authfail is after pam_unix.so
+      3. pam_faillock.so authsucc is after authfail
+grep -n 'pam_faillock\|pam_unix' /etc/pam.d/common-auth
+* Disable null password auth - AFTER the faillock step (pam-auth-update writes the pam_unix line)
+   * Edit /etc/pam.d/common-auth
+      * Remove the option nullok from the line with pam_unix.so try_first_pass (backup to /root/cp-backups/manual/, then edit in place):
+sudo mkdir -p /root/cp-backups/manual && sudo cp -a /etc/pam.d/common-auth /root/cp-backups/manual/ && sudo sed -i -E 's/[[:space:]]nullok(_secure)?([[:space:]]|$)/\2/' /etc/pam.d/common-auth && grep -n pam_unix /etc/pam.d/common-auth
+
+==================== OPTIONAL (slow, low yield - only when everything above is done) ====================
 * Check for rootkits
    * sudo apt install chkrootkit rkhunter
    * sudo chkrootkit
@@ -128,133 +216,54 @@ details li{padding:4px 0}
    * sudo rkhunter --propupd
    * sudo rkhunter -c --enable all --disable none
 * ClamAV:
-   * Install ClamAV from Web not APT
+   * Install ClamAV from Web not APT (start the download at the beginning of the round)
    * Go to /usr/local/etc
    * Rename all files to remove .sample from them (freshclam.conf.sample -> freshclam.conf)
    * Go into all config files & remove example from them
    * sudo freshclam
    * sudo clamscan -r /
-* Disable null password auth
-   * Edit /etc/pam.d/common-auth
-      * Remove the option nullok from the line with pam_unix.so try_first_pass
-* Enable automatic updates (systemconfig.sh now does Mint's Automation tab too - just verify here)
-   * Mint - Update Manager -> Edit -> Preferences -> 
-      * Automation -> Select All
-      * Options -> Refresh the list of updates automatically
-      * Fix mirror -> restore default settings -> refresh
-* Install updates for bash, kernel, LibreOffice, and service specified in the readme
-   * Upgrades
-      * sudo apt update
-      * sudo apt full-upgrade -y (enable automatic updates first in gui for mint)
-      * sudo apt upgrade $service
-      * sudo apt dist-upgrade -y
-      * sudo apt install libpam-tmpdir (test out)
-* Ensure services are legit 
-   * systemctl list-units --type=service --all
-* Disable root login (systemconfig.sh asks; verify: sudo grep '^root:!' /etc/shadow)
-   * sudo passwd -l root
-* Disable CUPS
-* Enforce permissions (automated in systemconfig.sh SYS9 - verify)
-   * chmod 640 /etc/shadow 
-   * chown root:shadow /etc/shadow
-   * chmod 644 /etc/passwd
-   * chmod 644 /etc/group
-* Check cron (systemconfig.sh SYS10 lists cron files no package installed + all user crontabs, deletes obvious reverse shells)
-   * sudo crontab -l
-   * crontab -l
-   * sudo ls /etc/cron.*
-   * cat /etc/crontab
-   * check /etc/init/ and /etc/init.d/
-* Secure grub
-   * Add to /etc/default/grub:
-      * GRUB_TIMEOUT_STYLE=hidden
-      * GRUB_TIMEOUT=5
-* Secure session timeout
-   * Set /etc/profile.d/timeout.sh
-      * TMOUT=600
-      * readonly TMOUT
-      * export TMOUT
-   * sudo chmod +x /etc/profile.d/timeout.sh
-   * sudo /etc/profile.d/timeout.sh
-* Change account expiry defaults
-   * Add to /etc/default/useradd
-      * EXPIRE=30
-      * INACTIVE=30
-* Verify package integrity
-   * Apt
-      * Check /etc/apt/sources.list for suspicious repositories and make sure that is secure
-      * Check apt repository policy
-         * apt-cache policy
-      * Check apt trusted keys
-         * apt-key list
-* Monitor processes (top)
-* Implement an account lockout policy
-   * Make /usr/share/pam-configs/faillock:
-Name: Lockout on failed logins
-Default: no
-Priority: 0
-Auth-Type: Primary
-Auth:
-    [default=die] pam_faillock.so authfail
-   * Make /usr/share/pam-configs/faillock_reset
-Name: Reset lockout on success
-Default: no
-Priority: 0
-Auth-Type: Additional
-Auth:
-    sufficient pam_faillock.so authsucc
-   * Run sudo pam-auth-update and select what we just added
-   * Make /usr/share/pam-configs/faillock_notify
-Name: Notify on account lockout
-Default: no
-Priority: 1024
-Auth-Type: Primary
-Auth:
-    requisite pam_faillock.so preauth
-   * Run sudo pam-auth-update and select what we just added
-   set following in /etc/security/faillock.conf:
-deny = 5
-fail_interval = 900
-unlock_time = 600
-   * After running pam-auth-update, open /etc/pam.d/common-auth and ensure:
-      1. pam_faillock.so preauth is before pam_unix.so
-      2. pam_faillock.so authfail is after pam_unix.so
-      3. pam_faillock.so authsucc is after authfail
-if you still have sudo:
-* Actually look through service config, try visiting, ensure is ssl if available, ls -la to check perms, try to think like an attacker
+* sudo apt install libpam-tmpdir (test out)
 
 ==================== SCRIPTS (everything below is automated - don't redo it by hand) ====================
-* Run all scripts from inside the competition folder, in this order. Backups of everything the scripts change: /root/cp-backups/<timestamp>/
-   1. sudo bash services/baseline.sh - BASELINE FIRST (docs/CP19 Service Research Findings.md, section B)
-      * Detection only; reports in /root/baseline/<svc>/report.txt, diffs in diff.patch
-      * Review every "!!" line and diff.patch (optional: baseline.sh --meld <svc>)
-   2. sudo bash usersandsudo.sh - enter the README's admins and normal users when nano opens
-      * Covers: removes unauthorized users, suspicious system users, sudo/admin/adm group membership (exact group names), UID 0 users (deletes the account - usermod can't), EMPTY passwords (you type a new one - write it down), chage 30/7/14 + forced password change on all other users, home dirs 750
+* /opt/CyberPatriot is the scoring engine - the scripts never touch it, never delete anything there
+* Run all scripts from inside the competition folder, in this order (speedrun.sh runs them in one go). Backups of everything the scripts change: /root/cp-backups/<timestamp>/
+   1. sudo bash services/baseline.sh - BASELINE FIRST (docs/CP19 Service Research Findings.md, section B); speedrun.sh starts it in the background
+      * Detection only; START HERE: /root/baseline/FINDINGS.txt (FIX NOW first, one line each + what to do); per service: reports in /root/baseline/<svc>/report.txt, diffs in diff.patch
+      * No arguments needed: after the scan it asks once "Go through the findings now (review: fix / quarantine / skip each)? [y/N]"; later, optional: sudo bash services/baseline.sh --review - FIX NOW first, then "Also go through the N REVIEW item(s)? [y/N]"; per finding a key + Enter (diff / restore / quarantine / skip ..., Enter alone = default); optional: baseline.sh --meld
+   2. sudo bash usersandsudo.sh - asks for the README itself on every run: click in the README page, Ctrl-A, Ctrl-C, paste (readme.sh is only its paste parser; nothing is saved for other scripts); insecure README passwords are flagged with an offer to change them
+      * Covers: removes unauthorized users (one list: y = all, n = none, e = each; homes backed up), hidden/suspicious system users, sudo/admin/adm group membership (exact group names, one list), UID 0 users (deletes the account - usermod can't), creates missing README accounts, one "Change it now? [Y/n]" per insecure README password, EMPTY password or new account (12+ characters, typed twice; Enter reuses the previous one; your own account defaults to n - write them down), the blanket "one password for all README users" only as an Extra [y/N], EMPTY passwords locked if still empty, chage 30/7/14 + forced password change on all other users (a separate [y/N] for passwd -e when vsftpd/dovecot/samba is installed - an expired password blocks those logins), home dirs 750, README groups (one line: "group: a b; group2: c")
       * It lists NOPASSWD / !authenticate per file and opens visudo -f on that exact file - remove them there
          * /etc/sudoers.d/mintupdate has 3 stock Linux Mint NOPASSWD lines - leave those
          * syslog in the adm group is stock - leave it
          * Any commands listed can be run without a password (ex: /bin/chmod)
          * Group lines are preceded by %
-   3. sudo bash systemconfig.sh
-      * Covers: UFW, unattended-upgrades / daily update check, Mint Update Manager automation, LightDM + GDM guest/autologin (incl. lightdm.conf.d drop-ins), UMASK 027, sysctl
+   3. sudo bash systemconfig.sh - README questions: firewall rules (detected daemons listed with a hint; Enter = none, e = decide each - usually e), extra ports, "Disable IPv6?" (Enter = yes), GRUB passwords; everything else is a [Y/n] with the right default
+      * Covers: UFW (lists the server daemons found installed/listening with the rule each needs - you choose - plus one "extra ports" question; no open/close loop), unattended-upgrades / daily update check, Mint Update Manager automation, LightDM + GDM guest/autologin (incl. lightdm.conf.d drop-ins), UMASK 027, sysctl
+      * Covers (Debian only): /etc/apt/sources.list is ALWAYS rewritten to <codename> main, <codename>-updates main, <codename>-security main (security.debian.org/debian-security); sources.list.d extras listed + moved aside (backed up); skipped on Ubuntu/Mint
       * Covers: /etc/login.defs PASS_MAX_DAYS 30, PASS_MIN_DAYS 7, PASS_WARN_AGE 14, ENCRYPT_METHOD SHA512, LOGIN_RETRIES 3
-      * Covers: common-password (pam_unix minlen=10 remember=5), pwquality.conf (minlen=10, u/l/d/ocredit=-1, dictcheck, usercheck)
+      * Covers: common-password (pam_unix minlen=12 remember=5; pam_pwquality retry=3 minlen=12), pwquality.conf (minlen=12, u/l/d/ocredit=-1, dictcheck, usercheck)
       * Covers: common-auth "requisite pam_deny.so" + pam_exec check, sudoers Defaults !env_reset / env_keep PATH removal, sudo.conf
       * Covers: limits.conf, apparmor/auditd, grub.cfg perms + 40_custom passwords, shadow/passwd/group perms, root lock, SUID/SGID on common binaries, ACLs, gshadow, system account shells, aliases, /etc/hosts, ld.so.preload, cron
    4. sudo bash fileandpackage.sh - hacking tools / unwanted packages + services, network shares, media files, full SUID/SGID scan
-      * [5] lists media in home/data folders, planted media in system folders (files no package installed), then other files (look for passwords.txt-style files) - it only LISTS, delete by hand
-      * Asks about every package family it finds (y = whole family, n = keep, e = each package), then lets you add your own (names or globs; "?word" searches)
-      * Shows everything apt would remove with your list BEFORE removing; then purges, re-checks each package with dpkg-query, runs autoremove, purges leftover configs, and re-scans
+      * "Remove" list (hacking tools, remote access, P2P, games incl. AisleRiot; Enter = remove all, e = choose per family/package); SERVICE families (apache2, vsftpd, samba, mail ...) in their own list, Enter = keep, each with a hint (installed / running / listening on :port) - remove what the README does not need; the OpenSSH server gets its own [y/N]; desktop defaults and review items: Enter = keep; then lets you add your own (names or globs; "?word" searches)
+      * Shows everything apt would remove with your list BEFORE removing; then purges, re-checks each package with dpkg-query, runs autoremove, purges leftover configs, and re-scans (the purge asks [y/N] when the preview takes a desktop/metapackage or a service package you did not choose)
       * Answer n for anything the README lists as a critical service (SERVICE families default to n)
+      * [5] media in home/data folders and planted media in system folders (files no package installed): Enter moves them to /root/cp-quarantine (restorable); passwords.txt-style files and other files are only listed - delete by hand what the README does not need
       * sudo bash fileandpackage.sh --scan = report only, removes nothing
+      * [5b] also searches the whole disk for pyrdp (pip/pipx/git installs that dpkg can't see, same filesystem pass) and offers to uninstall + quarantine it: one [Y/n]
       * Removing packages by hand: check with dpkg, not apt (apt remove X only removes the package named X)
          * Find: dpkg -l | grep -i <name>   (read column 2, the package name; "ii" = installed, "rc" = removed but config left)
          * Remove: sudo apt-get purge <every package from that list>, then sudo apt-get autoremove --purge
          * Verify: dpkg-query -W -f='${db:Status-Abbrev} ${Package}\n' '<name>*'   (no output or "rc" = gone)
-   5. sudo bash portandmisc.sh - listening ports, lynis, nmap (option 3 installs nmap and offers to remove it again after the scan - say y, nmap is a scored hacking tool)
-   6. Service scripts in services/ - only for the README's critical services: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
-      * Every service script refuses to run until that service has a baseline
-      * ssh.sh lists every ~/.ssh/authorized_keys file - check for unknown users' keys</script>
+   5. sudo bash portandmisc.sh - no menu: every listening port with its process/package/unit; backdoor-looking listeners are offered for stop + disable, services (with state and ports as hints; Enter = keep, SSH its own [y/N]) too, unknown ones are listed; then one optional question (l = lynis in the background, n = nmap localhost scan - nmap is a scored hacking tool, it is purged right after; Enter = skip)
+      * Flags: --scan = report only, --lynis = only lynis in the background, --nmap = only the nmap scan
+   6. sudo bash services/critical.sh - detects the services installed here and asks for each: "Run <svc>.sh (the README must list it as critical)? [y/N]" (shows installed / active / listening :port), then runs them in a safe order (or run one by hand: sudo bash services/<svc>.sh)
+      * Service scripts in services/ - only for the README's critical services: ssh, vsftpd, apache2, nginx, php, mysql, postgresql, samba, bind9, mail, wordpress, openvpn, squid
+      * Each asks its own README questions (one "Does the README change any of these?", Enter = no; mail.sh first asks whether MAIL is critical); each remembers only its own answers - <script> --reask to change them
+      * Every service script refuses to run until that service has a baseline (it scans the service itself when missing)
+      * mail.sh asks whether the README needs POP3; if not it purges dovecot-pop3d, drops pop3 from `protocols =` and closes ports 110/995 in UFW
+      * ssh.sh lists every ~/.ssh/authorized_keys file - check for unknown users' keys (root's are removed automatically)
+   7. sudo bash upgrades.sh - lists the apt repositories (non-official ones -> warning, listed), shows what the full-upgrade installs (notable packages, anything it would remove), one y/N, then installs keeping your hardened config files (--force-confold); uses the upgrades speedrun.sh downloaded when they are there; official = known Ubuntu/Mint/Debian hosts only</script>
 <script>
 (function(){
 'use strict';
@@ -265,261 +274,253 @@ function lget(k){try{return localStorage.getItem(k)}catch(e){return mem[k]===und
 function lset(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
 function ldel(k){try{localStorage.removeItem(k)}catch(e){delete mem[k]}}
 
-let S={status:{},sub:{},notes:{},pad:''};
+/* ---------- state (same storage key as before, so earlier progress carries over) ---------- */
+let S={status:{},sub:{},pad:'',curId:null,noblur:false};
 try{const o=JSON.parse(lget(KEY)||'{}');if(o&&typeof o==='object')Object.assign(S,o)}catch(e){}
+if(!S.status||typeof S.status!=='object')S.status={};
+if(!S.sub||typeof S.sub!=='object')S.sub={};
+for(const k in S.status)if(S.status[k]!=='done'&&S.status[k]!=='skip')delete S.status[k];
 function save(){lset(KEY,JSON.stringify(S))}
 
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function hash(s){s=s.toLowerCase().replace(/\s+/g,' ').trim();let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return (h>>>0).toString(36)}
-let toastT;
-function toast(m,ms){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),ms||1400)}
+let msgT;
+function flash(m,ms){const e=$('#msg');e.textContent=m;clearTimeout(msgT);msgT=setTimeout(()=>{e.textContent=''},ms||1400)}
 function copyText(t){
   const fb=()=>{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()};
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).catch(fb)}else fb();
 }
 
-/* ---------- parsing the .txt outline ---------- */
+/* ---------- parsing the .txt ----------
+   Every line of the file is kept, in order. Lines are grouped into items:
+   each top-level "* " line, plus the numbered steps under a bullet whose children are all numbered. */
 const CMD=/^(sudo|chmod|chown|chgrp|systemctl|service|apt|apt-get|apt-cache|apt-key|dpkg|dpkg-query|crontab|cat|ls|passwd|freshclam|clamscan|chkrootkit|rkhunter|nano|visudo|bash|sh|top|htop|ufw|nmap|lynis|grep|find|journalctl|ss|netstat|pam-auth-update|update-grub|su|echo|mkdir|rm|mv|cp)(\s|$)/;
 const CFG=/^([A-Z][A-Z0-9_]*=\S*|(readonly|export)\s+[A-Z_]+)$/;
 const NOTE=/^(covers\b|detection only|any commands listed|group lines)/i;
-const isBullet=l=>/^\s*(?:[*•–-]|\d+[.)])\s+/.test(l);
+const BUL=/^\s*([*•–-]|\d+[.)])\s+/;
 
-function parseDivider(raw){
-  let t=raw.replace(/^=+\s*/,'').replace(/\s*=+$/,'').replace(/:$/,'').trim(),note='';
-  const m=t.match(/^(.*?)\s*\((.*)\)$/);if(m){t=m[1];note=m[2]}
-  return {name:t.charAt(0).toUpperCase()+t.slice(1),note};
-}
-function finish(title,cards,dividers){
-  // config-only children -> one copyable block
-  (function merge(n){n.children.forEach(merge);
-    if(n.children.length&&n.children.every(c=>!c.children.length&&!c.code&&CFG.test(c.text))){n.code=(n.code||[]).concat(n.children.map(c=>c.text));n.children=[]}
-  })({children:cards});
-  // numbered sub-lines become their own cards
-  const out=[];
-  cards.forEach(c=>{
-    const k=c.children;
-    if(k.length>=2&&k.every(x=>/^\d+[.)]\s+/.test(x.text))){
-      c.children=[];out.push(c);
-      k.forEach(x=>{x.text=x.text.replace(/^\d+[.)]\s+/,'');x.parent=c.text;x.ctx=c.ctx;out.push(x)});
-    }else out.push(c);
-  });
-  cards=out;
-  (function classify(n){n.children.forEach(classify);
-    if(!n.children.length)n.kind=NOTE.test(n.text)?'note':'step';
-    else n.kind=n.children.some(c=>c.kind!=='note')?'group':'step';
-  })({children:cards});
-  const seenCards={};
-  cards.forEach(c=>{
-    let h=hash((c.parent?c.parent+'>':'')+c.text);const k=seenCards[h]=(seenCards[h]||0)+1;
-    c.id=k>1?h+'#'+k:h;
-    const seen={};
-    (function assign(n,prefix){n.children.forEach(ch=>{
-      const hh=prefix+'/'+hash(ch.text);const kk=seen[hh]=(seen[hh]||0)+1;
-      ch.id=kk>1?hh+'#'+kk:hh;assign(ch,ch.id);
-    })})(c,c.id);
-    c.steps=[];c.notes=[];
-    (function w(n){n.children.forEach(ch=>{if(ch.kind==='step')c.steps.push(ch.id);if(ch.kind==='note')c.notes.push(ch.text);w(ch)})})(c);
-  });
-  return {title,cards,dividers};
-}
-function build(src){
-  const lines=src.replace(/\r\n?/g,'\n').replace(/\t/g,'    ').split('\n');
-  let i0=0,title='Checklist';
-  while(i0<lines.length&&!lines[i0].trim())i0++;
-  if(i0<lines.length&&!isBullet(lines[i0])){title=lines[i0].trim();i0++}
-  const cards=[],dividers=[],placed=new Set();
-  let stack=[],last=null,codeActive=false,ctx='';
-  const nextNonBlank=i=>{for(let j=i+1;j<lines.length;j++)if(lines[j].trim())return j;return -1};
-  for(let i=i0;i<lines.length;i++){
-    const raw=lines[i].replace(/\s+$/,'');
-    if(!raw.trim()){codeActive=false;continue}
-    const indent=raw.match(/^ */)[0].length, bullet=isBullet(raw);
-    if(!bullet&&(indent===0||codeActive)){
-      if(!codeActive&&indent===0){
-        const nx=nextNonBlank(i);
-        const single=i+1>=lines.length||!lines[i+1].trim()||isBullet(lines[i+1]);
-        const div=/^=+/.test(raw)||(single&&/:$/.test(raw)&&nx>=0&&isBullet(lines[nx])&&/^\S/.test(lines[nx]));
-        if(div){const d=parseDivider(raw);dividers.push(d);ctx=d.name+(d.note?' - '+d.note:'');placed.add(i);stack=[];last=null;continue}
-      }
-      if(last){(last.code=last.code||[]).push(raw);codeActive=true;placed.add(i)}
-      continue;
-    }
-    const text=raw.trim().replace(/^[*•–-]\s+/,'');
-    const node={text,children:[],code:null,ctx};
-    placed.add(i);
-    while(stack.length&&stack[stack.length-1].indent>=indent)stack.pop();
-    if(stack.length)stack[stack.length-1].node.children.push(node);else cards.push(node);
-    stack.push({indent,node});last=node;codeActive=false;
-  }
-  // failsafe: any line that did not land anywhere becomes a visible card instead of vanishing
-  const orph=[];
-  for(let i=i0;i<lines.length;i++)if(lines[i].trim()&&!placed.has(i))orph.push(lines[i].trim());
-  if(orph.length)cards.push({text:'Other lines in the checklist',ctx:'',children:orph.map(t=>({text:t,children:[],code:null})),code:null});
-  return finish(title,cards,dividers);
-}
-function buildRaw(src){ // last resort: every non-empty line is its own card
-  const ls=src.replace(/\r\n?/g,'\n').split('\n').map(l=>l.trim()).filter(Boolean);
-  return finish('Checklist',ls.map(t=>({text:t.replace(/^[*•–-]\s+/,''),children:[],code:null,ctx:''})),[]);
-}
-
-/* ---------- text -> html ---------- */
-const PATH=/(^|[\s(])(~?\/[\w.\-*\/<>$~%]*[\w*\/>$])/g;
-function inline(t){
-  let out='',last=0,m;PATH.lastIndex=0;
-  while((m=PATH.exec(t))){const st=m.index+m[1].length;out+=esc(t.slice(last,st))+'<code class="p">'+esc(m[2])+'</code>';last=st+m[2].length}
-  return out+esc(t.slice(last));
-}
-function splitCmd(t){
+// splits a line into plain text and copyable commands without altering a single character
+function segsOf(t){
   let pre='',s=t;
   const n=s.match(/^(Run|Then run|Execute|Find:|Remove:|Verify:)\s+/i);
   if(n){pre=n[0];s=s.slice(n[0].length)}
-  if(!(CMD.test(s)||/^[A-Z][A-Z0-9_]*=\S/.test(s)||/^(readonly|export)\s+[A-Z_]+$/.test(s)))return null;
+  if(!(CMD.test(s)||/^[A-Z][A-Z0-9_]*=\S/.test(s)||/^(readonly|export)\s+[A-Z_]+$/.test(s)))return [{s:t}];
   const m=s.slice(1).search(/ - | \(| = | and | then | — /);
-  let cmd=m<0?s:s.slice(0,m+1),rest=m<0?'':s.slice(m+1);
-  const tc=cmd.match(/[,;]\s*$/);if(tc){rest=tc[0].trim()+rest;cmd=cmd.slice(0,tc.index)}
-  cmd=cmd.trim();if(!cmd)return null;
-  rest=rest.replace(/^\s*(-|=|—)\s+/,'').trim();
-  return {pre,cmd,rest};
-}
-let clips=[];
-function line(t){
-  const c=splitCmd(t);
-  if(!c)return inline(t);
-  clips.push(c.cmd);
-  let restH='';
-  if(c.rest){
-    const m=c.rest.match(/^([,;]?\s*then\s+)(.+)$/i);
-    restH=(m&&splitCmd(m[2]))?' <span class="rest">'+esc(m[1].trim())+'</span> '+line(m[2]):' <span class="rest">'+inline(c.rest)+'</span>';
+  let cmd=m<0?s:s.slice(0,m+1);
+  cmd=cmd.slice(0,cmd.length-cmd.match(/[,;\s]*$/)[0].length);
+  if(!cmd)return [{s:t}];
+  const after=s.slice(cmd.length),out=[];
+  if(pre)out.push({s:pre});
+  out.push({c:cmd});
+  if(after){
+    const mm=after.match(/^(\s*[,;]?\s*then\s+)(.+)$/i);
+    if(mm){const sub=segsOf(mm[2]);if(sub.some(x=>x.c!==undefined)){out.push({s:mm[1]});return out.concat(sub)}}
+    out.push({s:after});
   }
-  return esc(c.pre)+'<code class="cmd" data-clip="'+(clips.length-1)+'" title="Click to copy">'+esc(c.cmd)+'</code>'+restH;
-}
-function codeBlk(n){
-  if(!n.code||!n.code.length)return '';
-  clips.push(n.code.join('\n'));
-  return '<div class="blk" data-clip="'+(clips.length-1)+'" title="Click to copy"><pre>'+esc(n.code.join('\n'))+'</pre><span class="cp">copy</span></div>';
-}
-function renderNode(n){
-  if(n.kind==='note')return '';
-  if(n.kind==='group')return '<li><div class="glabel">'+line(n.text)+'</div>'+codeBlk(n)+'<ul>'+n.children.map(renderNode).join('')+'</ul></li>';
-  const on=!!S.sub[n.id];
-  return '<li class="step'+(on?' on':'')+'"><label><input type="checkbox" data-sub="'+n.id+'"'+(on?' checked':'')+'><span class="txt">'+line(n.text)+'</span></label>'+codeBlk(n)+'</li>';
+  return out;
 }
 
-/* ---------- state ---------- */
-let DATA=null,cur=0,complete=false,srcText='',fh=null,lastMod=0;
-const embedded=()=>$('#src').textContent.trim();
-const fin=c=>S.status[c.id]==='done'||S.status[c.id]==='skip';
-const allFinished=()=>DATA.cards.length>0&&DATA.cards.every(fin);
-function nextIdx(from){
-  const n=DATA.cards.length;
-  for(let k=1;k<=n;k++){const j=(from+k)%n;if(!S.status[DATA.cards[j].id])return j}
-  for(let k=1;k<n;k++){const j=(from+k)%n;if(S.status[DATA.cards[j].id]==='later')return j}
-  return -1;
+function parse(src){
+  const L=src.replace(/\r\n?/g,'\n').replace(/\t/g,'    ').split('\n').map(l=>l.replace(/\s+$/,''));
+  const isB=l=>BUL.test(l);
+  const nextNB=i=>{for(let j=i+1;j<L.length;j++)if(L[j].trim())return j;return -1};
+  while(L.length&&!L[L.length-1].trim())L.pop();
+  const rows=[];let last=false,codeActive=false,first=true,title='Checklist';
+  for(let i=0;i<L.length;i++){
+    const raw=L[i],n=i+1;
+    if(!raw.trim()){rows.push({n,type:'blank'});codeActive=false;continue}
+    const indent=raw.match(/^ */)[0].length,bm=raw.match(BUL);
+    if(first){first=false;if(!bm){title=raw.trim();rows.push({n,type:'title',raw:title,indent:0});continue}}
+    if(!bm&&(indent===0||codeActive)){
+      if(!codeActive&&indent===0){
+        const nx=nextNB(i);
+        const single=i+1>=L.length||!L[i+1].trim()||isB(L[i+1]);
+        const div=/^=+/.test(raw)||(single&&/:$/.test(raw)&&nx>=0&&isB(L[nx])&&/^\S/.test(L[nx]));
+        if(div){rows.push({n,type:'divider',raw:raw.trim(),indent:0});last=false;continue}
+      }
+      if(last){rows.push({n,type:'code',raw,indent});codeActive=true;continue}
+      rows.push({n,type:'text',raw:raw.trim(),text:raw.trim(),indent,orphan:true});continue;
+    }
+    rows.push({n,type:bm?'bullet':'text',raw,indent,tok:bm?bm[1]:'',text:bm?raw.slice(bm[0].length):raw.trim()});
+    last=true;codeActive=false;
+  }
+  const isNode=r=>r.type==='bullet'||(r.type==='text'&&!r.orphan);
+
+  // item starts
+  const tops=[];
+  rows.forEach((r,i)=>{if(r.type==='bullet'&&r.indent===0){r.start=true;tops.push(i)}});
+  tops.forEach(t=>{
+    let e=t+1;
+    while(e<rows.length&&!(rows[e].type==='bullet'&&rows[e].indent===0)&&rows[e].type!=='divider'&&rows[e].type!=='title')e++;
+    let mi=1e9;for(let j=t+1;j<e;j++)if(isNode(rows[j]))mi=Math.min(mi,rows[j].indent);
+    const kids=[];for(let j=t+1;j<e;j++)if(isNode(rows[j])&&rows[j].indent===mi)kids.push(rows[j]);
+    if(kids.length>=2&&kids.every(k=>k.type==='bullet'&&/^\d/.test(k.tok)))kids.forEach(k=>{k.start=true;k.parent=rows[t].text});
+  });
+
+  // tickable sub-lines: leaf bullets that are not informational notes
+  rows.forEach((r,i)=>{
+    if(r.type!=='bullet'||r.start||NOTE.test(r.text))return;
+    let j=i+1;while(j<rows.length&&!isNode(rows[j]))j++;
+    if(j>=rows.length||rows[j].indent<=r.indent)r.tickable=true;
+  });
+
+  // copy groups: a code block copies whole, a run of CONFIG=value lines copies whole
+  const clips=[],addClip=t=>clips.push(t)-1;
+  for(let i=0;i<rows.length;){
+    const r=rows[i];
+    if(r.type==='code'){
+      let j=i;while(j<rows.length&&rows[j].type==='code')j++;
+      const c=addClip(rows.slice(i,j).map(x=>x.raw).join('\n'));
+      for(let k=i;k<j;k++)rows[k].clip=c;i=j;continue;
+    }
+    if(r.type==='bullet'&&!r.start&&CFG.test(r.text)){
+      let j=i;while(j<rows.length&&rows[j].type==='bullet'&&!rows[j].start&&rows[j].indent===r.indent&&CFG.test(rows[j].text))j++;
+      if(j-i>=2){const c=addClip(rows.slice(i,j).map(x=>x.text).join('\n'));for(let k=i;k<j;k++){rows[k].clip=c;rows[k].cfg=true}}
+      i=j;continue;
+    }
+    i++;
+  }
+  rows.forEach(r=>{
+    if(isNode(r)&&!r.cfg){r.segs=segsOf(r.text);r.segs.forEach(g=>{if(g.c!==undefined)g.k=addClip(g.c)})}
+  });
+
+  // group rows into items; dividers, the title and stray lines stay outside
+  const items=[],out=[],seen={};let cur=null,pend=[];
+  const flush=()=>{pend.forEach(b=>out.push({row:b}));pend=[]};
+  rows.forEach(r=>{
+    if(r.type==='blank'){pend.push(r);return}
+    if(r.start){
+      flush();
+      const base=hash((r.parent?r.parent+'>':'')+r.text);
+      const k=seen[base]=(seen[base]||0)+1;
+      cur={id:k>1?base+'#'+k:base,k:items.length,text:r.text,rows:[r],subSeen:{}};
+      items.push(cur);out.push({item:cur});return;
+    }
+    if(r.type==='divider'||r.type==='title'){flush();cur=null;out.push({row:r});return}
+    if(cur){pend.forEach(b=>cur.rows.push(b));pend=[];cur.rows.push(r)}
+    else{flush();out.push({row:r})}
+  });
+  flush();
+  items.forEach(it=>{
+    it.rows.forEach(r=>{
+      if(!r.tickable)return;
+      const h=it.id+'/'+hash(r.text),c=it.subSeen[h]=(it.subSeen[h]||0)+1;
+      r.sid=c>1?h+'#'+c:h;
+    });
+    delete it.subSeen;
+  });
+  return {title,items,out,clips};
 }
-function setCur(i){cur=Math.max(0,Math.min(DATA.cards.length-1,i));S.curId=DATA.cards[cur].id;save()}
 
 /* ---------- render ---------- */
-function renderHead(){
-  let done=0,later=0;const total=DATA.cards.length;
-  DATA.cards.forEach(c=>{const s=S.status[c.id];if(s==='done'||s==='skip')done++;else if(s==='later')later++});
-  const p=total?100/total:0;
-  $('#bDone').style.cssText='left:0;width:'+(done*p)+'%';
-  $('#bLater').style.cssText='left:'+(done*p)+'%;width:'+(later*p)+'%';
-  $('#count').textContent=done+' / '+total;
-}
-function renderMain(){
-  clips=[];
-  const m=$('#main');
-  if(!DATA.cards.length){m.innerHTML='<p class="empty">No items found.</p>';return}
-  if(complete){m.innerHTML='<h1 class="big">All done.</h1><div class="links"><button class="link" data-act="review">Review</button></div>';return}
-  const c=DATA.cards[cur],st=S.status[c.id];
-  let h=(c.ctx?'<div class="ctx">'+esc(c.ctx)+'</div>':'')+(st==='later'?'<div class="later-tag">come back</div>':'')+'<h1 class="title">'+line(c.text)+'</h1>'+codeBlk(c);
-  if(c.children.length)h+='<ul>'+c.children.map(renderNode).join('')+'</ul>';
-  if(c.notes.length)h+='<details><summary>More ('+c.notes.length+')</summary><ul>'+c.notes.map(t=>'<li>'+line(t)+'</li>').join('')+'</ul></details>';
-  h+='<div class="act">';
-  if(st==='done'||st==='skip')h+='<button class="done" data-act="next">Next</button><div class="links"><button class="link" data-act="prev"'+(cur===0?' disabled':'')+'>Back</button><button class="link" data-act="reopen">Reopen</button></div>';
-  else h+='<button class="done" data-act="done">Done</button><div class="links"><button class="link" data-act="prev"'+(cur===0?' disabled':'')+'>Back</button><button class="link" data-act="later">Later</button><button class="link" data-act="skip">Skip</button></div>';
-  m.innerHTML=h+'</div>';
-}
-function render(){renderHead();renderMain();if(!$('#ov').hidden&&ovView==='list')renderOv()}
-
-/* ---------- actions ---------- */
-function go(d){complete=false;setCur(cur+d);render();window.scrollTo(0,0)}
-function mark(status){
-  if(complete)return;
-  S.status[DATA.cards[cur].id]=status;save();
-  const j=nextIdx(cur);
-  if(j<0){if(allFinished())complete=true}else setCur(j);
-  render();window.scrollTo(0,0);
-}
-
-/* ---------- overlay: list / notes ---------- */
-let ovView='';
-const PROV=[
-  {n:'ChatGPT',u:'https://chatgpt.com/',q:'https://chatgpt.com/?q='},
-  {n:'Claude',u:'https://claude.ai/new',q:'https://claude.ai/new?q='},
-  {n:'Gemini',u:'https://gemini.google.com/app'},
-  {n:'Perplexity',u:'https://www.perplexity.ai/',q:'https://www.perplexity.ai/search?q='}
-];
-function renderOv(){
-  const b=$('#ovBody');
-  if(ovView==='list'){
-    b.innerHTML=DATA.cards.map((c,i)=>{const st=S.status[c.id];
-      return '<button class="ni'+(i===cur&&!complete?' cur':'')+(st?' '+st:'')+'" data-go="'+i+'"><span class="dot">'+(st==='done'?'✓':st==='later'?'⚑':st==='skip'?'–':'')+'</span><span class="nt">'+esc(c.text)+'</span></button>'}).join('')+
-      '<div class="row"><button class="sbtn" data-act="load">Load .txt</button><button class="sbtn" data-act="reset" id="resetBtn">Reset</button></div>';
-    const el=b.querySelector('.cur');if(el)el.scrollIntoView({block:'center'});
-  }else{
-    b.innerHTML='<textarea id="pad" spellcheck="false" aria-label="Notes"></textarea>'+
-      '<div class="row"><button class="sbtn" data-act="copyPad">Copy</button><button class="sbtn" data-act="savePad">Save</button></div>'+
-      '<p class="lbl">Ask AI about this step</p><div class="row" style="margin-top:8px">'+PROV.map((p,i)=>'<button class="sbtn" data-ai="'+i+'">'+p.n+'</button>').join('')+'</div>';
-    const pad=$('#pad');pad.value=S.pad||'';
+const GL={done:'[x]',skip:'[-]','':'[ ]'};
+const SYM=/^[*•–-]$/;
+function rowHTML(r,it){
+  const num='<span class="n">'+r.n+'</span>';
+  const st=r.start?'<span class="st" data-st="'+it.k+'" title="done / not done">'+GL[S.status[it.id]||'']+'</span>':'<span class="st"></span>';
+  if(r.type==='blank')return '<div class="ln bl">'+num+'<span class="st"></span><span class="tx"></span></div>';
+  if(r.type==='title'||r.type==='divider')return '<div class="ln pre">'+num+st+'<span class="tx">'+esc(r.raw)+'</span></div>';
+  if(r.type==='code')return '<div class="ln">'+num+st+'<span class="tx c blk" data-clip="'+r.clip+'" style="--i:'+r.indent+'">'+esc(r.raw.slice(r.indent))+'</span></div>';
+  const on=r.tickable&&S.sub[r.sid];
+  let inner='';
+  if(r.cfg)inner='<span class="c" data-clip="'+r.clip+'">'+esc(r.text)+'</span>';
+  else if(r.segs)inner=r.segs.map(g=>g.c!==undefined?'<span class="c" data-clip="'+g.k+'">'+esc(g.c)+'</span>':esc(g.s)).join('');
+  else inner=esc(r.text);
+  let lead='',h=0;
+  if(r.type==='bullet'){
+    h=r.tok.length+1;
+    lead=r.tickable
+      ?'<span class="bm t" data-sub="'+esc(r.sid)+'" data-tok="'+esc(r.tok)+'">'+esc(on&&SYM.test(r.tok)?'x':r.tok)+'</span> '
+      :'<span class="bm">'+esc(r.tok)+'</span> ';
   }
+  return '<div class="ln'+(on?' tick':'')+'">'+num+st+'<span class="tx" style="--i:'+r.indent+';--h:'+h+'">'+lead+inner+'</span></div>';
 }
-function openOv(v){ovView=v;renderOv();$('#ov').hidden=false;if(v==='notes')$('#pad').focus()}
-function closeOv(){$('#ov').hidden=true}
-function stepPrompt(){const c=DATA.cards[cur];return 'On Ubuntu/Linux Mint, explain this system-hardening step and the exact commands to do it safely: '+c.text}
-function openAI(i){
-  const p=PROV[i],pr=stepPrompt();let url=p.u;
-  if(p.q)url=p.q+encodeURIComponent(pr);else{copyText(pr);toast('Prompt copied')}
-  if(!window.open(url,'cp-ai','popup=yes,width=520,height=860'))toast('Popup blocked');
+function buildDOM(){
+  $('#doc').innerHTML=DATA.out.map(o=>o.item
+    ?'<section class="item'+(fin(o.item)?' fin':'')+'" data-k="'+o.item.k+'">'+o.item.rows.map(r=>rowHTML(r,o.item)).join('')+'</section>'
+    :rowHTML(o.row,null)).join('');
+  items.forEach(it=>{it.el=$('.item[data-k="'+it.k+'"]')});
+}
+function paint(it){
+  const s=S.status[it.id];
+  it.el.classList.toggle('fin',!!s);
+  const g=it.el.querySelector('.st[data-st]');if(g)g.textContent=GL[s||''];
+}
+function footer(){
+  let d=0;items.forEach(it=>{if(fin(it))d++});
+  $('#pos').textContent=d===items.length?'all '+items.length+' done':(cur+1)+' / '+items.length+' · '+d+' done';
+}
+function reveal(mode){
+  const it=items[cur];if(!it||!it.el)return;
+  const r=it.el.getBoundingClientRect();
+  if(mode==='click'&&r.top>=0&&r.top<innerHeight*.65)return;
+  const top=Math.max(0,scrollY+r.top-innerHeight*.18);
+  const calm=mode==='init'||(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches);
+  scrollTo({top,behavior:calm?'auto':'smooth'});
+}
+
+/* ---------- navigation + marking ---------- */
+let DATA=null,items=[],cur=0,srcText='',fh=null,lastMod=0;
+const embedded=()=>$('#src').textContent.trim();
+const fin=it=>S.status[it.id]==='done'||S.status[it.id]==='skip';
+function setCur(i,mode){
+  i=Math.max(0,Math.min(items.length-1,i));
+  if(items[cur]&&items[cur].el)items[cur].el.classList.remove('on');
+  cur=i;S.curId=items[cur].id;items[cur].el.classList.add('on');
+  save();footer();if(mode)reveal(mode);
+}
+function nextPending(from){
+  const n=items.length;
+  for(let k=1;k<=n;k++){const j=(from+k)%n;if(!fin(items[j]))return j}
+  return -1;
+}
+function mark(st){
+  const it=items[cur];if(!it)return;
+  if(S.status[it.id]===st)delete S.status[it.id];else S.status[it.id]=st;
+  paint(it);save();
+  if(S.status[it.id]){const j=nextPending(cur);if(j>=0){setCur(j,'key');return}}
+  footer();
+}
+
+/* ---------- notes ---------- */
+function toggleNotes(){
+  const n=$('#notes'),open=n.hidden;
+  n.hidden=!open;document.body.classList.toggle('nopen',open);
+  if(open){$('#pad').value=S.pad||'';$('#pad').focus()}else if(document.activeElement)document.activeElement.blur();
 }
 function report(){
   const L=[DATA.title+' - '+new Date().toLocaleString(),''];
-  DATA.cards.forEach((c,i)=>{const s=S.status[c.id];L.push((s==='done'?'[x]':s==='skip'?'[-]':s==='later'?'[?]':'[ ]')+' '+(i+1)+'. '+c.text)});
-  if((S.pad||'').trim()){L.push('','--- Notes ---',S.pad)}
+  items.forEach((it,i)=>{const s=S.status[it.id];L.push((s==='done'?'[x]':s==='skip'?'[-]':'[ ]')+' '+(i+1)+'. '+it.text)});
+  if((S.pad||'').trim())L.push('','--- Notes ---',S.pad);
   return L.join('\n')+'\n';
 }
 function savePad(){
   const d=new Date(),p=n=>String(n).padStart(2,'0');
   const name='cp-notes-'+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes())+'.txt';
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([report()],{type:'text/plain'}));a.download=name;
-  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);toast('Saved');
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);flash('Saved '+name,2500);
 }
 
 /* ---------- loading the checklist ---------- */
 function applySource(text,meta,silent){
-  if(text.indexOf('\u0000')>=0){toast('That does not look like a text file',4000);return false}
+  if(text.indexOf('\u0000')>=0){flash('That does not look like a text file',4000);return false}
   let nd;
-  try{nd=build(text)}catch(e){try{nd=buildRaw(text)}catch(e2){toast('Could not read that file');return false}}
-  if(!nd.cards.length){toast('No items found');return false}
-  if(DATA&&!silent&&DATA.cards.length>=10&&nd.cards.length<DATA.cards.length*0.4){
-    toast('That file has only '+nd.cards.length+' items (current list: '+DATA.cards.length+'). Not loaded.',5000);return false;
+  try{nd=parse(text)}catch(e){flash('Could not read that file',4000);return false}
+  if(!nd.items.length){flash('No items found',4000);return false}
+  if(DATA&&!silent&&DATA.items.length>=10&&nd.items.length<DATA.items.length*0.4){
+    flash('That file has only '+nd.items.length+' items (current list: '+DATA.items.length+'). Not loaded.',5000);return false;
   }
-  const prev=DATA?new Set(DATA.cards.map(c=>c.id)):null;
-  const wasComplete=complete;
-  DATA=nd;srcText=text;
-  document.title=DATA.title;
-  const idx=DATA.cards.findIndex(c=>c.id===S.curId);
-  const firstOpen=DATA.cards.findIndex(c=>!S.status[c.id]);
-  if(idx>=0&&!(wasComplete&&firstOpen>=0))cur=idx;else cur=firstOpen>=0?firstOpen:0;
-  S.curId=DATA.cards[cur].id;
-  complete=allFinished();
+  const prev=DATA?new Set(DATA.items.map(i=>i.id)):null;
+  DATA=nd;items=nd.items;srcText=text;document.title=nd.title;
+  let idx=items.findIndex(i=>i.id===S.curId);
+  if(idx<0){idx=items.findIndex(i=>!fin(i));if(idx<0)idx=0}
+  cur=idx;S.curId=items[cur].id;
   if(meta)lset(SRCKEY,JSON.stringify({text,base:hash(embedded())}));else ldel(SRCKEY);
-  save();render();
+  save();buildDOM();items[cur].el.classList.add('on');footer();reveal(prev?'click':'init');
   if(prev&&!silent){
-    let added=0,gone=0;const ids=new Set(DATA.cards.map(c=>c.id));
-    DATA.cards.forEach(c=>{if(!prev.has(c.id))added++});prev.forEach(id=>{if(!ids.has(id))gone++});
-    toast(added||gone?'Updated: '+added+' new'+(gone?', '+gone+' changed/removed':''):'Already up to date',3500);
+    let added=0,gone=0;const ids=new Set(items.map(i=>i.id));
+    items.forEach(i=>{if(!prev.has(i.id))added++});prev.forEach(id=>{if(!ids.has(id))gone++});
+    flash(added||gone?'Updated: '+added+' new'+(gone?', '+gone+' changed/removed':''):'Already up to date',3500);
   }
   return true;
 }
@@ -546,43 +547,69 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)syncFile(f
 
 /* ---------- events ---------- */
 let resetT=0;
+const selecting=()=>{const s=window.getSelection();return !!(s&&!s.isCollapsed&&String(s).length)};
+function activate(el){
+  const k=el.closest&&el.closest('.item');
+  if(k&&+k.dataset.k!==cur)setCur(+k.dataset.k,'click');
+}
 document.addEventListener('click',e=>{
-  if(e.target.id==='ov'){closeOv();return}
-  const t=e.target.closest('[data-clip],[data-go],[data-act],[data-ai]');if(!t)return;
-  if(t.dataset.clip!==undefined){e.preventDefault();copyText(clips[+t.dataset.clip]||'');toast('Copied');return}
-  if(t.dataset.go!==undefined){complete=false;setCur(+t.dataset.go);closeOv();render();window.scrollTo(0,0);return}
-  if(t.dataset.ai!==undefined){openAI(+t.dataset.ai);return}
-  switch(t.dataset.act){
-    case 'done':mark('done');break;case 'skip':mark('skip');break;case 'later':mark('later');break;
-    case 'prev':go(-1);break;case 'next':go(1);break;
-    case 'reopen':delete S.status[DATA.cards[cur].id];save();render();break;
-    case 'review':complete=false;render();break;
-    case 'list':openOv('list');break;case 'notes':openOv('notes');break;case 'close':closeOv();break;
-    case 'copyPad':copyText($('#pad').value);toast('Copied');break;
-    case 'savePad':savePad();break;
-    case 'load':closeOv();linkFile();break;
-    case 'reset':
-      if(!resetT){t.textContent='Sure?';resetT=setTimeout(()=>{resetT=0;t.textContent='Reset'},3000)}
-      else{clearTimeout(resetT);resetT=0;S.status={};S.sub={};save();complete=false;setCur(0);closeOv();render()}
-      break;
+  const t=e.target;if(!t.closest)return;
+  const act=t.closest('[data-act]');
+  if(act){
+    act.blur();
+    switch(act.dataset.act){
+      case 'notes':toggleNotes();break;
+      case 'load':linkFile();break;
+      case 'copyPad':copyText($('#pad').value);flash('Copied');break;
+      case 'savePad':savePad();break;
+      case 'reset':
+        if(!resetT){act.textContent='sure?';resetT=setTimeout(()=>{resetT=0;act.textContent='reset'},3000)}
+        else{clearTimeout(resetT);resetT=0;act.textContent='reset';S.status={};S.sub={};save();buildDOM();cur=0;S.curId=items[0].id;items[0].el.classList.add('on');footer();reveal('key')}
+        break;
+    }
+    return;
   }
+  const st=t.closest('[data-st]');
+  if(st){setCur(+st.dataset.st);mark('done');return}
+  if(selecting())return;
+  const sub=t.closest('[data-sub]');
+  if(sub){
+    const id=sub.dataset.sub;
+    if(S.sub[id])delete S.sub[id];else S.sub[id]=1;
+    const on=!!S.sub[id];
+    sub.closest('.ln').classList.toggle('tick',on);
+    sub.textContent=on&&SYM.test(sub.dataset.tok)?'x':sub.dataset.tok;
+    save();activate(sub);return;
+  }
+  const clip=t.closest('[data-clip]');
+  if(clip){copyText(DATA.clips[+clip.dataset.clip]||'');flash('Copied');activate(clip);return}
+  activate(t);
 });
-document.addEventListener('change',e=>{
-  const t=e.target;
-  if(t.dataset&&t.dataset.sub){
-    if(t.checked)S.sub[t.dataset.sub]=1;else delete S.sub[t.dataset.sub];
-    t.closest('li').classList.toggle('on',t.checked);save();
-  }
+document.addEventListener('mouseover',e=>{
+  const c=e.target.closest&&e.target.closest('[data-clip]');if(!c)return;
+  document.querySelectorAll('[data-clip="'+c.dataset.clip+'"]').forEach(x=>x.classList.add('hl'));
+});
+document.addEventListener('mouseout',e=>{
+  const c=e.target.closest&&e.target.closest('[data-clip]');if(!c)return;
+  document.querySelectorAll('[data-clip="'+c.dataset.clip+'"]').forEach(x=>x.classList.remove('hl'));
 });
 document.addEventListener('input',e=>{if(e.target.id==='pad'){S.pad=e.target.value;save()}});
 document.addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey)return;
-  if(e.key==='Escape'){closeOv();return}
-  if(!$('#ov').hidden)return;
-  const field=e.target.closest&&e.target.closest('input[type=text],textarea');if(field)return;
-  const btn=e.target.closest&&e.target.closest('button,a,input');
-  if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);
-  else if(e.key==='Enter'&&!btn)mark('done');
+  if(e.key==='Escape'){if(!$('#notes').hidden)toggleNotes();return}
+  if(e.target.closest&&e.target.closest('textarea,input'))return;
+  const btn=e.target.closest&&e.target.closest('button');
+  switch(e.key){
+    case 'j':case 'ArrowDown':e.preventDefault();setCur(cur+1,'key');break;
+    case 'k':case 'ArrowUp':e.preventDefault();setCur(cur-1,'key');break;
+    case 'g':case 'Home':e.preventDefault();setCur(0,'key');break;
+    case 'G':case 'End':e.preventDefault();setCur(items.length-1,'key');break;
+    case 'x':mark('done');break;
+    case 's':mark('skip');break;
+    case ' ':case 'Enter':if(!btn){e.preventDefault();mark('done')}break;
+    case 'n':e.preventDefault();toggleNotes();break;
+    case 'b':S.noblur=!S.noblur;document.body.classList.toggle('noblur',S.noblur);save();flash(S.noblur?'blur off':'blur on');break;
+  }
 });
 $('#file').onchange=e=>{const f=e.target.files[0];if(f){fh=null;loadFileObj(f)}e.target.value=''};
 window.addEventListener('dragover',e=>e.preventDefault());
@@ -590,6 +617,7 @@ window.addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer&&e.
 
 /* ---------- init ---------- */
 (function(){
+  document.body.classList.toggle('noblur',!!S.noblur);
   let ok=false;
   try{
     const sv=JSON.parse(lget(SRCKEY)||'null');
@@ -597,11 +625,11 @@ window.addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer&&e.
     if(sv&&sv.text&&sv.base===hash(embedded()))ok=applySource(sv.text,true,true);
   }catch(e){}
   if(!ok)applySource(embedded(),null,true);
-  try{localStorage.setItem('cp-probe','1');localStorage.removeItem('cp-probe')}catch(e){toast('Progress cannot be saved in this browser window (private mode?)',5000)}
+  try{localStorage.setItem('cp-probe','1');localStorage.removeItem('cp-probe')}catch(e){flash('Progress cannot be saved in this browser window (private mode?)',5000)}
   if(location.protocol.indexOf('http')===0){
     fetch('CP%20Linux%20Checklist.txt',{cache:'no-store'}).then(r=>r.ok?r.text():null).then(t=>{if(t&&t.trim()&&t.trim()!==srcText.trim())applySource(t.trim(),null,false)}).catch(()=>{});
   }
-  window.__cp={build:build,data:()=>DATA,show:i=>{complete=false;setCur(i);render()},state:()=>S};
+  window.__cp={parse:parse,data:()=>DATA,state:()=>S};
 })();
 })();
 </script>

@@ -1,0 +1,18 @@
+[21:47:37] container T-deb-mod from cp-deb12-planted: systemd running
+[21:47:37] restored POSIX ACLs from cp-deb12-planted: 1 file(s)
+[21:47:38] step wait65: sleep 65
+[21:48:43]   done in 64s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=64.9s  exit=0  findings=- (-)
+[21:48:43] step p1-baseline: bash services/baseline.sh
+[21:49:55]   done in 72s  STATS prompts=25 rule=12 default=13 stall=0 wait=63.3s elapsed=72.2s  exit=0  findings=4 (fix=2 review=2 info=0 bang=21)
+[21:49:55] step p2-users: bash usersandsudo.sh
+[21:50:27]   done in 31s  STATS prompts=12 rule=12 default=0 stall=0 wait=30.2s elapsed=31.3s  exit=0  findings=- (-)
+[21:50:27] step p3-sysconfig: bash systemconfig.sh
+[21:51:20]   done in 52s  STATS prompts=16 rule=7 default=9 stall=0 wait=40.2s elapsed=52.8s  exit=0  findings=- (-)
+[21:51:20] step p4-filepkg: bash fileandpackage.sh
+[21:52:08]   done in 47s  STATS prompts=15 rule=12 default=3 stall=0 wait=37.8s elapsed=47.7s  exit=0  findings=- (-)
+[21:52:08] step p5-portmisc: bash portandmisc.sh
+[21:52:22]   done in 13s  STATS prompts=4 rule=4 default=0 stall=0 wait=10.1s elapsed=13.4s  exit=0  findings=- (-)
+[21:52:22] step p6-critical: bash services/critical.sh
+[21:52:38]   done in 15s  STATS prompts=5 rule=3 default=2 stall=0 wait=13.0s elapsed=15.4s  exit=0  findings=- (-)
+[21:52:38] step p7-upgrades: bash upgrades.sh
+[21:52:41]   done in 3s  STATS prompts=1 rule=1 default=0 stall=0 wait=2.5s elapsed=3.7s  exit=0  findings=- (-)

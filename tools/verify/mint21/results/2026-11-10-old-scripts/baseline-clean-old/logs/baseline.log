@@ -1,0 +1,11 @@
+Baselining (detection only - nothing is changed). OS: linuxmint-21.3
+Using baseline pack: /root/competition/baseline/linuxmint-21.3
+  -> samba
+  -> system
+
+=== Baseline summary (reports in /root/baseline) ===
+  samba         0 finding(s)   /root/baseline/samba/report.txt
+  system        0 finding(s)   /root/baseline/system/report.txt
+Review each report ('!!' lines) and the diff.patch files, then run the matching hardening script.
+
+[drive2] EXIT 0

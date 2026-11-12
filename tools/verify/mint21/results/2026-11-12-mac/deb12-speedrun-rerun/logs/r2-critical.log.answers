@@ -1,0 +1,4 @@
+[    2.5s] '? Run ssh.sh (the README must list it as critical)? [y/N]:' -> 'y' (rule)
+[    5.1s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+STATS prompts=2 rule=2 default=0 stall=0 wait=5.0s elapsed=5.6s
+EXIT 0

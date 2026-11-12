@@ -1,0 +1,17 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] '? Empty /etc/ld.so.preload? [Y/n]:' -> '' (DEFAULT(Enter))
+[    7.6s] '? Delete the preloaded library /usr/src/evil_rabbit.so ? [Y/n]:' -> '' (DEFAULT(Enter))
+[   12.3s] 'Open or Close a port? [o/c/n]:' -> 'n' (rule)
+[   16.1s] 'Automatically download and install stable updates? [yes/no]' -> 'yes' (rule)
+[   19.3s] '? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]:' -> 'y' (rule)
+[   28.4s] 'Enable IPv6? (y/n):' -> 'n' (rule)
+[   31.4s] "? Replace 'requisite pam_permit.so' with 'requisite pam_deny.so'? [Y/n]:" -> '' (DEFAULT(Enter))
+[   33.9s] '? Remove the pam_exec line(s) from /etc/pam.d/common-auth? [Y/n]:' -> '' (DEFAULT(Enter))
+[   36.4s] '? Install libpam-pwquality (needed for pwquality.conf rules)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   41.0s] '? Install auditd? [Y/n]:' -> '' (DEFAULT(Enter))
+[   48.2s] '? Lock the root account (passwd -l root)? You keep using sudo [Y/n]:' -> 'y' (rule)
+[   50.8s] '? Remove SUID/SGID from /usr/bin/cp? [Y/n]:' -> '' (DEFAULT(Enter))
+[   53.3s] '? Remove SUID/SGID from /usr/bin/wget? [Y/n]:' -> '' (DEFAULT(Enter))
+[   55.9s] '? Remove all aliases from /etc/bash.bashrc? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=15 rule=6 default=9 stall=0 wait=37.7s elapsed=56.3s
+EXIT 0

@@ -1,0 +1,6 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.5s] '? Triage the 1 FIX NOW finding(s) for ssh now (baseline.sh --review ssh)? [y/N]:' -> '' (DEFAULT(Enter))
+[    8.1s] '? Does the README change any of these (port, key-only login, allowed/denied users or groups, SFTP-only)? [y/N]:' -> 'n' (rule)
+[   10.8s] '? Install fail2ban (bans SSH brute force; needs network)? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=4 rule=2 default=2 stall=0 wait=10.1s elapsed=15.7s
+EXIT 0

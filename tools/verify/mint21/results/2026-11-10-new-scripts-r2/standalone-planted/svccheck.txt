@@ -1,0 +1,2 @@
+service check 01:55:26
+  OK   ssh         keyscan ok on 22

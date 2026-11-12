@@ -1,0 +1,2 @@
+[fake-nano] editing /tmp/user_categories_5075.txt (admins: cpuser alice | users: bob carol dave frank)
+[fake-visudo] opened /etc/sudoers.d/90-cloud-init-users

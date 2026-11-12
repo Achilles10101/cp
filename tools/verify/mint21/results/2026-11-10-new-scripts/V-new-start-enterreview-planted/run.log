@@ -1,0 +1,9 @@
+[16:57:42] container V-enter from cp-mint-planted: systemd running
+[16:57:42] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+[16:57:42] step wait65: sleep 65
+[16:58:47]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[16:58:47] step start: bash start.sh
+[17:01:47]   done in 179s  STATS prompts=56 rule=26 default=30 stall=0 wait=140.2s elapsed=179.1s  exit=0  findings=- (-)
+[17:01:47] step zz-wait-bg: bash -c for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; ls /root/cp-state/start/jobs/; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null) secs=$(( $(cat /root/cp-state/start/jobs/$j.end 2>/dev/null || echo 0) - $(cat /root/cp-state/start/jobs/$j.start 2>/dev/null || echo 0) ))"; done
+[17:01:47]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+[17:01:48] container kept: V-enter

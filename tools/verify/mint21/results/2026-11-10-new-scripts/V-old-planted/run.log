@@ -1,0 +1,15 @@
+[16:21:34] container V-old-planted from cp-mint-planted: systemd running
+[16:21:34] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+[16:21:35] step p1-baseline: bash services/baseline.sh
+[16:22:10]   done in 35s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=35.1s  exit=0  findings=28 (bang=28)
+[16:22:10] step p2-users: bash usersandsudo.sh
+[16:22:35]   done in 25s  STATS prompts=10 rule=9 default=1 stall=0 wait=25.0s elapsed=25.3s  exit=0  findings=- (-)
+[16:22:36] step p3-sysconfig: bash systemconfig.sh
+[16:23:42]   done in 66s  STATS prompts=16 rule=6 default=10 stall=0 wait=40.1s elapsed=66.1s  exit=0  findings=- (-)
+[16:23:42] step p4-filepkg: bash fileandpackage.sh
+[16:24:48]   done in 65s  STATS prompts=20 rule=19 default=1 stall=0 wait=50.1s elapsed=65.7s  exit=0  findings=- (-)
+[16:24:48] step p5-portmisc: bash portandmisc.sh
+[16:25:47]   done in 58s  STATS prompts=7 rule=5 default=2 stall=0 wait=17.5s elapsed=58.8s  exit=0  findings=- (-)
+[16:25:47] step p6-ssh: bash services/ssh.sh
+[16:26:15]   done in 28s  STATS prompts=8 rule=1 default=7 stall=0 wait=20.0s elapsed=28.4s  exit=0  findings=- (-)
+[16:26:16] container kept: V-old-planted

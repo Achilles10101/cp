@@ -1,0 +1,17 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.5s] '? Allow the 3 [Y] rule(s)? (y = all [Y], e = decide each - usually e: only what the README needs) [y/N/e]:' -> 'e' (rule)
+[    8.0s] '? Allow OpenSSH (22/tcp)? [Y/n]:' -> 'y' (rule)
+[   10.5s] '? Allow Apache Full (80/tcp 443/tcp)? [Y/n]:' -> 'n' (rule)
+[   13.0s] '? Allow vsftpd (21/tcp)? [Y/n]:' -> 'n' (rule)
+[   15.7s] '? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none:' -> '' (rule)
+[   20.4s] '? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]:' -> 'y' (rule)
+[   23.0s] '? Lock the root account (passwd -l root)? You keep using sudo [Y/n]:' -> '' (DEFAULT(Enter))
+[   25.6s] '? Remove these group passwords? [Y/n]:' -> '' (DEFAULT(Enter))
+[   28.2s] '? Set their shell to /usr/sbin/nologin (e = each; a README user with a low UID keeps it)? [Y/n/e]:' -> '' (DEFAULT(Enter))
+[   30.7s] "? Remove their passwords (set to '*'; e = each)? [Y/n/e]:" -> '' (DEFAULT(Enter))
+[   33.3s] '? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   35.8s] '? Strip these ACLs (setfacl -b; stock has none)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   44.9s] '? Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   56.9s] '? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=15 rule=7 default=8 stall=0 wait=37.6s elapsed=59.8s
+EXIT 0

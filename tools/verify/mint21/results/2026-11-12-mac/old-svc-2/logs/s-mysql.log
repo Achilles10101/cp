@@ -1,0 +1,81 @@
+MySQL/MariaDB Security Configuration
+
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'mysql' exists (/root/baseline/mysql)
+
+----- Baseline findings for mysql (full report: /root/baseline/mysql/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B7 service-internal accounts vs defaults
+## B9 snapshot of live state saved to /root/baseline/mysql/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+Detecting database server type...
+Found: MySQL
+Database type: mysql
+
+Setting directory and file permissions...
+  - Setting data directory permissions
+  - Setting config directory permissions (root:mysql, dirs 750, *.cnf 640)
+  - Creating and setting log directory
+
+Generating SSL certificates...
+  - Generating CA key
+  - Generating CA certificate
+  - Generating server key
+  - Generating server certificate
+  - Setting certificate permissions
+
+Writing configuration (in place - DB5)...
+  [*] Backup: /root/cp-backups/20261112_061714/etc/mysql
+  - Editing: /etc/mysql/mysql.conf.d/mysqld.cnf ([mysqld] section)
+  ? Does the README require REMOTE database access? [y/N]: 
+  ? Require TLS for every TCP connection (require_secure_transport)? Breaks apps that use 127.0.0.1 without TLS [y/N]: 
+  ? Enable general_log (logs EVERY query, including passwords in CREATE/ALTER USER)? [y/N]: 
+
+Validating configuration...
+  [+] Configuration is valid
+
+Restarting database service...
+  [+] mysql restarted and active
+
+Configuring database security...
+  - Removing anonymous users
+  - Restricting root to localhost only
+  - Removing test database
+  - Flushing privileges
+
+Auditing accounts (compare with the README and /root/baseline/mysql/report.txt):
++------------------+-----------+-----------------------+----------+-------+------+---------+-----------+
+| user             | host      | plugin                | password | super | file | process | grant_opt |
++------------------+-----------+-----------------------+----------+-------+------+---------+-----------+
+| debian-sys-maint | localhost | caching_sha2_password | set      | Y     | Y    | Y       | Y         |
+| mysql.infoschema | localhost | caching_sha2_password | set      | N     | N    | N       | N         |
+| mysql.session    | localhost | caching_sha2_password | set      | Y     | N    | N       | N         |
+| mysql.sys        | localhost | caching_sha2_password | set      | N     | N    | N       | N         |
+| root             | localhost | auth_socket           | set      | Y     | Y    | Y       | Y         |
++------------------+-----------+-----------------------+----------+-------+------+---------+-----------+
+  ? Accounts to DROP (user@host, comma separated; Enter = none): 
+  ? Accounts to strip SUPER/FILE/PROCESS/GRANT OPTION from (user@host, comma separated; Enter = none): 
+
+  [+] Database answers queries
++--------------------------+--------------------------+
+| Variable_name            | Value                    |
++--------------------------+--------------------------+
+| bind_address             | 127.0.0.1                |
+| general_log              | OFF                      |
+| have_ssl                 | YES                      |
+| have_symlink             | DISABLED                 |
+| local_infile             | OFF                      |
+| log_error                | /var/log/mysql/error.log |
+| require_secure_transport | OFF                      |
+| secure_file_priv         | /var/lib/mysql-files/    |
++--------------------------+--------------------------+
+Configuration completed successfully!
+
+
+[drive2] EXIT 0

@@ -1,0 +1,27 @@
+# B 2026-11-11 (Round 5 redesign): usersandsudo.sh alone on cp-mint-planted, answered as a competitor with the planted
+# README (admins cpuser (you) alice; users bob carol dave frank; critical OpenSSH). README users via the test-only
+# env hook (rules.py cannot send a multi-line paste; the paste itself is tested with drive2 + JSON, see notes/B.md).
+# No CP_AUTO any more: every former automatic step is a normal [Y/n] prompt, answered here like a person would.
+set HARD=600
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+
+step users bash usersandsudo.sh
+rule Delete account toor                              => y
+rule Delete these \d+ accounts                        => y
+rule Create these \d+ accounts                        => y
+rule Apply these \d+ admin-group fixes                => y
+rule README password is insecure .* Change it now     => y
+rule Change your own password anyway                  => n
+rule has an EMPTY password .* Set one now             => y
+rule Set a password for the new account               => y
+rule Extra: also set ONE new password                 => n
+rule Retype new password:                             => Car0l-Str0ng!pw
+rule New password for .*Enter = same as before        =>
+rule New password for                                 => Car0l-Str0ng!pw
+rule Lock the \d+ account\(s\)                        => y
+rule Password aging 30/7/14                           => y
+rule Also force a password change at next login       => y
+rule Home folders: mode 750                           => y
+rule README groups, as                                =>
+rule Open /etc/sudoers.* in visudo                    => y

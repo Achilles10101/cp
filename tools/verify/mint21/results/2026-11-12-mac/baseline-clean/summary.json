@@ -1,0 +1,27 @@
+{
+ "image": "cp-mint-clean",
+ "competition": "/Users/max/Documents/cp stuff/competition",
+ "rules": "/Users/max/Documents/cp stuff/tools/verify/mint21/rules-baseline-only.txt",
+ "steps": [
+  {
+   "step": "baseline",
+   "wall_s": "3.0",
+   "script_elapsed_s": "2.9",
+   "harness_wait_s": "2.5",
+   "prompts": "1",
+   "rule": "0",
+   "default": "1",
+   "stall": "0",
+   "exit": "0",
+   "findings": "7",
+   "load_start": "3.71",
+   "load_end": "3.50",
+   "findings_detail": "fix=5 review=2 info=1 bang=7"
+  }
+ ],
+ "total_wall_s": 3.2,
+ "total_prompts": 1,
+ "total_harness_wait_s": 2.5,
+ "baseline_findings": 7,
+ "baseline_findings_detail": "fix=5 review=2 info=1 bang=7"
+}

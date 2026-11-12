@@ -1,0 +1,5 @@
+[usersandsudo.sh] No forced password change at next login (vsftpd dovecot samba installed - an expired password blocks those logins). If the README does not need vsftpd dovecot samba: sudo passwd -e NAME
+[systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+[fileandpackage.sh] Glance over 4 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+[nginx.sh] nginx.sh: the existing nginx config already fails 'nginx -t' (nginx: [emerg] socket() [::]:80 failed (97: Unknown error)) - fix that first, then re-run; nothing was changed
+[critical.sh] CRITICAL service nginx is DOWN: nginx - journalctl -xe; restore from /root/cp-backups if needed

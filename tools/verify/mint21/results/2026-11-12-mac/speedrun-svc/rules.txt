@@ -1,0 +1,61 @@
+# 2026-11-12 (Mac, arm64 colima): speedrun.sh on the current scripts; same answers as V5 svc.
+set HARD=3000
+# --- usersandsudo.sh (README: admin cpuser, user ftpuser; FTP is critical -> no forced change at next login)
+rule Delete account toor                              => y
+rule Delete these \d+ accounts                        => y
+rule Apply these \d+ admin-group fixes                => y
+rule README password is insecure .* Change it now     => y
+rule Change your own password anyway                  => n
+rule has an EMPTY password .* Set one now             => y
+rule Extra: also set ONE new password                 => n
+rule Retype new password:                             => Ftp-Us3r!pass
+rule New password for .*Enter = same as before        =>
+rule New password for                                 => Ftp-Us3r!pass
+rule Lock the \d+ account\(s\)                        => y
+rule Password aging 30/7/14                           => y
+rule Also force a password change at next login       => n
+rule Home folders: mode 750                           => y
+rule README groups, as                                =>
+rule Open /etc/sudoers.* in visudo                    => y
+# --- review: Enter except the two test-only overrides
+rule cptest-noipv6\.conf: d=show                      => s
+rule local\.conf: d=show                              => s
+# --- systemconfig: every listening daemon is critical -> the suggested rules
+rule Allow the \d+ \[Y\] rule                         =>
+rule Extra ports the README needs                     =>
+rule REMOTE access to                                 => n
+rule Delete these \d+ rule\(s\)\?                     => n
+rule Remove ALL superuser                             => n
+# --- fileandpackage / portandmisc: keep every service
+rule Remove all of these \(e = choose per family\)    => y
+rule Remove these service packages                    => n
+rule Remove these too\?                               => n
+rule Remove the OpenSSH server                        => n
+rule Other packages to remove                         =>
+rule Purge anyway                                     => n
+rule desktop service                                  => y
+rule server service                                   => n
+rule Stop \+ disable the SSH server                   => n
+rule Delete these \d+ media file                      => y
+rule Stop \+ disable these backdoor-looking listeners => y
+rule services the README does NOT need                => n
+rule Stop these unknown listeners                     => n
+rule Optional: l = lynis                              =>
+# --- critical.sh: all 13 critical
+rule Run \S+\.sh \(the README must list it as critical\) => y
+rule Is MAIL a critical service                       => y
+rule Does the README change any of these              => n
+rule Does the README or the                           => n
+rule Does the README require                          => n
+rule Test login - FTP username                        => ftpuser
+rule Password for ftpuser                             => Ftp-Us3r!pass
+rule Quarantine these phpinfo                         => y
+rule Triage the \d+ FIX NOW finding                   => n
+rule \(END\)                                          => q
+rule Install them now                                 => y
+rule Do the Forensics Questions now                   =>
+
+env CP_ADMINS=cpuser
+env CP_USERS=ftpuser
+step wait65 sleep 65
+step speedrun bash speedrun.sh

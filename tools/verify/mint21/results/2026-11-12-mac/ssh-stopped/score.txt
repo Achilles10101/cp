@@ -1,0 +1,148 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+FAIL  APERTURE          TIME-WAIT assassination protection
+FAIL  APERTURE          TCP SYN cookies
+FAIL  APERTURE          IPv4 forwarding disabled
+FAIL  APERTURE          Source routing disabled
+FAIL  APERTURE          Send redirects ignored
+FAIL  APERTURE          Martian logging
+FAIL  APERTURE          Source address verification (rp_filter)
+FAIL  APERTURE          ICMP redirects ignored
+FAIL  APERTURE          ASLR enabled
+FAIL  APERTURE          Kernel ExecShield
+FAIL  APERTURE          Core dumps disabled
+FAIL  APERTURE          Hard nproc <= 2500
+FAIL  APERTURE          IPv6 disabled   [README-dependent: only if you answer 'n' to 'Enable IPv6?']
+PASS  APERTURE          SSH root login disabled
+FAIL  APERTURE          SSH port 1382 (README)   [README prompt]
+FAIL  APERTURE          SSH DenyGroups testsubjects (README)   [README prompt]
+FAIL  APERTURE          Apache ServerTokens Prod
+FAIL  APERTURE          Apache ServerSignature Off
+FAIL  APERTURE          Anonymous FTP disabled
+FAIL  APERTURE          FTP only TLS
+FAIL  APERTURE          Anonymous TLS disabled
+FAIL  APERTURE          turret chrooted (chroot_list)
+FAIL  APERTURE          Passive range 50000-50100 (README)   [README prompt]
+FAIL  APERTURE          gdm3 AutomaticLoginEnable=False
+FAIL  APERTURE          gdm3 not running as rick
+FAIL  APERTURE          gdm3 DisallowTCP
+FAIL  APERTURE          auditd local_events
+FAIL  APERTURE          pwquality minlen
+FAIL  APERTURE          pwquality credits
+PASS  APERTURE          pwquality dictcheck
+PASS  APERTURE          pwquality usercheck
+FAIL  APERTURE          ENCRYPT_METHOD SHA512
+PASS  APERTURE          LOGIN_RETRIES 1-5
+FAIL  APERTURE          PASS_MAX_DAYS <= 30   [checklist says 90 (manual step)]
+FAIL  APERTURE          PASS_MIN_DAYS >= 5   [checklist says 7 (manual step)]
+FAIL  APERTURE          remember >= 5 on pam_unix   [checklist (manual step)]
+FAIL  APERTURE          faillock authfail + authsucc(sufficient)   [checklist (manual step)]
+FAIL  APERTURE          PAM pam_exec backdoor removed
+FAIL  APERTURE          syslog has nologin shell
+PASS  APERTURE          /home owned by root
+FAIL  APERTURE          /swapfile 600
+FAIL  APERTURE          cp not SUID
+FAIL  APERTURE          LD_PRELOAD rootkit .so removed
+FAIL  APERTURE          malicious bash alias removed
+PASS  APERTURE          shadow not world-readable
+FAIL  APERTURE          UFW OpenSSH profile   [needs real ufw]
+FAIL  1984              Removed group password on root group
+FAIL  1984              A default minimum password age is set
+FAIL  1984              Previous passwords are remembered
+FAIL  1984              Extra dictionary-strength checks enabled
+FAIL  1984              Root account is locked or disabled
+FAIL  1984              Kernel pointers hidden from all users   [live /proc value]
+PASS  1984              Ignore broadcast ICMP echo requests enabled   [live /proc value]
+PASS  1984              Restrict access to unprivileged kernel syslog enabled   [live /proc value]
+FAIL  1984              IPv4 TCP SYN cookies have been enabled   [live /proc value]
+FAIL  1984              Address space layout randomization enabled   [live /proc value]
+FAIL  1984              IPv4 forwarding has been disabled   [live /proc value]
+PASS  1984              Removed malicious FACL from /bin/sudo
+FAIL  1984              Dovecot SSL is required
+FAIL  1984              Dovecot debug passwords disabled
+FAIL  1984              SSH forces SFTP   [README]
+FAIL  1984              SFTP chroots to /opt/documents   [README]
+PASS  NARNIA(recon)     sshd_config owned by root
+PASS  NARNIA(recon)     SSH PermitEmptyPasswords no
+PASS  NARNIA(recon)     SSH Protocol 2
+PASS  NARNIA(recon)     SSH PermitRootLogin no
+FAIL  NARNIA(recon)     nginx server_tokens off
+FAIL  NARNIA(recon)     PAM requisite pam_deny
+FAIL  RESIDENT(recon)   dev.tty.ldisc_autoload=0
+FAIL  RESIDENT(recon)   kexec_load_disabled=1
+FAIL  RESIDENT(recon)   sudo developer_mode false
+FAIL  RESIDENT(recon)   sudo disable_coredump true
+FAIL  RESIDENT(recon)   sudo probe_interfaces false
+FAIL  RESIDENT(recon)   sudoers !env_reset removed
+FAIL  RESIDENT(recon)   sudoers env_keep PATH removed
+FAIL  RESIDENT(recon)   gdm3 root login disallowed
+FAIL  RESIDENT(recon)   Samba encryption required
+FAIL  RESIDENT(recon)   Samba SMB1 disabled
+FAIL  RESIDENT(recon)   Samba no usershare guests
+PASS  RESIDENT(recon)   Samba obey pam restrictions
+FAIL  RESIDENT(recon)   Samba security = user
+FAIL  RESIDENT(recon)   Samba server signing mandatory
+FAIL  RESIDENT(recon)   Squid no 'http_access allow all'
+FAIL  RESIDENT(recon)   wget not SUID
+FAIL  RESIDENT(recon)   system account bin has no password
+FAIL  HIVESTORM(recon)  PostgreSQL no trust auth
+PASS  HIVESTORM(recon)  PostgreSQL no map to postgres
+FAIL  HIVESTORM(recon)  PostgreSQL pg_hba not world-readable
+FAIL  HIVESTORM(recon)  PostgreSQL ssl on (README)
+FAIL  HIVESTORM(recon)  PHP display_errors Off
+FAIL  HIVESTORM(recon)  phpinfo file removed
+FAIL  HIVESTORM(recon)  LightDM X server no TCP   [only if LightDM installed]
+FAIL  HIVESTORM(recon)  grub.cfg not world-readable   [no /boot/grub in container]
+FAIL  HIVESTORM(recon)  dmesg_restrict
+FAIL  HIVESTORM(recon)  icmp_echo_ignore_broadcasts
+PASS  OFFICIAL(recon)   SSH root login disabled (CP18 R1)
+FAIL  OFFICIAL(recon)   FTP users may log in with SSL (CP18 R2)
+FAIL  OFFICIAL(recon)   FTP root dir not world-writable (CP18 R2)
+FAIL  OFFICIAL(recon)   IPv4 TCP SYN cookies (CP18 R2)
+FAIL  OFFICIAL(recon)   IPv4 forwarding disabled (CP17 TR2)
+PASS  PLANTED-MINT      Unauthorized user eve removed
+PASS  PLANTED-MINT      Unauthorized user mallory removed
+PASS  PLANTED-MINT      Hidden user sysbackup removed or no shell
+PASS  PLANTED-MINT      No UID 0 user except root
+PASS  PLANTED-MINT      bob is not an administrator
+FAIL  PLANTED-MINT      alice is an administrator
+PASS  PLANTED-MINT      cpuser still an administrator
+FAIL  PLANTED-MINT      carol has a password
+PASS  PLANTED-MINT      No NOPASSWD sudo for bob
+PASS  PLANTED-MINT      LightDM autologin disabled (all files)
+FAIL  PLANTED-MINT      GDM autologin disabled (Debian: daemon.conf)
+PASS  PLANTED-MINT      LightDM guest disabled
+PASS  PLANTED-MINT      Prohibited package nmap removed
+PASS  PLANTED-MINT      Prohibited package john removed
+PASS  PLANTED-MINT      Prohibited package hydra removed
+PASS  PLANTED-MINT      Prohibited package wireshark removed
+PASS  PLANTED-MINT      Prohibited package wireshark-common removed
+PASS  PLANTED-MINT      Prohibited package tshark removed
+PASS  PLANTED-MINT      Prohibited package aircrack-ng removed
+PASS  PLANTED-MINT      Prohibited package ophcrack removed
+PASS  PLANTED-MINT      Prohibited package minetest removed
+PASS  PLANTED-MINT      Prohibited package netcat-traditional removed
+PASS  PLANTED-MINT      Prohibited package telnetd removed
+FAIL  PLANTED-MINT      vsftpd (not authorized) stopped or removed
+FAIL  PLANTED-MINT      apache2 (not authorized) stopped or removed
+PASS  PLANTED-MINT      OpenSSH still running (critical)
+PASS  PLANTED-MINT      Prohibited mp3 in bob's home removed
+PASS  PLANTED-MINT      Prohibited mp4 in carol's home removed
+PASS  PLANTED-MINT      Hidden ogg in dave's home removed
+PASS  PLANTED-MINT      Hidden mp3 under /usr/share removed
+PASS  PLANTED-MINT      Plaintext password file removed
+PASS  PLANTED-MINT      netcat cron backdoor removed
+PASS  PLANTED-MINT      python http.server backdoor stopped
+PASS  PLANTED-MINT      Unknown root authorized_keys removed
+PASS  PLANTED-MINT      SSH PermitEmptyPasswords not yes
+PASS  PLANTED-MINT      SSH drop-in PermitRootLogin yes removed
+PASS  PLANTED-MINT      Effective sshd PermitRootLogin no
+PASS  PLANTED-MINT      sysctl.d override of ip_forward removed
+PASS  PLANTED-MINT      shadow not world readable (perm fixed)
+FAIL  PLANTED-MINT      pam_pwquality args on common-password line
+FAIL  PLANTED-MINT      Firewall (ufw) active
+FAIL  PLANTED-MINT      Mint Update Manager installs updates automatically (1984 check)
+PASS  PLANTED-MINT      Root password locked   [manual checklist step]
+PASS  PLANTED-MINT      Desktop still installed (cinnamon, lightdm, mint-meta-cinnamon)
+PASS  PLANTED-MINT      cpuser can still sudo (account not expired/locked)
+
+TOTAL final: PASS 53 / FAIL 92 / SKIP 0

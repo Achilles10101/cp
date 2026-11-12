@@ -1,0 +1,70 @@
+== desktop packages
+  cinnamon               install ok installed
+  cinnamon-core          install ok installed
+  lightdm                install ok installed
+  network-manager        install ok installed
+  mint-meta-cinnamon     install ok installed
+  mint-meta-core         install ok installed
+  slick-greeter          install ok installed
+  lightdm-settings       install ok installed
+  xorg                   not-known
+enabled
+== sudo
+-rwsrwxr-x+ 1 root root 232416 Oct  6 14:05 /usr/bin/sudo
+user::rwx user:bob:rwx group::r-x mask::rwx other::r-x  
+  visudo -c OK
+uid=1000(cpuser) gid=1000(cpuser) groups=1000(cpuser),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),115(lpadmin)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+uid=1001(alice) gid=1001(alice) groups=1001(alice),115(lpadmin)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+uid=1002(bob) gid=1002(bob) groups=1002(bob),4(adm),27(sudo)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (ALL) NOPASSWD: ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+uid=1003(carol) gid=1003(carol) groups=1003(carol)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+uid=1004(dave) gid=1004(dave) groups=1004(dave)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+uid=1005(frank) gid=1005(frank) groups=1005(frank)
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  root passwd status: L  cpuser: P 11/10/2026 0 99999 7 -1
+  cpuser sudo -n -l rc=0 (1 = needs password = OK, sudo works)
+  sudo binary runs as cpuser
+== homes
+drwxr-x--- cpuser:cpuser files=6
+drwxr-x--- alice:alice files=3
+drwxr-x--- bob:bob files=5
+drwxr-x--- carol:carol files=4
+drwxr-x--- dave:dave files=4
+drwxr-x--- frank:frank files=3
+== human accounts (uid>=1000 or with /home)
+  cpuser 1000 /home/cpuser /bin/bash
+  alice 1001 /home/alice /bin/bash
+  bob 1002 /home/bob /bin/bash
+  carol 1003 /home/carol /bin/bash
+  dave 1004 /home/dave /bin/bash
+  frank 1005 /home/frank /bin/bash
+  eve 1006 /home/eve /bin/bash
+  mallory 1007 /home/mallory /bin/bash
+== quarantine
+  (none)
+== services active
+ssh=active vsftpd=active apache2=active nginx=inactive php8.1-fpm=inactive mysql=inactive postgresql=inactive smbd=inactive named=inactive postfix=inactive dovecot=inactive openvpn=inactive squid=inactive cups=active avahi-daemon=active ufw=active 
+== ufw
+Status: inactive
+== sysctl ipv6 disable: 
+== TODO count: 1
+== /opt

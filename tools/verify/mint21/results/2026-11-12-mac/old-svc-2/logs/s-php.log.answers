@@ -1,0 +1,9 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.0s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    7.6s] '? Disable allow_url_fopen (remote file reads; most apps use curl instead)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   10.1s] '? Disable dangerous functions (exec, system, shell_exec, passthru, proc_open, popen, pcntl_exec)? [Y/n]:' -> '' (DEFAULT(Enter))
+[   12.6s] '? Restrict PHP to /var/www and /tmp with open_basedir (can break apps that read elsewhere)? [y/N]:' -> '' (DEFAULT(Enter))
+[   15.1s] '? Does the README require FILE UPLOADS through the web app? [Y/n]:' -> '' (DEFAULT(Enter))
+[   17.6s] '? Is the site served over HTTPS (sets session.cookie_secure)? [y/N]:' -> '' (DEFAULT(Enter))
+STATS prompts=7 rule=1 default=6 stall=0 wait=17.6s elapsed=20.4s
+EXIT 0

@@ -1,0 +1,25 @@
+{
+ "steps": [
+  {
+   "name": "baseline",
+   "cmd": [
+    "bash",
+    "services/baseline.sh"
+   ],
+   "set": {
+    "IDLE": "2.5",
+    "HARD": "900",
+    "UMASK": "",
+    "SUDO_USER": "cpuser",
+    "DEBIAN_FRONTEND": "readline",
+    "SSH_PORT": "22",
+    "FINDINGS": "1"
+   },
+   "env": {},
+   "rules": []
+  }
+ ],
+ "global": {
+  "HARD": "900"
+ }
+}

@@ -1,0 +1,10 @@
+[    2.5s] 'Have you taken a screenshot of the points? (y/n):' -> 'y' (rule)
+[    5.5s] 'Review the findings above, then press Enter to continue...' -> '' (DEFAULT(Enter))
+[    8.0s] '? Does the README require SSH KEY-ONLY login (disable password authentication)? [y/N]:' -> '' (DEFAULT(Enter))
+[   10.5s] '? SSH port (README may require a specific one) [22]:' -> '' (DEFAULT(Enter))
+[   13.1s] '? AllowUsers (space separated, Enter = no restriction):' -> '' (DEFAULT(Enter))
+[   15.6s] '? DenyUsers (Enter = none):' -> '' (DEFAULT(Enter))
+[   18.1s] '? DenyGroups (Enter = none):' -> '' (DEFAULT(Enter))
+[   20.6s] '? Does the README require SFTP-only access (ForceCommand internal-sftp + chroot)? [y/N]:' -> '' (DEFAULT(Enter))
+STATS prompts=8 rule=1 default=7 stall=0 wait=20.5s elapsed=27.9s
+EXIT 0

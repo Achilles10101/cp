@@ -1,0 +1,11 @@
+# V (verifier): baseline scan, then --review answered with Enter only (every default), on cp-mint-planted.
+# A 65 s wait first so the planted cron nc listener (port 4444) exists, as on an image that booted a minute ago.
+set HARD=900
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+env CP_SERVICES=ssh
+step wait65 sleep 65
+step readme bash readme.sh
+step baseline bash services/baseline.sh
+step review bash services/baseline.sh --review
+set FINDINGS=1
