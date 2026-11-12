@@ -1,0 +1,39 @@
+V (verifier) 2026-11-10 - evidence for two tests run by hand in throwaway cp-mint-planted containers
+(the containers are removed; tools in this folder).
+
+1) README paste through start.sh (drive2.py with JSON rules, multi-line answer)
+   a) whole page pasted (rules-whole.json): 2 prompts (paste, "Correct?"), saved ADMINS=cpuser alice,
+      USERS=bob carol dave frank, ME=cpuser, SERVICES=ssh.  /root/cp-state/logs/readme.log (start.sh's `script`
+      typescript) contains the pasted README passwords:
+         29:	password: Cyb3rP@triot!
+         31:	password: Alic3-Adm1n!
+   b) only the user section pasted, exactly as readme.sh's on-screen step 1 says ("select from 'Authorized
+      Administrators' to the end of the users list") (rules-users.json):
+         Services: 1=ssh 2=vsftpd(FTP) ... 13=squid
+         ? Critical services in the README - numbers or names, Enter = none [none]:      <- Enter
+         Critical  : none
+         ? Correct? Enter = yes | ...  [y]:                                               <- Enter
+         [!] Installed but NOT critical in the README: ssh vsftpd apache2 (fileandpackage.sh offers removal ...)
+      -> SERVICES=none saved.
+   c) same paste, then the whole round with the normal answers (rules-users-fullround.json = rules-2026-11-10-new-start.txt):
+         [SSHD   ] OpenSSH server: openssh-server openssh-sftp-server     (in the default-Y remove list)
+         ? Remove all of these (e = choose per family)? [Y/n/e]: y
+      result: openssh-server purged ("un openssh-server"), svccheck: no ssh, mintchecks 98/144,
+              FAIL PLANTED-MINT OpenSSH still running (critical)
+
+2) baseline.sh --review typed like a person: key, 0.25 s pause, Enter (drive_human.py, KEYGAP=0.25), answer "s"
+   (skip) to every finding the driver saw:
+      60-evil.conf ... [Enter=quarantine] > s
+      cptest-noipv6.conf ... [Enter=quarantine] > q        <- the stray Enter, never seen by the "user"
+      cptest-noipv6.conf ... [Enter=skip] > s
+      99-zz-net.conf ... [Enter=quarantine] > q            <- stray Enter
+      90-cloud-init-users ... > s
+      80-autologin.conf ... > q                             <- stray Enter
+      lightdm.conf ... > s
+      ld.so.preload ... > q                                 <- stray Enter
+      0hourly-sync ... > s
+      system-sync.service ... > q                           <- stray Enter
+      ...
+      [+] Triage done: 4 changed, 13 skipped, 1 already resolved.
+   The driver typed "s" 9 times and answered 9 prompts; the script consumed 18 answers. Every second finding got
+   its default (4 files quarantined, vsftpd drop-in quarantined + put back) without the person seeing the prompt.

@@ -1,0 +1,52 @@
+# Rules for the OLD scripts (competition/ as of 2026-10-22), intro pipeline on cp-mint-planted.
+# Moved verbatim from the 2026-10-21 pipeline.sh (competition order, answering like a competitor who
+# read the planted README: admins cpuser alice; users bob carol dave frank; critical service OpenSSH).
+# Format: see README.md / rules.py.
+set HARD=1500
+
+step p1-baseline bash services/baseline.sh
+
+step p2-users bash usersandsudo.sh
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+rule Remove these users\?               => y
+rule adm: syslog.*Remove\?              => n
+rule unauthorized\).*Remove\?           => y
+rule Add .* to sudo group               => y
+rule Remove from admin groups           => y
+rule Change UID                         => y
+rule Review with visudo                 => y
+rule Delete account toor                => y
+rule Open /etc/sudoers.* in visudo      => y
+rule Set a password for carol           => y
+rule New password:                      => Car0l-Str0ng!pw
+rule Retype new password:               => Car0l-Str0ng!pw
+
+step p3-sysconfig bash systemconfig.sh
+rule Proceed with operation             => y
+rule Open or Close a port               => n
+rule Enable IPv6                        => n
+rule install stable updates             => yes
+rule Do you want to continue            => y
+rule Remove ALL superuser               => n
+rule Lock the root account              => y
+rule Linux Mint: turn on Update Manager => y
+
+step p4-filepkg bash fileandpackage.sh
+rule \[SERVICE\] (apache2|FTP servers|PHP):.*Remove\?  => y
+rule \[SERVICE\].*Remove\?              => n
+rule \[REVIEW\].*Remove\?               => n
+rule Remove\? \[                        => y
+rule Purge these                        => y
+rule Run autoremove                     => y
+rule Purge their config                 => y
+rule dpkg --purge                       => y
+
+step p5-portmisc bash portandmisc.sh
+rule Select option                      => SEQ:2,3,4
+rule Install it now                     => y
+rule Remove nmap again                  => y
+rule Do you want to continue            => y
+
+step p6-ssh bash services/ssh.sh
+rule Remove /root/.ssh                  => y

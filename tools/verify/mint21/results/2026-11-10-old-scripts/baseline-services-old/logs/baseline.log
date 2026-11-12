@@ -1,0 +1,35 @@
+Baselining (detection only - nothing is changed). OS: linuxmint-21.3
+Using baseline pack: /root/competition/baseline/linuxmint-21.3
+  -> ssh
+  -> vsftpd
+  -> apache2
+  -> nginx
+  -> php
+  -> mysql
+  -> postgresql
+  -> samba
+  -> bind9
+  -> postfix
+  -> dovecot
+  -> openvpn
+  -> squid
+  -> system
+
+=== Baseline summary (reports in /root/baseline) ===
+  ssh           0 finding(s)   /root/baseline/ssh/report.txt
+  vsftpd        1 finding(s)   /root/baseline/vsftpd/report.txt
+  apache2       0 finding(s)   /root/baseline/apache2/report.txt
+  nginx         0 finding(s)   /root/baseline/nginx/report.txt
+  php           0 finding(s)   /root/baseline/php/report.txt
+  mysql         0 finding(s)   /root/baseline/mysql/report.txt
+  postgresql    0 finding(s)   /root/baseline/postgresql/report.txt
+  samba         0 finding(s)   /root/baseline/samba/report.txt
+  bind9         0 finding(s)   /root/baseline/bind9/report.txt
+  postfix       0 finding(s)   /root/baseline/postfix/report.txt
+  dovecot       1 finding(s)   /root/baseline/dovecot/report.txt
+  openvpn       0 finding(s)   /root/baseline/openvpn/report.txt
+  squid         0 finding(s)   /root/baseline/squid/report.txt
+  system        0 finding(s)   /root/baseline/system/report.txt
+Review each report ('!!' lines) and the diff.patch files, then run the matching hardening script.
+
+[drive2] EXIT 0

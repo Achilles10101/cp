@@ -1,0 +1,32 @@
+# C round 5 (2026-11-11): cp-mint-svcplanted, README = all 13 services critical. Same steps/answers as V's
+# rules-2026-11-10-new-r2-svc.txt (no CP_AUTO any more) + the round-5 systemconfig firewall question (Enter = the
+# suggested rules for the listening daemons) + fileandpackage and portandmisc answered with their defaults
+# (services kept) - nothing critical may be removed, stopped or firewalled.
+set HARD=1500
+env CP_ADMINS=cpuser
+env CP_USERS=ftpuser
+env CP_SERVICES=ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid
+rule Allow the \d+ \[Y\] rule                     =>
+rule Extra ports the README needs                 =>
+rule REMOTE access to                             => n
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Remove ALL superuser                         => n
+rule Does the README change any of these          => n
+rule Does the README or the                       => n
+rule Does the README require                      => n
+rule Test login - FTP username                    => ftpuser
+rule Password for ftpuser                         => Ftp-Us3r!pass
+rule Quarantine these phpinfo                     => y
+rule Triage the \d+ FIX NOW finding               => n
+rule \(END\)                                      => q
+rule Run \S+\.sh \(the README must list it as critical\) => y
+rule Remove all of these                          => y
+rule Remove these service packages                => n
+rule Remove the OpenSSH server                    => n
+rule Stop \+ disable the SSH server               => n
+step s0-readme bash readme.sh
+step s1-baseline bash services/baseline.sh
+step s3-sysconfig bash systemconfig.sh
+step s-critical bash services/critical.sh
+step s4-filepkg bash fileandpackage.sh
+step s5-portmisc bash portandmisc.sh

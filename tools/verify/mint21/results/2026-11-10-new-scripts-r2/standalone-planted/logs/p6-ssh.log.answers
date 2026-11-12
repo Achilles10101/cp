@@ -1,0 +1,6 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.2s] '? Does the README change any of these (port, key-only login, allowed/denied users or groups, SFTP-only)? [y/N]:' -> 'n' (rule)
+[    7.9s] '? Remove /root/.ssh/authorized_keys (1 key(s): eve@kali )? root never needs SSH keys on a CP image (backed up) [Y/n]:' -> '' (DEFAULT(Enter))
+[   10.8s] '? Install fail2ban (bans SSH brute force; installs in the background, needs network)? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=4 rule=2 default=2 stall=0 wait=10.0s elapsed=11.2s
+EXIT 0

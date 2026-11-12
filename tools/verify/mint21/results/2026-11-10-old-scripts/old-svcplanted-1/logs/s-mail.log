@@ -1,0 +1,56 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'postfix' exists (/root/baseline/postfix)
+
+----- Baseline findings for postfix (full report: /root/baseline/postfix/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B9 snapshot of live state saved to /root/baseline/postfix/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+  [+] Baseline for 'dovecot' exists (/root/baseline/dovecot)
+
+----- Baseline findings for dovecot (full report: /root/baseline/dovecot/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 differs from clean-VM pack: /etc/dovecot/conf.d/10-auth.conf
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+!! B2 differs from dovecot template: /etc/dovecot/conf.d/10-auth.conf
+!! B3 not owned by any package: -rw-r--r-- root:root 2026-11-10 23:34:42.0000 /etc/dovecot/local.conf
+## B4 permissions / ownership vs default
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B9 snapshot of live state saved to /root/baseline/dovecot/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+=========================================
+Mail Security Hardening
+=========================================
+  ? Is MAIL a critical service in the README (other machines send/receive mail through this one)? [Y/n]: 
+
+--- Postfix
+  [*] Backup: /root/cp-backups/20261110_235357/etc/postfix
+  ? Does the README require ENCRYPTED SMTP only (smtpd_tls_security_level = encrypt)? [y/N]: 
+  [*] Mail is critical - leaving inet_interfaces = all
+  [+] postfix check passed
+  [+] postfix restarted and active
+  [+] UFW: allowed application profile 'Postfix'
+  [+] UFW: allowed application profile 'Postfix Submission'
+  [*] SMTP banner: 220 mint-cptest ESMTP
+  [+] VRFY disabled
+
+--- Dovecot (2.3.16 (7e2e900c1a))
+  [*] Backup: /root/cp-backups/20261110_235357/etc/dovecot
+  [!] /etc/dovecot/conf.d/10-auth.conf also sets auth_debug_passwords - removing
+  [*] Removed 'auth_debug_passwords' from /etc/dovecot/conf.d/10-auth.conf
+  [+] doveconf -n: config valid
+      ssl = required
+  [+] dovecot restarted and active
+  [+] UFW: allowed application profile 'Dovecot Secure IMAP'
+
+Mail hardening complete.
+
+[drive2] EXIT 0

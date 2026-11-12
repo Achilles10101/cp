@@ -1,0 +1,4 @@
+service check 00:30:58
+  OK   ssh         keyscan ok on 22
+  FAIL vsftpd      login+list ok (530)
+  OK   apache2     http 200 https 000

@@ -1,0 +1,8 @@
+[18:33:40] manual
+A done
+B done
+C done
+[18:41:57] notty
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+done
+[18:42:59] QUEUE DONE

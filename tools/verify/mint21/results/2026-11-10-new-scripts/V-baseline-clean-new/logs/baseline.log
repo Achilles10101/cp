@@ -1,0 +1,13 @@
+Baseline scan - detection only, nothing is changed.  OS: linuxmint-21.3   services: samba system
+  known good: baseline pack linuxmint-21.3 (no network needed)
+  [  0s] samba      FIX NOW 0   REVIEW 0   info 0
+  [  1s] system     FIX NOW 0   REVIEW 0   info 0
+
+BASELINE FINDINGS   FIX NOW: 0   REVIEW: 0   info: 0      (2026-11-11 00:27, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+No findings: every scanned service matches its known-good baseline.
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch
+Scan finished in 1s.  Saved: /root/baseline/FINDINGS.txt
+
+[drive2] EXIT 0

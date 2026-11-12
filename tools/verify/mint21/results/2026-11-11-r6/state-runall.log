@@ -1,0 +1,15 @@
+[20:50:03] start old-planted
+[20:55:21] done  old-planted: checks: 104/144 PASS   planted: 37/44 PASS services answering: 1 OK ssh | FAIL: - 
+[20:55:21] start new-planted
+[21:00:30] done  new-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[21:00:30] start old-svc
+[21:07:41] done  old-svc: checks: 132/144 PASS   planted: 40/44 PASS services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx 
+[21:07:41] start new-svc
+Error response from daemon: No such container: V6s-new-svc
+Error response from daemon: No such container: V6s-new-svc
+tar (child): /home/claude/work/tools/verify/mint21/results/2026-11-11-r6/state/new-svc/state.tgz: Cannot open: No such file or directory
+tar (child): Error is not recoverable: exiting now
+tar: Child returned status 2
+tar: Error is not recoverable: exiting now
+[21:09:01] done  new-svc: services answering: 0 OK  | FAIL: - 
+[21:09:01] ALL DONE

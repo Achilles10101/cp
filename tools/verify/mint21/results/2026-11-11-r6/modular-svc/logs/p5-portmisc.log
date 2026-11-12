@@ -1,0 +1,35 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Listening ports (process, package, unit) ===[0m
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:21             vsftpd (211)                 vsftpd                 vsftpd.service  -> service
+  tcp   0.0.0.0:22             sshd (5717)                  openssh-server         ssh.service  -> service
+  tcp   0.0.0.0:25             master (1070)                postfix                postfix@-.service  -> service
+  tcp   127.0.0.1:53           named (261)                  bind9                  named.service  -> service
+  tcp   127.0.0.53%lo:53       systemd-resolve (78)         systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (78)         systemd                systemd-resolved.service  -> system
+  udp   172.17.0.2:53          named (261)                  bind9                  named.service  -> service
+  tcp   0.0.0.0:80             apache2 (524)                apache2-bin            apache2.service  -> service
+  tcp   0.0.0.0:110            dovecot (238)                dovecot-core           dovecot.service  -> service
+  udp   172.17.255.255:137     nmbd (239)                   samba                  nmbd.service  -> service
+  udp   172.17.255.255:138     nmbd (239)                   samba                  nmbd.service  -> service
+  tcp   0.0.0.0:139            smbd (504)                   samba                  smbd.service  -> service
+  tcp   0.0.0.0:143            dovecot (238)                dovecot-core           dovecot.service  -> service
+  tcp   0.0.0.0:445            smbd (504)                   samba                  smbd.service  -> service
+  tcp   127.0.0.1:953          named (261)                  bind9                  named.service  -> service
+  tcp   0.0.0.0:993            dovecot (238)                dovecot-core           dovecot.service  -> service
+  tcp   0.0.0.0:995            dovecot (238)                dovecot-core           dovecot.service  -> service
+  tcp   0.0.0.0:3128           squid (515)                  squid                  squid.service  -> service
+  tcp   127.0.0.1:3306         mysqld (527)                 mysql-server-core-8.0  mysql.service  -> service
+  tcp   127.0.0.1:5432         postgres (305)               postgresql-14          postgresql@14-main.service  -> service
+  tcp   127.0.0.1:33060        mysqld (527)                 mysql-server-core-8.0  mysql.service  -> service
+  udp   0.0.0.0:51259          squid (515)                  squid                  squid.service  -> service
+
+  [*] 2 listener(s) are stock system daemons or the scoring engine
+  ? Stop + disable services the README does NOT need (e = each): tcp/110(dovecot.service) tcp/139(smbd.service) tcp/143(dovecot.service) tcp/21(vsftpd.service) tcp/25(postfix@-.service) tcp/3128(squid.service) tcp/3306(mysql.service) tcp/33060(mysql.service) tcp/445(smbd.service) tcp/53(named.service) tcp/5432(postgresql@14-main.service) tcp/80(apache2.service) tcp/953(named.service) tcp/993(dovecot.service) tcp/995(dovecot.service) udp/137(nmbd.service) udp/138(nmbd.service) udp/51259(squid.service) udp/53(named.service) ? [y/N/e]: n
+  ? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]: n
+  ? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip: 
+
+  [1;32m[+][0m portandmisc done in 9s. Listener table: /root/cp-state/listeners.tsv
+
+[drive2] EXIT 0

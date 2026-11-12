@@ -1,0 +1,11 @@
+#!/bin/bash
+# TEST HARNESS: stands in for a person typing the README's users into usersandsudo.sh's nano screen
+f="${@: -1}"
+echo "[fake-nano] editing $f (admins: $CP_ADMINS | users: $CP_USERS)" >> /root/harness.log
+python3 - "$f" <<'PY'
+import os, sys
+f = sys.argv[1]; s = open(f).read()
+a = "\n".join(os.environ.get("CP_ADMINS", "").split()); u = "\n".join(os.environ.get("CP_USERS", "").split())
+s = s.replace("#administrators\n", "#administrators\n" + a + "\n", 1).replace("#normalusers\n", "#normalusers\n" + u + "\n", 1)
+open(f, "w").write(s)
+PY

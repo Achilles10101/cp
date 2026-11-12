@@ -1,0 +1,2 @@
+[systemconfig.sh] Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+[fileandpackage.sh] Glance over 4 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)

@@ -1,0 +1,33 @@
+[18:24:37] container V2-rep from cp-mint-planted: systemd running
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:24:37] restored POSIX ACLs from cp-mint-planted: 1 file(s)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:24:38] step wait65: sleep 65
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:25:43]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[18:25:43] step start: bash start.sh
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+[18:28:56]   done in 193s  STATS prompts=59 rule=39 default=20 stall=0 wait=147.7s elapsed=193.5s  exit=0  findings=- (-)
+[18:28:56] step zz-wait-bg: bash -c for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; ls /root/cp-state/start/jobs/; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null) secs=$(( $(cat /root/cp-state/start/jobs/$j.end 2>/dev/null || echo 0) - $(cat /root/cp-state/start/jobs/$j.start 2>/dev/null || echo 0) ))"; done
+[18:28:57]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+image cp-mint-planted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-start.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   0.55>0.18
+start              193.6     193.5   147.7    45.8       59    39    20     0     0        -   0.18>0.24
+zz-wait-bg           0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.24>0.24
+TOTAL              259.1             147.7   111.4       59
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 110/144 PASS   planted: 43/44 PASS
+services answering: 1 OK ssh | FAIL: -
+

@@ -1,0 +1,17 @@
+
+======== CP19 start.sh ========  21s since start | auto mode ON
+  README: not entered yet (step 1)
+  Background: apt: done 9s, 0 upgrade files ready | baseline scan: done 2s, FIX NOW 11, REVIEW 7 (list: /root/baseline/FINDINGS.txt)
+   1 [!] README intake                   0s  exit 1 (see log)
+   2 [ ] Forensics + EARLY MANUAL list   
+   3 [ ] Baseline review                 
+   4 [ ] Users + sudo                    
+   5 [ ] System config                   
+   6 [ ] Packages + files                
+   7 [ ] Ports                           
+   8 [ ] Critical services               
+   9 [ ] Upgrades (install downloaded)   (0 files downloaded)
+  10 [ ] LATE MANUAL list                
+  11 [ ] Final TODO list                 (1 open)
+ | 1-11 = that step | t = TODO (1) | a = auto on/off | q = quit
+[exit 0]

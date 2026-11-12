@@ -1,0 +1,7 @@
+ls: cannot access '/usr/src/evil_rabbit.so': No such file or directory
+ADMINS=cpuser
+USERS=
+ME=cpuser
+WEAKPW=
+SERVICES=none
+GROUPS=

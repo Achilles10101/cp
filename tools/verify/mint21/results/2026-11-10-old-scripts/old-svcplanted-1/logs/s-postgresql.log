@@ -1,0 +1,59 @@
+Have you taken a screenshot of the points? (y/n): y
+  [+] Baseline for 'postgresql' exists (/root/baseline/postgresql)
+
+----- Baseline findings for postgresql (full report: /root/baseline/postgresql/report.txt) -----
+## B1 package integrity (dpkg --verify) - binaries, PAM modules, shipped files
+## B2 config content vs pristine default
+!! B2 differs from pristine default: /etc/postgresql/14/main/pg_hba.conf
+!! B2 differs from pristine default: /etc/postgresql/14/main/postgresql.conf
+!! B2 differs from clean-VM pack: /etc/postgresql/14/main/postgresql.conf
+!! B2 differs from clean-VM pack: /etc/postgresql/14/main/pg_hba.conf
+## B3 files in config dirs that NO package owns (planted drop-ins?)
+## B4 permissions / ownership vs default
+!! B4 differs from clean VM: /etc/postgresql/14/main/pg_hba.conf clean[640 postgres:postgres] live[644 postgres:postgres]
+## B5 systemd units (ExecStart / User / drop-ins / sandboxing)
+## B6 listening sockets vs expected
+## B7 service-internal accounts vs defaults
+## B9 snapshot of live state saved to /root/baseline/postgresql/before (rollback point + FQ evidence)
+-----------------------------------------------------------------------
+  Review the findings above, then press Enter to continue... 
+=========================================
+PostgreSQL Security Hardening
+=========================================
+  ? Does the README require REMOTE connections to PostgreSQL? [y/N]: 
+
+--- Cluster 14/main (/etc/postgresql/14/main)
+  [*] Backup: /root/cp-backups/20261110_235307/etc/postgresql/14/main
+pg_hba.conf entries:
+      90:local   all             postgres                                peer
+      95:local   all             all                                     peer
+      97:host    all             all             127.0.0.1/32            scram-sha-256
+      99:host    all             all             ::1/128                 scram-sha-256
+      102:local   replication     all                                     peer
+      103:host    replication     all             127.0.0.1/32            scram-sha-256
+      104:host    replication     all             ::1/128                 scram-sha-256
+      105:host all all 0.0.0.0/0 trust
+  [!] 'trust' (no password) or 'password' (cleartext) authentication found
+  ? Replace: local trust -> peer, host trust/password -> scram-sha-256? [Y/n]: 
+  [+] pg_hba.conf: authentication required for every connection
+  [!] Entries allow connections from ANY address:
+      105: host all all 0.0.0.0/0 scram-sha-256
+  ? Comment them out (README does not need remote access)? [Y/n]: 
+  [+] World-open entries disabled
+  [+] Config files postgres:postgres (pg_hba/pg_ident 640), data dir 700
+
+  [+] postgresql restarted and active
+  [+] PostgreSQL answers queries
+  ssl=on password_encryption=scram-sha-256 listen_addresses=localhost log_connections=on
+
+Roles (compare with the README):
+ rolname  | rolsuper | rolcreaterole | rolcreatedb | rolcanlogin |  pw  
+----------+----------+---------------+-------------+-------------+------
+ postgres | t        | t             | t           | t           | none
+(1 row)
+
+  ? Roles to strip SUPERUSER/CREATEROLE/CREATEDB from (comma separated, Enter = none): 
+  ? Roles to DROP (comma separated, Enter = none): 
+PostgreSQL hardening complete.
+
+[drive2] EXIT 0

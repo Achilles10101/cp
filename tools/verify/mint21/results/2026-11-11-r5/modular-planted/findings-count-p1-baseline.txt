@@ -1,0 +1,7 @@
+0 apache2
+0 mysql
+0 samba
+3 ssh
+15 system
+1 vsftpd
+HEADER BASELINE FINDINGS   FIX NOW: 12   REVIEW: 7   info: 2      (2026-11-12 02:11, linuxmint-21.3, pack: linuxmint-21.3)

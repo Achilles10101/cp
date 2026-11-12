@@ -1,0 +1,8 @@
+[16:46:03] container V-svcst from cp-mint-svcplanted: systemd degraded
+[16:46:04] step wait65: sleep 65
+[16:47:09]   done in 65s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=65.0s  exit=0  findings=- (-)
+[16:47:09] step start: bash start.sh
+[16:51:05]   done in 235s  STATS prompts=71 rule=35 default=36 stall=0 wait=177.7s elapsed=235.7s  exit=0  findings=- (-)
+[16:51:05] step zz-wait-bg: bash -c for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)"; done
+[16:51:05]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+[16:51:09] container kept: V-svcst

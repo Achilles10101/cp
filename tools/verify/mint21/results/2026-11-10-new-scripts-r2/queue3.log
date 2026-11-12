@@ -1,0 +1,5 @@
+[18:19:18] start old-planted (same post-reboot conditions)
+[18:24:36] done old: TOTAL              313.3             152.7   160.6       61 checks: 104/144 PASS   planted: 37/44 PASS 
+[18:24:36] start start-planted-rep (timing repeat, warm caches)
+[18:28:59] done rep: TOTAL              259.1             147.7   111.4       59 checks: 110/144 PASS   planted: 43/44 PASS 
+[18:28:59] QUEUE3 DONE

@@ -1,0 +1,15 @@
+[18:10:10] start modular-planted
+[18:15:12] done  modular-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[18:15:12] start speedrun-planted
+[18:20:10] done  speedrun-planted: checks: 110/144 PASS   planted: 43/44 PASS services answering: 1 OK ssh | FAIL: - 
+[18:20:10] start modular-svc
+[18:26:49] done  modular-svc: checks: 132/144 PASS   planted: 40/44 PASS services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx 
+[18:26:49] start speedrun-svc
+[18:33:11] done  speedrun-svc: checks: 132/144 PASS   planted: 40/44 PASS services answering: 12 OK ssh vsftpd apache2 php-fpm mysql postgres samba bind9 postfix dovecot openvpn squid | FAIL: nginx 
+[18:33:11] start baseline-clean
+[18:33:15] done  baseline-clean: 
+[18:33:15] start baseline-services
+[18:33:26] done  baseline-services: 
+[18:33:26] start baseline-planted
+[18:33:31] done  baseline-planted: 
+[18:33:31] ALL DONE

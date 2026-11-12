@@ -1,0 +1,7 @@
+[    2.5s] '? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]:' -> 'y' (rule)
+[    5.6s] '? Does the README need REMOTE access to MySQL/MariaDB (open port 3306)? [y/N]:' -> 'n' (rule)
+[    8.1s] '? Does the README need REMOTE access to PostgreSQL (open port 5432)? [y/N]:' -> 'n' (rule)
+[   12.7s] '? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none:' -> '' (rule)
+[   16.9s] '? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]:' -> '' (DEFAULT(Enter))
+STATS prompts=5 rule=4 default=1 stall=0 wait=12.5s elapsed=35.5s
+EXIT 0

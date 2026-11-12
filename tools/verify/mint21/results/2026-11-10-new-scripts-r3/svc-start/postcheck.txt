@@ -1,0 +1,67 @@
+== desktop packages
+  cinnamon               install ok installed
+  cinnamon-core          install ok installed
+  lightdm                install ok installed
+  network-manager        install ok installed
+  mint-meta-cinnamon     install ok installed
+  mint-meta-core         install ok installed
+  slick-greeter          install ok installed
+  lightdm-settings       install ok installed
+  xorg                   not-known
+  default target: graphical.target  lightdm enabled: indirect  NetworkManager: active/enabled
+== sudo
+-rwsr-xr-x 1 root root 232416 Oct  6 14:05 /usr/bin/sudo
+user::rwx group::r-x other::r-x  
+  visudo -c OK
+  cpuser  id: uid=1000(cpuser) gid=1000(cpuser) groups=1000(cpuser),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),115(lpadmin)
+      sudo:     (ALL : ALL) ALL
+      sudo:     (root) NOPASSWD: /usr/bin/mint-refresh-cache
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/synaptic-workaround.py
+      sudo:     (root) NOPASSWD: /usr/lib/linuxmint/mintUpdate/dpkg_lock_check.sh
+  alice   id: id: 'alice': no such user
+  bob     id: id: 'bob': no such user
+  carol   id: id: 'carol': no such user
+  dave    id: id: 'dave': no such user
+  frank   id: id: 'frank': no such user
+  root passwd status: L  cpuser: P 11/10/2026 0 99999 7 -1
+  cpuser sudo -n -l rc=0 (1 = needs password = OK, sudo works)
+  sudo binary runs as cpuser
+== homes
+  /home/cpuser drwxr-x--- cpuser:cpuser files=7
+  /home/alice  stat: cannot statx '/home/alice': No such file or directory files=0
+  /home/bob    stat: cannot statx '/home/bob': No such file or directory files=0
+  /home/carol  stat: cannot statx '/home/carol': No such file or directory files=0
+  /home/dave   stat: cannot statx '/home/dave': No such file or directory files=0
+  /home/frank  stat: cannot statx '/home/frank': No such file or directory files=0
+== human accounts (uid>=1000 or with /home)
+  cpuser 1000 /home/cpuser /bin/bash
+  ftpuser 1001 /home/ftpuser /bin/bash
+== quarantine
+  2026-11-11 03:09:26  /etc/ssh/sshd_config.d/60-evil.conf -> /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf   undo: mv /root/cp-quarantine/etc/ssh/sshd_config.d/60-evil.conf /etc/ssh/sshd_config.d/60-evil.conf
+  2026-11-11 03:09:37  /var/www/html/info.php -> /root/cp-quarantine/var/www/html/info.php   undo: mv /root/cp-quarantine/var/www/html/info.php /var/www/html/info.php
+  2026-11-11 03:09:44  /etc/ld.so.preload -> /root/cp-quarantine/etc/ld.so.preload   undo: mv /root/cp-quarantine/etc/ld.so.preload /etc/ld.so.preload
+  2026-11-11 03:09:45  /usr/src/evil_rabbit.so -> /root/cp-quarantine/usr/src/evil_rabbit.so  (listed in /etc/ld.so.preload)   undo: mv /root/cp-quarantine/usr/src/evil_rabbit.so /usr/src/evil_rabbit.so
+== services active
+ssh=active vsftpd=active apache2=active nginx=inactive php8.1-fpm=active mysql=active postgresql=active smbd=active named=active postfix=active dovecot=active openvpn=active squid=active cups=inactive avahi-daemon=inactive ufw=active 
+== ufw
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+21/tcp                     ALLOW       Anywhere                  
+Apache Full                ALLOW       Anywhere                  
+Nginx Full                 ALLOW       Anywhere                  
+Samba                      ALLOW       Anywhere                  
+Bind9                      ALLOW       Anywhere                  
+Postfix                    ALLOW       Anywhere                  
+Postfix Submission         ALLOW       Anywhere                  
+Dovecot IMAP               ALLOW       Anywhere                  
+Dovecot Secure IMAP        ALLOW       Anywhere                  
+1194/udp                   ALLOW       Anywhere                  
+3128/tcp                   ALLOW       Anywhere                  
+40000:50000/tcp            ALLOW       Anywhere                  
+
+== sysctl ipv6 disable: 
+== TODO count: 9
+== /opt

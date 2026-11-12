@@ -1,0 +1,6 @@
+3 apache2
+4 mysql
+0 samba
+5 ssh
+14 system
+1 vsftpd

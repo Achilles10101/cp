@@ -1,0 +1,24 @@
+# D 2026-11-11 (round 5): services round on cp-mint-svcplanted, NEW flow - no README state, no CP_AUTO.
+# README: admin cpuser (you), user ftpuser, ALL 13 services critical -> critical.sh: y for every detected service.
+set HARD=1500
+# systemconfig (same answers as rules-2026-11-10-new-r2-svc.txt)
+rule Extra ports the README needs                 =>
+rule REMOTE access to                             => n
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Remove ALL superuser                         => n
+# critical.sh: one question per detected service
+rule Run \w+\.sh \(the README must list it as critical\) => y
+# service scripts (README gives no special SSH/FTP/DB/web settings here); former cp_auto questions = Enter
+rule Is MAIL a critical service                   => y
+rule Does the README change any of these          => n
+rule Does the README or the                       => n
+rule Does the README require                      => n
+rule Test login - FTP username                    => ftpuser
+rule Password for ftpuser                         => Ftp-Us3r!pass
+rule Quarantine these phpinfo                     => y
+rule Triage the \d+ FIX NOW finding               => n
+rule \(END\)                                      => q
+
+step s1-baseline bash services/baseline.sh
+step s3-sysconfig bash systemconfig.sh
+step s-critical bash services/critical.sh

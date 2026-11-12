@@ -1,0 +1,6 @@
+[17:02:48] container V-clean from cp-mint-clean: systemd running
+[17:02:49] step start: bash start.sh
+[17:04:17]   done in 88s  STATS prompts=28 rule=7 default=21 stall=0 wait=70.1s elapsed=88.0s  exit=0  findings=- (-)
+[17:04:17] step zz-wait-bg: bash -c for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)"; done
+[17:04:17]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+[17:04:18] container kept: V-clean

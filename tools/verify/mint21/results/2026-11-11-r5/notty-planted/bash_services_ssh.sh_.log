@@ -1,0 +1,31 @@
+
+=== SSH hardening ===
+  Baseline findings for ssh: FIX NOW 1, REVIEW 2   (all: /root/baseline/FINDINGS.txt)
+    FIX NOW file no package owns: 644 root:root /etc/ssh/sshd_config.d/60-evil.conf
+              PermitRootLogin yes
+    REVIEW  /etc/ssh/sshd_config differs from pristine (2 line(s))
+              + PermitRootLogin yes
+              + PermitEmptyPasswords yes
+    REVIEW  config file not owned by root: 644 bob:root /etc/ssh/sshd_config  (clean VM: 644 root:root)
+  [*] Backup: /root/cp-backups/20261112_024245/etc/ssh/sshd_config
+  [*] Backup: /root/cp-backups/20261112_024245/etc/ssh/sshd_config.d
+  [*] Backup: /root/cp-backups/20261112_024245/etc/issue.net
+  README-dependent SSH settings (current values) - Enter keeps all of them:
+      Port 22 | password login allowed | AllowUsers none | DenyUsers none | DenyGroups none | SFTP-only no
+  [+] Perms: sshd_config + drop-ins 600 root, host keys 600/644, ~/.ssh 700 + keys 600 for 9 accounts
+  [*] Backup: /root/cp-backups/20261112_024245/root/.ssh/authorized_keys
+  [+] Removed /root/.ssh/authorized_keys
+  [!] Drop-in /etc/ssh/sshd_config.d/60-evil.conf overrode PermitRootLogin yes - removed there
+  [+] sshd -t: config valid
+  [+] UFW: allowed application profile 'OpenSSH'
+  [*] fail2ban is installing in the background (log: /root/cp-state/fail2ban-install.log)
+  [+] SSH restarted and active
+  [+] Effective sshd settings (sshd -T) match
+  [+] SSH answers on localhost:22
+  Changed (effective): Banner:none->/etc/issue.net Compression:yes->no MaxAuthTries:6->3 
+      PermitRootLogin:yes->no PermitEmptyPasswords:yes->no ClientAliveCountMax:3->2 X11Forwarding:yes->no 
+      AllowTcpForwarding:yes->no LoginGraceTime:120->30 MaxSessions:10->4 MaxStartups:10:30:100->10:30:60 
+      ClientAliveInterval:0->300 AllowAgentForwarding:yes->no LogLevel:info->verbose DisableForwarding:no->yes
+      ~ /etc/ssh/sshd_config.d/60-evil.conf: (lines removed)
+  [+] SSH hardening complete (1s)
+[exit 0]

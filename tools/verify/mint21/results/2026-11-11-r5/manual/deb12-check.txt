@@ -1,0 +1,72 @@
+PASS  README account pparker exists with its home
+PASS  README account tstark exists with its home
+PASS  README account ppotts exists with its home
+PASS  README account hhogan exists with its home
+PASS  README account nfury exists with its home
+PASS  README account mhill exists with its home
+PASS  README account pcoulson exists with its home
+PASS  README account bbanner exists with its home
+PASS  README account swilson exists with its home
+PASS  README account sstrange exists with its home
+PASS  README account slang exists with its home
+PASS  README account cdanvers exists with its home
+PASS  README account okoye exists with its home
+PASS  README account kbishop exists with its home
+PASS  README account ybelova exists with its home
+PASS  README account jfoster exists with its home
+PASS  README account nleeds exists with its home
+PASS  README account mjwatson exists with its home
+PASS  README account jtorres exists with its home
+PASS  README account pcarter exists with its home
+PASS  home of pparker kept (keep.txt)
+PASS  home of tstark kept (keep.txt)
+PASS  home of ppotts kept (keep.txt)
+PASS  home of hhogan kept (keep.txt)
+PASS  home of nfury kept (keep.txt)
+PASS  home of mhill kept (keep.txt)
+PASS  home of pcoulson kept (keep.txt)
+PASS  home of bbanner kept (keep.txt)
+PASS  home of swilson kept (keep.txt)
+PASS  home of sstrange kept (keep.txt)
+PASS  home of slang kept (keep.txt)
+PASS  home of cdanvers kept (keep.txt)
+PASS  home of okoye kept (keep.txt)
+PASS  home of kbishop kept (keep.txt)
+PASS  home of ybelova kept (keep.txt)
+PASS  home of jfoster kept (keep.txt)
+PASS  home of nleeds kept (keep.txt)
+PASS  home of mjwatson kept (keep.txt)
+PASS  home of jtorres kept (keep.txt)
+PASS  admin pparker in sudo
+PASS  admin tstark in sudo
+PASS  admin ppotts in sudo
+PASS  admin hhogan in sudo
+PASS  admin nfury in sudo
+PASS  admin mhill in sudo
+PASS  admin pcoulson in sudo
+PASS  user bbanner not in sudo/adm
+PASS  user swilson not in sudo/adm
+PASS  user sstrange not in sudo/adm
+PASS  user slang not in sudo/adm
+PASS  user cdanvers not in sudo/adm
+PASS  user okoye not in sudo/adm
+PASS  user kbishop not in sudo/adm
+PASS  user ybelova not in sudo/adm
+PASS  user jfoster not in sudo/adm
+PASS  user nleeds not in sudo/adm
+PASS  user mjwatson not in sudo/adm
+PASS  user jtorres not in sudo/adm
+PASS  user pcarter not in sudo/adm
+PASS  unauthorized loki removed
+PASS  unauthorized thanos removed
+PASS  pparker shadow line unchanged (password never changed/expired)
+PASS  pparker not expired, not locked
+PASS  pcarter (created) has a password set
+PASS  usersandsudo's own US_* answers (no shared ADMINS/SERVICES keys)
+PASS  no README/typed password on disk
+checks: 66 pass, 0 fail
+   3. [fileandpackage.sh] Glance over 26 other files in user folders: /root/cp-state/files-other.txt (archives, scripts, documents)
+
+  [+] Speedrun done in 1m56s | users 55s review 0s system 29s packages 11s ports 7s critical 3s upgrades 7s
+
+[drive2] EXIT 0

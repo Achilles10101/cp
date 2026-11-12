@@ -1,0 +1,20 @@
+image cp-mint-planted
+competition /home/claude/orig/competition
+rules /tmp/T-rules-umask022.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+p1-baseline         36.1      36.0     0.0    36.0        0     0     0     0     0       27   1.50>1.23
+p2-users            25.4      25.3    25.0     0.3       10     9     1     0     0        -   1.23>0.81
+p3-sysconfig        64.1      64.0    37.5    26.5       15     6     9     0     0        -   0.81>0.54
+p4-filepkg          66.7      66.7    50.1    16.6       20    19     1     0     0        -   0.54>0.43
+p5-portmisc         55.8      55.8    17.5    38.3        7     5     2     0     0        -   0.43>0.34
+p6-ssh              28.3      28.2    20.0     8.2        8     1     7     0     0        -   0.34>0.43
+TOTAL              277.2             150.1   127.1       60
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 104/144 PASS   planted: 37/44 PASS
+services answering: 1 OK ssh | FAIL: -
+baseline findings: 27  (bang=27; new baseline.sh: FIX NOW + REVIEW from FINDINGS.txt, old: '!!' lines)

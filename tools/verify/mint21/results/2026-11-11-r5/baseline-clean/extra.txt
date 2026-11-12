@@ -1,0 +1,1 @@
+ls: cannot access '/usr/src/evil_rabbit.so': No such file or directory

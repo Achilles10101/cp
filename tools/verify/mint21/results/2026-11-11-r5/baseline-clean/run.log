@@ -1,0 +1,4 @@
+[18:33:13] container V5-baseline-clean from cp-mint-clean: systemd running
+[18:33:13] step baseline: bash services/baseline.sh
+[18:33:14]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.8s  exit=0  findings=0 (fix=0 review=0 info=0 bang=0)
+[18:33:14] container kept: V5-baseline-clean

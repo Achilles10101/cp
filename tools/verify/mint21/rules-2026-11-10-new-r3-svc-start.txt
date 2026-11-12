@@ -1,0 +1,56 @@
+# ROUND 3 (after the Mac merge): the round-2 answers; changes noted below.
+# + a pre step (POP3/IMAP state before) and a post step (POP3 gone, IMAP answering)
+# ROUND 2 (2026-11-10, after the fix round): same answers as the round-1 file of the same name, plus the new
+# review question 'Also go through the N REVIEW item(s)? [y/N]' where noted.
+# (no change needed: the REVIEW question gets Enter = no)
+# V (verifier) 2026-11-10: NEW scripts, services round on cp-mint-svcplanted through start.sh (the whole round).
+# README: admin cpuser (you), user ftpuser, ALL 13 services critical. Review: Enter everywhere except the two
+# test-only overrides (vsftpd no-IPv6 drop-in, dovecot local.conf) -> s. New password for ftpuser = its test password
+# (strong; keeps svccheck's FTP login meaningful).
+set HARD=3600
+env CP_ADMINS=cpuser
+env CP_USERS=ftpuser
+env CP_SERVICES=ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid
+step wait65 sleep 65
+step pre-pop3 bash -c 'ss -ltn | grep -E ":(110|995|143|993) " | awk "{print \$4}"; dpkg-query -W -f="\${db:Status-Abbrev} \${Package}\n" dovecot-pop3d dovecot-imapd; doveconf -h protocols'
+
+step start bash start.sh
+rule All steps done                               => q
+rule Forensics answered and EARLY MANUAL          =>
+rule LATE MANUAL items done                       =>
+rule All TODO items handled                       =>
+rule Install them now in the background           => y
+rule cptest-noipv6\.conf: d=show                  => s
+rule local\.conf: d=show                          => s
+rule Delete account toor                          => y
+rule Delete these \d+ accounts                    => y
+rule Apply these \d+ admin-group fixes            => y
+rule Set ONE new strong password                  => y
+rule Retype new password:                         => Ftp-Us3r!pass
+rule New password:                                => Ftp-Us3r!pass
+rule README groups, as                            =>
+rule Open /etc/sudoers.* in visudo                => y
+rule Extra ports the README needs                 =>
+rule REMOTE access to                             => n
+rule Delete these \d+ rule\(s\)\?                 => n
+rule Remove ALL superuser                         => n
+rule Remove all of these \(e = choose per family\) => y
+rule Remove these too\?                           => n
+rule Other packages to remove                     =>
+rule Delete these \d+ media file                  => y
+rule Remove the SUID/SGID bit                     => y
+rule Stop \+ disable these backdoor-looking listeners => y
+rule Stop \+ disable these services the README does not list => y
+rule Stop these unknown listeners                 => n
+rule Optional: l = lynis                          =>
+rule Does the README change any of these          => n
+rule Does the README or the                       => n
+rule Does the README require                      => n
+rule Test login - FTP username                    => ftpuser
+rule Password for ftpuser                         => Ftp-Us3r!pass
+rule Quarantine these phpinfo                     => y
+rule Triage the \d+ FIX NOW finding               => n
+rule \(END\)                                      => q
+step zz-wait-bg bash -c 'for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)"; done'
+
+step zz-pop3-check bash -c 'echo "listeners:"; ss -ltn | grep -E ":(110|995|143|993) " | awk "{print \$4}"; dpkg-query -W -f="\${db:Status-Abbrev} \${Package}\n" dovecot-pop3d dovecot-imapd 2>&1; echo "protocols: $(doveconf -h protocols)"; ufw status | grep -iE "pop3|110|995|imap|143|993"; timeout 5 bash -c "exec 3<>/dev/tcp/127.0.0.1/143; head -1 <&3"; timeout 3 bash -c "exec 3<>/dev/tcp/127.0.0.1/110" && echo "110 OPEN" || echo "110 closed"; grep MAIL_POP3 /root/cp-state/readme.conf'

@@ -1,0 +1,48 @@
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [*] README from environment: admins: cpuser | users: ftpuser | you: cpuser | critical: ssh vsftpd apache2 nginx php mysql postgresql samba bind9 mail wordpress openvpn squid
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;32m[+][0m Saved README answers -> /root/cp-state/readme.conf   (see: sudo bash readme.sh --show)
+ERROR: ld.so: object '/usr/src/evil_rabbit.so' from /etc/ld.so.preload cannot be preloaded (file too short): ignored.
+  [1;31m[TODO][0m README lists 'wordpress' as critical but it is not installed - re-check the README (install it? other name?)
+
+[drive2] EXIT 0

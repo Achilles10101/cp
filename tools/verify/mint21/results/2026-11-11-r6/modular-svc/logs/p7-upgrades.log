@@ -1,0 +1,53 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Package lists ===[0m
+  [1;32m[+][0m apt-get update done
+
+[1;36m=== Repositories ===[0m
+      http://archive.ubuntu.com/ubuntu
+      http://security.ubuntu.com/ubuntu
+
+[1;36m=== Upgrades ===[0m
+  [*] 5 package(s) to upgrade/install - includes: mysql-server-8.0 mysql-server-core-8.0 mysql-server 
+  ? Install them now (your hardened config files are kept)? [Y/n]: y
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages have been kept back:
+  distro-info python3-distro-info
+The following packages will be upgraded:
+  mysql-client-8.0 mysql-client-core-8.0 mysql-server mysql-server-8.0
+  mysql-server-core-8.0
+5 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
+Need to get 22.0 MB of archives.
+After this operation, 46.1 kB of additional disk space will be used.
+Get:1 http://security.ubuntu.com/ubuntu jammy-security/main amd64 mysql-client-core-8.0 amd64 8.0.46-0ubuntu0.22.04.5 [2721 kB]
+Get:2 http://security.ubuntu.com/ubuntu jammy-security/main amd64 mysql-client-8.0 amd64 8.0.46-0ubuntu0.22.04.5 [22.7 kB]
+Get:3 http://security.ubuntu.com/ubuntu jammy-security/main amd64 mysql-server-8.0 amd64 8.0.46-0ubuntu0.22.04.5 [1452 kB]
+Get:4 http://security.ubuntu.com/ubuntu jammy-security/main amd64 mysql-server-core-8.0 amd64 8.0.46-0ubuntu0.22.04.5 [17.8 MB]
+Get:5 http://security.ubuntu.com/ubuntu jammy-security/main amd64 mysql-server all 8.0.46-0ubuntu0.22.04.5 [9464 B]
+Fetched 22.0 MB in 2s (11.5 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 70017 files and directories currently installed.)
+Preparing to unpack .../mysql-client-core-8.0_8.0.46-0ubuntu0.22.04.5_amd64.deb ...
+Unpacking mysql-client-core-8.0 (8.0.46-0ubuntu0.22.04.5) over (8.0.46-0ubuntu0.22.04.4) ...
+Preparing to unpack .../mysql-client-8.0_8.0.46-0ubuntu0.22.04.5_amd64.deb ...
+Unpacking mysql-client-8.0 (8.0.46-0ubuntu0.22.04.5) over (8.0.46-0ubuntu0.22.04.4) ...
+Preparing to unpack .../mysql-server-8.0_8.0.46-0ubuntu0.22.04.5_amd64.deb ...
+Unpacking mysql-server-8.0 (8.0.46-0ubuntu0.22.04.5) over (8.0.46-0ubuntu0.22.04.4) ...
+Preparing to unpack .../mysql-server-core-8.0_8.0.46-0ubuntu0.22.04.5_amd64.deb ...
+Unpacking mysql-server-core-8.0 (8.0.46-0ubuntu0.22.04.5) over (8.0.46-0ubuntu0.22.04.4) ...
+Preparing to unpack .../mysql-server_8.0.46-0ubuntu0.22.04.5_all.deb ...
+Unpacking mysql-server (8.0.46-0ubuntu0.22.04.5) over (8.0.46-0ubuntu0.22.04.4) ...
+Setting up mysql-client-core-8.0 (8.0.46-0ubuntu0.22.04.5) ...
+Setting up mysql-server-core-8.0 (8.0.46-0ubuntu0.22.04.5) ...
+Setting up mysql-client-8.0 (8.0.46-0ubuntu0.22.04.5) ...
+Setting up mysql-server-8.0 (8.0.46-0ubuntu0.22.04.5) ...
+mysqld will log errors to /var/log/mysql/error.log
+mysqld is running as pid 18313
+Setting up mysql-server (8.0.46-0ubuntu0.22.04.5) ...
+Processing triggers for man-db (2.10.2-1) ...
+  [1;32m[+][0m Upgrades installed.
+
+[drive2] EXIT 0

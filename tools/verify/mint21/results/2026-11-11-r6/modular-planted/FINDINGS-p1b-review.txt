@@ -1,0 +1,24 @@
+BASELINE FINDINGS   FIX NOW: 2   REVIEW: 1   info: 2      (2026-11-12 04:37, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+=== FIX NOW - likely planted, act on these first ===
+[vsftpd] vsftpd.service has a drop-in no package owns: /etc/systemd/system/vsftpd.service.d/cptest-noipv6.conf
+      [Service]
+      ExecStart=
+      ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -olisten=YES -olisten_ipv6=NO
+      -> quarantine (q) if planted (unit is restarted and checked)
+[system] file no package owns: 644 root:root /etc/lightdm/lightdm.conf
+      [Seat:*]
+      autologin-user=bob
+      autologin-user-timeout=0
+      -> quarantine (q) unless the README needs it
+
+=== REVIEW - differs from the default; keep only what the README needs ===
+[system] /etc/login.defs changed since install (login) - no pristine copy to compare
+      -> open it (e) and check every setting; systemconfig.sh also hardens this
+
+=== INFO - no action needed ===
+[apache2] 3 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/apache2/conf-available/php8.1-fpm.conf /etc/apache2/mods-available/php8.1.conf /etc/apache2/mods-available/php8.1.load
+[mysql] 4 file(s) of the clean-VM pack are not on this image (normal when a package is not installed): /etc/mysql/debian-start /etc/mysql/mysql.cnf /etc/mysql/mysql.conf.d/mysql.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

@@ -1,0 +1,10 @@
+# V (verifier) 2026-11-10: clean-image safety. NEW start.sh on cp-mint-clean, README = the image's own accounts
+# (admin cpuser (you), no other users), critical services: none. EVERY prompt answered with Enter (pure defaults),
+# except the menu end. Nothing authorized may be removed, the desktop must survive, no false TODO storm.
+set HARD=3600
+env CP_ADMINS=cpuser
+env CP_USERS=
+env CP_SERVICES=none
+step start bash start.sh
+rule All steps done                               => q
+step zz-wait-bg bash -c 'for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)"; done'

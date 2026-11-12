@@ -1,0 +1,6 @@
+#!/bin/bash
+# TEST HARNESS: a person in visudo deletes the NOPASSWD / !authenticate lines they can SEE in the opened file.
+if [ $# -eq 0 ]; then f=/etc/sudoers; elif [ "$1" = "-f" ]; then f="$2"; else exec /usr/sbin/visudo "$@"; fi
+echo "[fake-visudo] opened $f" >> /root/harness.log
+sed -i -E '/^[^#]*(NOPASSWD|!authenticate)/{/mint-refresh-cache|mintUpdate\//!d}' "$f"
+/usr/sbin/visudo -c -q || echo "[fake-visudo] sudoers INVALID" >> /root/harness.log

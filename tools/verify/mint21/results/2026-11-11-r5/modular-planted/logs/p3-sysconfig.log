@@ -1,0 +1,89 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+Starting system hardening...
+
+[1;36m=== SYS10 /etc/ld.so.preload ===[0m
+  [*] baseline --review already quarantined ld.so.preload (/root/cp-quarantine/etc/ld.so.preload) - checking the libraries it listed
+
+[1;36m=== Firewall (UFW) ===[0m
+  Server daemons found - [Y] = suggested (listening now). Allow only what the README needs:
+    [Y] OpenSSH                (22/tcp)                 openssh-server installed, sshd listening on :22
+    [Y] Apache Full            (80/tcp 443/tcp)         apache2 installed, listening on :80
+    [Y] vsftpd                 (21/tcp)                 vsftpd installed, listening on :21
+  ? Allow the 3 [Y] rule(s) (n = none, e = decide each)? [Y/n/e]: e
+  ? Allow OpenSSH (22/tcp)? [Y/n]: y
+  ? Allow Apache Full (80/tcp 443/tcp)? [Y/n]: n
+  ? Allow vsftpd (21/tcp)? [Y/n]: n
+  [1;32m[+][0m UFW: allowed profile 'OpenSSH'
+  ? Extra ports the README needs (e.g. 8080/tcp, space separated), Enter = none: 
+  [1;32m[+][0m UFW enabled: deny incoming, allow outgoing, logging high
+        Status: active
+        OpenSSH                    ALLOW       Anywhere                  
+  [*] firewall done (13s)
+
+[1;36m=== LightDM (guest / autologin) ===[0m
+  [1;32m[+][0m LightDM: no guest, no autologin, users hidden, manual login, no X over TCP
+
+[1;36m=== UMASK, login.defs ===[0m
+  [1;32m[+][0m login.defs: UMASK 027, SHA512, LOGIN_RETRIES 3, PASS_MAX/MIN/WARN 30/7/14
+  [1;32m[+][0m /etc/profile: umask 027
+
+[1;36m=== Kernel parameters (sysctl) ===[0m
+  [1;32m[+][0m 44 parameters set in place in /etc/sysctl.conf
+  ? Disable IPv6 (scored on some images; n = keep it, hardened)? [Y/n]: y
+  [1;32m[+][0m IPv6 disabled
+  [1;32m[+][0m Applied (sysctl --system: same order as at boot)
+
+[1;36m=== SYS3 PAM backdoors ===[0m
+  [1;32m[+][0m pam_deny present, no pam_exec lines
+
+[1;36m=== SYS4 sudo.conf / sudoers defaults ===[0m
+  [1;32m[+][0m sudo.conf: Set disable_coredump true;Set probe_interfaces false;Set developer_mode false;
+  [1;32m[+][0m sudoers valid (use_pty, logfile=/var/log/sudo.log)
+  [1;32m[+][0m limits.conf: * hard core 0, * hard nproc 2500
+
+[1;36m=== SYS9 permissions, root, system accounts ===[0m
+  [1;32m[+][0m /etc/shadow + gshadow 640 root:shadow, /etc/passwd + group 644 root:root
+  ? Lock the root account (passwd -l root)? You keep using sudo [Y/n]: 
+  [1;32m[+][0m root locked
+  [1;32m[+][0m /home -> 755 root:root
+  [1;32m[+][0m /swapfile -> 600
+  [1;33m[!][0m Groups with a group password in /etc/gshadow: root 
+  ? Remove these group passwords? [Y/n]: 
+  [1;32m[+][0m Group passwords removed
+  [1;33m[!][0m System accounts with a login shell: syslog(/bin/bash) 
+  ? Set their shell to /usr/sbin/nologin (e = each; a README user with a low UID keeps it)? [Y/n/e]: 
+  [1;32m[+][0m syslog -> nologin
+  [1;33m[!][0m System accounts with a password hash: bin
+  ? Remove their passwords (set to '*'; e = each)? [Y/n/e]: 
+  [1;32m[+][0m bin password removed
+  [1;33m[!][0m SUID/SGID on: /usr/bin/cp(-rwsr-xr-x) 
+  ? Remove SUID/SGID from these binaries (never set on stock)? [Y/n]: 
+  [1;32m[+][0m Fixed /usr/bin/cp
+  [1;33m[!][0m Extended ACLs on system files:
+        /usr/bin/sudo: user:bob:rwx  
+  ? Strip these ACLs (setfacl -b; stock has none)? [Y/n]: 
+  [1;32m[+][0m ACLs removed from system files
+
+[1;36m=== SYS10 persistence spots ===[0m
+  [1;31m[TODO][0m Review /etc/hosts entries (hijack?): 172.17.0.2 mint-cptest;
+  [*] apt holds: john (fileandpackage.sh unholds what it removes and lists the rest as TODO)
+  [*] APT sources: linuxmint - sources.list left alone (the Debian rewrite is for Debian images only)
+
+[1;36m=== Packages + automatic updates ===[0m
+  ? Install libpam-pwquality auditd (needed for automatic updates, the password rules, auditd)? [Y/n]: 
+  [*] apt-get install libpam-pwquality auditd - waits for any background apt job (log: /root/cp-state/apt-systemconfig.log)
+  [1;32m[+][0m apt done (4s): libpam-pwquality auditd installed
+  [1;32m[+][0m Automatic updates: daily package list update + unattended-upgrade (20auto-upgrades)
+  ? Linux Mint: turn on Update Manager automatic updates + automatic removal of old kernels (same as the GUI Automation tab)? [Y/n]: 
+  [1;32m[+][0m Mint automatic updates enabled
+  [1;32m[+][0m Update Manager: refresh the list of updates automatically (for cpuser)
+  [1;32m[+][0m common-password: pam_unix remember=5 minlen=12; pam_pwquality retry=3 minlen=12 dictcheck/usercheck/credits
+  [1;32m[+][0m pwquality.conf: minlen 12, 1 upper/lower/digit/other, dictcheck, usercheck
+  [1;32m[+][0m apparmor enabled and running
+  [1;33m[!][0m could not enable auditd
+  [1;32m[+][0m ufw enabled and running
+  [1;32m[+][0m unattended-upgrades enabled and running
+
+  [1;32m[+][0m System hardening complete in 46s. Backups: /root/cp-backups/20261112_021250/
+
+[drive2] EXIT 0

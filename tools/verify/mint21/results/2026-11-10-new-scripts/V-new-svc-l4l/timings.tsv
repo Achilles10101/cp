@@ -1,0 +1,5 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+s0-readme	0.2	0.1	0.0	0	0	0	0	0	-	0.62	0.62	-
+s1-baseline	4.6	4.5	0.0	0	0	0	0	0	23	0.62	0.81	fix=8 review=15 info=3 bang=24
+s3-sysconfig	24.0	23.9	12.5	5	4	1	0	0	-	0.81	0.61	-
+s-critical	80.9	80.9	50.1	20	17	3	0	1	-	0.61	0.28	-

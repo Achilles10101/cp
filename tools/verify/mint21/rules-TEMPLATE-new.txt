@@ -1,0 +1,21 @@
+# TEMPLATE for the refactored scripts (start.sh). Copy, rename (e.g. rules-2026-11-new.txt) and fill in the rules
+# from the prompt lists in /home/claude/notes/{A,B,C,D,E}.md. Run:
+#   ./run-pipeline.sh cp-mint-planted /home/claude/work/competition rules-2026-11-new.txt OUTDIR
+# then read OUTDIR/logs/*.answers: every DEFAULT(Enter) must be a prompt whose default IS the right answer.
+set HARD=1500
+# README facts for readme.sh (non-interactive); planted README: admins cpuser alice, users bob carol dave frank, OpenSSH
+env CP_ADMINS=cpuser alice
+env CP_USERS=bob carol dave frank
+env CP_SERVICES=ssh
+# answers that stay the same whatever the script (global rules are tried after the step's own rules)
+rule New password:                      => Car0l-Str0ng!pw
+rule Retype new password:               => Car0l-Str0ng!pw
+
+# Option A: the whole round through the single entry point (one step = one total time)
+step start bash start.sh
+# rule <regex of a new prompt>          => <answer for the planted README>
+
+# Option B: comparable to the old per-script steps (same names as rules-2026-10-21.txt), e.g.
+# step p1-baseline bash services/baseline.sh
+# step p2-users    bash usersandsudo.sh
+# ...

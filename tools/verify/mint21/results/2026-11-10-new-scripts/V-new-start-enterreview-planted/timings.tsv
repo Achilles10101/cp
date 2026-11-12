@@ -1,0 +1,4 @@
+step	wall_s	script_elapsed_s	harness_wait_s	prompts	rule	default	stall	exit	findings	load_start	load_end	findings_detail
+wait65	65.1	65.0	0.0	0	0	0	0	0	-	0.36	0.21	-
+start	179.2	179.1	140.2	56	26	30	0	0	-	0.21	0.11	-
+zz-wait-bg	0.1	0.0	0.0	0	0	0	0	0	-	0.11	0.11	-

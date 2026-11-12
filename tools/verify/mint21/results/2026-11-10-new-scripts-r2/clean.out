@@ -1,0 +1,22 @@
+[18:05:03] container V2-clean from cp-mint-clean: systemd running
+[18:05:03] step start: bash start.sh
+[18:06:46]   done in 102s  STATS prompts=28 rule=7 default=21 stall=0 wait=70.1s elapsed=102.6s  exit=0  findings=- (-)
+[18:06:46] step zz-wait-bg: bash -c for i in $(seq 1 360); do pgrep -f "[s]tart.sh --job" >/dev/null || break; sleep 5; done; for j in apt baseline upgrade; do echo "$j rc=$(cat /root/cp-state/start/jobs/$j.rc 2>/dev/null)"; done
+[18:06:46]   done in 0s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=0.0s  exit=0  findings=- (-)
+image cp-mint-clean
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-10-new-r2-clean.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+start              102.7     102.6    70.1    32.5       28     7    21     0     0        -   0.55>0.32
+zz-wait-bg           0.1       0.0     0.0     0.0        0     0     0     0     0        -   0.32>0.32
+TOTAL              103.0              70.1    32.9       28
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 98/144 PASS   planted: 39/44 PASS
+services answering: 0 OK  | FAIL: -
+
+[18:06:47] container kept: V2-clean

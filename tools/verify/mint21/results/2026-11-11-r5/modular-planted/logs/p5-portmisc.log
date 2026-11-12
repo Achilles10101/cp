@@ -1,0 +1,15 @@
+  ? Have you taken a screenshot of the score (shows which script cost points)? [Y/n]: y
+
+[1;36m=== Listening ports (process, package, unit) ===[0m
+  PROTO ADDRESS:PORT           PROCESS (PID)                PACKAGE                UNIT  -> verdict
+  tcp   0.0.0.0:22             sshd (2385)                  openssh-server         ssh.service  -> service
+  tcp   127.0.0.53%lo:53       systemd-resolve (66)         systemd                systemd-resolved.service  -> system
+  udp   127.0.0.53%lo:53       systemd-resolve (66)         systemd                systemd-resolved.service  -> system
+
+  [*] 2 listener(s) are stock system daemons or the scoring engine
+  ? Stop + disable the SSH server? Only if the README does not need SSH: tcp/22(ssh.service) ? [y/N/e]: n
+  ? Optional: l = lynis in the background, n = nmap localhost scan (purged after), ln = both, Enter = skip: 
+
+  [1;32m[+][0m portandmisc done in 5s. Listener table: /root/cp-state/listeners.tsv
+
+[drive2] EXIT 0

@@ -1,0 +1,6 @@
+BASELINE FINDINGS   FIX NOW: 0   REVIEW: 0   info: 0      (2026-11-11 02:02, linuxmint-21.3, pack: linuxmint-21.3)
+Detection only - nothing was changed.  Triage with one key per finding:  sudo bash services/baseline.sh --review [svc]
+
+No findings: every scanned service matches its known-good baseline.
+
+Per-service detail: /root/baseline/<svc>/report.txt   diffs: <svc>/diff.patch

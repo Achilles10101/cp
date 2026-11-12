@@ -1,0 +1,15 @@
+forensics prompt after 0.1s; output before it:
+  [*] Baseline scan started in the background (read-only, log: /root/cp-state/logs/bg-baseline.log)
+
+[1;36m=== Forensics ===[0m
+  ? Do the Forensics Questions now - nothing has been changed yet. Press Enter when done. 
+---- waiting 30 s at the prompt
+apt processes: 245 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+apt lists newer than start: 0
+speedrun jobs: baseline.end baseline.pid baseline.rc baseline.start 
+files under /etc changed since start:
+   /etc/cups/subscriptions.conf
+other changed (excluding /root/baseline /root/cp-state /proc /sys /run /tmp /var/log):
+   /etc/cups/subscriptions.conf
+baseline job: 0
+

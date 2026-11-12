@@ -1,0 +1,3 @@
+[16:27:07] container V-bl-services from cp-mint-services: systemd degraded
+[16:27:08] step baseline: bash services/baseline.sh
+[16:27:12]   done in 4s  STATS prompts=0 rule=0 default=0 stall=0 wait=0.0s elapsed=4.2s  exit=0  findings=2 (fix=2 review=0 info=2 bang=2)

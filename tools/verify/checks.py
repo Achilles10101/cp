@@ -7,7 +7,11 @@ evaluated against the live container. Sources:
             (the check TEXT is real, the regex is my best reconstruction -> marked 'recon')
 Semantics follow aeacus checks.go: FileContains* match per line; *Not inverts; all conds must pass.
 """
-import os, re, stat, subprocess, sys, tomllib, glob
+import os, re, stat, subprocess, sys, glob, json
+try:
+    import tomllib                     # Python >= 3.11
+except ImportError:                    # Ubuntu 22.04 / Mint 21 ship Python 3.10: use the JSON copy (same content)
+    tomllib = None
 
 def read(p):
     try: return open(p, errors="replace").read()
@@ -118,8 +122,11 @@ add(A, "UFW OpenSSH profile", [{"type": "CommandContainsRegex", "cmd": "ufw stat
 R1984 = os.path.join(os.path.dirname(os.path.abspath(__file__)), "1984-scoring.conf")
 KEEP = ["group password", "minimum password age", "remembered", "dictionary", "Root account", "Kernel pointers", "broadcast",
         "unprivileged kernel", "SYN cookies", "randomization", "forwarding", "FACL", "Dovecot SSL", "Dovecot debug", "forces SFTP", "chroots"]
+R1984_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mint21", "1984-scoring.json")
+if tomllib is None and os.path.exists(R1984_JSON):
+    R1984 = R1984_JSON
 if os.path.exists(R1984):
-    d = tomllib.load(open(R1984, "rb"))
+    d = tomllib.load(open(R1984, "rb")) if R1984.endswith(".conf") else json.load(open(R1984))
     for ch in d["check"]:
         if any(k.lower() in ch["message"].lower() for k in KEEP):
             conds = ch.get("pass", []) + ch.get("passoverride", [])

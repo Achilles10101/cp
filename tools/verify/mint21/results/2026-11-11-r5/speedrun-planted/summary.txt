@@ -1,0 +1,15 @@
+image cp-mint-planted
+competition /home/claude/work/competition
+rules /home/claude/work/tools/verify/mint21/rules-2026-11-11-V5-speedrun-planted.txt
+
+step              wall s  script s  wait s   net s  prompts  rule  dflt stall  exit findings        load
+wait65              65.1      65.0     0.0    65.0        0     0     0     0     0        -   0.80>0.27
+speedrun           227.6     227.5   185.3    42.2       74    53    21     0     0        -   0.27>0.61
+TOTAL              292.9             185.3   107.6       74
+
+wall = host wall-clock for the step; script = drive2 elapsed; wait = seconds the harness waited for quiet output
+before answering (IDLE per prompt, 40 s per stall; stands in for the human reading + typing); net = script - wait
+(time the scripts themselves run). load = host 1-min loadavg at start>end (2 CPUs shared with other agents).
+
+checks: 110/144 PASS   planted: 43/44 PASS
+services answering: 1 OK ssh | FAIL: -
